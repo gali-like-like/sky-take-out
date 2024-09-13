@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @NoArgsConstructor
-@AllArgsConstructor
 @ApiModel(description = "员工登录返回的数据格式")
 public class EmployeeLoginVO implements Serializable {
 
@@ -34,35 +33,35 @@ public class EmployeeLoginVO implements Serializable {
     	this.name = name;
     	this.token = token;
     }
-    
+
     public void setId(Long id) {
     	this.id = id;
     }
-    
+
     public Long getId() {
     	return this.id;
     }
-    
+
     public void setUsername(String username) {
     	this.userName = username;
     }
-    
+
     public String getUsername() {
     	return this.userName;
     }
-    
+
     public void setName(String name) {
     	this.name = name;
     }
-    
+
     public String getName() {
     	return this.name;
     }
-    
+
     public void setToken(String token) {
     	this.token = token;
     }
-    
+
     public String getToken() {
     	return this.token;
     }
