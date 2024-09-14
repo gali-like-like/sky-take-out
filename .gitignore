@@ -16,6 +16,8 @@ logs/
 
 # Package Files #
 .idea
+.settings
+log
 *.iml
 *.jar
 *.war

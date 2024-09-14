@@ -1,5 +1,6 @@
 package com.sky.service;
 
+import com.sky.dto.EmployPasswordDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.entity.Employee;
 
@@ -11,5 +12,9 @@ public interface EmployeeService {
      * @return
      */
     Employee login(EmployeeLoginDTO employeeLoginDTO);
-
+    
+    Boolean editPassword(EmployPasswordDTO employPasswordDTO);
+    
+    Boolean changeStatus(Integer status,Integer id);
+    
 }

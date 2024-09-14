@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SkyApplication {
 
-    // Knife4j接口文档 http://localhost:8080/doc.html
+    // Knife4j接口文档 http://localhost:8081/doc.html
     public static void main(String[] args) {
         SpringApplication.run(SkyApplication.class, args);
     }
