@@ -1,14 +1,11 @@
 package com.sky.result;
 
-import lombok.Data;
-
 import java.io.Serializable;
 
 /**
  * 后端统一返回结果
  * @param <T>
  */
-@Data
 public class Result<T> implements Serializable {
 
     private Integer code; //编码：1成功，0和其它数字为失败
@@ -34,5 +31,28 @@ public class Result<T> implements Serializable {
         result.code = 0;
         return result;
     }
-
+    
+    public Integer getCode() {
+    	return this.code;
+    }
+    
+    public String getMsg() {
+    	return this.msg;
+    }
+    
+    public T getData() {
+    	return this.data;
+    }
+    
+    public void setCode(Integer code) {
+    	this.code = code;
+    }
+    
+    public void setMsg(String msg) {
+    	this.msg = msg;
+    }
+    
+    public void setData(T data) {
+    	this.data = data;
+    }
 }

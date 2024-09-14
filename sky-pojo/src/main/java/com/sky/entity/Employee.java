@@ -1,49 +1,13 @@
 package com.sky.entity;
-
-import java.io.Serializable;
-import java.time.LocalDateTime;
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class Employee implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    private Long id;
-
-    private String username;
-
-    private String name;
-
-    private String password;
-
-    private String phone;
-
-    private String sex;
-
-    private String idNumber;
-
-    private Integer status;
-
-    //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime createTime;
-
-    //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime updateTime;
-
-    private Long createUser;
-
-    private Long updateUser;
-    
-public Employee() {}
-    
+public class Employee {
+	private Long id;
+	private String username;
+	private String name;
+	private String password;
+	private String phone;
+	private String sex;
+	private String idNumber;
+	private Integer status;
     public Employee(Long id,String username,String name,String password,String phone,String sex,String idNumber,Integer status) {
     	this.id = id;
     	this.username = username;
@@ -53,6 +17,11 @@ public Employee() {}
     	this.sex = sex;
     	this.idNumber = idNumber;
     	this.status = status;
+    }
+    @Override
+    public String toString() {
+    	return String.format("Employee{id:%d,username:%s,name:%s,\npassword:%s,\nphone:%s,\nsex:%s,\nidNum:%s,\nstatus:%d}",
+    			this.id,this.username,this.name,this.password,this.phone,this.sex,this.idNumber,this.status);
     }
     
     public void setId(Long id) {
@@ -120,3 +89,4 @@ public Employee() {}
 		this.name = name;
 	}
 }
+

@@ -1,11 +1,18 @@
 package com.sky.service.impl;
 
+import java.util.Objects;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import com.sky.constant.MessageConstant;
 import com.sky.constant.StatusConstant;
+import com.sky.dto.EmployPasswordDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.entity.Employee;
 import com.sky.exception.AccountLockedException;
@@ -19,7 +26,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeMapper employeeMapper;
-
+    private Logger logger = LoggerFactory.getLogger(EmployeeServiceImpl.class);
     /**
      * 员工登录
      *
@@ -38,7 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             //账号不存在
             throw new AccountNotFoundException(MessageConstant.ACCOUNT_NOT_FOUND);
         }
-
+        logger.info(employee.toString());
         //密码比对
         // TODO 后期需要进行md5加密，然后再进行比对
         // 数据库根本没加密啊！！！！！！！！！！！！
@@ -56,5 +63,54 @@ public class EmployeeServiceImpl implements EmployeeService {
         //3、返回实体对象
         return employee;
     }
+    
+    
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public Boolean editPassword(EmployPasswordDTO employPasswordDTO) throws AccountNotFoundException {
+		// TODO Auto-generated method stub
+		/**
+		 * 账号不存在就报账号不存在异常,存在则更改密码
+		 * */
+		Integer id = employPasswordDTO.getEmpId();
+		if(isExistsEmployeeById(id)) {
+			employeeMapper.editPassword(employPasswordDTO);
+			return true;
+		}
+		else 
+			return false;
+	}
+//
 
+	@Override
+	@Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
+	public Boolean changeStatus(Integer status, Integer id) throws AccountNotFoundException {
+		// TODO Auto-generated method stub
+		/**
+		 * 账号不存在就报账号不存在异常,存在则更改状态
+		 * */
+		if(isExistsEmployeeById(id)) {
+			employeeMapper.changeStatus(status, id);
+			return true;
+		}
+		else 
+			return false;
+	}
+	
+	public Boolean isExistsEmployeeById(Integer id) {
+		if(id<0) {
+			throw new AccountNotFoundException(MessageConstant.ACCOUNT_NOT_FOUND);
+		}
+		else {
+			//判断id是否存在,存在就修改密码,不存在就返回false;
+			Integer queryId = employeeMapper.existsId(id);
+			if(Objects.isNull(queryId)) {
+				throw new AccountNotFoundException(MessageConstant.ACCOUNT_NOT_FOUND);
+			}
+			else {
+				return true;
+			}
+		}
+	}
+	
 }
