@@ -1,6 +1,6 @@
 spring:
-  profiles:
-    active: prod
+#  profiles:
+#    active: product
   main:
     allow-circular-references: true
   datasource:
@@ -29,7 +29,7 @@ logging:
         controller: info
 
   config: logback.xml
-  logging:
+  logging: 
         level:
              com:
                 sky:
@@ -43,4 +43,4 @@ sky:
     # 设置jwt过期时间
     admin-ttl: 120
     # 设置前端传递过来的令牌名称
-    admin-token-name: token
+    admin-token-name: token		
