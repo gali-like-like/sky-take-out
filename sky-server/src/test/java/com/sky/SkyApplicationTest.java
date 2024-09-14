@@ -12,9 +12,8 @@ import com.sky.dto.EmployPasswordDTO;
 import com.sky.service.EmployeeService;
 
 @SpringBootTest
-@ActiveProfiles("test")
+@ActiveProfiles("dev")
 public class SkyApplicationTest {
-	
 	private Logger logger = LoggerFactory.getLogger(SkyApplication.class);
 	@Autowired
 	private  EmployeeService employeeService;
@@ -24,8 +23,8 @@ public class SkyApplicationTest {
 	public void testEditPasswodSuccess() {
 		EmployPasswordDTO employPasswordDTO = new  EmployPasswordDTO();
 		employPasswordDTO.setEmpId(1);
-		employPasswordDTO.setNewPassword("456789");
-		employPasswordDTO.setOldPassword("123456");
+		employPasswordDTO.setNewPassword("123456");
+		employPasswordDTO.setOldPassword("456123");
 		Boolean resBoolean = employeeService.editPassword(employPasswordDTO);
 		logger.info("修改密码成功：{}",resBoolean);
 	}
