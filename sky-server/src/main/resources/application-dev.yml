@@ -6,5 +6,3 @@ sky:
           database: sky_take_out
           username: gali
           password: 20001126X.
-   server:
-          port: 8081

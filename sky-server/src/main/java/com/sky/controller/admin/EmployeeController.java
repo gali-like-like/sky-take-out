@@ -11,12 +11,7 @@ import java.util.concurrent.TimeoutException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.sky.constant.JwtClaimsConstant;
 import com.sky.constant.MessageConstant;
@@ -84,7 +79,8 @@ public class EmployeeController {
 			return null;
 		});
 		Boolean resBoolean = future.get(3,TimeUnit.SECONDS);
-		if(Objects.isNull(resBoolean))
+        //防止server里头发生了异常,resBoolean就会为空
+		if(Objects.nonNull(resBoolean) && resBoolean.equals(true))
 			return Result.success();
 		else
 			return Result.error(MessageConstant.ACCOUNT_NOT_FOUND);
@@ -93,7 +89,7 @@ public class EmployeeController {
     @ApiOperation(value = "修改状态",notes="员工修改状态")
     @PostMapping("/status/{status}")
     public Result changeStatus(@ApiParam(name="状态,1表示启用,0表示禁用",required = true) @PathVariable Integer status,
-    		@ApiParam(name="员工id",required = true) @RequestBody Integer id) throws InterruptedException, ExecutionException, TimeoutException {
+    		@ApiParam(name="员工id",required = true) @RequestParam Integer id) throws InterruptedException, ExecutionException, TimeoutException {
     	CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(()->{
     		return employeeService.changeStatus(status, id);
     	}).handle((res,e)-> {
@@ -104,12 +100,11 @@ public class EmployeeController {
 			return null;
     	});
     	Boolean resBoolean = future.get(3,TimeUnit.SECONDS);
-    	if(Objects.isNull(resBoolean)) {
+    	if(Objects.nonNull(resBoolean)) {
     		return Result.success();
     	}
     	else
 			return Result.error(MessageConstant.ACCOUNT_NOT_FOUND);
-    	
     }
     
     

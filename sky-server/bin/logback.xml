@@ -47,8 +47,8 @@
     </appender>
   
     <!-- 配置访问日志 --> 
-    <logger name="com.sky.interceptor.JwtTokenAdminInterceptor" level="TRACE" additivity="false">
-        <appender-ref ref="ACCESS"/>
+    <logger name="com.sky.interceptor" level="TRACE" additivity="false">  
+        <appender-ref ref="ACCESS"/>  
     </logger>  
     
     <!-- 接口性能日志输出到文件 -->

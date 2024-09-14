@@ -11,7 +11,7 @@ spring:
       username: ${sky.datasource.username}
       password: ${sky.datasource.password}
 server:
-      port: 8080
+      port: ${sky.server.port}
       shutdown: graceful
 mybatis:
   #mapper配置文件
