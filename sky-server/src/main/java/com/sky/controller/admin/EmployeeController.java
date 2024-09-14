@@ -8,6 +8,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import com.github.pagehelper.PageInfo;
+import com.sky.dto.EmployeePageQueryDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,8 +90,8 @@ public class EmployeeController {
     
     @ApiOperation(value = "修改状态",notes="员工修改状态")
     @PostMapping("/status/{status}")
-    public Result changeStatus(@ApiParam(name="状态,1表示启用,0表示禁用",required = true) @PathVariable Integer status,
-    		@ApiParam(name="员工id",required = true) @RequestParam Integer id) throws InterruptedException, ExecutionException, TimeoutException {
+    public Result changeStatus(@ApiParam(name="status",required = true) @PathVariable Integer status,
+    		@ApiParam(name="id",required = true) @RequestParam Integer id) throws InterruptedException, ExecutionException, TimeoutException {
     	CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(()->{
     		return employeeService.changeStatus(status, id);
     	}).handle((res,e)-> {
@@ -106,7 +108,26 @@ public class EmployeeController {
     	else
 			return Result.error(MessageConstant.ACCOUNT_NOT_FOUND);
     }
-    
+
+    @ApiOperation(value="分页查询",notes="根据当前查询当前包含的数据")
+    @GetMapping("/page")
+    public Result pageDataByPageNum(@ApiParam(required = true) EmployeePageQueryDTO queryDTO) throws ExecutionException, InterruptedException, TimeoutException {
+        CompletableFuture<PageInfo<Employee>> future = CompletableFuture.supplyAsync(() ->{
+           return employeeService.pageDataByPageSize(queryDTO);
+        }).handle((res,e) -> {
+            if(Objects.isNull(e)) {
+                return res;
+            }
+            logger.info("发生异常:\n{}",e.getLocalizedMessage());
+            return null;
+        });
+        PageInfo<Employee> employeePageInfo = future.get(3,TimeUnit.SECONDS);
+        if(Objects.nonNull(employeePageInfo)) {
+            return Result.success(employeePageInfo);
+        }
+        else
+            return Result.error("查询异常");
+    }
     
     
     /**

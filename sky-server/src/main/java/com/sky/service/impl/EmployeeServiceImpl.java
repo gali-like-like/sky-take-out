@@ -1,7 +1,11 @@
 package com.sky.service.impl;
 
+import java.util.List;
 import java.util.Objects;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.sky.dto.EmployeePageQueryDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,7 +100,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 		else 
 			return false;
 	}
-	
+
+	@Override
+	// todo PageInfo为啥报错！
+	public PageInfo<Employee> pageDataByPageSize(EmployeePageQueryDTO queryDTO) {
+		List<Employee> employeeList = employeeMapper.getAllEmployee(queryDTO.getName());
+		PageHelper.startPage(queryDTO.getPage(),queryDTO.getPageSize());
+		PageInfo<Employee> pageInfo = new PageInfo<>(employeeList);
+		return pageInfo;
+	}
+
 	public Boolean isExistsEmployeeById(Integer id) {
 		if(id<0) {
 			throw new AccountNotFoundException(MessageConstant.ACCOUNT_NOT_FOUND);

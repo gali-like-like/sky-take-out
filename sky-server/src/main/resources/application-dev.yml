@@ -5,4 +5,7 @@ sky:
           port: 3306
           database: sky_take_out
           username: gali
-          password: 20001126X.
+          password: 20001126X
+# 是否屏蔽jwt令牌
+   jwt:
+          isHidden: false
