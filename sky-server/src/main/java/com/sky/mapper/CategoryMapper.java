@@ -1,5 +1,7 @@
 package com.sky.mapper;
 
+import com.sky.dto.CategoryDTO;
+import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.entity.Category;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Pageable;
@@ -15,55 +17,19 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface CategoryMapper {
-
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param id 主键
-     * @return 实例对象
-     */
-    Category queryById(Long id);
-
-    /**
-     * 总记录数
-     *
-     * @param category 筛选条件
-     * @return Long
-     */
-    Long count(Category category);
-
-    /**
-     * 查询指定行数据
-     *
-     * @param category 查询条件
-     * @param pageable         分页对象
-     * @return 对象列表
-     */
-    List<Category> queryAllByLimit(Category category, @Param("pageable") Pageable pageable);
-
-    /**
-     * 新增数据
-     *
-     * @param category 实例对象
-     * @return 影响行数
-     */
-    int insert(Category category);
-
-    /**
-     * 修改数据
-     *
-     * @param category 实例对象
-     * @return 影响行数
-     */
-    int update(Category category);
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param id 主键
-     * @return 影响行数
-     */
-    int deleteById(Long id);
-
+    //根据类型查询
+    List<Category> queryByType(Long type);
+    //添加分类
+    int addCategory(CategoryDTO category);
+    //更改状态
+    void changeStatus(Long id,Integer status);
+    //修改分类
+    int updateCategory(CategoryDTO category);
+    //根据id删除分类
+    int deleteCategoryById(Long id);
+    //查询分页数据
+    List<Category>  queryPageCategory(CategoryPageQueryDTO queryDTO);
+    //根据id查询分类
+    Category queryCategoryById(Long id);
 }
 
