@@ -30,7 +30,7 @@ import java.util.concurrent.TimeoutException;
  * 员工管理
  */
 @RestController
-@RequestMapping("/admin/employee")
+@RequestMapping("/employee")
 @Api(tags = "员工管理的接口")
 public class EmployeeController {
 

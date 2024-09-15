@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.DishMapper">
+  
+  <resultMap type="com.sky.entity.Dish" id="DishMap">
+    <result property="id" column="id" jdbcType="INTEGER" />
+    <result property="name" column="name" jdbcType="VARCHAR" />
+    <result property="categoryId" column="category_id" jdbcType="INTEGER" />
+    <result property="price" column="price" jdbcType="VARCHAR" />
+    <result property="image" column="image" jdbcType="VARCHAR" />
+    <result property="description" column="description" jdbcType="VARCHAR" />
+    <result property="status" column="status" jdbcType="INTEGER" />
+    <result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
+    <result property="updateTime" column="update_time" jdbcType="TIMESTAMP" />
+    <result property="createUser" column="create_user" jdbcType="INTEGER" />
+    <result property="updateUser" column="update_user" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <!--查询单个-->
+  <select id="queryById" resultMap="DishMap">
+    select idnamecategory_idpriceimagedescriptionstatuscreate_timeupdate_timecreate_userupdate_user
+    from dish
+    where id = #{id}
+  </select>
+  
+  <!--查询指定行数据-->
+  <select id="queryAllByLimit" resultMap="DishMap">
+    select
+    idnamecategory_idpriceimagedescriptionstatuscreate_timeupdate_timecreate_userupdate_user
+    from dish
+    <where>
+      <if test="id != null">
+        and id = #{id}
+      </if>
+      <if test="name != null and name != ''">
+        and name = #{name}
+      </if>
+      <if test="categoryId != null">
+        and category_id = #{categoryId}
+      </if>
+      <if test="price != null">
+        and price = #{price}
+      </if>
+      <if test="image != null and image != ''">
+        and image = #{image}
+      </if>
+      <if test="description != null and description != ''">
+        and description = #{description}
+      </if>
+      <if test="status != null">
+        and status = #{status}
+      </if>
+      <if test="createTime != null">
+        and create_time = #{createTime}
+      </if>
+      <if test="updateTime != null">
+        and update_time = #{updateTime}
+      </if>
+      <if test="createUser != null">
+        and create_user = #{createUser}
+      </if>
+      <if test="updateUser != null">
+        and update_user = #{updateUser}
+      </if>
+    </where>
+    limit #{pageable.offset}, #{pageable.pageSize}
+  </select>
+  
+  <!--统计总行数-->
+  <select id="count" resultType="java.lang.Long">
+    select count(1)
+    from dish
+    <where>
+      <if test="id != null">
+        and id = #{id}
+      </if>
+      <if test="name != null and name != ''">
+        and name = #{name}
+      </if>
+      <if test="categoryId != null">
+        and category_id = #{categoryId}
+      </if>
+      <if test="price != null">
+        and price = #{price}
+      </if>
+      <if test="image != null and image != ''">
+        and image = #{image}
+      </if>
+      <if test="description != null and description != ''">
+        and description = #{description}
+      </if>
+      <if test="status != null">
+        and status = #{status}
+      </if>
+      <if test="createTime != null">
+        and create_time = #{createTime}
+      </if>
+      <if test="updateTime != null">
+        and update_time = #{updateTime}
+      </if>
+      <if test="createUser != null">
+        and create_user = #{createUser}
+      </if>
+      <if test="updateUser != null">
+        and update_user = #{updateUser}
+      </if>
+    </where>
+  </select>
+  
+  <!--新增所有列-->
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+    insert into dish(namecategory_idpriceimagedescriptionstatuscreate_timeupdate_timecreate_userupdate_user)
+    values (#{name}#{categoryId}#{price}#{image}#{description}#{status}#{createTime}#{updateTime}#{createUser}#{updateUser})
+  </insert>
+  
+  <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+    insert into dish(namecategory_idpriceimagedescriptionstatuscreate_timeupdate_timecreate_userupdate_user)
+    values
+    <foreach collection="entities" item="entity" separator=",">
+      (#{entity.name}#{entity.categoryId}#{entity.price}#{entity.image}#{entity.description}#{entity.status}#{entity.createTime}#{entity.updateTime}#{entity.createUser}#{entity.updateUser})
+    </foreach>
+  </insert>
+  
+  <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+    insert into dish(namecategory_idpriceimagedescriptionstatuscreate_timeupdate_timecreate_userupdate_user)
+    values
+    <foreach collection="entities" item="entity" separator=",">
+      (#{entity.name}#{entity.categoryId}#{entity.price}#{entity.image}#{entity.description}#{entity.status}#{entity.createTime}#{entity.updateTime}#{entity.createUser}#{entity.updateUser})
+    </foreach>
+    on duplicate key update
+    name = values(name)category_id = values(category_id)price = values(price)image = values(image)description =
+    values(description)status = values(status)create_time = values(create_time)update_time =
+    values(update_time)create_user = values(create_user)update_user = values(update_user)
+  </insert>
+  
+  <!--通过主键修改数据-->
+  <update id="update">
+    update dish
+    <set>
+      <if test="name != null and name != ''">
+        name = #{name},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId},
+      </if>
+      <if test="price != null">
+        price = #{price},
+      </if>
+      <if test="image != null and image != ''">
+        image = #{image},
+      </if>
+      <if test="description != null and description != ''">
+        description = #{description},
+      </if>
+      <if test="status != null">
+        status = #{status},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  
+  <!--通过主键删除-->
+  <delete id="deleteById">
+    delete
+    from dish
+    where id = #{id}
+  </delete>
+
+</mapper>
+

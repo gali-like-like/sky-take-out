@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.ShoppingCartMapper">
+  
+  <resultMap type="com.sky.entity.ShoppingCart" id="ShoppingCartMap">
+    <result property="id" column="id" jdbcType="INTEGER" />
+    <result property="name" column="name" jdbcType="VARCHAR" />
+    <result property="image" column="image" jdbcType="VARCHAR" />
+    <result property="userId" column="user_id" jdbcType="INTEGER" />
+    <result property="dishId" column="dish_id" jdbcType="INTEGER" />
+    <result property="setmealId" column="setmeal_id" jdbcType="INTEGER" />
+    <result property="dishFlavor" column="dish_flavor" jdbcType="VARCHAR" />
+    <result property="number" column="number" jdbcType="INTEGER" />
+    <result property="amount" column="amount" jdbcType="VARCHAR" />
+    <result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <!--查询单个-->
+  <select id="queryById" resultMap="ShoppingCartMap">
+    select idnameimageuser_iddish_idsetmeal_iddish_flavornumberamountcreate_time
+    from shopping_cart
+    where id = #{id}
+  </select>
+  
+  <!--查询指定行数据-->
+  <select id="queryAllByLimit" resultMap="ShoppingCartMap">
+    select
+    idnameimageuser_iddish_idsetmeal_iddish_flavornumberamountcreate_time
+    from shopping_cart
+    <where>
+      <if test="id != null">
+        and id = #{id}
+      </if>
+      <if test="name != null and name != ''">
+        and name = #{name}
+      </if>
+      <if test="image != null and image != ''">
+        and image = #{image}
+      </if>
+      <if test="userId != null">
+        and user_id = #{userId}
+      </if>
+      <if test="dishId != null">
+        and dish_id = #{dishId}
+      </if>
+      <if test="setmealId != null">
+        and setmeal_id = #{setmealId}
+      </if>
+      <if test="dishFlavor != null and dishFlavor != ''">
+        and dish_flavor = #{dishFlavor}
+      </if>
+      <if test="number != null">
+        and number = #{number}
+      </if>
+      <if test="amount != null">
+        and amount = #{amount}
+      </if>
+      <if test="createTime != null">
+        and create_time = #{createTime}
+      </if>
+    </where>
+    limit #{pageable.offset}, #{pageable.pageSize}
+  </select>
+  
+  <!--统计总行数-->
+  <select id="count" resultType="java.lang.Long">
+    select count(1)
+    from shopping_cart
+    <where>
+      <if test="id != null">
+        and id = #{id}
+      </if>
+      <if test="name != null and name != ''">
+        and name = #{name}
+      </if>
+      <if test="image != null and image != ''">
+        and image = #{image}
+      </if>
+      <if test="userId != null">
+        and user_id = #{userId}
+      </if>
+      <if test="dishId != null">
+        and dish_id = #{dishId}
+      </if>
+      <if test="setmealId != null">
+        and setmeal_id = #{setmealId}
+      </if>
+      <if test="dishFlavor != null and dishFlavor != ''">
+        and dish_flavor = #{dishFlavor}
+      </if>
+      <if test="number != null">
+        and number = #{number}
+      </if>
+      <if test="amount != null">
+        and amount = #{amount}
+      </if>
+      <if test="createTime != null">
+        and create_time = #{createTime}
+      </if>
+    </where>
+  </select>
+  
+  <!--新增所有列-->
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+    insert into shopping_cart(nameimageuser_iddish_idsetmeal_iddish_flavornumberamountcreate_time)
+    values (#{name}#{image}#{userId}#{dishId}#{setmealId}#{dishFlavor}#{number}#{amount}#{createTime})
+  </insert>
+  
+  <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+    insert into shopping_cart(nameimageuser_iddish_idsetmeal_iddish_flavornumberamountcreate_time)
+    values
+    <foreach collection="entities" item="entity" separator=",">
+      (#{entity.name}#{entity.image}#{entity.userId}#{entity.dishId}#{entity.setmealId}#{entity.dishFlavor}#{entity.number}#{entity.amount}#{entity.createTime})
+    </foreach>
+  </insert>
+  
+  <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+    insert into shopping_cart(nameimageuser_iddish_idsetmeal_iddish_flavornumberamountcreate_time)
+    values
+    <foreach collection="entities" item="entity" separator=",">
+      (#{entity.name}#{entity.image}#{entity.userId}#{entity.dishId}#{entity.setmealId}#{entity.dishFlavor}#{entity.number}#{entity.amount}#{entity.createTime})
+    </foreach>
+    on duplicate key update
+    name = values(name)image = values(image)user_id = values(user_id)dish_id = values(dish_id)setmeal_id =
+    values(setmeal_id)dish_flavor = values(dish_flavor)number = values(number)amount = values(amount)create_time =
+    values(create_time)
+  </insert>
+  
+  <!--通过主键修改数据-->
+  <update id="update">
+    update shopping_cart
+    <set>
+      <if test="name != null and name != ''">
+        name = #{name},
+      </if>
+      <if test="image != null and image != ''">
+        image = #{image},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId},
+      </if>
+      <if test="dishId != null">
+        dish_id = #{dishId},
+      </if>
+      <if test="setmealId != null">
+        setmeal_id = #{setmealId},
+      </if>
+      <if test="dishFlavor != null and dishFlavor != ''">
+        dish_flavor = #{dishFlavor},
+      </if>
+      <if test="number != null">
+        number = #{number},
+      </if>
+      <if test="amount != null">
+        amount = #{amount},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  
+  <!--通过主键删除-->
+  <delete id="deleteById">
+    delete
+    from shopping_cart
+    where id = #{id}
+  </delete>
+
+</mapper>
+

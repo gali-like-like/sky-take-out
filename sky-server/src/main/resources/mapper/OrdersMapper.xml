@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.OrdersMapper">
+  
+  <resultMap type="com.sky.entity.Orders" id="OrdersMap">
+    <result property="id" column="id" jdbcType="INTEGER" />
+    <result property="number" column="number" jdbcType="VARCHAR" />
+    <result property="status" column="status" jdbcType="INTEGER" />
+    <result property="userId" column="user_id" jdbcType="INTEGER" />
+    <result property="addressBookId" column="address_book_id" jdbcType="INTEGER" />
+    <result property="orderTime" column="order_time" jdbcType="TIMESTAMP" />
+    <result property="checkoutTime" column="checkout_time" jdbcType="TIMESTAMP" />
+    <result property="payMethod" column="pay_method" jdbcType="INTEGER" />
+    <result property="payStatus" column="pay_status" jdbcType="INTEGER" />
+    <result property="amount" column="amount" jdbcType="VARCHAR" />
+    <result property="remark" column="remark" jdbcType="VARCHAR" />
+    <result property="phone" column="phone" jdbcType="VARCHAR" />
+    <result property="address" column="address" jdbcType="VARCHAR" />
+    <result property="userName" column="user_name" jdbcType="VARCHAR" />
+    <result property="consignee" column="consignee" jdbcType="VARCHAR" />
+    <result property="cancelReason" column="cancel_reason" jdbcType="VARCHAR" />
+    <result property="rejectionReason" column="rejection_reason" jdbcType="VARCHAR" />
+    <result property="cancelTime" column="cancel_time" jdbcType="TIMESTAMP" />
+    <result property="estimatedDeliveryTime" column="estimated_delivery_time" jdbcType="TIMESTAMP" />
+    <result property="deliveryStatus" column="delivery_status" jdbcType="INTEGER" />
+    <result property="deliveryTime" column="delivery_time" jdbcType="TIMESTAMP" />
+    <result property="packAmount" column="pack_amount" jdbcType="INTEGER" />
+    <result property="tablewareNumber" column="tableware_number" jdbcType="INTEGER" />
+    <result property="tablewareStatus" column="tableware_status" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <!--查询单个-->
+  <select id="queryById" resultMap="OrdersMap">
+    select idnumberstatususer_idaddress_book_idorder_timecheckout_timepay_methodpay_statusamountremarkphoneaddressuser_nameconsigneecancel_reasonrejection_reasoncancel_timeestimated_delivery_timedelivery_statusdelivery_timepack_amounttableware_numbertableware_status
+    from orders
+    where id = #{id}
+  </select>
+  
+  <!--查询指定行数据-->
+  <select id="queryAllByLimit" resultMap="OrdersMap">
+    select
+    idnumberstatususer_idaddress_book_idorder_timecheckout_timepay_methodpay_statusamountremarkphoneaddressuser_nameconsigneecancel_reasonrejection_reasoncancel_timeestimated_delivery_timedelivery_statusdelivery_timepack_amounttableware_numbertableware_status
+    from orders
+    <where>
+      <if test="id != null">
+        and id = #{id}
+      </if>
+      <if test="number != null and number != ''">
+        and number = #{number}
+      </if>
+      <if test="status != null">
+        and status = #{status}
+      </if>
+      <if test="userId != null">
+        and user_id = #{userId}
+      </if>
+      <if test="addressBookId != null">
+        and address_book_id = #{addressBookId}
+      </if>
+      <if test="orderTime != null">
+        and order_time = #{orderTime}
+      </if>
+      <if test="checkoutTime != null">
+        and checkout_time = #{checkoutTime}
+      </if>
+      <if test="payMethod != null">
+        and pay_method = #{payMethod}
+      </if>
+      <if test="payStatus != null">
+        and pay_status = #{payStatus}
+      </if>
+      <if test="amount != null">
+        and amount = #{amount}
+      </if>
+      <if test="remark != null and remark != ''">
+        and remark = #{remark}
+      </if>
+      <if test="phone != null and phone != ''">
+        and phone = #{phone}
+      </if>
+      <if test="address != null and address != ''">
+        and address = #{address}
+      </if>
+      <if test="userName != null and userName != ''">
+        and user_name = #{userName}
+      </if>
+      <if test="consignee != null and consignee != ''">
+        and consignee = #{consignee}
+      </if>
+      <if test="cancelReason != null and cancelReason != ''">
+        and cancel_reason = #{cancelReason}
+      </if>
+      <if test="rejectionReason != null and rejectionReason != ''">
+        and rejection_reason = #{rejectionReason}
+      </if>
+      <if test="cancelTime != null">
+        and cancel_time = #{cancelTime}
+      </if>
+      <if test="estimatedDeliveryTime != null">
+        and estimated_delivery_time = #{estimatedDeliveryTime}
+      </if>
+      <if test="deliveryStatus != null">
+        and delivery_status = #{deliveryStatus}
+      </if>
+      <if test="deliveryTime != null">
+        and delivery_time = #{deliveryTime}
+      </if>
+      <if test="packAmount != null">
+        and pack_amount = #{packAmount}
+      </if>
+      <if test="tablewareNumber != null">
+        and tableware_number = #{tablewareNumber}
+      </if>
+      <if test="tablewareStatus != null">
+        and tableware_status = #{tablewareStatus}
+      </if>
+    </where>
+    limit #{pageable.offset}, #{pageable.pageSize}
+  </select>
+  
+  <!--统计总行数-->
+  <select id="count" resultType="java.lang.Long">
+    select count(1)
+    from orders
+    <where>
+      <if test="id != null">
+        and id = #{id}
+      </if>
+      <if test="number != null and number != ''">
+        and number = #{number}
+      </if>
+      <if test="status != null">
+        and status = #{status}
+      </if>
+      <if test="userId != null">
+        and user_id = #{userId}
+      </if>
+      <if test="addressBookId != null">
+        and address_book_id = #{addressBookId}
+      </if>
+      <if test="orderTime != null">
+        and order_time = #{orderTime}
+      </if>
+      <if test="checkoutTime != null">
+        and checkout_time = #{checkoutTime}
+      </if>
+      <if test="payMethod != null">
+        and pay_method = #{payMethod}
+      </if>
+      <if test="payStatus != null">
+        and pay_status = #{payStatus}
+      </if>
+      <if test="amount != null">
+        and amount = #{amount}
+      </if>
+      <if test="remark != null and remark != ''">
+        and remark = #{remark}
+      </if>
+      <if test="phone != null and phone != ''">
+        and phone = #{phone}
+      </if>
+      <if test="address != null and address != ''">
+        and address = #{address}
+      </if>
+      <if test="userName != null and userName != ''">
+        and user_name = #{userName}
+      </if>
+      <if test="consignee != null and consignee != ''">
+        and consignee = #{consignee}
+      </if>
+      <if test="cancelReason != null and cancelReason != ''">
+        and cancel_reason = #{cancelReason}
+      </if>
+      <if test="rejectionReason != null and rejectionReason != ''">
+        and rejection_reason = #{rejectionReason}
+      </if>
+      <if test="cancelTime != null">
+        and cancel_time = #{cancelTime}
+      </if>
+      <if test="estimatedDeliveryTime != null">
+        and estimated_delivery_time = #{estimatedDeliveryTime}
+      </if>
+      <if test="deliveryStatus != null">
+        and delivery_status = #{deliveryStatus}
+      </if>
+      <if test="deliveryTime != null">
+        and delivery_time = #{deliveryTime}
+      </if>
+      <if test="packAmount != null">
+        and pack_amount = #{packAmount}
+      </if>
+      <if test="tablewareNumber != null">
+        and tableware_number = #{tablewareNumber}
+      </if>
+      <if test="tablewareStatus != null">
+        and tableware_status = #{tablewareStatus}
+      </if>
+    </where>
+  </select>
+  
+  <!--新增所有列-->
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+    insert into orders(numberstatususer_idaddress_book_idorder_timecheckout_timepay_methodpay_statusamountremarkphoneaddressuser_nameconsigneecancel_reasonrejection_reasoncancel_timeestimated_delivery_timedelivery_statusdelivery_timepack_amounttableware_numbertableware_status)
+    values (#{number}#{status}#{userId}#{addressBookId}#{orderTime}#{checkoutTime}#{payMethod}#{payStatus}#{amount}#{remark}#{phone}#{address}#{userName}#{consignee}#{cancelReason}#{rejectionReason}#{cancelTime}#{estimatedDeliveryTime}#{deliveryStatus}#{deliveryTime}#{packAmount}#{tablewareNumber}#{tablewareStatus})
+  </insert>
+  
+  <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+    insert into
+    orders(numberstatususer_idaddress_book_idorder_timecheckout_timepay_methodpay_statusamountremarkphoneaddressuser_nameconsigneecancel_reasonrejection_reasoncancel_timeestimated_delivery_timedelivery_statusdelivery_timepack_amounttableware_numbertableware_status)
+    values
+    <foreach collection="entities" item="entity" separator=",">
+      (#{entity.number}#{entity.status}#{entity.userId}#{entity.addressBookId}#{entity.orderTime}#{entity.checkoutTime}#{entity.payMethod}#{entity.payStatus}#{entity.amount}#{entity.remark}#{entity.phone}#{entity.address}#{entity.userName}#{entity.consignee}#{entity.cancelReason}#{entity.rejectionReason}#{entity.cancelTime}#{entity.estimatedDeliveryTime}#{entity.deliveryStatus}#{entity.deliveryTime}#{entity.packAmount}#{entity.tablewareNumber}#{entity.tablewareStatus})
+    </foreach>
+  </insert>
+  
+  <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+    insert into
+    orders(numberstatususer_idaddress_book_idorder_timecheckout_timepay_methodpay_statusamountremarkphoneaddressuser_nameconsigneecancel_reasonrejection_reasoncancel_timeestimated_delivery_timedelivery_statusdelivery_timepack_amounttableware_numbertableware_status)
+    values
+    <foreach collection="entities" item="entity" separator=",">
+      (#{entity.number}#{entity.status}#{entity.userId}#{entity.addressBookId}#{entity.orderTime}#{entity.checkoutTime}#{entity.payMethod}#{entity.payStatus}#{entity.amount}#{entity.remark}#{entity.phone}#{entity.address}#{entity.userName}#{entity.consignee}#{entity.cancelReason}#{entity.rejectionReason}#{entity.cancelTime}#{entity.estimatedDeliveryTime}#{entity.deliveryStatus}#{entity.deliveryTime}#{entity.packAmount}#{entity.tablewareNumber}#{entity.tablewareStatus})
+    </foreach>
+    on duplicate key update
+    number = values(number)status = values(status)user_id = values(user_id)address_book_id =
+    values(address_book_id)order_time = values(order_time)checkout_time = values(checkout_time)pay_method =
+    values(pay_method)pay_status = values(pay_status)amount = values(amount)remark = values(remark)phone =
+    values(phone)address = values(address)user_name = values(user_name)consignee = values(consignee)cancel_reason =
+    values(cancel_reason)rejection_reason = values(rejection_reason)cancel_time =
+    values(cancel_time)estimated_delivery_time = values(estimated_delivery_time)delivery_status =
+    values(delivery_status)delivery_time = values(delivery_time)pack_amount = values(pack_amount)tableware_number =
+    values(tableware_number)tableware_status = values(tableware_status)
+  </insert>
+  
+  <!--通过主键修改数据-->
+  <update id="update">
+    update orders
+    <set>
+      <if test="number != null and number != ''">
+        number = #{number},
+      </if>
+      <if test="status != null">
+        status = #{status},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId},
+      </if>
+      <if test="addressBookId != null">
+        address_book_id = #{addressBookId},
+      </if>
+      <if test="orderTime != null">
+        order_time = #{orderTime},
+      </if>
+      <if test="checkoutTime != null">
+        checkout_time = #{checkoutTime},
+      </if>
+      <if test="payMethod != null">
+        pay_method = #{payMethod},
+      </if>
+      <if test="payStatus != null">
+        pay_status = #{payStatus},
+      </if>
+      <if test="amount != null">
+        amount = #{amount},
+      </if>
+      <if test="remark != null and remark != ''">
+        remark = #{remark},
+      </if>
+      <if test="phone != null and phone != ''">
+        phone = #{phone},
+      </if>
+      <if test="address != null and address != ''">
+        address = #{address},
+      </if>
+      <if test="userName != null and userName != ''">
+        user_name = #{userName},
+      </if>
+      <if test="consignee != null and consignee != ''">
+        consignee = #{consignee},
+      </if>
+      <if test="cancelReason != null and cancelReason != ''">
+        cancel_reason = #{cancelReason},
+      </if>
+      <if test="rejectionReason != null and rejectionReason != ''">
+        rejection_reason = #{rejectionReason},
+      </if>
+      <if test="cancelTime != null">
+        cancel_time = #{cancelTime},
+      </if>
+      <if test="estimatedDeliveryTime != null">
+        estimated_delivery_time = #{estimatedDeliveryTime},
+      </if>
+      <if test="deliveryStatus != null">
+        delivery_status = #{deliveryStatus},
+      </if>
+      <if test="deliveryTime != null">
+        delivery_time = #{deliveryTime},
+      </if>
+      <if test="packAmount != null">
+        pack_amount = #{packAmount},
+      </if>
+      <if test="tablewareNumber != null">
+        tableware_number = #{tablewareNumber},
+      </if>
+      <if test="tablewareStatus != null">
+        tableware_status = #{tablewareStatus},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  
+  <!--通过主键删除-->
+  <delete id="deleteById">
+    delete
+    from orders
+    where id = #{id}
+  </delete>
+
+</mapper>
+

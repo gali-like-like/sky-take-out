@@ -1,4 +1,4 @@
-package com.sky.controller.admin;
+package com.sky.controller;
 
 import com.sky.entity.Employee;
 import com.sky.mapper.EmployeeMapper;
@@ -15,13 +15,13 @@ public class TestController {
     @Autowired
     EmployeeMapper employeeMapper;
 
-    // http://localhost:8081/test/hello
+    // http://localhost:8081/admin/test/hello
     @GetMapping("hello")
     public String hello() {
         return "项目已启动，使用愉快！";
     }
 
-    // http://localhost:8081/test/testData
+    // http://localhost:8081/admin/test/testData
     @GetMapping("testData")
     public Result<Employee> getEmployee() {
         Employee admin = employeeMapper.getByUsername("admin");

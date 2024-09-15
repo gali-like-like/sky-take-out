@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Slf4j
 public class SkyApplication {
 
-    // Knife4j接口文档 http://localhost:8081/doc.html
+    // Knife4j接口文档 http://localhost:8081/admin/doc.html
     public static void main(String[] args) {
         SpringApplication.run(SkyApplication.class, args);
     }

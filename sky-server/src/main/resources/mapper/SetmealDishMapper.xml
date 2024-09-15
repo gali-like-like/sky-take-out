@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.SetmealDishMapper">
+  
+  <resultMap type="com.sky.entity.SetmealDish" id="SetmealDishMap">
+    <result property="id" column="id" jdbcType="INTEGER" />
+    <result property="setmealId" column="setmeal_id" jdbcType="INTEGER" />
+    <result property="dishId" column="dish_id" jdbcType="INTEGER" />
+    <result property="name" column="name" jdbcType="VARCHAR" />
+    <result property="price" column="price" jdbcType="VARCHAR" />
+    <result property="copies" column="copies" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <!--查询单个-->
+  <select id="queryById" resultMap="SetmealDishMap">
+    select idsetmeal_iddish_idnamepricecopies
+    from setmeal_dish
+    where id = #{id}
+  </select>
+  
+  <!--查询指定行数据-->
+  <select id="queryAllByLimit" resultMap="SetmealDishMap">
+    select
+    idsetmeal_iddish_idnamepricecopies
+    from setmeal_dish
+    <where>
+      <if test="id != null">
+        and id = #{id}
+      </if>
+      <if test="setmealId != null">
+        and setmeal_id = #{setmealId}
+      </if>
+      <if test="dishId != null">
+        and dish_id = #{dishId}
+      </if>
+      <if test="name != null and name != ''">
+        and name = #{name}
+      </if>
+      <if test="price != null">
+        and price = #{price}
+      </if>
+      <if test="copies != null">
+        and copies = #{copies}
+      </if>
+    </where>
+    limit #{pageable.offset}, #{pageable.pageSize}
+  </select>
+  
+  <!--统计总行数-->
+  <select id="count" resultType="java.lang.Long">
+    select count(1)
+    from setmeal_dish
+    <where>
+      <if test="id != null">
+        and id = #{id}
+      </if>
+      <if test="setmealId != null">
+        and setmeal_id = #{setmealId}
+      </if>
+      <if test="dishId != null">
+        and dish_id = #{dishId}
+      </if>
+      <if test="name != null and name != ''">
+        and name = #{name}
+      </if>
+      <if test="price != null">
+        and price = #{price}
+      </if>
+      <if test="copies != null">
+        and copies = #{copies}
+      </if>
+    </where>
+  </select>
+  
+  <!--新增所有列-->
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+    insert into setmeal_dish(setmeal_iddish_idnamepricecopies)
+    values (#{setmealId}#{dishId}#{name}#{price}#{copies})
+  </insert>
+  
+  <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+    insert into setmeal_dish(setmeal_iddish_idnamepricecopies)
+    values
+    <foreach collection="entities" item="entity" separator=",">
+      (#{entity.setmealId}#{entity.dishId}#{entity.name}#{entity.price}#{entity.copies})
+    </foreach>
+  </insert>
+  
+  <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+    insert into setmeal_dish(setmeal_iddish_idnamepricecopies)
+    values
+    <foreach collection="entities" item="entity" separator=",">
+      (#{entity.setmealId}#{entity.dishId}#{entity.name}#{entity.price}#{entity.copies})
+    </foreach>
+    on duplicate key update
+    setmeal_id = values(setmeal_id)dish_id = values(dish_id)name = values(name)price = values(price)copies =
+    values(copies)
+  </insert>
+  
+  <!--通过主键修改数据-->
+  <update id="update">
+    update setmeal_dish
+    <set>
+      <if test="setmealId != null">
+        setmeal_id = #{setmealId},
+      </if>
+      <if test="dishId != null">
+        dish_id = #{dishId},
+      </if>
+      <if test="name != null and name != ''">
+        name = #{name},
+      </if>
+      <if test="price != null">
+        price = #{price},
+      </if>
+      <if test="copies != null">
+        copies = #{copies},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  
+  <!--通过主键删除-->
+  <delete id="deleteById">
+    delete
+    from setmeal_dish
+    where id = #{id}
+  </delete>
+
+</mapper>
+
