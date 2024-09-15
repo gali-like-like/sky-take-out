@@ -7,8 +7,8 @@ import org.springframework.data.domain.PageRequest;
 /**
  * 菜品及套餐分类(Category)表服务接口
  *
- * @author makejava
- * @since 2024-09-15 10:00:05
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:04
  */
 public interface CategoryService {
 

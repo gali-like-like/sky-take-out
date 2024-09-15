@@ -1,161 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sky.mapper.OrderDetailMapper">
-  
-  <resultMap type="com.sky.entity.OrderDetail" id="OrderDetailMap">
-    <result property="id" column="id" jdbcType="INTEGER" />
-    <result property="name" column="name" jdbcType="VARCHAR" />
-    <result property="image" column="image" jdbcType="VARCHAR" />
-    <result property="orderId" column="order_id" jdbcType="INTEGER" />
-    <result property="dishId" column="dish_id" jdbcType="INTEGER" />
-    <result property="setmealId" column="setmeal_id" jdbcType="INTEGER" />
-    <result property="dishFlavor" column="dish_flavor" jdbcType="VARCHAR" />
-    <result property="number" column="number" jdbcType="INTEGER" />
-    <result property="amount" column="amount" jdbcType="VARCHAR" />
-  </resultMap>
-  
-  <!--查询单个-->
-  <select id="queryById" resultMap="OrderDetailMap">
-    select idnameimageorder_iddish_idsetmeal_iddish_flavornumberamount
-    from order_detail
-    where id = #{id}
-  </select>
-  
-  <!--查询指定行数据-->
-  <select id="queryAllByLimit" resultMap="OrderDetailMap">
-    select
-    idnameimageorder_iddish_idsetmeal_iddish_flavornumberamount
-    from order_detail
-    <where>
-      <if test="id != null">
-        and id = #{id}
-      </if>
-      <if test="name != null and name != ''">
-        and name = #{name}
-      </if>
-      <if test="image != null and image != ''">
-        and image = #{image}
-      </if>
-      <if test="orderId != null">
-        and order_id = #{orderId}
-      </if>
-      <if test="dishId != null">
-        and dish_id = #{dishId}
-      </if>
-      <if test="setmealId != null">
-        and setmeal_id = #{setmealId}
-      </if>
-      <if test="dishFlavor != null and dishFlavor != ''">
-        and dish_flavor = #{dishFlavor}
-      </if>
-      <if test="number != null">
-        and number = #{number}
-      </if>
-      <if test="amount != null">
-        and amount = #{amount}
-      </if>
-    </where>
-    limit #{pageable.offset}, #{pageable.pageSize}
-  </select>
-  
-  <!--统计总行数-->
-  <select id="count" resultType="java.lang.Long">
-    select count(1)
-    from order_detail
-    <where>
-      <if test="id != null">
-        and id = #{id}
-      </if>
-      <if test="name != null and name != ''">
-        and name = #{name}
-      </if>
-      <if test="image != null and image != ''">
-        and image = #{image}
-      </if>
-      <if test="orderId != null">
-        and order_id = #{orderId}
-      </if>
-      <if test="dishId != null">
-        and dish_id = #{dishId}
-      </if>
-      <if test="setmealId != null">
-        and setmeal_id = #{setmealId}
-      </if>
-      <if test="dishFlavor != null and dishFlavor != ''">
-        and dish_flavor = #{dishFlavor}
-      </if>
-      <if test="number != null">
-        and number = #{number}
-      </if>
-      <if test="amount != null">
-        and amount = #{amount}
-      </if>
-    </where>
-  </select>
-  
-  <!--新增所有列-->
-  <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-    insert into order_detail(nameimageorder_iddish_idsetmeal_iddish_flavornumberamount)
-    values (#{name}#{image}#{orderId}#{dishId}#{setmealId}#{dishFlavor}#{number}#{amount})
-  </insert>
-  
-  <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-    insert into order_detail(nameimageorder_iddish_idsetmeal_iddish_flavornumberamount)
-    values
-    <foreach collection="entities" item="entity" separator=",">
-      (#{entity.name}#{entity.image}#{entity.orderId}#{entity.dishId}#{entity.setmealId}#{entity.dishFlavor}#{entity.number}#{entity.amount})
-    </foreach>
-  </insert>
-  
-  <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-    insert into order_detail(nameimageorder_iddish_idsetmeal_iddish_flavornumberamount)
-    values
-    <foreach collection="entities" item="entity" separator=",">
-      (#{entity.name}#{entity.image}#{entity.orderId}#{entity.dishId}#{entity.setmealId}#{entity.dishFlavor}#{entity.number}#{entity.amount})
-    </foreach>
-    on duplicate key update
-    name = values(name)image = values(image)order_id = values(order_id)dish_id = values(dish_id)setmeal_id =
-    values(setmeal_id)dish_flavor = values(dish_flavor)number = values(number)amount = values(amount)
-  </insert>
-  
-  <!--通过主键修改数据-->
-  <update id="update">
-    update order_detail
-    <set>
-      <if test="name != null and name != ''">
-        name = #{name},
-      </if>
-      <if test="image != null and image != ''">
-        image = #{image},
-      </if>
-      <if test="orderId != null">
-        order_id = #{orderId},
-      </if>
-      <if test="dishId != null">
-        dish_id = #{dishId},
-      </if>
-      <if test="setmealId != null">
-        setmeal_id = #{setmealId},
-      </if>
-      <if test="dishFlavor != null and dishFlavor != ''">
-        dish_flavor = #{dishFlavor},
-      </if>
-      <if test="number != null">
-        number = #{number},
-      </if>
-      <if test="amount != null">
-        amount = #{amount},
-      </if>
-    </set>
-    where id = #{id}
-  </update>
-  
-  <!--通过主键删除-->
-  <delete id="deleteById">
-    delete
-    from order_detail
-    where id = #{id}
-  </delete>
+
+    <resultMap type="com.sky.entity.OrderDetail" id="OrderDetailMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="image" column="image" jdbcType="VARCHAR"/>
+        <result property="orderId" column="order_id" jdbcType="INTEGER"/>
+        <result property="dishId" column="dish_id" jdbcType="INTEGER"/>
+        <result property="setmealId" column="setmeal_id" jdbcType="INTEGER"/>
+        <result property="dishFlavor" column="dish_flavor" jdbcType="VARCHAR"/>
+        <result property="number" column="number" jdbcType="INTEGER"/>
+        <result property="amount" column="amount" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="OrderDetailMap">
+    
+    </select>
+    
+    <!--条件筛选总记录数-->
+    <select id="count" resultType="java.lang.Long">
+    
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="OrderDetailMap">
+    
+    </select>
+
+    <!--新增数据-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+    
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+    
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+    
+    </delete>
 
 </mapper>
 

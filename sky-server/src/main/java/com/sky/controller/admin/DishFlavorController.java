@@ -12,8 +12,8 @@ import javax.annotation.Resource;
 /**
  * 菜品口味关系表(DishFlavor)表控制层
  *
- * @author makejava
- * @since 2024-09-15 10:00:02
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:01
  */
 @RestController
 @RequestMapping("dishFlavor")
@@ -33,7 +33,7 @@ public class DishFlavorController {
      */
     @GetMapping
     public ResponseEntity<Page<DishFlavor>> queryByPage(DishFlavor dishFlavor, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.dishFlavorService.queryByPage(dishFlavor, pageRequest));
+        return ResponseEntity.ok(dishFlavorService.queryByPage(dishFlavor, pageRequest));
     }
 
     /**
@@ -44,7 +44,7 @@ public class DishFlavorController {
      */
     @GetMapping("{id}")
     public ResponseEntity<DishFlavor> queryById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(this.dishFlavorService.queryById(id));
+        return ResponseEntity.ok(dishFlavorService.queryById(id));
     }
 
     /**
@@ -55,7 +55,7 @@ public class DishFlavorController {
      */
     @PostMapping
     public ResponseEntity<DishFlavor> add(DishFlavor dishFlavor) {
-        return ResponseEntity.ok(this.dishFlavorService.insert(dishFlavor));
+        return ResponseEntity.ok(dishFlavorService.insert(dishFlavor));
     }
 
     /**
@@ -66,7 +66,7 @@ public class DishFlavorController {
      */
     @PutMapping
     public ResponseEntity<DishFlavor> edit(DishFlavor dishFlavor) {
-        return ResponseEntity.ok(this.dishFlavorService.update(dishFlavor));
+        return ResponseEntity.ok(dishFlavorService.update(dishFlavor));
     }
 
     /**
@@ -77,7 +77,7 @@ public class DishFlavorController {
      */
     @DeleteMapping
     public ResponseEntity<Boolean> deleteById(Long id) {
-        return ResponseEntity.ok(this.dishFlavorService.deleteById(id));
+        return ResponseEntity.ok(dishFlavorService.deleteById(id));
     }
 
 }

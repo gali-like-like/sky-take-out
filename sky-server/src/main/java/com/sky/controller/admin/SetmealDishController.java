@@ -12,8 +12,8 @@ import javax.annotation.Resource;
 /**
  * 套餐菜品关系(SetmealDish)表控制层
  *
- * @author makejava
- * @since 2024-09-15 10:00:04
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:02
  */
 @RestController
 @RequestMapping("setmealDish")
@@ -33,7 +33,7 @@ public class SetmealDishController {
      */
     @GetMapping
     public ResponseEntity<Page<SetmealDish>> queryByPage(SetmealDish setmealDish, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.setmealDishService.queryByPage(setmealDish, pageRequest));
+        return ResponseEntity.ok(setmealDishService.queryByPage(setmealDish, pageRequest));
     }
 
     /**
@@ -44,7 +44,7 @@ public class SetmealDishController {
      */
     @GetMapping("{id}")
     public ResponseEntity<SetmealDish> queryById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(this.setmealDishService.queryById(id));
+        return ResponseEntity.ok(setmealDishService.queryById(id));
     }
 
     /**
@@ -55,7 +55,7 @@ public class SetmealDishController {
      */
     @PostMapping
     public ResponseEntity<SetmealDish> add(SetmealDish setmealDish) {
-        return ResponseEntity.ok(this.setmealDishService.insert(setmealDish));
+        return ResponseEntity.ok(setmealDishService.insert(setmealDish));
     }
 
     /**
@@ -66,7 +66,7 @@ public class SetmealDishController {
      */
     @PutMapping
     public ResponseEntity<SetmealDish> edit(SetmealDish setmealDish) {
-        return ResponseEntity.ok(this.setmealDishService.update(setmealDish));
+        return ResponseEntity.ok(setmealDishService.update(setmealDish));
     }
 
     /**
@@ -77,7 +77,7 @@ public class SetmealDishController {
      */
     @DeleteMapping
     public ResponseEntity<Boolean> deleteById(Long id) {
-        return ResponseEntity.ok(this.setmealDishService.deleteById(id));
+        return ResponseEntity.ok(setmealDishService.deleteById(id));
     }
 
 }

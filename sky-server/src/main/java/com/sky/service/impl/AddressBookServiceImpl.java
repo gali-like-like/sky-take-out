@@ -13,8 +13,8 @@ import javax.annotation.Resource;
 /**
  * 地址簿(AddressBook)表服务实现类
  *
- * @author makejava
- * @since 2024-09-15 09:59:59
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:03
  */
 @Service("addressBookService")
 public class AddressBookServiceImpl implements AddressBookService {
@@ -29,7 +29,7 @@ public class AddressBookServiceImpl implements AddressBookService {
      */
     @Override
     public AddressBook queryById(Long id) {
-        return this.addressBookMapper.queryById(id);
+        return addressBookMapper.queryById(id);
     }
 
     /**
@@ -41,8 +41,8 @@ public class AddressBookServiceImpl implements AddressBookService {
      */
     @Override
     public Page<AddressBook> queryByPage(AddressBook addressBook, PageRequest pageRequest) {
-        long total = this.addressBookMapper.count(addressBook);
-        return new PageImpl<>(this.addressBookMapper.queryAllByLimit(addressBook, pageRequest), pageRequest, total);
+        long total = addressBookMapper.count(addressBook);
+        return new PageImpl<>(addressBookMapper.queryAllByLimit(addressBook, pageRequest), pageRequest, total);
     }
 
     /**
@@ -53,7 +53,7 @@ public class AddressBookServiceImpl implements AddressBookService {
      */
     @Override
     public AddressBook insert(AddressBook addressBook) {
-        this.addressBookMapper.insert(addressBook);
+        addressBookMapper.insert(addressBook);
         return addressBook;
     }
 
@@ -65,8 +65,8 @@ public class AddressBookServiceImpl implements AddressBookService {
      */
     @Override
     public AddressBook update(AddressBook addressBook) {
-        this.addressBookMapper.update(addressBook);
-        return this.queryById(addressBook.getId());
+        addressBookMapper.update(addressBook);
+        return queryById(addressBook.getId());
     }
 
     /**
@@ -77,6 +77,6 @@ public class AddressBookServiceImpl implements AddressBookService {
      */
     @Override
     public boolean deleteById(Long id) {
-        return this.addressBookMapper.deleteById(id) > 0;
+        return addressBookMapper.deleteById(id) > 0;
     }
 }

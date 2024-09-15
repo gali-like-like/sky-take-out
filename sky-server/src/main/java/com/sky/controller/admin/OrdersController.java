@@ -12,8 +12,8 @@ import javax.annotation.Resource;
 /**
  * 订单表(Orders)表控制层
  *
- * @author makejava
- * @since 2024-09-15 10:00:03
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:03
  */
 @RestController
 @RequestMapping("orders")
@@ -33,7 +33,7 @@ public class OrdersController {
      */
     @GetMapping
     public ResponseEntity<Page<Orders>> queryByPage(Orders orders, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.ordersService.queryByPage(orders, pageRequest));
+        return ResponseEntity.ok(ordersService.queryByPage(orders, pageRequest));
     }
 
     /**
@@ -44,7 +44,7 @@ public class OrdersController {
      */
     @GetMapping("{id}")
     public ResponseEntity<Orders> queryById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(this.ordersService.queryById(id));
+        return ResponseEntity.ok(ordersService.queryById(id));
     }
 
     /**
@@ -55,7 +55,7 @@ public class OrdersController {
      */
     @PostMapping
     public ResponseEntity<Orders> add(Orders orders) {
-        return ResponseEntity.ok(this.ordersService.insert(orders));
+        return ResponseEntity.ok(ordersService.insert(orders));
     }
 
     /**
@@ -66,7 +66,7 @@ public class OrdersController {
      */
     @PutMapping
     public ResponseEntity<Orders> edit(Orders orders) {
-        return ResponseEntity.ok(this.ordersService.update(orders));
+        return ResponseEntity.ok(ordersService.update(orders));
     }
 
     /**
@@ -77,7 +77,7 @@ public class OrdersController {
      */
     @DeleteMapping
     public ResponseEntity<Boolean> deleteById(Long id) {
-        return ResponseEntity.ok(this.ordersService.deleteById(id));
+        return ResponseEntity.ok(ordersService.deleteById(id));
     }
 
 }

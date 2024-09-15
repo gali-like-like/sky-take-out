@@ -13,8 +13,8 @@ import javax.annotation.Resource;
 /**
  * 套餐(Setmeal)表服务实现类
  *
- * @author makejava
- * @since 2024-09-15 09:59:58
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:02
  */
 @Service("setmealService")
 public class SetmealServiceImpl implements SetmealService {
@@ -29,7 +29,7 @@ public class SetmealServiceImpl implements SetmealService {
      */
     @Override
     public Setmeal queryById(Long id) {
-        return this.setmealMapper.queryById(id);
+        return setmealMapper.queryById(id);
     }
 
     /**
@@ -41,8 +41,8 @@ public class SetmealServiceImpl implements SetmealService {
      */
     @Override
     public Page<Setmeal> queryByPage(Setmeal setmeal, PageRequest pageRequest) {
-        long total = this.setmealMapper.count(setmeal);
-        return new PageImpl<>(this.setmealMapper.queryAllByLimit(setmeal, pageRequest), pageRequest, total);
+        long total = setmealMapper.count(setmeal);
+        return new PageImpl<>(setmealMapper.queryAllByLimit(setmeal, pageRequest), pageRequest, total);
     }
 
     /**
@@ -53,7 +53,7 @@ public class SetmealServiceImpl implements SetmealService {
      */
     @Override
     public Setmeal insert(Setmeal setmeal) {
-        this.setmealMapper.insert(setmeal);
+        setmealMapper.insert(setmeal);
         return setmeal;
     }
 
@@ -65,8 +65,8 @@ public class SetmealServiceImpl implements SetmealService {
      */
     @Override
     public Setmeal update(Setmeal setmeal) {
-        this.setmealMapper.update(setmeal);
-        return this.queryById(setmeal.getId());
+        setmealMapper.update(setmeal);
+        return queryById(setmeal.getId());
     }
 
     /**
@@ -77,6 +77,6 @@ public class SetmealServiceImpl implements SetmealService {
      */
     @Override
     public boolean deleteById(Long id) {
-        return this.setmealMapper.deleteById(id) > 0;
+        return setmealMapper.deleteById(id) > 0;
     }
 }

@@ -8,13 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.math.BigDecimal;
 
 /**
  * 菜品(Dish)表控制层
  *
- * @author makejava
- * @since 2024-09-15 10:00:01
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:03
  */
 @RestController
 @RequestMapping("dish")
@@ -34,7 +33,7 @@ public class DishController {
      */
     @GetMapping
     public ResponseEntity<Page<Dish>> queryByPage(Dish dish, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.dishService.queryByPage(dish, pageRequest));
+        return ResponseEntity.ok(dishService.queryByPage(dish, pageRequest));
     }
 
     /**
@@ -45,15 +44,7 @@ public class DishController {
      */
     @GetMapping("{id}")
     public ResponseEntity<Dish> queryById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(
-                new Dish().builder()
-                        .id(123L)
-                        .name("测试菜品")
-                        .price(new BigDecimal("123.4124124"))
-                        .description("这是一道测试菜品")
-                        .categoryId(123L)
-                        .build()
-        );
+        return ResponseEntity.ok(dishService.queryById(id));
     }
 
     /**
@@ -64,7 +55,7 @@ public class DishController {
      */
     @PostMapping
     public ResponseEntity<Dish> add(Dish dish) {
-        return ResponseEntity.ok(this.dishService.insert(dish));
+        return ResponseEntity.ok(dishService.insert(dish));
     }
 
     /**
@@ -75,7 +66,7 @@ public class DishController {
      */
     @PutMapping
     public ResponseEntity<Dish> edit(Dish dish) {
-        return ResponseEntity.ok(this.dishService.update(dish));
+        return ResponseEntity.ok(dishService.update(dish));
     }
 
     /**
@@ -86,7 +77,7 @@ public class DishController {
      */
     @DeleteMapping
     public ResponseEntity<Boolean> deleteById(Long id) {
-        return ResponseEntity.ok(this.dishService.deleteById(id));
+        return ResponseEntity.ok(dishService.deleteById(id));
     }
 
 }

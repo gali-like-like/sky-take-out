@@ -13,8 +13,8 @@ import javax.annotation.Resource;
 /**
  * 订单表(Orders)表服务实现类
  *
- * @author makejava
- * @since 2024-09-15 10:00:03
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:03
  */
 @Service("ordersService")
 public class OrdersServiceImpl implements OrdersService {
@@ -29,7 +29,7 @@ public class OrdersServiceImpl implements OrdersService {
      */
     @Override
     public Orders queryById(Long id) {
-        return this.ordersMapper.queryById(id);
+        return ordersMapper.queryById(id);
     }
 
     /**
@@ -41,8 +41,8 @@ public class OrdersServiceImpl implements OrdersService {
      */
     @Override
     public Page<Orders> queryByPage(Orders orders, PageRequest pageRequest) {
-        long total = this.ordersMapper.count(orders);
-        return new PageImpl<>(this.ordersMapper.queryAllByLimit(orders, pageRequest), pageRequest, total);
+        long total = ordersMapper.count(orders);
+        return new PageImpl<>(ordersMapper.queryAllByLimit(orders, pageRequest), pageRequest, total);
     }
 
     /**
@@ -53,7 +53,7 @@ public class OrdersServiceImpl implements OrdersService {
      */
     @Override
     public Orders insert(Orders orders) {
-        this.ordersMapper.insert(orders);
+        ordersMapper.insert(orders);
         return orders;
     }
 
@@ -65,8 +65,8 @@ public class OrdersServiceImpl implements OrdersService {
      */
     @Override
     public Orders update(Orders orders) {
-        this.ordersMapper.update(orders);
-        return this.queryById(orders.getId());
+        ordersMapper.update(orders);
+        return queryById(orders.getId());
     }
 
     /**
@@ -77,6 +77,6 @@ public class OrdersServiceImpl implements OrdersService {
      */
     @Override
     public boolean deleteById(Long id) {
-        return this.ordersMapper.deleteById(id) > 0;
+        return ordersMapper.deleteById(id) > 0;
     }
 }

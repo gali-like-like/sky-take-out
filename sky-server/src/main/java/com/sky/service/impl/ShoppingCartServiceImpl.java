@@ -13,8 +13,8 @@ import javax.annotation.Resource;
 /**
  * 购物车(ShoppingCart)表服务实现类
  *
- * @author makejava
- * @since 2024-09-15 10:00:00
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:01
  */
 @Service("shoppingCartService")
 public class ShoppingCartServiceImpl implements ShoppingCartService {
@@ -29,7 +29,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
      */
     @Override
     public ShoppingCart queryById(Long id) {
-        return this.shoppingCartMapper.queryById(id);
+        return shoppingCartMapper.queryById(id);
     }
 
     /**
@@ -41,8 +41,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
      */
     @Override
     public Page<ShoppingCart> queryByPage(ShoppingCart shoppingCart, PageRequest pageRequest) {
-        long total = this.shoppingCartMapper.count(shoppingCart);
-        return new PageImpl<>(this.shoppingCartMapper.queryAllByLimit(shoppingCart, pageRequest), pageRequest, total);
+        long total = shoppingCartMapper.count(shoppingCart);
+        return new PageImpl<>(shoppingCartMapper.queryAllByLimit(shoppingCart, pageRequest), pageRequest, total);
     }
 
     /**
@@ -53,7 +53,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
      */
     @Override
     public ShoppingCart insert(ShoppingCart shoppingCart) {
-        this.shoppingCartMapper.insert(shoppingCart);
+        shoppingCartMapper.insert(shoppingCart);
         return shoppingCart;
     }
 
@@ -65,8 +65,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
      */
     @Override
     public ShoppingCart update(ShoppingCart shoppingCart) {
-        this.shoppingCartMapper.update(shoppingCart);
-        return this.queryById(shoppingCart.getId());
+        shoppingCartMapper.update(shoppingCart);
+        return queryById(shoppingCart.getId());
     }
 
     /**
@@ -77,6 +77,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
      */
     @Override
     public boolean deleteById(Long id) {
-        return this.shoppingCartMapper.deleteById(id) > 0;
+        return shoppingCartMapper.deleteById(id) > 0;
     }
 }

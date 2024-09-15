@@ -10,8 +10,8 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 订单明细表(OrderDetail)表数据库访问层
  *
- * @author makejava
- * @since 2024-09-15 10:14:30
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:52:47
  */
 @Mapper
 public interface OrderDetailMapper {
@@ -25,6 +25,14 @@ public interface OrderDetailMapper {
     OrderDetail queryById(Long id);
 
     /**
+     * 总记录数
+     *
+     * @param orderDetail 筛选条件
+     * @return Long
+     */
+    Long count(OrderDetail orderDetail);
+
+    /**
      * 查询指定行数据
      *
      * @param orderDetail 查询条件
@@ -34,37 +42,12 @@ public interface OrderDetailMapper {
     List<OrderDetail> queryAllByLimit(OrderDetail orderDetail, @Param("pageable") Pageable pageable);
 
     /**
-     * 统计总行数
-     *
-     * @param orderDetail 查询条件
-     * @return 总行数
-     */
-    long count(OrderDetail orderDetail);
-
-    /**
      * 新增数据
      *
      * @param orderDetail 实例对象
      * @return 影响行数
      */
     int insert(OrderDetail orderDetail);
-
-    /**
-     * 批量新增数据（MyBatis原生foreach方法）
-     *
-     * @param entities List<OrderDetail> 实例对象列表
-     * @return 影响行数
-     */
-    int insertBatch(@Param("entities") List<OrderDetail> entities);
-
-    /**
-     * 批量新增或按主键更新数据（MyBatis原生foreach方法）
-     *
-     * @param entities List<OrderDetail> 实例对象列表
-     * @return 影响行数
-     * @throws org.springframework.jdbc.BadSqlGrammarException 入参是空List的时候会抛SQL语句错误的异常，请自行校验入参
-     */
-    int insertOrUpdateBatch(@Param("entities") List<OrderDetail> entities);
 
     /**
      * 修改数据

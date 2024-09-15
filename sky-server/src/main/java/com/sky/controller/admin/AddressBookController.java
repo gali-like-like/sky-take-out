@@ -12,8 +12,8 @@ import javax.annotation.Resource;
 /**
  * 地址簿(AddressBook)表控制层
  *
- * @author makejava
- * @since 2024-09-15 09:59:59
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:03
  */
 @RestController
 @RequestMapping("addressBook")
@@ -33,7 +33,7 @@ public class AddressBookController {
      */
     @GetMapping
     public ResponseEntity<Page<AddressBook>> queryByPage(AddressBook addressBook, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.addressBookService.queryByPage(addressBook, pageRequest));
+        return ResponseEntity.ok(addressBookService.queryByPage(addressBook, pageRequest));
     }
 
     /**
@@ -44,7 +44,7 @@ public class AddressBookController {
      */
     @GetMapping("{id}")
     public ResponseEntity<AddressBook> queryById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(this.addressBookService.queryById(id));
+        return ResponseEntity.ok(addressBookService.queryById(id));
     }
 
     /**
@@ -55,7 +55,7 @@ public class AddressBookController {
      */
     @PostMapping
     public ResponseEntity<AddressBook> add(AddressBook addressBook) {
-        return ResponseEntity.ok(this.addressBookService.insert(addressBook));
+        return ResponseEntity.ok(addressBookService.insert(addressBook));
     }
 
     /**
@@ -66,7 +66,7 @@ public class AddressBookController {
      */
     @PutMapping
     public ResponseEntity<AddressBook> edit(AddressBook addressBook) {
-        return ResponseEntity.ok(this.addressBookService.update(addressBook));
+        return ResponseEntity.ok(addressBookService.update(addressBook));
     }
 
     /**
@@ -77,7 +77,7 @@ public class AddressBookController {
      */
     @DeleteMapping
     public ResponseEntity<Boolean> deleteById(Long id) {
-        return ResponseEntity.ok(this.addressBookService.deleteById(id));
+        return ResponseEntity.ok(addressBookService.deleteById(id));
     }
 
 }

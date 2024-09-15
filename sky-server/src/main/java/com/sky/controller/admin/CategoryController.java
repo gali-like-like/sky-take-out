@@ -12,8 +12,8 @@ import javax.annotation.Resource;
 /**
  * 菜品及套餐分类(Category)表控制层
  *
- * @author makejava
- * @since 2024-09-15 10:00:05
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:04
  */
 @RestController
 @RequestMapping("category")
@@ -33,7 +33,7 @@ public class CategoryController {
      */
     @GetMapping
     public ResponseEntity<Page<Category>> queryByPage(Category category, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.categoryService.queryByPage(category, pageRequest));
+        return ResponseEntity.ok(categoryService.queryByPage(category, pageRequest));
     }
 
     /**
@@ -44,7 +44,7 @@ public class CategoryController {
      */
     @GetMapping("{id}")
     public ResponseEntity<Category> queryById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(this.categoryService.queryById(id));
+        return ResponseEntity.ok(categoryService.queryById(id));
     }
 
     /**
@@ -55,7 +55,7 @@ public class CategoryController {
      */
     @PostMapping
     public ResponseEntity<Category> add(Category category) {
-        return ResponseEntity.ok(this.categoryService.insert(category));
+        return ResponseEntity.ok(categoryService.insert(category));
     }
 
     /**
@@ -66,7 +66,7 @@ public class CategoryController {
      */
     @PutMapping
     public ResponseEntity<Category> edit(Category category) {
-        return ResponseEntity.ok(this.categoryService.update(category));
+        return ResponseEntity.ok(categoryService.update(category));
     }
 
     /**
@@ -77,7 +77,7 @@ public class CategoryController {
      */
     @DeleteMapping
     public ResponseEntity<Boolean> deleteById(Long id) {
-        return ResponseEntity.ok(this.categoryService.deleteById(id));
+        return ResponseEntity.ok(categoryService.deleteById(id));
     }
 
 }

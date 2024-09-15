@@ -13,8 +13,8 @@ import javax.annotation.Resource;
 /**
  * 菜品(Dish)表服务实现类
  *
- * @author makejava
- * @since 2024-09-15 10:00:01
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:03
  */
 @Service("dishService")
 public class DishServiceImpl implements DishService {
@@ -29,7 +29,7 @@ public class DishServiceImpl implements DishService {
      */
     @Override
     public Dish queryById(Long id) {
-        return this.dishMapper.queryById(id);
+        return dishMapper.queryById(id);
     }
 
     /**
@@ -41,8 +41,8 @@ public class DishServiceImpl implements DishService {
      */
     @Override
     public Page<Dish> queryByPage(Dish dish, PageRequest pageRequest) {
-        long total = this.dishMapper.count(dish);
-        return new PageImpl<>(this.dishMapper.queryAllByLimit(dish, pageRequest), pageRequest, total);
+        long total = dishMapper.count(dish);
+        return new PageImpl<>(dishMapper.queryAllByLimit(dish, pageRequest), pageRequest, total);
     }
 
     /**
@@ -53,7 +53,7 @@ public class DishServiceImpl implements DishService {
      */
     @Override
     public Dish insert(Dish dish) {
-        this.dishMapper.insert(dish);
+        dishMapper.insert(dish);
         return dish;
     }
 
@@ -65,8 +65,8 @@ public class DishServiceImpl implements DishService {
      */
     @Override
     public Dish update(Dish dish) {
-        this.dishMapper.update(dish);
-        return this.queryById(dish.getId());
+        dishMapper.update(dish);
+        return queryById(dish.getId());
     }
 
     /**
@@ -77,6 +77,6 @@ public class DishServiceImpl implements DishService {
      */
     @Override
     public boolean deleteById(Long id) {
-        return this.dishMapper.deleteById(id) > 0;
+        return dishMapper.deleteById(id) > 0;
     }
 }

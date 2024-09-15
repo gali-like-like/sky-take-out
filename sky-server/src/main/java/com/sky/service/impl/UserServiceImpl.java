@@ -13,8 +13,8 @@ import javax.annotation.Resource;
 /**
  * 用户信息(User)表服务实现类
  *
- * @author makejava
- * @since 2024-09-15 10:00:00
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:01
  */
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User queryById(Long id) {
-        return this.userMapper.queryById(id);
+        return userMapper.queryById(id);
     }
 
     /**
@@ -41,8 +41,8 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Page<User> queryByPage(User user, PageRequest pageRequest) {
-        long total = this.userMapper.count(user);
-        return new PageImpl<>(this.userMapper.queryAllByLimit(user, pageRequest), pageRequest, total);
+        long total = userMapper.count(user);
+        return new PageImpl<>(userMapper.queryAllByLimit(user, pageRequest), pageRequest, total);
     }
 
     /**
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User insert(User user) {
-        this.userMapper.insert(user);
+        userMapper.insert(user);
         return user;
     }
 
@@ -65,8 +65,8 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User update(User user) {
-        this.userMapper.update(user);
-        return this.queryById(user.getId());
+        userMapper.update(user);
+        return queryById(user.getId());
     }
 
     /**
@@ -77,6 +77,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public boolean deleteById(Long id) {
-        return this.userMapper.deleteById(id) > 0;
+        return userMapper.deleteById(id) > 0;
     }
 }

@@ -1,151 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sky.mapper.UserMapper">
-  
-  <resultMap type="com.sky.entity.User" id="UserMap">
-    <result property="id" column="id" jdbcType="INTEGER" />
-    <result property="openid" column="openid" jdbcType="VARCHAR" />
-    <result property="name" column="name" jdbcType="VARCHAR" />
-    <result property="phone" column="phone" jdbcType="VARCHAR" />
-    <result property="sex" column="sex" jdbcType="VARCHAR" />
-    <result property="idNumber" column="id_number" jdbcType="VARCHAR" />
-    <result property="avatar" column="avatar" jdbcType="VARCHAR" />
-    <result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
-  </resultMap>
-  
-  <!--查询单个-->
-  <select id="queryById" resultMap="UserMap">
-    select idopenidnamephonesexid_numberavatarcreate_time
-    from user
-    where id = #{id}
-  </select>
-  
-  <!--查询指定行数据-->
-  <select id="queryAllByLimit" resultMap="UserMap">
-    select
-    idopenidnamephonesexid_numberavatarcreate_time
-    from user
-    <where>
-      <if test="id != null">
-        and id = #{id}
-      </if>
-      <if test="openid != null and openid != ''">
-        and openid = #{openid}
-      </if>
-      <if test="name != null and name != ''">
-        and name = #{name}
-      </if>
-      <if test="phone != null and phone != ''">
-        and phone = #{phone}
-      </if>
-      <if test="sex != null and sex != ''">
-        and sex = #{sex}
-      </if>
-      <if test="idNumber != null and idNumber != ''">
-        and id_number = #{idNumber}
-      </if>
-      <if test="avatar != null and avatar != ''">
-        and avatar = #{avatar}
-      </if>
-      <if test="createTime != null">
-        and create_time = #{createTime}
-      </if>
-    </where>
-    limit #{pageable.offset}, #{pageable.pageSize}
-  </select>
-  
-  <!--统计总行数-->
-  <select id="count" resultType="java.lang.Long">
-    select count(1)
-    from user
-    <where>
-      <if test="id != null">
-        and id = #{id}
-      </if>
-      <if test="openid != null and openid != ''">
-        and openid = #{openid}
-      </if>
-      <if test="name != null and name != ''">
-        and name = #{name}
-      </if>
-      <if test="phone != null and phone != ''">
-        and phone = #{phone}
-      </if>
-      <if test="sex != null and sex != ''">
-        and sex = #{sex}
-      </if>
-      <if test="idNumber != null and idNumber != ''">
-        and id_number = #{idNumber}
-      </if>
-      <if test="avatar != null and avatar != ''">
-        and avatar = #{avatar}
-      </if>
-      <if test="createTime != null">
-        and create_time = #{createTime}
-      </if>
-    </where>
-  </select>
-  
-  <!--新增所有列-->
-  <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-    insert into user(openidnamephonesexid_numberavatarcreate_time)
-    values (#{openid}#{name}#{phone}#{sex}#{idNumber}#{avatar}#{createTime})
-  </insert>
-  
-  <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-    insert into user(openidnamephonesexid_numberavatarcreate_time)
-    values
-    <foreach collection="entities" item="entity" separator=",">
-      (#{entity.openid}#{entity.name}#{entity.phone}#{entity.sex}#{entity.idNumber}#{entity.avatar}#{entity.createTime})
-    </foreach>
-  </insert>
-  
-  <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-    insert into user(openidnamephonesexid_numberavatarcreate_time)
-    values
-    <foreach collection="entities" item="entity" separator=",">
-      (#{entity.openid}#{entity.name}#{entity.phone}#{entity.sex}#{entity.idNumber}#{entity.avatar}#{entity.createTime})
-    </foreach>
-    on duplicate key update
-    openid = values(openid)name = values(name)phone = values(phone)sex = values(sex)id_number = values(id_number)avatar
-    = values(avatar)create_time = values(create_time)
-  </insert>
-  
-  <!--通过主键修改数据-->
-  <update id="update">
-    update user
-    <set>
-      <if test="openid != null and openid != ''">
-        openid = #{openid},
-      </if>
-      <if test="name != null and name != ''">
-        name = #{name},
-      </if>
-      <if test="phone != null and phone != ''">
-        phone = #{phone},
-      </if>
-      <if test="sex != null and sex != ''">
-        sex = #{sex},
-      </if>
-      <if test="idNumber != null and idNumber != ''">
-        id_number = #{idNumber},
-      </if>
-      <if test="avatar != null and avatar != ''">
-        avatar = #{avatar},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime},
-      </if>
-    </set>
-    where id = #{id}
-  </update>
-  
-  <!--通过主键删除-->
-  <delete id="deleteById">
-    delete
-    from user
-    where id = #{id}
-  </delete>
+
+    <resultMap type="com.sky.entity.User" id="UserMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="openid" column="openid" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="VARCHAR"/>
+        <result property="idNumber" column="id_number" jdbcType="VARCHAR"/>
+        <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="UserMap">
+    
+    </select>
+    
+    <!--条件筛选总记录数-->
+    <select id="count" resultType="java.lang.Long">
+    
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="UserMap">
+    
+    </select>
+
+    <!--新增数据-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+    
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+    
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+    
+    </delete>
 
 </mapper>
 

@@ -10,8 +10,8 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 用户信息(User)表数据库访问层
  *
- * @author makejava
- * @since 2024-09-15 10:14:28
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:52:47
  */
 @Mapper
 public interface UserMapper {
@@ -25,6 +25,14 @@ public interface UserMapper {
     User queryById(Long id);
 
     /**
+     * 总记录数
+     *
+     * @param user 筛选条件
+     * @return Long
+     */
+    Long count(User user);
+
+    /**
      * 查询指定行数据
      *
      * @param user 查询条件
@@ -34,37 +42,12 @@ public interface UserMapper {
     List<User> queryAllByLimit(User user, @Param("pageable") Pageable pageable);
 
     /**
-     * 统计总行数
-     *
-     * @param user 查询条件
-     * @return 总行数
-     */
-    long count(User user);
-
-    /**
      * 新增数据
      *
      * @param user 实例对象
      * @return 影响行数
      */
     int insert(User user);
-
-    /**
-     * 批量新增数据（MyBatis原生foreach方法）
-     *
-     * @param entities List<User> 实例对象列表
-     * @return 影响行数
-     */
-    int insertBatch(@Param("entities") List<User> entities);
-
-    /**
-     * 批量新增或按主键更新数据（MyBatis原生foreach方法）
-     *
-     * @param entities List<User> 实例对象列表
-     * @return 影响行数
-     * @throws org.springframework.jdbc.BadSqlGrammarException 入参是空List的时候会抛SQL语句错误的异常，请自行校验入参
-     */
-    int insertOrUpdateBatch(@Param("entities") List<User> entities);
 
     /**
      * 修改数据

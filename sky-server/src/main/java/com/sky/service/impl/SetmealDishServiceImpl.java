@@ -13,8 +13,8 @@ import javax.annotation.Resource;
 /**
  * 套餐菜品关系(SetmealDish)表服务实现类
  *
- * @author makejava
- * @since 2024-09-15 10:00:04
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:02
  */
 @Service("setmealDishService")
 public class SetmealDishServiceImpl implements SetmealDishService {
@@ -29,7 +29,7 @@ public class SetmealDishServiceImpl implements SetmealDishService {
      */
     @Override
     public SetmealDish queryById(Long id) {
-        return this.setmealDishMapper.queryById(id);
+        return setmealDishMapper.queryById(id);
     }
 
     /**
@@ -41,8 +41,8 @@ public class SetmealDishServiceImpl implements SetmealDishService {
      */
     @Override
     public Page<SetmealDish> queryByPage(SetmealDish setmealDish, PageRequest pageRequest) {
-        long total = this.setmealDishMapper.count(setmealDish);
-        return new PageImpl<>(this.setmealDishMapper.queryAllByLimit(setmealDish, pageRequest), pageRequest, total);
+        long total = setmealDishMapper.count(setmealDish);
+        return new PageImpl<>(setmealDishMapper.queryAllByLimit(setmealDish, pageRequest), pageRequest, total);
     }
 
     /**
@@ -53,7 +53,7 @@ public class SetmealDishServiceImpl implements SetmealDishService {
      */
     @Override
     public SetmealDish insert(SetmealDish setmealDish) {
-        this.setmealDishMapper.insert(setmealDish);
+        setmealDishMapper.insert(setmealDish);
         return setmealDish;
     }
 
@@ -65,8 +65,8 @@ public class SetmealDishServiceImpl implements SetmealDishService {
      */
     @Override
     public SetmealDish update(SetmealDish setmealDish) {
-        this.setmealDishMapper.update(setmealDish);
-        return this.queryById(setmealDish.getId());
+        setmealDishMapper.update(setmealDish);
+        return queryById(setmealDish.getId());
     }
 
     /**
@@ -77,6 +77,6 @@ public class SetmealDishServiceImpl implements SetmealDishService {
      */
     @Override
     public boolean deleteById(Long id) {
-        return this.setmealDishMapper.deleteById(id) > 0;
+        return setmealDishMapper.deleteById(id) > 0;
     }
 }

@@ -7,8 +7,8 @@ import org.springframework.data.domain.PageRequest;
 /**
  * 套餐(Setmeal)表服务接口
  *
- * @author makejava
- * @since 2024-09-15 09:59:58
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:02
  */
 public interface SetmealService {
 

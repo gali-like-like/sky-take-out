@@ -13,8 +13,8 @@ import javax.annotation.Resource;
 /**
  * 菜品口味关系表(DishFlavor)表服务实现类
  *
- * @author makejava
- * @since 2024-09-15 10:00:02
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:01
  */
 @Service("dishFlavorService")
 public class DishFlavorServiceImpl implements DishFlavorService {
@@ -29,7 +29,7 @@ public class DishFlavorServiceImpl implements DishFlavorService {
      */
     @Override
     public DishFlavor queryById(Long id) {
-        return this.dishFlavorMapper.queryById(id);
+        return dishFlavorMapper.queryById(id);
     }
 
     /**
@@ -41,8 +41,8 @@ public class DishFlavorServiceImpl implements DishFlavorService {
      */
     @Override
     public Page<DishFlavor> queryByPage(DishFlavor dishFlavor, PageRequest pageRequest) {
-        long total = this.dishFlavorMapper.count(dishFlavor);
-        return new PageImpl<>(this.dishFlavorMapper.queryAllByLimit(dishFlavor, pageRequest), pageRequest, total);
+        long total = dishFlavorMapper.count(dishFlavor);
+        return new PageImpl<>(dishFlavorMapper.queryAllByLimit(dishFlavor, pageRequest), pageRequest, total);
     }
 
     /**
@@ -53,7 +53,7 @@ public class DishFlavorServiceImpl implements DishFlavorService {
      */
     @Override
     public DishFlavor insert(DishFlavor dishFlavor) {
-        this.dishFlavorMapper.insert(dishFlavor);
+        dishFlavorMapper.insert(dishFlavor);
         return dishFlavor;
     }
 
@@ -65,8 +65,8 @@ public class DishFlavorServiceImpl implements DishFlavorService {
      */
     @Override
     public DishFlavor update(DishFlavor dishFlavor) {
-        this.dishFlavorMapper.update(dishFlavor);
-        return this.queryById(dishFlavor.getId());
+        dishFlavorMapper.update(dishFlavor);
+        return queryById(dishFlavor.getId());
     }
 
     /**
@@ -77,6 +77,6 @@ public class DishFlavorServiceImpl implements DishFlavorService {
      */
     @Override
     public boolean deleteById(Long id) {
-        return this.dishFlavorMapper.deleteById(id) > 0;
+        return dishFlavorMapper.deleteById(id) > 0;
     }
 }

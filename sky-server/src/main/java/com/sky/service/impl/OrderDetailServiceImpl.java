@@ -13,8 +13,8 @@ import javax.annotation.Resource;
 /**
  * 订单明细表(OrderDetail)表服务实现类
  *
- * @author makejava
- * @since 2024-09-15 10:00:02
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:00
  */
 @Service("orderDetailService")
 public class OrderDetailServiceImpl implements OrderDetailService {
@@ -29,7 +29,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
      */
     @Override
     public OrderDetail queryById(Long id) {
-        return this.orderDetailMapper.queryById(id);
+        return orderDetailMapper.queryById(id);
     }
 
     /**
@@ -41,8 +41,8 @@ public class OrderDetailServiceImpl implements OrderDetailService {
      */
     @Override
     public Page<OrderDetail> queryByPage(OrderDetail orderDetail, PageRequest pageRequest) {
-        long total = this.orderDetailMapper.count(orderDetail);
-        return new PageImpl<>(this.orderDetailMapper.queryAllByLimit(orderDetail, pageRequest), pageRequest, total);
+        long total = orderDetailMapper.count(orderDetail);
+        return new PageImpl<>(orderDetailMapper.queryAllByLimit(orderDetail, pageRequest), pageRequest, total);
     }
 
     /**
@@ -53,7 +53,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
      */
     @Override
     public OrderDetail insert(OrderDetail orderDetail) {
-        this.orderDetailMapper.insert(orderDetail);
+        orderDetailMapper.insert(orderDetail);
         return orderDetail;
     }
 
@@ -65,8 +65,8 @@ public class OrderDetailServiceImpl implements OrderDetailService {
      */
     @Override
     public OrderDetail update(OrderDetail orderDetail) {
-        this.orderDetailMapper.update(orderDetail);
-        return this.queryById(orderDetail.getId());
+        orderDetailMapper.update(orderDetail);
+        return queryById(orderDetail.getId());
     }
 
     /**
@@ -77,6 +77,6 @@ public class OrderDetailServiceImpl implements OrderDetailService {
      */
     @Override
     public boolean deleteById(Long id) {
-        return this.orderDetailMapper.deleteById(id) > 0;
+        return orderDetailMapper.deleteById(id) > 0;
     }
 }

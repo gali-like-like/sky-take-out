@@ -13,8 +13,8 @@ import javax.annotation.Resource;
 /**
  * 菜品及套餐分类(Category)表服务实现类
  *
- * @author makejava
- * @since 2024-09-15 10:00:05
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:04
  */
 @Service("categoryService")
 public class CategoryServiceImpl implements CategoryService {
@@ -29,7 +29,7 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public Category queryById(Long id) {
-        return this.categoryMapper.queryById(id);
+        return categoryMapper.queryById(id);
     }
 
     /**
@@ -41,8 +41,8 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public Page<Category> queryByPage(Category category, PageRequest pageRequest) {
-        long total = this.categoryMapper.count(category);
-        return new PageImpl<>(this.categoryMapper.queryAllByLimit(category, pageRequest), pageRequest, total);
+        long total = categoryMapper.count(category);
+        return new PageImpl<>(categoryMapper.queryAllByLimit(category, pageRequest), pageRequest, total);
     }
 
     /**
@@ -53,7 +53,7 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public Category insert(Category category) {
-        this.categoryMapper.insert(category);
+        categoryMapper.insert(category);
         return category;
     }
 
@@ -65,8 +65,8 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public Category update(Category category) {
-        this.categoryMapper.update(category);
-        return this.queryById(category.getId());
+        categoryMapper.update(category);
+        return queryById(category.getId());
     }
 
     /**
@@ -77,6 +77,6 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public boolean deleteById(Long id) {
-        return this.categoryMapper.deleteById(id) > 0;
+        return categoryMapper.deleteById(id) > 0;
     }
 }

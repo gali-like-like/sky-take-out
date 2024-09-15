@@ -12,8 +12,8 @@ import javax.annotation.Resource;
 /**
  * 用户信息(User)表控制层
  *
- * @author makejava
- * @since 2024-09-15 10:00:00
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:01
  */
 @RestController
 @RequestMapping("user")
@@ -33,7 +33,7 @@ public class UserController {
      */
     @GetMapping
     public ResponseEntity<Page<User>> queryByPage(User user, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.userService.queryByPage(user, pageRequest));
+        return ResponseEntity.ok(userService.queryByPage(user, pageRequest));
     }
 
     /**
@@ -44,7 +44,7 @@ public class UserController {
      */
     @GetMapping("{id}")
     public ResponseEntity<User> queryById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(this.userService.queryById(id));
+        return ResponseEntity.ok(userService.queryById(id));
     }
 
     /**
@@ -55,7 +55,7 @@ public class UserController {
      */
     @PostMapping
     public ResponseEntity<User> add(User user) {
-        return ResponseEntity.ok(this.userService.insert(user));
+        return ResponseEntity.ok(userService.insert(user));
     }
 
     /**
@@ -66,7 +66,7 @@ public class UserController {
      */
     @PutMapping
     public ResponseEntity<User> edit(User user) {
-        return ResponseEntity.ok(this.userService.update(user));
+        return ResponseEntity.ok(userService.update(user));
     }
 
     /**
@@ -77,7 +77,7 @@ public class UserController {
      */
     @DeleteMapping
     public ResponseEntity<Boolean> deleteById(Long id) {
-        return ResponseEntity.ok(this.userService.deleteById(id));
+        return ResponseEntity.ok(userService.deleteById(id));
     }
 
 }

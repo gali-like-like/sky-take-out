@@ -12,8 +12,8 @@ import javax.annotation.Resource;
 /**
  * 购物车(ShoppingCart)表控制层
  *
- * @author makejava
- * @since 2024-09-15 10:00:00
+ * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
+ * @since 2024-09-15 11:42:00
  */
 @RestController
 @RequestMapping("shoppingCart")
@@ -33,7 +33,7 @@ public class ShoppingCartController {
      */
     @GetMapping
     public ResponseEntity<Page<ShoppingCart>> queryByPage(ShoppingCart shoppingCart, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.shoppingCartService.queryByPage(shoppingCart, pageRequest));
+        return ResponseEntity.ok(shoppingCartService.queryByPage(shoppingCart, pageRequest));
     }
 
     /**
@@ -44,7 +44,7 @@ public class ShoppingCartController {
      */
     @GetMapping("{id}")
     public ResponseEntity<ShoppingCart> queryById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(this.shoppingCartService.queryById(id));
+        return ResponseEntity.ok(shoppingCartService.queryById(id));
     }
 
     /**
@@ -55,7 +55,7 @@ public class ShoppingCartController {
      */
     @PostMapping
     public ResponseEntity<ShoppingCart> add(ShoppingCart shoppingCart) {
-        return ResponseEntity.ok(this.shoppingCartService.insert(shoppingCart));
+        return ResponseEntity.ok(shoppingCartService.insert(shoppingCart));
     }
 
     /**
@@ -66,7 +66,7 @@ public class ShoppingCartController {
      */
     @PutMapping
     public ResponseEntity<ShoppingCart> edit(ShoppingCart shoppingCart) {
-        return ResponseEntity.ok(this.shoppingCartService.update(shoppingCart));
+        return ResponseEntity.ok(shoppingCartService.update(shoppingCart));
     }
 
     /**
@@ -77,7 +77,7 @@ public class ShoppingCartController {
      */
     @DeleteMapping
     public ResponseEntity<Boolean> deleteById(Long id) {
-        return ResponseEntity.ok(this.shoppingCartService.deleteById(id));
+        return ResponseEntity.ok(shoppingCartService.deleteById(id));
     }
 
 }
