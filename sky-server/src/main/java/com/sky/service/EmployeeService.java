@@ -8,13 +8,14 @@ public interface EmployeeService {
 
     /**
      * 员工登录
+     *
      * @param employeeLoginDTO
      * @return
      */
     Employee login(EmployeeLoginDTO employeeLoginDTO);
-    
+
     Boolean editPassword(EmployPasswordDTO employPasswordDTO);
-    
-    Boolean changeStatus(Integer status,Integer id);
-    
+
+    Boolean changeStatus(Integer status, Integer id);
+
 }

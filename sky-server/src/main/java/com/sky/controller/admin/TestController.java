@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController {
 
-    // http://localhost:8080/test/hello
+    @Autowired
+    EmployeeMapper employeeMapper;
+
+    // http://localhost:8081/test/hello
     @GetMapping("hello")
     public String hello() {
         return "项目已启动，使用愉快！";
     }
 
-    @Autowired
-    EmployeeMapper employeeMapper;
-
-    // http://localhost:8080/test/testData
+    // http://localhost:8081/test/testData
     @GetMapping("testData")
     public Result<Employee> getEmployee() {
         Employee admin = employeeMapper.getByUsername("admin");

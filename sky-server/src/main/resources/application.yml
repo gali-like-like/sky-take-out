@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: prod
   main:
     allow-circular-references: true
     banner-mode: off
@@ -11,8 +11,8 @@ spring:
       username: ${sky.datasource.username}
       password: ${sky.datasource.password}
 server:
-      port: 8080
-      shutdown: graceful
+  port: 8080
+  shutdown: graceful
 mybatis:
   #mapper配置文件
   mapper-locations: classpath:mapper/*.xml
@@ -29,13 +29,13 @@ logging:
         service: info
         controller: info
 
-  config: logback.xml
+  config: classpath:logback.xml
   logging:
-        level:
-             com:
-                sky:
-                   controller:
-                             admin: INFO
+    level:
+      com:
+        sky:
+          controller:
+            admin: INFO
 
 sky:
   jwt:

@@ -1,10 +1,7 @@
 package com.sky.interceptor;
 
-import java.util.Objects;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.sky.properties.JwtProperties;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +9,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import com.sky.constant.JwtClaimsConstant;
-import com.sky.properties.JwtProperties;
-import com.sky.utils.JwtUtil;
-
-import io.jsonwebtoken.Claims;
-import lombok.extern.slf4j.Slf4j;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
 
 /**
  * jwt令牌校验的拦截器
@@ -30,6 +24,7 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor {
     private JwtProperties jwtProperties;
 
     private Logger logger = LoggerFactory.getLogger(JwtTokenAdminInterceptor.class);
+
     /**
      * 校验jwt
      *
@@ -41,24 +36,24 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor {
      */
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //判断当前拦截到的是Controller的方法还是其他资源，用于放行Swaager资源
-    	String urlString = request.getRequestURL().toString();
-    	logger.info("url:{}",urlString);
-    	//用于获取经过nginx反向代理后的客户端真实ip
-    	String clientAddress = "";
-    	String reqMethod = request.getMethod();//请求方式
-    	String reqUrI = request.getRequestURI();//资源
-    	String xRealIp = request.getHeader("X-Real-IP");//获取真实ip
-	    if(Objects.isNull(xRealIp))
-	    	clientAddress = request.getRemoteAddr();
-	    else
-	    	clientAddress = xRealIp;
-		if(urlString.contains("/login") || urlString.contains("/regedit")) {
-			logger.info("{} {} {} 通过成功",clientAddress,reqMethod,reqUrI);
-			return true;
-		}
-    	
+        String urlString = request.getRequestURL().toString();
+        logger.info("url:{}", urlString);
+        //用于获取经过nginx反向代理后的客户端真实ip
+        String clientAddress = "";
+        String reqMethod = request.getMethod();//请求方式
+        String reqUrI = request.getRequestURI();//资源
+        String xRealIp = request.getHeader("X-Real-IP");//获取真实ip
+        if (Objects.isNull(xRealIp))
+            clientAddress = request.getRemoteAddr();
+        else
+            clientAddress = xRealIp;
+        if (urlString.contains("/login") || urlString.contains("/regedit")) {
+            logger.info("{} {} {} 通过成功", clientAddress, reqMethod, reqUrI);
+            return true;
+        }
+
         if (!(handler instanceof HandlerMethod)) {
-        	logger.info("{} {} {} 通过成功",clientAddress,reqMethod,reqUrI);
+            logger.info("{} {} {} 通过成功", clientAddress, reqMethod, reqUrI);
             //当前拦截到的不是动态方法，直接放行
             return true;
         }

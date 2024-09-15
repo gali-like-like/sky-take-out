@@ -1,4 +1,5 @@
 package com.sky.properties;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,98 +15,99 @@ public class WeChatProperties {
     private String weChatPayCertFilePath; //平台证书
     private String notifyUrl; //支付成功的回调地址
     private String refundNotifyUrl; //退款成功的回调地址
-    
+
     public WeChatProperties(String appid,
-    		String secret,
-    		String mchid,
-    		String mchSerialNo,
-    		String privateKeyFilePath,
-    		String apiV3Key,
-    		String weChatPayCertFilePath,
-    		String notifyUrl,String refundNotifyUrl) {
-    	this.appid = appid;
-    	this.secret = secret;
-    	this.mchid = mchid;
-    	this.mchSerialNo = mchSerialNo;
-    	this.privateKeyFilePath = privateKeyFilePath;
-    	this.apiV3Key = apiV3Key;
-    	this.weChatPayCertFilePath = weChatPayCertFilePath;
-    	this.notifyUrl =notifyUrl;
-    	this.refundNotifyUrl = refundNotifyUrl;
+                            String secret,
+                            String mchid,
+                            String mchSerialNo,
+                            String privateKeyFilePath,
+                            String apiV3Key,
+                            String weChatPayCertFilePath,
+                            String notifyUrl, String refundNotifyUrl) {
+        this.appid = appid;
+        this.secret = secret;
+        this.mchid = mchid;
+        this.mchSerialNo = mchSerialNo;
+        this.privateKeyFilePath = privateKeyFilePath;
+        this.apiV3Key = apiV3Key;
+        this.weChatPayCertFilePath = weChatPayCertFilePath;
+        this.notifyUrl = notifyUrl;
+        this.refundNotifyUrl = refundNotifyUrl;
     }
-    
-    public WeChatProperties() {}
-    
-    public void setAppid(String appid) {
-    	this.appid = appid;
+
+    public WeChatProperties() {
     }
-    
+
     public String getAppid() {
-    	return this.appid;
+        return this.appid;
     }
-    
-    public void setSecret(String secret) {
-    	this.secret = secret;
+
+    public void setAppid(String appid) {
+        this.appid = appid;
     }
-    
+
     public String getSecret() {
-    	return this.secret;
+        return this.secret;
     }
-    
+
+    public void setSecret(String secret) {
+        this.secret = secret;
+    }
+
     public String getMchid() {
-    	return this.mchid;
+        return this.mchid;
     }
-    
+
     public void setMchid(String mchid) {
-    	this.mchid = mchid;
+        this.mchid = mchid;
     }
-    
+
     public String getMchSerialNo() {
-    	return this.mchSerialNo;
+        return this.mchSerialNo;
     }
-    
+
     public void setMchSerialNo(String mchSerialNo) {
-    	this.mchSerialNo = mchSerialNo;
+        this.mchSerialNo = mchSerialNo;
     }
-    
+
     public String getPrivateKeyFilePath() {
-    	return this.privateKeyFilePath;
+        return this.privateKeyFilePath;
     }
-    
+
     public void setPrivateKeyFilePath(String privateKeyFilePath) {
-    	this.privateKeyFilePath = privateKeyFilePath;
+        this.privateKeyFilePath = privateKeyFilePath;
     }
-    
-    public void setApiV3Key(String apiV3Key) {
-    	this.apiV3Key = apiV3Key;
-    }
-    
+
     public String getApiV3Key() {
-    	return this.apiV3Key;
+        return this.apiV3Key;
     }
-    
-    public void setWeChatPayCertFilePath(String weChatPayCertFilePath) {
-    	this.weChatPayCertFilePath = weChatPayCertFilePath;
+
+    public void setApiV3Key(String apiV3Key) {
+        this.apiV3Key = apiV3Key;
     }
-    
+
     public String getWeChatPayCertFilePath() {
-    	return this.weChatPayCertFilePath;
+        return this.weChatPayCertFilePath;
     }
-    
-    public void setNotifyUrl(String notifyUrl) {
-    	this.notifyUrl = notifyUrl;
+
+    public void setWeChatPayCertFilePath(String weChatPayCertFilePath) {
+        this.weChatPayCertFilePath = weChatPayCertFilePath;
     }
-    
+
     public String getNotifyUrl() {
-    	return this.notifyUrl;
+        return this.notifyUrl;
     }
-    
-    public void setRefundNotifyUrl(String refundNotifyUrl) {
-    	this.refundNotifyUrl = refundNotifyUrl;
+
+    public void setNotifyUrl(String notifyUrl) {
+        this.notifyUrl = notifyUrl;
     }
-    
+
     public String getRefundNotifyUrl() {
-    	return this.refundNotifyUrl;
+        return this.refundNotifyUrl;
+    }
+
+    public void setRefundNotifyUrl(String refundNotifyUrl) {
+        this.refundNotifyUrl = refundNotifyUrl;
     }
 
 }

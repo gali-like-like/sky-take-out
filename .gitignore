@@ -6,6 +6,7 @@ application-prod.yml
 
 # Log file
 logs/
+log/
 *.log
 
 # BlueJ files
@@ -15,9 +16,10 @@ logs/
 .mtj.tmp/
 
 # Package Files #
-.idea
-.settings
-log
+.idea/
+.settings/
+.classpath
+.project
 *.iml
 *.jar
 *.war
