@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.CategoryMapper">
+
+    <resultMap type="com.sky.entity.Category" id="CategoryMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="type" column="type" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="sort" column="sort" jdbcType="INTEGER"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="createUser" column="create_user" jdbcType="INTEGER"/>
+        <result property="updateUser" column="update_user" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="CategoryMap">
+    
+    </select>
+    
+    <!--条件筛选总记录数-->
+    <select id="count" resultType="java.lang.Long">
+    
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="CategoryMap">
+    
+    </select>
+
+    <!--新增数据-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+    
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+    
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+    
+    </delete>
+
+</mapper>
+

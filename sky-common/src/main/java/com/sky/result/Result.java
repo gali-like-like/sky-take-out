@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 /**
  * 后端统一返回结果
+ *
  * @param <T>
  */
 public class Result<T> implements Serializable {
@@ -31,28 +32,28 @@ public class Result<T> implements Serializable {
         result.code = 0;
         return result;
     }
-    
+
     public Integer getCode() {
-    	return this.code;
+        return this.code;
     }
-    
-    public String getMsg() {
-    	return this.msg;
-    }
-    
-    public T getData() {
-    	return this.data;
-    }
-    
+
     public void setCode(Integer code) {
-    	this.code = code;
+        this.code = code;
     }
-    
+
+    public String getMsg() {
+        return this.msg;
+    }
+
     public void setMsg(String msg) {
-    	this.msg = msg;
+        this.msg = msg;
     }
-    
+
+    public T getData() {
+        return this.data;
+    }
+
     public void setData(T data) {
-    	this.data = data;
+        this.data = data;
     }
 }

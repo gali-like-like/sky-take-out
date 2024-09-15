@@ -1,9 +1,8 @@
 package com.sky.properties;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-
-import lombok.Data;
 
 @Component
 @ConfigurationProperties(prefix = "sky.jwt")
@@ -24,53 +23,54 @@ public class JwtProperties {
     private long userTtl;
     private String userTokenName;
 
-    public JwtProperties() {}
-    
-    public void setAdminSecretKey(String secretKey) {
-    	this.adminSecretKey = secretKey;
+    public JwtProperties() {
     }
-    
-    public void setAdminTtl(Long adminTtl) {
-    	this.adminTtl = adminTtl;
-    }
-    
-    public void setAdminTokenName(String adminTokenName) {
-    	this.adminTokenName = adminTokenName;
-    }
-    
+
     public String getAdminSecretKey() {
-    	return this.adminSecretKey;
+        return this.adminSecretKey;
     }
-    
+
+    public void setAdminSecretKey(String secretKey) {
+        this.adminSecretKey = secretKey;
+    }
+
     public long getAdminTtl() {
-    	return this.adminTtl;
+        return this.adminTtl;
     }
-    
+
+    public void setAdminTtl(Long adminTtl) {
+        this.adminTtl = adminTtl;
+    }
+
     public String getAdminTokenName() {
-    	return this.adminTokenName;
+        return this.adminTokenName;
     }
-    
-    public void setUserSecretKey(String secretKey) {
-    	this.userSecretKey = secretKey;
+
+    public void setAdminTokenName(String adminTokenName) {
+        this.adminTokenName = adminTokenName;
     }
-    
-    public void setUserTtl(Long userTtl) {
-    	this.userTtl = userTtl;
-    }
-    
-    public void setUserTokenName(String userTokenName) {
-    	this.userTokenName = userTokenName;
-    }
-    
+
     public String getUserSecretKey() {
-    	return this.userSecretKey;
+        return this.userSecretKey;
     }
-    
+
+    public void setUserSecretKey(String secretKey) {
+        this.userSecretKey = secretKey;
+    }
+
     public long getUserTtl() {
-    	return this.userTtl;
+        return this.userTtl;
     }
-    
+
+    public void setUserTtl(Long userTtl) {
+        this.userTtl = userTtl;
+    }
+
     public String getUserTokenName() {
-    	return this.userTokenName;
+        return this.userTokenName;
+    }
+
+    public void setUserTokenName(String userTokenName) {
+        this.userTokenName = userTokenName;
     }
 }
