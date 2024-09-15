@@ -135,6 +135,11 @@
         <groupId>org.mapstruct</groupId>
         <artifactId>mapstruct-processor</artifactId>
       </dependency>
+      <!-- qiniu-oss -->
+      <dependency>
+        <groupId>com.qiniu</groupId>
+        <artifactId>qiniu-java-sdk</artifactId>
+      </dependency>
     </dependencies>
 
     <build>

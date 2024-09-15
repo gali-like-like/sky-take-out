@@ -31,6 +31,7 @@
     <jaxb-api>2.3.1</jaxb-api>
     <poi>3.16</poi>
     <mapstruct.version>1.5.5.Final</mapstruct.version>
+    <qiniu.version>7.12.1</qiniu.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -133,6 +134,12 @@
         <groupId>org.mapstruct</groupId>
         <artifactId>mapstruct-processor</artifactId>
         <version>${mapstruct.version}</version>
+      </dependency>
+      <!-- qiniu-oss -->
+      <dependency>
+        <groupId>com.qiniu</groupId>
+        <artifactId>qiniu-java-sdk</artifactId>
+        <version>${qiniu.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
