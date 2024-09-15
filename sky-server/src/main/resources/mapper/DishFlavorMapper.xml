@@ -23,15 +23,35 @@
     <select id="queryAllByLimit" resultMap="DishFlavorMap">
     
     </select>
-
+    <select id="queryByDishId" resultType="com.sky.entity.DishFlavor">
+        SELECT * FROM dish_flavor WHERE dish_id = #{dishId}
+    </select>
+    
     <!--新增数据-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
     
     </insert>
 
     <!--通过主键修改数据-->
-    <update id="update">
-    
+    <update id="update" parameterType="com.sky.entity.DishFlavor">
+        UPDATE dish_flavor
+        <set>
+            <!-- 动态更新 name 字段 -->
+            <if test="name != null">
+                name = #{name},
+            </if>
+            
+            <!-- 动态更新 value 字段 -->
+            <if test="value != null">
+                value = #{value},
+            </if>
+            
+            <!-- 动态更新 dishId 字段 -->
+            <if test="dishId != null">
+                dish_id = #{dishId},
+            </if>
+        </set>
+        WHERE id = #{id}
     </update>
 
     <!--通过主键删除-->

@@ -1,5 +1,8 @@
 package com.sky.result;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Getter;
+
 import java.io.Serializable;
 
 /**
@@ -7,6 +10,8 @@ import java.io.Serializable;
  *
  * @param <T>
  */
+@Getter
+@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 public class Result<T> implements Serializable {
 
     private Integer code; //编码：1成功，0和其它数字为失败
@@ -33,24 +38,12 @@ public class Result<T> implements Serializable {
         return result;
     }
 
-    public Integer getCode() {
-        return this.code;
-    }
-
     public void setCode(Integer code) {
         this.code = code;
     }
 
-    public String getMsg() {
-        return this.msg;
-    }
-
     public void setMsg(String msg) {
         this.msg = msg;
-    }
-
-    public T getData() {
-        return this.data;
     }
 
     public void setData(T data) {

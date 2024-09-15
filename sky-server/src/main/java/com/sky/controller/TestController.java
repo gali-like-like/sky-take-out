@@ -15,6 +15,9 @@ public class TestController {
     @Autowired
     EmployeeMapper employeeMapper;
 
+    // http://localhost:8081/doc.html
+
+
     // http://localhost:8081/admin/test/hello
     @GetMapping("hello")
     public String hello() {

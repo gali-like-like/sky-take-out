@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
@@ -23,9 +24,13 @@ public class DishFlavor implements Serializable {
     private Long dishId;
 
     //口味名称
+    @NotBlank(message = "flavor name 是必需的")
     private String name;
 
+
     //口味数据list
+    @NotBlank(message = "flavor value 是必需的")
     private String value;
+
 
 }

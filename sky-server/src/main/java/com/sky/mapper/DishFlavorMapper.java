@@ -1,10 +1,11 @@
 package com.sky.mapper;
 
 import com.sky.entity.DishFlavor;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Pageable;
+
 import java.util.List;
-import org.apache.ibatis.annotations.Mapper;
 
 
 /**
@@ -65,5 +66,6 @@ public interface DishFlavorMapper {
      */
     int deleteById(Long id);
 
+    List<DishFlavor> queryByDishId(Long id);
 }
 

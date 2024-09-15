@@ -66,5 +66,10 @@ public interface DishMapper {
      */
     int deleteById(Long id);
 
+    List<Dish> getAllDish(@Param("categoryId") Integer categoryId,@Param("name") String name, @Param("status") Integer status);
+
+    List<Dish> queryByCategoryId(Long categoryId);
+
+    int updateStatus(Long id, Integer status);
 }
 
