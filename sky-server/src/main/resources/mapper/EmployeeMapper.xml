@@ -13,4 +13,34 @@
             </if>
         </where>
     </select>
+    <insert id="addEmployee" >
+        INSERT INTO employee (id,NAME,id_number,sex,username,phone,PASSWORD,create_user,update_user) VALUES (NULL,#{name},#{idNumber},#{sex},#{username},#{phone},MD5("123456"),1,1);
+    </insert>
+    <select id="getEmployeeById" resultType="com.sky.entity.Employee">
+        <include refid="query_employee" /> where id = #{id}
+    </select>
+    <update id="updateEmployee">
+        update employee
+        <set>
+            <if test="idNumber != null">
+                id_number = #{idNumber},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="username != null">
+                username = #{username}
+            </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
 </mapper>

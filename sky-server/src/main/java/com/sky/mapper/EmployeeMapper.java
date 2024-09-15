@@ -1,5 +1,6 @@
 package com.sky.mapper;
 
+import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeePageQueryDTO;
 import com.sky.result.PageResult;
 import org.apache.ibatis.annotations.Mapper;
@@ -26,12 +27,18 @@ public interface EmployeeMapper {
     void editPassword(EmployPasswordDTO passwordDTO);
 
     @Select("select id from employee where id = #{id}")
-    Integer existsId(Integer id);
-    
+    Long existsId(Long id);
+
     @Update("update employee set status = #{status} where id = #{id}")
-    public void changeStatus(Integer status,Integer id);
+    public void changeStatus(Integer status,Long id);
     //getAllEmployee
     public List<Employee> getAllEmployee(String name);
+    //新增员工
+    public void addEmployee(EmployeeDTO employeeDTO);
+    //根据id查询员工
+    public Employee getEmployeeById(Long id);
+    //编辑员工信息
+    public Boolean updateEmployee(EmployeeDTO employee);
 }
 
 

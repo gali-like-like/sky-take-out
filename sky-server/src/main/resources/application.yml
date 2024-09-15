@@ -29,7 +29,7 @@ logging:
         service: info
         controller: info
 
-  config: logback.xml
+  config: classpath:logback.xml
   logging:
         level:
              com:

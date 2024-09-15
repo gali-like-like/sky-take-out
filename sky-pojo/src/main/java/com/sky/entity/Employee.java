@@ -1,5 +1,10 @@
 package com.sky.entity;
+import io.swagger.models.auth.In;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@Data
 public class Employee {
     private Long id;
     private String username;
@@ -9,87 +14,5 @@ public class Employee {
     private String sex;
     private String idNumber;
     private Integer status;
-
-    public Employee(Long id, String username, String name, String password, String phone, String sex, String idNumber, Integer status) {
-        this.id = id;
-        this.username = username;
-        this.name = name;
-        this.password = password;
-        this.phone = phone;
-        this.sex = sex;
-        this.idNumber = idNumber;
-        this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("Employee{id:%d,username:%s,name:%s,\npassword:%s,\nphone:%s,\nsex:%s,\nidNum:%s,\nstatus:%d}",
-                this.id, this.username, this.name, this.password, this.phone, this.sex, this.idNumber, this.status);
-    }
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return this.username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPhone() {
-        return this.phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getSex() {
-        return this.sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getIdNumber() {
-        return this.idNumber;
-    }
-
-    public void setIdNumber(String idN) {
-        this.idNumber = idN;
-    }
-
-    public Integer getStatus() {
-        return this.status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getName() {
-        // TODO Auto-generated method stub
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
 

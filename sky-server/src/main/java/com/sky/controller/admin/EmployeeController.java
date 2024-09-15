@@ -7,8 +7,10 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import java.util.concurrent.atomic.AtomicReference;
 
 import com.github.pagehelper.PageInfo;
+import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeePageQueryDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -77,7 +79,7 @@ public class EmployeeController {
 			if(Objects.isNull(e)) {
 				return res;
 			}
-			logger.error("发生异常,具体信息:\n{}",e.getLocalizedMessage());
+            logger.info("发生异常:\n{}",e.getLocalizedMessage());
 			return null;
 		});
 		Boolean resBoolean = future.get(3,TimeUnit.SECONDS);
@@ -91,20 +93,18 @@ public class EmployeeController {
     @ApiOperation(value = "修改状态",notes="员工修改状态")
     @PostMapping("/status/{status}")
     public Result changeStatus(@ApiParam(name="status",required = true) @PathVariable Integer status,
-    		@ApiParam(name="id",required = true) @RequestParam Integer id) throws InterruptedException, ExecutionException, TimeoutException {
+    		@ApiParam(name="id",required = true) @RequestParam Long id) throws InterruptedException, ExecutionException, TimeoutException {
     	CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(()->{
     		return employeeService.changeStatus(status, id);
     	}).handle((res,e)-> {
-    		if(Objects.isNull(e)) {
+    		if(Objects.isNull(e))
 				return res;
-			}
-			logger.error("发生异常,具体信息:\n{}",e.getLocalizedMessage());
+            logger.info("发生异常:\n{}",e.getLocalizedMessage());
 			return null;
     	});
     	Boolean resBoolean = future.get(3,TimeUnit.SECONDS);
-    	if(Objects.nonNull(resBoolean)) {
+    	if(Objects.nonNull(resBoolean))
     		return Result.success();
-    	}
     	else
 			return Result.error(MessageConstant.ACCOUNT_NOT_FOUND);
     }
@@ -128,8 +128,55 @@ public class EmployeeController {
         else
             return Result.error("查询异常");
     }
-    
-    
+
+    @ApiOperation(value="新增员工",notes="根据用户信息添加员工")
+    @PostMapping("/")
+    public Result employee(@ApiParam(required = true)  EmployeeDTO employeeDTO) throws InterruptedException, ExecutionException, TimeoutException {
+        CompletableFuture<Object> future = CompletableFuture.runAsync(() -> {
+            employeeService.addEmployee(employeeDTO);
+        }).handle((res,e)->{
+            if(Objects.isNull(e)) {
+                return res;
+            }
+            logger.info("发生异常:\n{}",e.getLocalizedMessage());
+            return 1;
+        });
+        Object res = future.get(3,TimeUnit.SECONDS);
+        if(Objects.nonNull(res))
+            return Result.error(MessageConstant.UNKNOWN_ERROR);
+        return Result.success();
+    }
+
+    @ApiOperation(value="查询用户",notes="根据id查询用户")
+    @GetMapping("/{id}")
+    public Result getEmployeeById(@ApiParam(value="id",required = true) Long id) throws ExecutionException, InterruptedException, TimeoutException {
+        CompletableFuture<Employee> future = CompletableFuture.supplyAsync(()->
+            employeeService.getEmployeeById(id)
+        ).handle((res,e)->{
+            if(Objects.isNull(e))
+                return res;
+            logger.info("发生异常:\n{}",e.getLocalizedMessage());
+            return null;
+        });
+        Employee employee = future.get(3,TimeUnit.SECONDS);
+        if(Objects.nonNull(employee))
+            return Result.success(employee);
+        else
+            return Result.error(MessageConstant.ACCOUNT_NOT_FOUND);
+    }
+    @PutMapping("/")
+    @ApiOperation(value="编辑员工信息")
+    public Result editEmployee(@ApiParam(required = true) @RequestBody EmployeeDTO employeeDTO) throws InterruptedException, ExecutionException, TimeoutException {
+        CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(() ->
+             employeeService.updateEmployee(employeeDTO)
+        ).handle((res,e) -> {
+           if(Objects.isNull(e))
+               return res;
+            logger.info("发生异常:\n{}",e.getLocalizedMessage());
+           return null;
+        });
+        return makeUpFuture(future);
+    }
     /**
      * 退出
      *
@@ -140,5 +187,17 @@ public class EmployeeController {
     public Result<String> logout() {
         return Result.success();
     }
-
+    //处理布尔类型的future
+    private Result makeUpFuture(CompletableFuture<Boolean> future) throws ExecutionException, InterruptedException, TimeoutException {
+        Boolean res = future.get(3,TimeUnit.SECONDS);
+        if(Objects.isNull(res)) {
+            return Result.error(MessageConstant.UNKNOWN_ERROR);
+        }
+        else {
+            if(res)
+                return Result.success();
+            else
+                return Result.error(MessageConstant.ACCOUNT_NOT_FOUND);
+        }
+    }
 }

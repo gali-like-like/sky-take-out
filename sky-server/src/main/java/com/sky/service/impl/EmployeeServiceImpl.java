@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeePageQueryDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,7 +77,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		/**
 		 * 账号不存在就报账号不存在异常,存在则更改密码
 		 * */
-		Integer id = employPasswordDTO.getEmpId();
+		Long id = employPasswordDTO.getEmpId();
 		if(isExistsEmployeeById(id)) {
 			employeeMapper.editPassword(employPasswordDTO);
 			return true;
@@ -88,7 +89,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	@Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
-	public Boolean changeStatus(Integer status, Integer id) throws AccountNotFoundException {
+	public Boolean changeStatus(Integer status, Long id) throws AccountNotFoundException {
 		// TODO Auto-generated method stub
 		/**
 		 * 账号不存在就报账号不存在异常,存在则更改状态
@@ -102,7 +103,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	// todo PageInfo为啥报错！
+	// todo
 	public PageInfo<Employee> pageDataByPageSize(EmployeePageQueryDTO queryDTO) {
 		List<Employee> employeeList = employeeMapper.getAllEmployee(queryDTO.getName());
 		PageHelper.startPage(queryDTO.getPage(),queryDTO.getPageSize());
@@ -110,20 +111,38 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return pageInfo;
 	}
 
-	public Boolean isExistsEmployeeById(Integer id) {
-		if(id<0) {
-			throw new AccountNotFoundException(MessageConstant.ACCOUNT_NOT_FOUND);
+	@Override
+	public void addEmployee(EmployeeDTO employeeDTO) {
+        employeeMapper.addEmployee(employeeDTO);
+    }
+	//用户不为空就存在，否则不存在
+	@Override
+	public Employee getEmployeeById(Long id) {
+		return employeeMapper.getEmployeeById(id);
+	}
+
+	//账号不存在就报异常，存在就更新
+	@Override
+	@Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
+	public Boolean updateEmployee(EmployeeDTO employee) throws AccountNotFoundException {
+		Long id = employee.getId();
+		if(isExistsEmployeeById(id)) {
+			employeeMapper.updateEmployee(employee);
+			return true;
 		}
+		return false;
+	}
+
+	private Boolean isExistsEmployeeById(Long id) {
+		if(id<0 || Objects.isNull(id))
+			throw new AccountNotFoundException(MessageConstant.ACCOUNT_NOT_FOUND);
 		else {
 			//判断id是否存在,存在就修改密码,不存在就返回false;
-			Integer queryId = employeeMapper.existsId(id);
-			if(Objects.isNull(queryId)) {
+			Long employeeId = employeeMapper.existsId(id);
+			if(Objects.isNull(employeeId))
 				throw new AccountNotFoundException(MessageConstant.ACCOUNT_NOT_FOUND);
-			}
-			else {
+			else
 				return true;
-			}
 		}
 	}
-	
 }
