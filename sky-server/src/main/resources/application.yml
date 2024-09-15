@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: test
+    active: dev
   main:
     allow-circular-references: true
     banner-mode: off

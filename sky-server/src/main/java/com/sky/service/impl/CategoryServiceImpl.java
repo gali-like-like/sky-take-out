@@ -1,14 +1,20 @@
 package com.sky.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.sky.dto.CategoryDTO;
+import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.entity.Category;
+import com.sky.exception.AccountNotFoundException;
 import com.sky.mapper.CategoryMapper;
 import com.sky.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * 菜品及套餐分类(Category)表服务实现类
@@ -18,65 +24,62 @@ import javax.annotation.Resource;
  */
 @Service("categoryService")
 public class CategoryServiceImpl implements CategoryService {
-    @Resource
+    @Autowired
     private CategoryMapper categoryMapper;
-
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param id 主键
-     * @return 实例对象
-     */
+    //根据类型查询
     @Override
-    public Category queryById(Long id) {
-        return categoryMapper.queryById(id);
+    public List<Category> queryByType(Long type) {
+        return categoryMapper.queryByType(type);
     }
-
-    /**
-     * 分页查询
-     *
-     * @param category    筛选条件
-     * @param pageRequest 分页对象
-     * @return 查询结果
-     */
+    //添加分类
     @Override
-    public Page<Category> queryByPage(Category category, PageRequest pageRequest) {
-        long total = categoryMapper.count(category);
-        return new PageImpl<>(categoryMapper.queryAllByLimit(category, pageRequest), pageRequest, total);
+    public int addCategory(CategoryDTO category) {
+       return categoryMapper.addCategory(category);
     }
-
-    /**
-     * 新增数据
-     *
-     * @param category 实例对象
-     * @return 实例对象
-     */
+    //更改状态,id不存在就返回false,存在就修改
     @Override
-    public Category insert(Category category) {
-        categoryMapper.insert(category);
-        return category;
+    public Boolean changeStatus(Long id, Integer status) {
+        Category category = categoryMapper.queryCategoryById(id);
+        if(Objects.nonNull(category)) {
+            categoryMapper.changeStatus(id, status);
+            return true;
+        }
+        return false;
     }
-
-    /**
-     * 修改数据
-     *
-     * @param category 实例对象
-     * @return 实例对象
-     */
+    //修改分类,id不存在就false,否则修改
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     @Override
-    public Category update(Category category) {
-        categoryMapper.update(category);
-        return queryById(category.getId());
+    public Boolean updateCategory(CategoryDTO category) {
+        Long id = category.getId();
+        if(id < 0)
+            throw new AccountNotFoundException();
+        Category oldCategory = categoryMapper.queryCategoryById(id);
+        if(Objects.nonNull(oldCategory)) {
+            categoryMapper.updateCategory(category);
+            return true;
+        }
+        throw new AccountNotFoundException();
     }
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param id 主键
-     * @return 是否成功
-     */
+    //删除分类,根据id删除分类
+    @Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
     @Override
-    public boolean deleteById(Long id) {
-        return categoryMapper.deleteById(id) > 0;
+    public Boolean deleteCategoryById(Long id) {
+        if(id<0) {
+            throw new AccountNotFoundException();
+        }
+       Category category = categoryMapper.queryCategoryById(id);
+        if(Objects.nonNull(category)) {
+            categoryMapper.deleteCategoryById(id);
+            return true;
+        }
+        throw new AccountNotFoundException();
+    }
+    //查询分类数据
+    @Override
+    public PageInfo<Category> queryPageCategory(CategoryPageQueryDTO queryDTO) {
+        List<Category> categoryList = categoryMapper.queryPageCategory(queryDTO);
+        PageHelper.startPage(queryDTO.getPage(),queryDTO.getPageSize());
+        PageInfo<Category> pageInfo = new PageInfo<>(categoryList);
+        return pageInfo;
     }
 }

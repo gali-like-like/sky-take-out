@@ -8,4 +8,4 @@ sky:
           password: 20001126X
 # 是否屏蔽jwt令牌
    jwt:
-          isHidden: false
+          isHidden: true
