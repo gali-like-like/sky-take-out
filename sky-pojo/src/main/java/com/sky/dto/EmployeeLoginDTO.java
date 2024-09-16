@@ -15,7 +15,6 @@ public class EmployeeLoginDTO implements Serializable {
     private String password;
 
     public String getUsername() {
-        // TODO Auto-generated method stub
         return this.username;
     }
 

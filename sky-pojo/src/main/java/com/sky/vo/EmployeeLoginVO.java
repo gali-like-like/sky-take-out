@@ -31,7 +31,6 @@ public class EmployeeLoginVO implements Serializable {
     }
 
     public static EmployeeLoginVO builder(Long id, String username, String name, String token) {
-        // TODO Auto-generated method stub
         EmployeeLoginVO employeeLoginVO = new EmployeeLoginVO(id, username, name, token);
         return employeeLoginVO;
     }

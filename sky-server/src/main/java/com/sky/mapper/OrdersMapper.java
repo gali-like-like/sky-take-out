@@ -1,10 +1,12 @@
 package com.sky.mapper;
 
+import com.sky.dto.GoodsSalesDTO;
 import com.sky.dto.OrdersPageQueryDTO;
 import com.sky.entity.Orders;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -39,5 +41,38 @@ public interface OrdersMapper {
      */
     @Select("select count(id) from orders where status = #{status}")
     Integer countStatus(Integer status);
+
+    /**
+     * 获取销售排行榜前10的商品
+     *
+     * @param beginTime
+     * @param endTime
+     * @return 商品销售排行榜
+     */
+    List<GoodsSalesDTO> getSalesTop10(LocalDateTime beginTime, LocalDateTime endTime);
+
+    /**
+     * 获取订单数量
+     *
+     * @param beginTime
+     * @param endTime
+     * @param status
+     * @return
+     */
+    @Select("select count(id) from orders " +
+            "where create_time >= #{beginTime} and create_time <= #{endTime} " +
+            "and (status = #{status} or #{status} is null)")
+    Integer getOrderCount(LocalDateTime beginTime, LocalDateTime endTime, Integer status);
+
+    /**
+     * 获取营业额
+     *
+     * @param begin
+     * @param end
+     * @return
+     */
+    @Select("select sum(total_amount) from orders " +
+            "where create_time >= #{begin} and create_time <= #{end}")
+    Double getTurnover(LocalDateTime begin, LocalDateTime end);
 }
 

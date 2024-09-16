@@ -1,10 +1,13 @@
 package com.sky.mapper;
 
 import com.sky.entity.User;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.data.domain.Pageable;
-import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.springframework.data.domain.Pageable;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 
 /**
@@ -65,5 +68,8 @@ public interface UserMapper {
      */
     int deleteById(Long id);
 
+    @Select("select count(id) from user " +
+            "where create_time >= #{beginTime} and create_time <= #{endTime}")
+    Integer getUserCount(LocalDateTime beginTime, LocalDateTime endTime);
 }
 

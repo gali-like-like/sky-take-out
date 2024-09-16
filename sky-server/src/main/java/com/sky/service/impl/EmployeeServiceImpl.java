@@ -1,12 +1,19 @@
 package com.sky.service.impl;
 
-import java.util.List;
-import java.util.Objects;
-
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.sky.constant.MessageConstant;
+import com.sky.constant.StatusConstant;
+import com.sky.dto.EmployPasswordDTO;
 import com.sky.dto.EmployeeDTO;
+import com.sky.dto.EmployeeLoginDTO;
 import com.sky.dto.EmployeePageQueryDTO;
+import com.sky.entity.Employee;
+import com.sky.exception.AccountLockedException;
+import com.sky.exception.AccountNotFoundException;
+import com.sky.exception.PasswordErrorException;
+import com.sky.mapper.EmployeeMapper;
+import com.sky.service.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,16 +22,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
-import com.sky.constant.MessageConstant;
-import com.sky.constant.StatusConstant;
-import com.sky.dto.EmployPasswordDTO;
-import com.sky.dto.EmployeeLoginDTO;
-import com.sky.entity.Employee;
-import com.sky.exception.AccountLockedException;
-import com.sky.exception.AccountNotFoundException;
-import com.sky.exception.PasswordErrorException;
-import com.sky.mapper.EmployeeMapper;
-import com.sky.service.EmployeeService;
+import java.util.List;
+import java.util.Objects;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -68,12 +67,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         //3、返回实体对象
         return employee;
     }
-    
-    
+
+
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public Boolean editPassword(EmployPasswordDTO employPasswordDTO) throws AccountNotFoundException {
-		// TODO Auto-generated method stub
 		/**
 		 * 账号不存在就报账号不存在异常,存在则更改密码
 		 * */
@@ -82,7 +80,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 			employeeMapper.editPassword(employPasswordDTO);
 			return true;
 		}
-		else 
+		else
 			return false;
 	}
 //
@@ -90,7 +88,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	@Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
 	public Boolean changeStatus(Integer status, Long id) throws AccountNotFoundException {
-		// TODO Auto-generated method stub
 		/**
 		 * 账号不存在就报账号不存在异常,存在则更改状态
 		 * */
@@ -98,12 +95,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 			employeeMapper.changeStatus(status, id);
 			return true;
 		}
-		else 
+		else
 			return false;
 	}
 
 	@Override
-	// todo
 	public PageInfo<Employee> pageDataByPageSize(EmployeePageQueryDTO queryDTO) {
 		List<Employee> employeeList = employeeMapper.getAllEmployee(queryDTO.getName());
 		PageHelper.startPage(queryDTO.getPage(),queryDTO.getPageSize());
