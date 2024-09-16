@@ -1,7 +1,12 @@
 package com.sky.mapper;
 
+import com.github.pagehelper.PageInfo;
+import com.sky.dto.SetmealDTO;
+import com.sky.dto.SetmealPageQueryDTO;
 import com.sky.entity.Setmeal;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.data.domain.Pageable;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
@@ -15,55 +20,18 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface SetmealMapper {
-
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param id 主键
-     * @return 实例对象
-     */
-    Setmeal queryById(Long id);
-
-    /**
-     * 总记录数
-     *
-     * @param setmeal 筛选条件
-     * @return Long
-     */
-    Long count(Setmeal setmeal);
-
-    /**
-     * 查询指定行数据
-     *
-     * @param setmeal 查询条件
-     * @param pageable         分页对象
-     * @return 对象列表
-     */
-    List<Setmeal> queryAllByLimit(Setmeal setmeal, @Param("pageable") Pageable pageable);
-
-    /**
-     * 新增数据
-     *
-     * @param setmeal 实例对象
-     * @return 影响行数
-     */
-    int insert(Setmeal setmeal);
-
-    /**
-     * 修改数据
-     *
-     * @param setmeal 实例对象
-     * @return 影响行数
-     */
-    int update(Setmeal setmeal);
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param id 主键
-     * @return 影响行数
-     */
-    int deleteById(Long id);
-
+    //更新套餐
+    public void updateSetmeal(SetmealDTO setmeal);
+    //分页查询
+    public List<Setmeal> pageSetmeal(SetmealPageQueryDTO queryDTO);
+    //更改套餐状态
+    public void updateSetmealStatus(Integer status, Long id);
+    //批量删除套餐
+    public void deleteSetmals(List<Long> ids);
+    //新增套餐
+    @Options(useGeneratedKeys = true,keyProperty = "id")
+    public Long addSetmeal(SetmealDTO setmealDTO);
+    //根据id查询套餐
+    public Setmeal getSetmealById(Long id);
 }
 

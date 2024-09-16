@@ -124,5 +124,4 @@ public class SkyApplicationTest {
 		Result result = employeeController.editEmployee(employeeDTO);
 		assertEquals(0,result.getCode());
 	}
-
 }

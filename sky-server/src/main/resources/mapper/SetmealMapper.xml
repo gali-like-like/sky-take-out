@@ -1,50 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sky.mapper.SetmealMapper">
-
-    <resultMap type="com.sky.entity.Setmeal" id="SetmealMap">
-        <result property="id" column="id" jdbcType="INTEGER"/>
-        <result property="categoryId" column="category_id" jdbcType="INTEGER"/>
-        <result property="name" column="name" jdbcType="VARCHAR"/>
-        <result property="price" column="price" jdbcType="VARCHAR"/>
-        <result property="status" column="status" jdbcType="INTEGER"/>
-        <result property="description" column="description" jdbcType="VARCHAR"/>
-        <result property="image" column="image" jdbcType="VARCHAR"/>
-        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
-        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
-        <result property="createUser" column="create_user" jdbcType="INTEGER"/>
-        <result property="updateUser" column="update_user" jdbcType="INTEGER"/>
-    </resultMap>
-
-    <!--查询单个-->
-    <select id="queryById" resultMap="SetmealMap">
-    
+    <sql id="query_setmeal">
+        select id,name,category_id,price,image,
+               description,status,create_time,
+               update_time,create_user,update_user from setmeal
+    </sql>
+<!--    修改套餐-->
+    <update id="updateSetmeal">
+        update setmeal
+        <set>
+            <if test="description != null">
+                description = #{description},
+            </if>
+            category_id = #{categoryId},image = #{image},name = #{name},price = #{price}
+            <where>
+                id = #{id}
+            </where>
+        </set>
+    </update>
+<!--    分页查询-->
+    <select id="pageSetmeal" resultType="com.sky.entity.Setmeal">
+        <include refid="query_setmeal"></include>
+        <where>
+            <if test="name != null">
+                name like concat("%",#{name},"%")
+            </if>
+            <if test="categoryId != null">
+                 and category_id = #{categoryId}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
     </select>
-    
-    <!--条件筛选总记录数-->
-    <select id="count" resultType="java.lang.Long">
-    
-    </select>
-
-    <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="SetmealMap">
-    
-    </select>
-
-    <!--新增数据-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-    
+<!--    //更改套餐状态-->
+    <update id="updateSetmealStatus">
+        update setmeal set status = #{status} where id = #{id}
+    </update>
+<!--    批量删除套餐-->
+    <delete id="deleteSetmals">
+        delete from setmeal where id in
+        <foreach item="id" index="index" collection="list" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+<!--    新增套餐-->
+    <insert id="addSetmeal">
+        insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (#{categoryId},#{image},#{name},#{price},#{status},now(),now(),1,1)
     </insert>
 
-    <!--通过主键修改数据-->
-    <update id="update">
-    
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-    
-    </delete>
-
+    <!--查询单个-->
+    <select id="getSetmealById" resultType="com.sky.entity.Setmeal">
+        <include refid="query_setmeal" />
+        <where>
+            id = #{id}
+        </where>
+    </select>
 </mapper>
 
