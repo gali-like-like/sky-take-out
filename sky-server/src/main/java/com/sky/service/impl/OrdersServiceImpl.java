@@ -47,7 +47,11 @@ public class OrdersServiceImpl implements OrdersService {
         PageHelper.startPage(ordersPageQueryDTO.getPage(), ordersPageQueryDTO.getPageSize());
         List<Orders> orders = orderMapper.pageQuery(ordersPageQueryDTO);
         List<OrderVO> collect = orders.stream()
-                .map(OrderConvert.INSTANCE::orderToOrderVo)
+                .map(order -> {
+                    OrderVO orderVO = new OrderVO();
+                    OrderConvert.INSTANCE.orderToOrderVo(order,orderVO);
+                    return orderVO;
+                })
                 .collect(Collectors.toList());
         PageInfo<OrderVO> pageInfo = new PageInfo<>(collect);
         return new PageResult(pageInfo.getTotal(), collect);
@@ -63,7 +67,8 @@ public class OrdersServiceImpl implements OrdersService {
     public OrderVO details(Long id) {
         Orders orders = orderMapper.getById(id);
         List<OrderDetail> orderDetailList = orderDetailMapper.getByOrderId(orders.getId());
-        OrderVO orderVO = OrderConvert.INSTANCE.orderToOrderVo(orders);
+        OrderVO orderVO = new OrderVO();
+        OrderConvert.INSTANCE.orderToOrderVo(orders,orderVO);
         orderVO.setOrderDetailList(orderDetailList);
         return orderVO;
     }
