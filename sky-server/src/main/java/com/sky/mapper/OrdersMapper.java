@@ -1,10 +1,11 @@
 package com.sky.mapper;
 
+import com.sky.dto.OrdersPageQueryDTO;
 import com.sky.entity.Orders;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.data.domain.Pageable;
-import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 
 /**
@@ -17,53 +18,26 @@ import org.apache.ibatis.annotations.Mapper;
 public interface OrdersMapper {
 
     /**
-     * 通过ID查询单条数据
+     * 分页查询订单列表
      *
-     * @param id 主键
-     * @return 实例对象
+     * @param ordersPageQueryDTO 订单分页查询条件
+     * @return 分页查询结果
      */
-    Orders queryById(Long id);
+    List<Orders> pageQuery(OrdersPageQueryDTO ordersPageQueryDTO);
 
     /**
-     * 总记录数
+     * 根据id查询订单
      *
-     * @param orders 筛选条件
-     * @return Long
+     * @param id 订单id
+     * @return 订单
      */
-    Long count(Orders orders);
+    Orders getById(Long id);
 
     /**
-     * 查询指定行数据
-     *
-     * @param orders 查询条件
-     * @param pageable         分页对象
-     * @return 对象列表
+     * 根据状态统计订单数量
+     * @param status
      */
-    List<Orders> queryAllByLimit(Orders orders, @Param("pageable") Pageable pageable);
-
-    /**
-     * 新增数据
-     *
-     * @param orders 实例对象
-     * @return 影响行数
-     */
-    int insert(Orders orders);
-
-    /**
-     * 修改数据
-     *
-     * @param orders 实例对象
-     * @return 影响行数
-     */
-    int update(Orders orders);
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param id 主键
-     * @return 影响行数
-     */
-    int deleteById(Long id);
-
+    @Select("select count(id) from orders where status = #{status}")
+    Integer countStatus(Integer status);
 }
 

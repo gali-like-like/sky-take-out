@@ -28,36 +28,37 @@
         <result property="tablewareNumber" column="tableware_number" jdbcType="INTEGER"/>
         <result property="tablewareStatus" column="tableware_status" jdbcType="INTEGER"/>
     </resultMap>
-
-    <!--查询单个-->
-    <select id="queryById" resultMap="OrdersMap">
     
+    
+    <select id="pageQuery" resultType="Orders">
+        select * from orders
+        <where>
+            <if test="number != null and number!=''">
+                and number like concat('%',#{number},'%')
+            </if>
+            <if test="phone != null and phone!=''">
+                and phone like concat('%',#{phone},'%')
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="beginTime != null">
+                and order_time &gt;= #{beginTime}
+            </if>
+            <if test="endTime != null">
+                and order_time &lt;= #{endTime}
+            </if>
+        </where>
+        order by order_time desc
     </select>
     
-    <!--条件筛选总记录数-->
-    <select id="count" resultType="java.lang.Long">
-    
+    <select id="getById" resultType="com.sky.entity.Orders">
+        select * from orders where id = #{id}
     </select>
 
-    <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="OrdersMap">
-    
-    </select>
-
-    <!--新增数据-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-    
-    </insert>
-
-    <!--通过主键修改数据-->
-    <update id="update">
-    
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-    
-    </delete>
 
 </mapper>
 

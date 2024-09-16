@@ -88,9 +88,8 @@ public class DishServiceImpl implements DishService {
      * @return 实例对象
      */
     @Override
-    public Boolean insert(Dish dish) {
-        int insert = dishMapper.insert(dish);
-        return insert>0;
+    public int insert(Dish dish) {
+        return dishMapper.insert(dish);
     }
 
     /**
@@ -101,7 +100,7 @@ public class DishServiceImpl implements DishService {
      */
     @Override
     @Transactional
-    public Boolean update(DishDTO dishDTO) {
+    public int update(DishDTO dishDTO) {
         // 对flavor判空
         if (dishDTO.getFlavors() != null) {
             dishDTO.getFlavors().stream()
@@ -110,8 +109,7 @@ public class DishServiceImpl implements DishService {
         }
         Dish dish = dishMapper.queryById(dishDTO.getId());
         DishConvert.INSTANCE.dishDTOToDish(dishDTO, dish);
-        int result = dishMapper.update(dish);
-        return result > 0;
+        return dishMapper.update(dish);
     }
 
     /**
@@ -125,6 +123,12 @@ public class DishServiceImpl implements DishService {
         return dishMapper.deleteById(id) > 0;
     }
 
+    /**
+     * 通过多个ID删除数据
+     *
+     * @param ids 多个主键
+     * @return 是否成功
+     */
     @Override
     @Transactional
     public Boolean deleteByIds(String ids) {
@@ -135,17 +139,29 @@ public class DishServiceImpl implements DishService {
         return true;
     }
 
+    /**
+     * 根据分类ID查询菜品
+     *
+     * @param categoryId 分类ID
+     * @return 菜品列表
+     */
     @Override
     public List<DishVO> queryByCategoryId(Long categoryId) {
         List<Dish> dishList = dishMapper.queryByCategoryId(categoryId);
-        List<DishVO> collect = dishList.stream()
+        return dishList.stream()
                 .map(DishConvert.INSTANCE::dishToDishVO)
                 .collect(Collectors.toList());
-        return collect;
     }
 
+    /**
+     * 更新菜品状态
+     *
+     * @param id 菜品ID
+     * @param status 状态
+     * @return 更新结果
+     */
     @Override
-    public Boolean updateStatus(Long id, Integer status) {
-        return dishMapper.updateStatus(id,status) > 0;
+    public int updateStatus(Long id, Integer status) {
+        return dishMapper.updateStatus(id,status);
     }
 }

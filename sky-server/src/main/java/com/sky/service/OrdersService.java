@@ -1,8 +1,12 @@
 package com.sky.service;
 
-import com.sky.entity.Orders;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import com.sky.dto.OrdersCancelDTO;
+import com.sky.dto.OrdersConfirmDTO;
+import com.sky.dto.OrdersPageQueryDTO;
+import com.sky.dto.OrdersRejectionDTO;
+import com.sky.result.PageResult;
+import com.sky.vo.OrderStatisticsVO;
+import com.sky.vo.OrderVO;
 
 /**
  * 订单表(Orders)表服务接口
@@ -13,44 +17,65 @@ import org.springframework.data.domain.PageRequest;
 public interface OrdersService {
 
     /**
-     * 通过ID查询单条数据
+     * 订单搜索
      *
-     * @param id 主键
-     * @return 实例对象
+     * @param ordersPageQueryDTO 订单搜索条件
+     * @return 分页结果
      */
-    Orders queryById(Long id);
+    PageResult conditionSearch(OrdersPageQueryDTO ordersPageQueryDTO);
 
     /**
-     * 分页查询
+     * 订单详情
      *
-     * @param orders      筛选条件
-     * @param pageRequest 分页对象
-     * @return 查询结果
+     * @param id 订单id
+     * @return 订单详情
      */
-    Page<Orders> queryByPage(Orders orders, PageRequest pageRequest);
+    OrderVO details(Long id);
 
     /**
-     * 新增数据
+     * 订单统计
      *
-     * @param orders 实例对象
-     * @return 实例对象
+     * @return 订单统计
      */
-    Orders insert(Orders orders);
+    OrderStatisticsVO statistics();
 
     /**
-     * 修改数据
+     * 订单确认
      *
-     * @param orders 实例对象
-     * @return 实例对象
+     * @param ordersConfirmDTO 订单确认条件
+     * @return 订单确认
      */
-    Orders update(Orders orders);
+    int confirm(OrdersConfirmDTO ordersConfirmDTO);
 
     /**
-     * 通过主键删除数据
+     * 订单拒绝
      *
-     * @param id 主键
-     * @return 是否成功
+     * @param ordersRejectionDTO 订单拒绝条件
+     * @return 订单拒绝
      */
-    boolean deleteById(Long id);
+    int rejection(OrdersRejectionDTO ordersRejectionDTO);
 
+    /**
+     * 订单取消
+     *
+     * @param ordersCancelDTO 订单取消条件
+     * @return 订单取消
+     */
+    int cancel(OrdersCancelDTO ordersCancelDTO);
+
+    /**
+     * 订单发货
+     *
+     * @param id 订单id
+     * @return 订单发货
+     */
+    int delivery(Long id);
+
+    /**
+     * 订单完成
+     *
+     * @param id 订单id
+     * @return 订单完成
+     */
+    int complete(Long id);
 }

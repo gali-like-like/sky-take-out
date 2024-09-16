@@ -38,7 +38,7 @@ public interface DishService {
      * @param dish 实例对象
      * @return 实例对象
      */
-    Boolean insert(Dish dish);
+    int insert(Dish dish);
 
     /**
      * 修改数据
@@ -46,7 +46,7 @@ public interface DishService {
      * @param dish 实例对象
      * @return 实例对象
      */
-    Boolean update(DishDTO dish);
+    int update(DishDTO dish);
 
     /**
      * 通过主键删除数据
@@ -60,5 +60,5 @@ public interface DishService {
 
     List<DishVO> queryByCategoryId(Long categoryId);
 
-    Boolean updateStatus(Long id, Integer status);
+    int updateStatus(Long id, Integer status);
 }

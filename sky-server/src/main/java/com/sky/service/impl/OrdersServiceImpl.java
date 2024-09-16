@@ -1,14 +1,25 @@
 package com.sky.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.sky.convert.OrderConvert;
+import com.sky.dto.OrdersCancelDTO;
+import com.sky.dto.OrdersConfirmDTO;
+import com.sky.dto.OrdersPageQueryDTO;
+import com.sky.dto.OrdersRejectionDTO;
+import com.sky.entity.OrderDetail;
 import com.sky.entity.Orders;
+import com.sky.mapper.OrderDetailMapper;
 import com.sky.mapper.OrdersMapper;
+import com.sky.result.PageResult;
 import com.sky.service.OrdersService;
+import com.sky.vo.OrderStatisticsVO;
+import com.sky.vo.OrderVO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 
-import javax.annotation.Resource;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 订单表(Orders)表服务实现类
@@ -17,66 +28,87 @@ import javax.annotation.Resource;
  * @since 2024-09-15 11:42:03
  */
 @Service("ordersService")
+@RequiredArgsConstructor
 public class OrdersServiceImpl implements OrdersService {
-    @Resource
-    private OrdersMapper ordersMapper;
+
+    // 需要注入的mapper
+    private final OrdersMapper orderMapper;
+    private final OrderDetailMapper orderDetailMapper;
+
 
     /**
-     * 通过ID查询单条数据
+     * 订单搜索条件
      *
-     * @param id 主键
-     * @return 实例对象
+     * @param ordersPageQueryDTO 订单搜索条件
+     * @return
      */
     @Override
-    public Orders queryById(Long id) {
-        return ordersMapper.queryById(id);
+    public PageResult conditionSearch(OrdersPageQueryDTO ordersPageQueryDTO) {
+        PageHelper.startPage(ordersPageQueryDTO.getPage(), ordersPageQueryDTO.getPageSize());
+        List<Orders> orders = orderMapper.pageQuery(ordersPageQueryDTO);
+        List<OrderVO> collect = orders.stream()
+                .map(OrderConvert.INSTANCE::orderToOrderVo)
+                .collect(Collectors.toList());
+        PageInfo<OrderVO> pageInfo = new PageInfo<>(collect);
+        return new PageResult(pageInfo.getTotal(), collect);
     }
 
     /**
-     * 分页查询
+     * 订单详情
      *
-     * @param orders      筛选条件
-     * @param pageRequest 分页对象
-     * @return 查询结果
+     * @param id 订单id
+     * @return 订单详情
      */
     @Override
-    public Page<Orders> queryByPage(Orders orders, PageRequest pageRequest) {
-        long total = ordersMapper.count(orders);
-        return new PageImpl<>(ordersMapper.queryAllByLimit(orders, pageRequest), pageRequest, total);
+    public OrderVO details(Long id) {
+        Orders orders = orderMapper.getById(id);
+        List<OrderDetail> orderDetailList = orderDetailMapper.getByOrderId(orders.getId());
+        OrderVO orderVO = OrderConvert.INSTANCE.orderToOrderVo(orders);
+        orderVO.setOrderDetailList(orderDetailList);
+        return orderVO;
     }
 
-    /**
-     * 新增数据
-     *
-     * @param orders 实例对象
-     * @return 实例对象
-     */
     @Override
-    public Orders insert(Orders orders) {
-        ordersMapper.insert(orders);
-        return orders;
+    public OrderStatisticsVO statistics() {
+        // 根据状态，分别查询出待接单、待派送、派送中的订单数量
+        Integer toBeConfirmed = orderMapper.countStatus(Orders.TO_BE_CONFIRMED);
+        Integer confirmed = orderMapper.countStatus(Orders.CONFIRMED);
+        Integer deliveryInProgress = orderMapper.countStatus(Orders.DELIVERY_IN_PROGRESS);
+
+        // 将查询出的数据封装到orderStatisticsVO中响应
+        OrderStatisticsVO orderStatisticsVO = new OrderStatisticsVO();
+        orderStatisticsVO.setToBeConfirmed(toBeConfirmed);
+        orderStatisticsVO.setConfirmed(confirmed);
+        orderStatisticsVO.setDeliveryInProgress(deliveryInProgress);
+        return orderStatisticsVO;
     }
 
-    /**
-     * 修改数据
-     *
-     * @param orders 实例对象
-     * @return 实例对象
-     */
+    // region 待实现的接口
+
     @Override
-    public Orders update(Orders orders) {
-        ordersMapper.update(orders);
-        return queryById(orders.getId());
+    public int confirm(OrdersConfirmDTO ordersConfirmDTO) {
+        return 0;
     }
 
-    /**
-     * 通过主键删除数据
-     *
-     * @param id 主键
-     * @return 是否成功
-     */
     @Override
-    public boolean deleteById(Long id) {
-        return ordersMapper.deleteById(id) > 0;
+    public int rejection(OrdersRejectionDTO ordersRejectionDTO) {
+        return 0;
     }
+
+    @Override
+    public int cancel(OrdersCancelDTO ordersCancelDTO) {
+        return 0;
+    }
+
+    @Override
+    public int delivery(Long id) {
+        return 0;
+    }
+
+    @Override
+    public int complete(Long id) {
+        return 0;
+    }
+
+    // endregion
 }
