@@ -33,7 +33,13 @@
 
     <!--通过主键修改数据-->
     <update id="update">
-    
+        update setmeal_dish set
+        setmeal_id = #{setmealId},
+        dish_id = #{dishId},
+        name = #{name},
+        price = #{price},
+        copies = #{copies}
+        where id = #{id}
     </update>
 
     <!--通过主键删除-->

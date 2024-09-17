@@ -1,10 +1,12 @@
 package com.sky.mapper;
 
 import com.sky.entity.SetmealDish;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.data.domain.Pageable;
-import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 
 /**
@@ -64,6 +66,10 @@ public interface SetmealDishMapper {
      * @return 影响行数
      */
     int deleteById(Long id);
+
+    // 查询全部
+    @Select("SELECT * FROM setmeal_dish")
+    List<SetmealDish> queryAll();
 
 }
 
