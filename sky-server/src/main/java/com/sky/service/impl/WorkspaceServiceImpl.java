@@ -49,6 +49,16 @@ public class WorkspaceServiceImpl implements WorkspaceService {
         Integer userCount = userMapper.getUserCount(begin, end);
         // 有效订单数
         Integer orderCount = ordersMapper.getOrderCount(begin, end, Orders.COMPLETED);
+        // 有效订单数为0直接返回
+        if (orderCount == 0){
+            return BusinessDataVO.builder()
+                    .newUsers(userCount)
+                    .validOrderCount(orderCount)
+                    .turnover(0.0)
+                    .unitPrice(0.0)
+                    .orderCompletionRate(0.0)
+                    .build();
+        }
         Integer allOrderCount = ordersMapper.getOrderCount(begin, end, null);
         // 订单完成率
         Double orderRate = (double) orderCount / allOrderCount * 100;
@@ -65,6 +75,7 @@ public class WorkspaceServiceImpl implements WorkspaceService {
                 .orderCompletionRate(orderRate)
                 .build();
     }
+
     /**
      * 查询订单管理数据
      *
