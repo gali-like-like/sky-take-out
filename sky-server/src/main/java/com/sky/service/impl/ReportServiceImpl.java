@@ -139,7 +139,7 @@ public class ReportServiceImpl implements ReportService {
             LocalDateTime begin = LocalDateTime.of(date, LocalTime.MIN);
             LocalDateTime end = LocalDateTime.of(date, LocalTime.MAX);
             //查询每天的营业额 select sum(total_price) from orders where order_time > ? and order_time < ?
-            Double turnover = orderMapper.getTurnover(begin, end);
+            Double turnover = orderMapper.getTurnover(begin, end, Orders.COMPLETED);
             turnoverList.add(turnover);
         }
         return TurnoverReportVO.builder()

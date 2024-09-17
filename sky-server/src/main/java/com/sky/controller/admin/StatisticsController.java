@@ -38,6 +38,7 @@ public class StatisticsController {
 
     // 导出Excel http://localhost:8081/report/export
     @GetMapping("export")
+    @ApiOperation("导出Excel")
     public void export(HttpServletResponse response) {
         // TODO 取到需要导出数据（这里是假数据）
         List<DemoData> list = ListUtils.newArrayList();
@@ -94,6 +95,7 @@ public class StatisticsController {
      * @return
      */
     @GetMapping("userStatistics")
+    @ApiOperation("用户统计")
     public Result<Object> getUserStatistics(
             @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
             @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end) {
@@ -109,6 +111,7 @@ public class StatisticsController {
      * @return
      */
     @GetMapping("orderStatistics")
+    @ApiOperation("订单统计")
     public Result<Object> getOrderStatistics(
             @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
             @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end) {
@@ -124,6 +127,7 @@ public class StatisticsController {
      * @return
      */
     @GetMapping("orderDetailStatistics")
+    @ApiOperation("营业额统计")
     public Result<Object> getOrderDetailStatistics(
             @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
             @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end) {

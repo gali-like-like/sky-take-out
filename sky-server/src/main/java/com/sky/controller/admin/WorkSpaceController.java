@@ -35,12 +35,7 @@ public class WorkSpaceController {
     @GetMapping("/businessData")
     @ApiOperation("工作台今日数据查询")
     public Result<BusinessDataVO> businessData(){
-        //获得当天的开始时间
-        LocalDateTime begin = LocalDateTime.now().with(LocalTime.MIN);
-        //获得当天的结束时间
-        LocalDateTime end = LocalDateTime.now().with(LocalTime.MAX);
-
-        BusinessDataVO businessDataVO = workspaceService.getBusinessData(begin, end);
+        BusinessDataVO businessDataVO = workspaceService.getBusinessData();
         return Result.success(businessDataVO);
     }
 

@@ -9,6 +9,7 @@ import com.sky.result.Result;
 import com.sky.service.OrdersService;
 import com.sky.vo.OrderStatisticsVO;
 import com.sky.vo.OrderVO;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
  * @author leapsss <a href="https://github.com/ThenLeap">GitHub Profile</a>
  * @since 2024-09-15 11:42:03
  */
+@Api(tags = "订单管理接口")
 @RestController
 @RequestMapping("orders")
 @RequiredArgsConstructor

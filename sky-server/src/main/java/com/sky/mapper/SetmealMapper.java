@@ -1,15 +1,13 @@
 package com.sky.mapper;
 
-import com.github.pagehelper.PageInfo;
 import com.sky.dto.SetmealDTO;
 import com.sky.dto.SetmealPageQueryDTO;
 import com.sky.entity.Setmeal;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.springframework.data.domain.Pageable;
-import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 
 /**
@@ -33,5 +31,8 @@ public interface SetmealMapper {
     public Long addSetmeal(SetmealDTO setmealDTO);
     //根据id查询套餐
     public Setmeal getSetmealById(Long id);
+
+    @Select("SELECT COUNT(id) FROM setmeal WHERE status = #{status}")
+    Integer getSetmealCount(Integer status);
 }
 

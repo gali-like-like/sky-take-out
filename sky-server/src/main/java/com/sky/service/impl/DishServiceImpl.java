@@ -12,6 +12,7 @@ import com.sky.mapper.DishMapper;
 import com.sky.service.DishService;
 import com.sky.vo.DishVO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -99,7 +100,7 @@ public class DishServiceImpl implements DishService {
      * @return 实例对象
      */
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
     public int update(DishDTO dishDTO) {
         // 对flavor判空
         if (dishDTO.getFlavors() != null) {
@@ -130,7 +131,7 @@ public class DishServiceImpl implements DishService {
      * @return 是否成功
      */
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
     public Boolean deleteByIds(String ids) {
         String[] idArr = ids.split(",");
         for (String id : idArr) {

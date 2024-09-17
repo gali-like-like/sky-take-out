@@ -3,6 +3,7 @@ package com.sky.mapper;
 import com.sky.entity.Dish;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -71,5 +72,8 @@ public interface DishMapper {
     List<Dish> queryByCategoryId(Long categoryId);
 
     int updateStatus(Long id, Integer status);
+
+    @Select("SELECT COUNT(id) FROM dish WHERE status = #{status}")
+    Integer getDishCount(Integer status);
 }
 

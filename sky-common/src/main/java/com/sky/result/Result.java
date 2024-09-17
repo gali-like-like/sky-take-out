@@ -1,6 +1,7 @@
 package com.sky.result;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.sky.enums.ErrorCode;
 import lombok.Getter;
 
 import java.io.Serializable;
@@ -37,6 +38,20 @@ public class Result<T> implements Serializable {
         result.code = 0;
         return result;
     }
+
+
+    public static <T> Result<T> error(ErrorCode errorCode) {
+        return error(errorCode.getCode(), errorCode.getMsg());
+    }
+
+    public static <T> Result<T> error(int code, String msg) {
+        Result<T> result = new Result<>();
+        result.setCode(code);
+        result.setMsg(msg);
+        return result;
+    }
+
+
 
     public void setCode(Integer code) {
         this.code = code;

@@ -72,7 +72,9 @@ public interface OrdersMapper {
      * @return
      */
     @Select("select sum(total_amount) from orders " +
-            "where create_time >= #{begin} and create_time <= #{end}")
-    Double getTurnover(LocalDateTime begin, LocalDateTime end);
+            "where order_time >= #{begin} and order_time <= #{end}" +
+            "and (status = #{status} or #{status} is null)")
+    Double getTurnover(LocalDateTime begin, LocalDateTime end, Integer status);
+
 }
 
