@@ -1,4 +1,4 @@
-package com.sky.service.impl.admin;
+package com.sky.controller.admin;
 
 import java.util.HashMap;
 import java.util.Map;

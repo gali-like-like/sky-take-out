@@ -1,4 +1,4 @@
-package com.sky.service.impl.admin;
+package com.sky.controller.admin;
 
 import com.sky.entity.AddressBook;
 import com.sky.service.AddressBookService;

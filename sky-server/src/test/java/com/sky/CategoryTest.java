@@ -1,6 +1,6 @@
 package com.sky;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import com.sky.service.impl.admin.CategoryController;
+import com.sky.controller.admin.CategoryController;
 import com.sky.dto.CategoryDTO;
 import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.result.Result;
