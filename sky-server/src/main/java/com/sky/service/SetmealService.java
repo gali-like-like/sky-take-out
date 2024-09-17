@@ -1,13 +1,9 @@
 package com.sky.service;
 
 import com.github.pagehelper.PageInfo;
-import com.sky.controller.admin.SetmealController;
 import com.sky.dto.SetmealDTO;
 import com.sky.dto.SetmealPageQueryDTO;
 import com.sky.entity.Setmeal;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -29,5 +25,5 @@ public interface SetmealService {
     //新增套餐
     public Long addSetmeal(SetmealDTO setmealDTO);
     //根据id查询套餐
-    public Setmeal getSetmealById(Long id);
+    public SetmealDTO getSetmealById(Long id);
 }

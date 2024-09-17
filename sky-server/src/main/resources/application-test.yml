@@ -9,3 +9,8 @@ git sky:
 # 是否屏蔽jwt令牌
    jwt:
        isHidden: true
+   thread:
+     corePoolSize: 4
+     maxPoolSize: 8
+     queueCapacity: 10
+     keepAliveSeconds: 5

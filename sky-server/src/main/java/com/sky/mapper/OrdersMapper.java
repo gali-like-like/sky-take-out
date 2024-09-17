@@ -1,7 +1,6 @@
 package com.sky.mapper;
 
-import com.sky.dto.GoodsSalesDTO;
-import com.sky.dto.OrdersPageQueryDTO;
+import com.sky.dto.*;
 import com.sky.entity.Orders;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -74,5 +73,21 @@ public interface OrdersMapper {
     @Select("select sum(total_amount) from orders " +
             "where create_time >= #{begin} and create_time <= #{end}")
     Double getTurnover(LocalDateTime begin, LocalDateTime end);
+    //确认订单，完成订单
+    public void completeOrder(Long orderId);
+    //查询订单状态
+    public Integer getStatusById(Long orderId);
+    //查询超时订单
+    public List<OrdersConfirmDTO> getTimeOutOrders();
+    //查询运送中的订单
+    public List<OrdersConfirmDTO> getTranprotOrders();
+    //取消订单
+    public void cancel(OrdersCancelDTO ordersCancelDTO);
+    //拒绝订单
+    public void reject(OrdersRejectionDTO ordersRejectionDTO);
+    //派送订单
+    public void delivery(Long orderId);
+    //接单
+    public void confirm(Long orderId);
 }
 

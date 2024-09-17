@@ -23,5 +23,17 @@ public class MessageConstant {
     public static final String DISH_BE_RELATED_BY_SETMEAL = "当前菜品关联了套餐,不能删除";
     public static final String ORDER_STATUS_ERROR = "订单状态错误";
     public static final String ORDER_NOT_FOUND = "订单不存在";
-
+    public static final String ORDER_TIME_OUT = "订单超时";
+    public static final String ORDER_DOWN_SUCCESS = "下单成功";
+    public static final String ORDER_GET_SUCCESS = "接单成功";
+    public static final String ORDER_COMPLETE_SUCCESS = "完成订单成功";
+    public static final String ORDER_CANCEL_SUCCESS = "取消订单成功";
+    public static final String ORDER_REJECT_SUCCESS = "拒绝订单成功";
+    public static final String ORDER_DELIVERY_SUCCESS = "派送订单成功";
+    public static final String SETMEAL_UPDATE_SUCCESS = "套餐修改成功";
+    public static final String SETMEAL_DELETE_SUCCESS = "套餐删除成功";
+    public static final String SETMEAL_ADD_SUCCESS = "套餐添加成功";
+    public static final String SETMEAL_CHANG_STATUS_SUCCESS = "套餐切换状态成功";
+    public static final String SETMEAL_QUERY_SUCCESS = "套餐查询成功";
+    public static final String SETMEAL_NOT_FOUND = "套餐不存在";
 }

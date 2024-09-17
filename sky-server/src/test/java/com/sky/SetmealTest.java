@@ -1,10 +1,8 @@
 package com.sky;
 
-import com.github.pagehelper.PageInfo;
-import com.sky.controller.admin.SetmealController;
+import com.sky.service.impl.admin.SetmealController;
 import com.sky.dto.SetmealDTO;
 import com.sky.dto.SetmealPageQueryDTO;
-import com.sky.entity.Setmeal;
 import com.sky.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
@@ -15,7 +13,6 @@ import org.springframework.test.context.ActiveProfiles;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
@@ -30,9 +27,9 @@ public class SetmealTest {
     @Test
     @Order(1)
     @DisplayName("添加套餐成功")
-    public void testAddSetmealSuccess() {
+    public void testAddSetmealSuccess() throws ExecutionException, InterruptedException, TimeoutException {
         SetmealDTO setmealDTO = new SetmealDTO();
-        setmealDTO.setName("套餐"+String.valueOf(221120L));
+        setmealDTO.setName("套餐"+String.valueOf(22155L));
         setmealDTO.setPrice(BigDecimal.valueOf(56,2));
         setmealDTO.setImage("/4871.png");
         setmealDTO.setCategoryId(3L);
@@ -43,7 +40,7 @@ public class SetmealTest {
     @Test
     @Order(1)
     @DisplayName("因名字重复而添加套餐失败")
-    public void testAddSetmealFail() {
+    public void testAddSetmealFail() throws ExecutionException, InterruptedException, TimeoutException {
         SetmealDTO setmealDTO = new SetmealDTO();
         setmealDTO.setName("套餐1");
         setmealDTO.setPrice(BigDecimal.valueOf(100,2));
@@ -56,7 +53,7 @@ public class SetmealTest {
     @Test
     @DisplayName("根据id获取套餐成功")
     @Order(2)
-    public void testGetSetmealByIdSuccess() {
+    public void testGetSetmealByIdSuccess() throws ExecutionException, InterruptedException, TimeoutException {
         Result result = setmealController.getSetmealById(100L);
         assertEquals(1, result.getCode());
     }
@@ -64,7 +61,7 @@ public class SetmealTest {
     @Test
     @DisplayName("根据id获取套餐失败")
     @Order(3)
-    public void testGetSetmealByIdFail() {
+    public void testGetSetmealByIdFail() throws ExecutionException, InterruptedException, TimeoutException {
         Result result = setmealController.getSetmealById(10000000L);
         assertEquals(0, result.getCode());
     }
@@ -72,7 +69,7 @@ public class SetmealTest {
     @Test
     @DisplayName("id为null获取套餐失败")
     @Order(3)
-    public void testGetSetmealByNullFail() {
+    public void testGetSetmealByNullFail() throws ExecutionException, InterruptedException, TimeoutException {
         Result result = setmealController.getSetmealById(null);
         assertEquals(0, result.getCode());
     }
@@ -81,7 +78,7 @@ public class SetmealTest {
     @Test
     @DisplayName("分页查询")
     @Order(4)
-    public void testPageSetmealSuccess() {
+    public void testPageSetmealSuccess() throws ExecutionException, InterruptedException, TimeoutException {
         SetmealPageQueryDTO queryDTO = new SetmealPageQueryDTO();
         queryDTO.setPage(2);
         queryDTO.setPageSize(10);

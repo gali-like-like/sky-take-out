@@ -29,7 +29,7 @@
         <result property="tablewareStatus" column="tableware_status" jdbcType="INTEGER"/>
     </resultMap>
     
-    
+<!--    分页查询-->
     <select id="pageQuery" resultType="Orders">
         select * from orders
         <where>
@@ -54,11 +54,11 @@
         </where>
         order by order_time desc
     </select>
-    
+<!--    根据id查询订单-->
     <select id="getById" resultType="com.sky.entity.Orders">
         select * from orders where id = #{id}
     </select>
-    
+    <!--查询热门菜品-->
     <select id="getSalesTop10" resultType="com.sky.dto.GoodsSalesDTO">
         select od.name name,sum(od.number) number from order_detail od ,orders o
         where od.order_id = o.id
@@ -73,7 +73,68 @@
         order by number desc
         limit 0, 10
     </select>
+<!-- 完成订单-->
+    <update id="completeOrder">
+        update orders
+        <set>
+            status = 5
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+<!--    取消订单-->
+    <update id="cancel">
+        update orders
+        <set>
+            cancel_reason = #{cancelReason}
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+    <!--    根据id查询状态-->
+    <select id="getStatusById" resultType="java.lang.Integer">
+        select status from orders where id = #{id}
+    </select>
 
-
+<!--    查询超时订单-->
+    <select id="getTimeOutOrders" resultType="com.sky.dto.OrdersConfirmDTO">
+        select id,status from orders where TIMESTAMPDIFF(minute,now(),order_time) > 15;
+    </select>
+<!--    查询运送中的订单-->
+    <select id="getTranprotOrders" resultType="com.sky.dto.OrdersConfirmDTO">
+        select id,status from orders where status = 4;
+    </select>
+<!--    拒绝订单-->
+    <update id="reject">
+        update orders
+        <set>
+            rejection_reason = #{rejectionReason}
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+<!--    派送订单-->
+    <update id="delivery">
+        update orders
+        <set>
+            status = 4,delivery_status = 1
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+<!--    接单-->
+    <update id="confirm">
+        update orders
+        <set>
+            status = 3
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
 </mapper>
 
