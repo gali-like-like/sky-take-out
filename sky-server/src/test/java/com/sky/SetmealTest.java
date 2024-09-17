@@ -1,6 +1,6 @@
 package com.sky;
 
-import com.sky.controller.admin.SetmealController;
+import com.sky.service.impl.admin.SetmealController;
 import com.sky.dto.SetmealDTO;
 import com.sky.dto.SetmealPageQueryDTO;
 import com.sky.result.Result;

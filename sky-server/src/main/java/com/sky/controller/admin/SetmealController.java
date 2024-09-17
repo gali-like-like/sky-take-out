@@ -1,4 +1,4 @@
-package com.sky.controller.admin;
+package com.sky.service.impl.admin;
 
 import com.github.pagehelper.PageInfo;
 import com.sky.constant.MessageConstant;

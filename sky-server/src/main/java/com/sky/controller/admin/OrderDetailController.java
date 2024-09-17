@@ -1,4 +1,4 @@
-package com.sky.controller.admin;
+package com.sky.service.impl.admin;
 
 import com.sky.service.OrderDetailService;
 import org.springframework.web.bind.annotation.RequestMapping;
