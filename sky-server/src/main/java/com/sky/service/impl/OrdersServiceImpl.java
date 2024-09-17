@@ -2,6 +2,8 @@ package com.sky.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.sky.command.MapInitializer;
+import com.sky.constant.MessageConstant;
 import com.sky.convert.OrderConvert;
 import com.sky.dto.OrdersCancelDTO;
 import com.sky.dto.OrdersConfirmDTO;
@@ -9,6 +11,7 @@ import com.sky.dto.OrdersPageQueryDTO;
 import com.sky.dto.OrdersRejectionDTO;
 import com.sky.entity.OrderDetail;
 import com.sky.entity.Orders;
+import com.sky.exception.OrderBusinessException;
 import com.sky.mapper.OrderDetailMapper;
 import com.sky.mapper.OrdersMapper;
 import com.sky.result.PageResult;
@@ -16,9 +19,14 @@ import com.sky.service.OrdersService;
 import com.sky.vo.OrderStatisticsVO;
 import com.sky.vo.OrderVO;
 import lombok.RequiredArgsConstructor;
+import org.junit.jupiter.api.Order;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -30,18 +38,12 @@ import java.util.stream.Collectors;
 @Service("ordersService")
 @RequiredArgsConstructor
 public class OrdersServiceImpl implements OrdersService {
-
     // 需要注入的mapper
     private final OrdersMapper orderMapper;
     private final OrderDetailMapper orderDetailMapper;
-
-
-    /**
-     * 订单搜索条件
-     *
-     * @param ordersPageQueryDTO 订单搜索条件
-     * @return
-     */
+    private final OrdersMapper ordersMapper;
+    private final MapInitializer mapInitializer;
+    //订单搜索条件
     @Override
     public PageResult conditionSearch(OrdersPageQueryDTO ordersPageQueryDTO) {
         PageHelper.startPage(ordersPageQueryDTO.getPage(), ordersPageQueryDTO.getPageSize());
@@ -49,7 +51,7 @@ public class OrdersServiceImpl implements OrdersService {
         List<OrderVO> collect = orders.stream()
                 .map(order -> {
                     OrderVO orderVO = new OrderVO();
-                    OrderConvert.INSTANCE.orderToOrderVo(order,orderVO);
+                    OrderConvert.INSTANCE.orderToOrderVo(order, orderVO);
                     return orderVO;
                 })
                 .collect(Collectors.toList());
@@ -57,22 +59,17 @@ public class OrdersServiceImpl implements OrdersService {
         return new PageResult(pageInfo.getTotal(), collect);
     }
 
-    /**
-     * 订单详情
-     *
-     * @param id 订单id
-     * @return 订单详情
-     */
+    //订单详情
     @Override
     public OrderVO details(Long id) {
         Orders orders = orderMapper.getById(id);
         List<OrderDetail> orderDetailList = orderDetailMapper.getByOrderId(orders.getId());
         OrderVO orderVO = new OrderVO();
-        OrderConvert.INSTANCE.orderToOrderVo(orders,orderVO);
+        OrderConvert.INSTANCE.orderToOrderVo(orders, orderVO);
         orderVO.setOrderDetailList(orderDetailList);
         return orderVO;
     }
-
+    //统计
     @Override
     public OrderStatisticsVO statistics() {
         // 根据状态，分别查询出待接单、待派送、派送中的订单数量
@@ -87,33 +84,89 @@ public class OrdersServiceImpl implements OrdersService {
         orderStatisticsVO.setDeliveryInProgress(deliveryInProgress);
         return orderStatisticsVO;
     }
-
-    // region TODO 待实现的订单相关接口
-
+    //完成订单
     @Override
-    public int confirm(OrdersConfirmDTO ordersConfirmDTO) {
-        return 0;
+    public Boolean completeOrder(Long orderId) {
+        Orders orders = ordersMapper.getById(orderId);
+        if (Objects.isNull(orders)) {
+            throw new OrderBusinessException(MessageConstant.ORDER_NOT_FOUND);
+        }
+        orderMapper.completeOrder(orderId);
+        return true;
+    }
+    //拒绝接单
+    @Override
+    public Boolean rejection(OrdersRejectionDTO ordersRejectionDTO) {
+        Long id = ordersRejectionDTO.getId();
+        Orders order = orderMapper.getById(id);
+        if(Objects.isNull(order))
+            throw new OrderBusinessException(MessageConstant.ORDER_NOT_FOUND);
+        orderMapper.reject(ordersRejectionDTO);
+        return true;
+    }
+    //取消订单
+    @Override
+    public Boolean cancel(OrdersCancelDTO ordersCancelDTO) {
+        Integer status = orderMapper.getStatusById(ordersCancelDTO.getId());
+        if(Objects.isNull(status)) {
+            throw new OrderBusinessException(MessageConstant.ORDER_NOT_FOUND);
+        }
+        orderMapper.cancel(ordersCancelDTO);
+        return true;
+    }
+    //接单
+    public Boolean confirm(Long orderId) {
+        Orders orders = ordersMapper.getById(orderId);
+        if(Objects.isNull(orders)) {
+            throw new OrderBusinessException(MessageConstant.ORDER_NOT_FOUND);
+        }
+        orderMapper.confirm(orderId);
+        return true;
     }
 
+    //派送订单
     @Override
-    public int rejection(OrdersRejectionDTO ordersRejectionDTO) {
-        return 0;
+    public Boolean delivery(Long id) {
+        Integer status = orderMapper.getStatusById(id);
+        if(Objects.isNull(status)) {
+            throw new OrderBusinessException(MessageConstant.ORDER_NOT_FOUND);
+        }
+        orderMapper.delivery(id);
+        return true;
+    }
+    //查看所有超时订单
+    @Override
+    public List<OrdersConfirmDTO> getTimeOutOrders() {
+        return ordersMapper.getTimeOutOrders();
+    }
+    //查看所有运送中订单
+    @Override
+    public List<OrdersConfirmDTO> getTranprotOrders() {
+        return ordersMapper.getTranprotOrders();
     }
 
-    @Override
-    public int cancel(OrdersCancelDTO ordersCancelDTO) {
-        return 0;
+    //每分钟轮询一遍查询是否有超时订单
+    @Scheduled(fixedRate = 60*1000)
+    public void pollingCancel() {
+        List<OrdersConfirmDTO> ordersConfirmDTOS = ordersMapper.getTimeOutOrders();
+        if(!ordersConfirmDTOS.isEmpty()) {
+            for (OrdersConfirmDTO ordersConfirmDTO : ordersConfirmDTOS) {
+                OrdersCancelDTO ordersCancelDTO = new OrdersCancelDTO();
+                ordersCancelDTO.setId(ordersConfirmDTO.getId());
+                ordersCancelDTO.setCancelReason(MessageConstant.ORDER_TIME_OUT);
+                orderMapper.cancel(ordersCancelDTO);
+            }
+        }
     }
 
-    @Override
-    public int delivery(Long id) {
-        return 0;
+    //凌晨一点是否有运送中的订单，如果有将其订单状态改成完成
+    @Scheduled(cron = "0 1 * * * ?")
+    public void pollingComplete() {
+        List<OrdersConfirmDTO> ordersConfirmDTOS = ordersMapper.getTranprotOrders();
+        if(!ordersConfirmDTOS.isEmpty()) {
+            for (OrdersConfirmDTO ordersConfirmDTO : ordersConfirmDTOS) {
+                orderMapper.completeOrder(ordersConfirmDTO.getId());
+            }
+        }
     }
-
-    @Override
-    public int complete(Long id) {
-        return 0;
-    }
-
-    // endregion
 }

@@ -1,6 +1,7 @@
 package com.sky.mapper;
 
 import com.sky.entity.SetmealDish;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Pageable;
 import java.util.List;
@@ -15,55 +16,14 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface SetmealDishMapper {
-
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param id 主键
-     * @return 实例对象
-     */
-    SetmealDish queryById(Long id);
-
-    /**
-     * 总记录数
-     *
-     * @param setmealDish 筛选条件
-     * @return Long
-     */
-    Long count(SetmealDish setmealDish);
-
-    /**
-     * 查询指定行数据
-     *
-     * @param setmealDish 查询条件
-     * @param pageable         分页对象
-     * @return 对象列表
-     */
-    List<SetmealDish> queryAllByLimit(SetmealDish setmealDish, @Param("pageable") Pageable pageable);
-
-    /**
-     * 新增数据
-     *
-     * @param setmealDish 实例对象
-     * @return 影响行数
-     */
-    int insert(SetmealDish setmealDish);
-
-    /**
-     * 修改数据
-     *
-     * @param setmealDish 实例对象
-     * @return 影响行数
-     */
-    int update(SetmealDish setmealDish);
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param id 主键
-     * @return 影响行数
-     */
-    int deleteById(Long id);
-
+    //修改菜品套餐关系
+    public void updateSetmealDish(SetmealDish setmealDish);
+    //根据套餐id删除对应数据
+    public void deleteSetmealDishById(Long setmealId);
+    //新增套餐菜品关系
+    @Options(useGeneratedKeys = true,keyProperty = "id")
+    public Integer insertSetmealDish(SetmealDish setmealDish);
+    //根据套餐id查询菜品
+    public List<SetmealDish> selectSetmealDishById(Long setmealId);
 }
 

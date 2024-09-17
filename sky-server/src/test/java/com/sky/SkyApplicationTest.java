@@ -1,6 +1,6 @@
 package com.sky;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import com.sky.controller.admin.EmployeeController;
+import com.sky.service.impl.admin.EmployeeController;
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeePageQueryDTO;
 import com.sky.result.Result;
@@ -13,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import com.sky.dto.EmployPasswordDTO;
-import com.sky.service.EmployeeService;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
