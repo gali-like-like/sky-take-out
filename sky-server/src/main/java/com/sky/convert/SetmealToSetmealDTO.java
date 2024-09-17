@@ -7,7 +7,7 @@ import com.sky.entity.SetmealDish;
 import java.util.List;
 
 public class SetmealToSetmealDTO {
-    static  public SetmealDTO conversionDTO(Setmeal setmeal, List<SetmealDish> setmealDishList) {
+    static public SetmealDTO conversionDTO(Setmeal setmeal, List<SetmealDish> setmealDishList) {
         SetmealDTO setmealDTO = new SetmealDTO();
         setmealDTO.setId(setmeal.getId());
         setmealDTO.setName(setmeal.getName());

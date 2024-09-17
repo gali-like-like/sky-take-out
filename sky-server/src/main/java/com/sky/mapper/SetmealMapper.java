@@ -20,15 +20,20 @@ import java.util.List;
 public interface SetmealMapper {
     //更新套餐
     public void updateSetmeal(SetmealDTO setmeal);
+
     //分页查询
     public List<Setmeal> pageSetmeal(SetmealPageQueryDTO queryDTO);
+
     //更改套餐状态
     public void updateSetmealStatus(Integer status, Long id);
+
     //批量删除套餐
     public void deleteSetmals(List<Long> ids);
+
     //新增套餐
-    @Options(useGeneratedKeys = true,keyProperty = "id")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
     public Long addSetmeal(SetmealDTO setmealDTO);
+
     //根据id查询套餐
     public Setmeal getSetmealById(Long id);
 

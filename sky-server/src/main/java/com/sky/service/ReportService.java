@@ -12,12 +12,14 @@ public interface ReportService {
 
     /**
      * 导出近30天的运营数据报表
+     *
      * @param response
      **/
     void exportBusinessData(HttpServletResponse response);
 
     /**
      * 查询指定时间区间内的销量排名top10
+     *
      * @param begin
      * @param end
      * @return
@@ -26,6 +28,7 @@ public interface ReportService {
 
     /**
      * 根据时间区间统计订单数量
+     *
      * @param begin
      * @param end
      * @return
@@ -43,6 +46,7 @@ public interface ReportService {
 
     /**
      * 根据时间区间统计营业额
+     *
      * @param beginTime
      * @param endTime
      * @return

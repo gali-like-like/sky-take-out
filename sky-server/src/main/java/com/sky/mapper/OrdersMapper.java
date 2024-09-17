@@ -36,6 +36,7 @@ public interface OrdersMapper {
 
     /**
      * 根据状态统计订单数量
+     *
      * @param status
      */
     @Select("select count(id) from orders where status = #{status}")
@@ -77,18 +78,25 @@ public interface OrdersMapper {
 
     //确认订单，完成订单
     public void completeOrder(Long orderId);
+
     //查询订单状态
     public Integer getStatusById(Long orderId);
+
     //查询超时订单
     public List<OrdersConfirmDTO> getTimeOutOrders();
+
     //查询运送中的订单
     public List<OrdersConfirmDTO> getTranprotOrders();
+
     //取消订单
     public void cancel(OrdersCancelDTO ordersCancelDTO);
+
     //拒绝订单
     public void reject(OrdersRejectionDTO ordersRejectionDTO);
+
     //派送订单
     public void delivery(Long orderId);
+
     //接单
     public void confirm(Long orderId);
 }

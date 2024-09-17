@@ -1,5 +1,5 @@
 package com.sky.entity;
-import io.swagger.models.auth.In;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

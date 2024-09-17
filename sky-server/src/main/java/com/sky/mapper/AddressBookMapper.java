@@ -37,7 +37,7 @@ public interface AddressBookMapper {
      * 查询指定行数据
      *
      * @param addressBook 查询条件
-     * @param pageable         分页对象
+     * @param pageable    分页对象
      * @return 对象列表
      */
     List<AddressBook> queryAllByLimit(AddressBook addressBook, @Param("pageable") Pageable pageable);

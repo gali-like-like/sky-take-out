@@ -54,7 +54,7 @@ public class DishServiceImpl implements DishService {
     /**
      * 分页查询
      *
-     * @param dishPageQueryDTO   筛选条件
+     * @param dishPageQueryDTO 筛选条件
      * @return 查询结果
      */
     @Override
@@ -65,7 +65,7 @@ public class DishServiceImpl implements DishService {
         Integer status = dishPageQueryDTO.getStatus();
         // 开启分页
         PageHelper.startPage(dishPageQueryDTO.getPage(), dishPageQueryDTO.getPageSize());
-        List<Dish> dishList = dishMapper.getAllDish(categoryId,name,status);
+        List<Dish> dishList = dishMapper.getAllDish(categoryId, name, status);
         if (dishList.isEmpty()) {
             HashMap<String, Object> resultMap = new HashMap<>();
             resultMap.put("total", 0);
@@ -100,7 +100,7 @@ public class DishServiceImpl implements DishService {
      * @return 实例对象
      */
     @Override
-    @Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public int update(DishDTO dishDTO) {
         // 对flavor判空
         if (dishDTO.getFlavors() != null) {
@@ -131,7 +131,7 @@ public class DishServiceImpl implements DishService {
      * @return 是否成功
      */
     @Override
-    @Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public Boolean deleteByIds(String ids) {
         String[] idArr = ids.split(",");
         for (String id : idArr) {
@@ -157,12 +157,12 @@ public class DishServiceImpl implements DishService {
     /**
      * 更新菜品状态
      *
-     * @param id 菜品ID
+     * @param id     菜品ID
      * @param status 状态
      * @return 更新结果
      */
     @Override
     public int updateStatus(Long id, Integer status) {
-        return dishMapper.updateStatus(id,status);
+        return dishMapper.updateStatus(id, status);
     }
 }

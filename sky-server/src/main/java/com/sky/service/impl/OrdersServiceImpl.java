@@ -19,12 +19,9 @@ import com.sky.service.OrdersService;
 import com.sky.vo.OrderStatisticsVO;
 import com.sky.vo.OrderVO;
 import lombok.RequiredArgsConstructor;
-import org.junit.jupiter.api.Order;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -43,6 +40,7 @@ public class OrdersServiceImpl implements OrdersService {
     private final OrderDetailMapper orderDetailMapper;
     private final OrdersMapper ordersMapper;
     private final MapInitializer mapInitializer;
+
     //订单搜索条件
     @Override
     public PageResult conditionSearch(OrdersPageQueryDTO ordersPageQueryDTO) {
@@ -69,6 +67,7 @@ public class OrdersServiceImpl implements OrdersService {
         orderVO.setOrderDetailList(orderDetailList);
         return orderVO;
     }
+
     //统计
     @Override
     public OrderStatisticsVO statistics() {
@@ -84,6 +83,7 @@ public class OrdersServiceImpl implements OrdersService {
         orderStatisticsVO.setDeliveryInProgress(deliveryInProgress);
         return orderStatisticsVO;
     }
+
     //完成订单
     @Override
     public Boolean completeOrder(Long orderId) {
@@ -94,30 +94,33 @@ public class OrdersServiceImpl implements OrdersService {
         orderMapper.completeOrder(orderId);
         return true;
     }
+
     //拒绝接单
     @Override
     public Boolean rejection(OrdersRejectionDTO ordersRejectionDTO) {
         Long id = ordersRejectionDTO.getId();
         Orders order = orderMapper.getById(id);
-        if(Objects.isNull(order))
+        if (Objects.isNull(order))
             throw new OrderBusinessException(MessageConstant.ORDER_NOT_FOUND);
         orderMapper.reject(ordersRejectionDTO);
         return true;
     }
+
     //取消订单
     @Override
     public Boolean cancel(OrdersCancelDTO ordersCancelDTO) {
         Integer status = orderMapper.getStatusById(ordersCancelDTO.getId());
-        if(Objects.isNull(status)) {
+        if (Objects.isNull(status)) {
             throw new OrderBusinessException(MessageConstant.ORDER_NOT_FOUND);
         }
         orderMapper.cancel(ordersCancelDTO);
         return true;
     }
+
     //接单
     public Boolean confirm(Long orderId) {
         Orders orders = ordersMapper.getById(orderId);
-        if(Objects.isNull(orders)) {
+        if (Objects.isNull(orders)) {
             throw new OrderBusinessException(MessageConstant.ORDER_NOT_FOUND);
         }
         orderMapper.confirm(orderId);
@@ -128,17 +131,19 @@ public class OrdersServiceImpl implements OrdersService {
     @Override
     public Boolean delivery(Long id) {
         Integer status = orderMapper.getStatusById(id);
-        if(Objects.isNull(status)) {
+        if (Objects.isNull(status)) {
             throw new OrderBusinessException(MessageConstant.ORDER_NOT_FOUND);
         }
         orderMapper.delivery(id);
         return true;
     }
+
     //查看所有超时订单
     @Override
     public List<OrdersConfirmDTO> getTimeOutOrders() {
         return ordersMapper.getTimeOutOrders();
     }
+
     //查看所有运送中订单
     @Override
     public List<OrdersConfirmDTO> getTranprotOrders() {
@@ -146,10 +151,10 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     //每分钟轮询一遍查询是否有超时订单
-    @Scheduled(fixedRate = 60*1000)
+    @Scheduled(fixedRate = 60 * 1000)
     public void pollingCancel() {
         List<OrdersConfirmDTO> ordersConfirmDTOS = ordersMapper.getTimeOutOrders();
-        if(!ordersConfirmDTOS.isEmpty()) {
+        if (!ordersConfirmDTOS.isEmpty()) {
             for (OrdersConfirmDTO ordersConfirmDTO : ordersConfirmDTOS) {
                 OrdersCancelDTO ordersCancelDTO = new OrdersCancelDTO();
                 ordersCancelDTO.setId(ordersConfirmDTO.getId());
@@ -163,7 +168,7 @@ public class OrdersServiceImpl implements OrdersService {
     @Scheduled(cron = "0 1 * * * ?")
     public void pollingComplete() {
         List<OrdersConfirmDTO> ordersConfirmDTOS = ordersMapper.getTranprotOrders();
-        if(!ordersConfirmDTOS.isEmpty()) {
+        if (!ordersConfirmDTOS.isEmpty()) {
             for (OrdersConfirmDTO ordersConfirmDTO : ordersConfirmDTOS) {
                 orderMapper.completeOrder(ordersConfirmDTO.getId());
             }

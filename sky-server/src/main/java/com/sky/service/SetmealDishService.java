@@ -1,9 +1,6 @@
 package com.sky.service;
 
 import com.sky.entity.SetmealDish;
-import org.apache.ibatis.annotations.Options;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -16,10 +13,13 @@ import java.util.List;
 public interface SetmealDishService {
     //修改菜品套餐关系
     public void updateSetmealDish(SetmealDish setmealDish);
+
     //根据套餐id删除对应数据
     public void deleteSetmealDishById(Long setmealId);
+
     //新增套餐菜品关系
     public Integer insertSetmealDish(SetmealDish setmealDish);
+
     //根据套餐id查询菜品
     public List<SetmealDish> selectSetmealDishById(Long setmealId);
 }

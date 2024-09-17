@@ -1,4 +1,4 @@
-package com.sky.service.impl.admin;
+package com.sky.controller.admin;
 
 import com.sky.entity.DishFlavor;
 import com.sky.service.DishFlavorService;

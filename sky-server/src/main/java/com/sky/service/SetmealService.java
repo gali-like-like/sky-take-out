@@ -16,14 +16,19 @@ import java.util.List;
 public interface SetmealService {
     //更新套餐
     public Boolean updateSetmeal(SetmealDTO setmeal);
+
     //分页查询
     public PageInfo<Setmeal> pageSetmeal(SetmealPageQueryDTO queryDTO);
+
     //更改套餐状态
     public Boolean updateSetmealStatus(Integer status, Long id);
+
     //批量删除套餐
     public Boolean deleteSetmals(List<Long> ids);
+
     //新增套餐
     public Long addSetmeal(SetmealDTO setmealDTO);
+
     //根据id查询套餐
     public SetmealDTO getSetmealById(Long id);
 }

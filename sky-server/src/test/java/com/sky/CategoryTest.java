@@ -1,6 +1,6 @@
 package com.sky;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import com.sky.service.impl.admin.CategoryController;
+
+import com.sky.controller.admin.CategoryController;
 import com.sky.dto.CategoryDTO;
 import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.result.Result;
@@ -14,6 +14,8 @@ import org.springframework.test.context.ActiveProfiles;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @SpringBootTest
 @ActiveProfiles("dev")
 @Slf4j
@@ -25,8 +27,8 @@ public class CategoryTest {
     @DisplayName("根据类型查询菜品")
     public void testCategoryByType() throws ExecutionException, InterruptedException, TimeoutException {
         Result result = categoryController.getCategoryByType(1L);
-        log.info("result:\n{}",result);
-        assertEquals(1,result.getCode());
+        log.info("result:\n{}", result);
+        assertEquals(1, result.getCode());
     }
 
     @Test
@@ -37,7 +39,7 @@ public class CategoryTest {
         queryDTO.setPageSize(3);
         queryDTO.setType(1);
         Result result = categoryController.queryPageCategory(queryDTO);
-        assertEquals(1,result.getCode());
+        assertEquals(1, result.getCode());
     }
 
     @Test
@@ -48,7 +50,7 @@ public class CategoryTest {
         queryDTO.setPageSize(3);
         queryDTO.setName("牛蛙");
         Result result = categoryController.queryPageCategory(queryDTO);
-        assertEquals(1,result.getCode());
+        assertEquals(1, result.getCode());
     }
 
     @Test
@@ -60,7 +62,7 @@ public class CategoryTest {
         queryDTO.setName("牛蛙");
         queryDTO.setType(1);
         Result result = categoryController.queryPageCategory(queryDTO);
-        assertEquals(1,result.getCode());
+        assertEquals(1, result.getCode());
     }
 
     @Test
@@ -72,7 +74,7 @@ public class CategoryTest {
         categoryDTO.setName("香干炒肉");
         categoryDTO.setSort(100);
         Result result = categoryController.updateCategory(categoryDTO);
-        assertEquals(1,result.getCode());
+        assertEquals(1, result.getCode());
     }
 
     @Test
@@ -84,7 +86,7 @@ public class CategoryTest {
         categoryDTO.setName("酒水饮料");
         categoryDTO.setSort(100);
         Result result = categoryController.updateCategory(categoryDTO);
-        assertEquals(0,result.getCode());
+        assertEquals(0, result.getCode());
     }
 
     @Test
@@ -96,35 +98,35 @@ public class CategoryTest {
         categoryDTO.setName("传统主食");
         categoryDTO.setSort(100);
         Result result = categoryController.updateCategory(categoryDTO);
-        assertEquals(0,result.getCode());
+        assertEquals(0, result.getCode());
     }
 
     @Test
     @DisplayName("启用状态成功")
     public void testChangeEnableSuccess() throws ExecutionException, InterruptedException, TimeoutException {
-        Result result = categoryController.changeStatus(15L,1);
-        assertEquals(1,result.getCode());
+        Result result = categoryController.changeStatus(15L, 1);
+        assertEquals(1, result.getCode());
     }
 
     @Test
     @DisplayName("禁用状态成功")
     public void testChangeDisableSuccess() throws ExecutionException, InterruptedException, TimeoutException {
-        Result result = categoryController.changeStatus(15L,0);
-        assertEquals(1,result.getCode());
+        Result result = categoryController.changeStatus(15L, 0);
+        assertEquals(1, result.getCode());
     }
 
     @Test
     @DisplayName("禁用状态失败")
     public void testChangeDisableFail() throws ExecutionException, InterruptedException, TimeoutException {
-        Result result = categoryController.changeStatus(1220L,0);
-        assertEquals(0,result.getCode());
+        Result result = categoryController.changeStatus(1220L, 0);
+        assertEquals(0, result.getCode());
     }
 
     @Test
     @DisplayName("启用状态失败")
     public void testChangeEnableFail() throws ExecutionException, InterruptedException, TimeoutException {
-        Result result = categoryController.changeStatus(1220L,1);
-        assertEquals(0,result.getCode());
+        Result result = categoryController.changeStatus(1220L, 1);
+        assertEquals(0, result.getCode());
     }
 
     @Test
@@ -136,7 +138,7 @@ public class CategoryTest {
         categoryDTO.setName("啤酒");//唯一标识，导致不能重复执行
         categoryDTO.setType(2);
         Result result = categoryController.addCategory(categoryDTO);
-        assertEquals(1,result.getCode());
+        assertEquals(1, result.getCode());
     }
 
     @Test
@@ -148,20 +150,20 @@ public class CategoryTest {
         categoryDTO.setName("传统主食");
         categoryDTO.setType(2);
         Result result = categoryController.addCategory(categoryDTO);
-        assertEquals(0,result.getCode());
+        assertEquals(0, result.getCode());
     }
 
     @Test
     @DisplayName("根据id删除成功")
     public void testDeleteCategorySuccess() throws ExecutionException, InterruptedException, TimeoutException {
         Result result = categoryController.deleteCategoryById(12L);
-        assertEquals(1,result.getCode());
+        assertEquals(1, result.getCode());
     }
 
     @Test
     @DisplayName("根据id删除失败")
     public void testDeleteCategoryFail() throws ExecutionException, InterruptedException, TimeoutException {
         Result result = categoryController.deleteCategoryById(11110L);
-        assertEquals(0,result.getCode());
+        assertEquals(0, result.getCode());
     }
 }

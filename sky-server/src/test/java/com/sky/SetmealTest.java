@@ -1,6 +1,6 @@
 package com.sky;
 
-import com.sky.service.impl.admin.SetmealController;
+import com.sky.controller.admin.SetmealController;
 import com.sky.dto.SetmealDTO;
 import com.sky.dto.SetmealPageQueryDTO;
 import com.sky.result.Result;
@@ -16,7 +16,8 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @SpringBootTest
 @ActiveProfiles("dev")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -24,13 +25,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SetmealTest {
     @Autowired
     private SetmealController setmealController;
+
     @Test
     @Order(1)
     @DisplayName("添加套餐成功")
     public void testAddSetmealSuccess() throws ExecutionException, InterruptedException, TimeoutException {
         SetmealDTO setmealDTO = new SetmealDTO();
-        setmealDTO.setName("套餐"+String.valueOf(22155L));
-        setmealDTO.setPrice(BigDecimal.valueOf(56,2));
+        setmealDTO.setName("套餐" + String.valueOf(22155L));
+        setmealDTO.setPrice(BigDecimal.valueOf(56, 2));
         setmealDTO.setImage("/4871.png");
         setmealDTO.setCategoryId(3L);
         Result result = setmealController.addSetmeal(setmealDTO);
@@ -43,7 +45,7 @@ public class SetmealTest {
     public void testAddSetmealFail() throws ExecutionException, InterruptedException, TimeoutException {
         SetmealDTO setmealDTO = new SetmealDTO();
         setmealDTO.setName("套餐1");
-        setmealDTO.setPrice(BigDecimal.valueOf(100,2));
+        setmealDTO.setPrice(BigDecimal.valueOf(100, 2));
         setmealDTO.setImage("/a.png");
         setmealDTO.setCategoryId(1L);
         Result result = setmealController.addSetmeal(setmealDTO);
@@ -93,7 +95,7 @@ public class SetmealTest {
     @DisplayName("禁用套餐成功")
     @Order(5)
     public void testDisableSetmealSuccess() throws ExecutionException, InterruptedException, TimeoutException {
-        Result result = setmealController.updateSetmealStatus(1,100L);
+        Result result = setmealController.updateSetmealStatus(1, 100L);
         assertEquals(1, result.getCode());
     }
 
@@ -101,7 +103,7 @@ public class SetmealTest {
     @DisplayName("启用套餐成功")
     @Order(6)
     public void testEnableSetmealSuccess() throws ExecutionException, InterruptedException, TimeoutException {
-        Result result = setmealController.updateSetmealStatus(1,100L);
+        Result result = setmealController.updateSetmealStatus(1, 100L);
         assertEquals(1, result.getCode());
     }
 
@@ -109,7 +111,7 @@ public class SetmealTest {
     @DisplayName("修改套餐状态失败")
     @Order(7)
     public void testChangeSetmealStatusFail() throws ExecutionException, InterruptedException, TimeoutException {
-        Result result = setmealController.updateSetmealStatus(1,111111L);
+        Result result = setmealController.updateSetmealStatus(1, 111111L);
         assertEquals(0, result.getCode());
     }
 
@@ -150,7 +152,7 @@ public class SetmealTest {
         setmealDTO.setId(100L);
         setmealDTO.setImage("/a.png");
         setmealDTO.setName("套餐2");//名字重复了
-        setmealDTO.setPrice(BigDecimal.valueOf(30,2));
+        setmealDTO.setPrice(BigDecimal.valueOf(30, 2));
         setmealDTO.setCategoryId(1L);
         Result result = setmealController.updateSetmeal(setmealDTO);
         assertEquals(0, result.getCode());
@@ -164,7 +166,7 @@ public class SetmealTest {
         setmealDTO.setId(31L);
         setmealDTO.setImage("/a.png");
         setmealDTO.setName("套餐2");//名字重复了
-        setmealDTO.setPrice(BigDecimal.valueOf(30,2));
+        setmealDTO.setPrice(BigDecimal.valueOf(30, 2));
         setmealDTO.setCategoryId(1L);
         Result result = setmealController.updateSetmeal(setmealDTO);
         assertEquals(0, result.getCode());
@@ -178,7 +180,7 @@ public class SetmealTest {
         setmealDTO.setId(100L);
         setmealDTO.setImage("/a.png");
         setmealDTO.setName("套餐2");//名字重复了
-        setmealDTO.setPrice(BigDecimal.valueOf(30,2));
+        setmealDTO.setPrice(BigDecimal.valueOf(30, 2));
         setmealDTO.setCategoryId(1L);
         Result result = setmealController.updateSetmeal(setmealDTO);
         assertEquals(0, result.getCode());

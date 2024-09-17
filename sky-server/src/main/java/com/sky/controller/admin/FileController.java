@@ -1,4 +1,4 @@
-package com.sky.service.impl.admin;
+package com.sky.controller.admin;
 
 
 import com.sky.result.Result;
@@ -62,7 +62,7 @@ public class FileController {
     @GetMapping("/single/download")
     @ApiOperation(value = "单文件下载")
     public Result<?> upload(@RequestParam("fileName") String fileName,
-                                  HttpServletResponse response) throws Exception {
+                            HttpServletResponse response) throws Exception {
         return null;
     }
 }

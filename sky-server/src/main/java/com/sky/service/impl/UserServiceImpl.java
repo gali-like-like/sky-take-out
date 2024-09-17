@@ -3,10 +3,10 @@ package com.sky.service.impl;
 import com.sky.entity.User;
 import com.sky.mapper.UserMapper;
 import com.sky.service.UserService;
-import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 

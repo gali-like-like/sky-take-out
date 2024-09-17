@@ -52,7 +52,6 @@ public class Result<T> implements Serializable {
     }
 
 
-
     public void setCode(Integer code) {
         this.code = code;
     }

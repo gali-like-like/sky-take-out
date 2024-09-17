@@ -1,4 +1,4 @@
-package com.sky.service.impl.admin;
+package com.sky.controller.admin;
 
 import com.sky.dto.DishDTO;
 import com.sky.dto.DishPageQueryDTO;
@@ -34,7 +34,7 @@ public class DishController {
     /**
      * 分页查询
      *
-     * @param dishPageQueryDTO  筛选条件
+     * @param dishPageQueryDTO 筛选条件
      * @return 查询结果
      */
     @PostMapping("page")
@@ -118,7 +118,7 @@ public class DishController {
     /**
      * 启/停售
      *
-     * @param id 主键
+     * @param id     主键
      * @param status 状态
      * @return 编辑结果
      */

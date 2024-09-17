@@ -37,7 +37,7 @@ public interface DishFlavorMapper {
      * 查询指定行数据
      *
      * @param dishFlavor 查询条件
-     * @param pageable         分页对象
+     * @param pageable   分页对象
      * @return 对象列表
      */
     List<DishFlavor> queryAllByLimit(DishFlavor dishFlavor, @Param("pageable") Pageable pageable);
