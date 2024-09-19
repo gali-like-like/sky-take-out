@@ -1,4 +1,4 @@
-package com.sky.orther;
+package com.sky.other;
 
 import java.util.HashMap;
 

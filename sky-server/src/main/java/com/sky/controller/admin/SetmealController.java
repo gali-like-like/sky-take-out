@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -39,13 +40,14 @@ public class SetmealController {
     private SetmealService service;
     @Autowired
     private MakeUpFuture makeUpFuture;
-
+    @Resource(name = "taskThreadPool")
+    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
     @ApiOperation(value = "修改套餐")
     @PutMapping("")
     public Result updateSetmeal(@ApiParam(required = true) @RequestBody SetmealDTO setmealDTO) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(() -> {
             return service.updateSetmeal(setmealDTO);
-        }).handle((res, e) -> {
+        },threadPoolTaskExecutor).handle((res, e) -> {
             return (Boolean) makeUpFuture.makeUpHandle(res, e);
         });
         return makeUpFuture.makeUpBoolFuture(
@@ -61,7 +63,7 @@ public class SetmealController {
     public Result pageSetmeal(@ApiParam(required = true) SetmealPageQueryDTO setmealPageQueryDTO) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<PageInfo<Setmeal>> future = CompletableFuture.supplyAsync(() -> {
             return service.pageSetmeal(setmealPageQueryDTO);
-        }).handle((res, e) -> {
+        },threadPoolTaskExecutor).handle((res, e) -> {
             return (PageInfo<Setmeal>) makeUpFuture.makeUpHandle(res, e);
         });
         PageInfo<Setmeal> pageInfo = future.get(3, TimeUnit.SECONDS);
@@ -73,7 +75,7 @@ public class SetmealController {
     public Result updateSetmealStatus(@ApiParam(name = "status", value = "1", required = true) @PathVariable("status") Integer status, @ApiParam(name = "id", required = true) Long id) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(() -> {
             return service.updateSetmealStatus(status, id);
-        }).handle((res, e) -> {
+        },threadPoolTaskExecutor).handle((res, e) -> {
             return (Boolean) makeUpFuture.makeUpHandle(res, e);
         });
         return makeUpFuture.makeUpBoolFuture(
@@ -87,7 +89,7 @@ public class SetmealController {
     @ApiOperation(value = "批量删除套餐")
     @DeleteMapping("")
     public Result deleteSetmals(@ApiParam(name = "ids", required = true) @RequestParam List<Long> ids) throws ExecutionException, InterruptedException, TimeoutException {
-        CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(() -> service.deleteSetmals(ids)).handle((res, e) -> {
+        CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(() -> service.deleteSetmals(ids),threadPoolTaskExecutor).handle((res, e) -> {
             return (Boolean) makeUpFuture.makeUpHandle(res, e);
         });
         return makeUpFuture.makeUpBoolFuture(
@@ -101,7 +103,7 @@ public class SetmealController {
     @ApiOperation(value = "添加套餐")
     @PostMapping("")
     public Result addSetmeal(@ApiParam(required = true) @RequestBody SetmealDTO setmealDTO) throws ExecutionException, InterruptedException, TimeoutException {
-        CompletableFuture<Long> future = CompletableFuture.supplyAsync(() -> service.addSetmeal(setmealDTO)).handle((res, e) -> {
+        CompletableFuture<Long> future = CompletableFuture.supplyAsync(() -> service.addSetmeal(setmealDTO),threadPoolTaskExecutor).handle((res, e) -> {
             return (Long) makeUpFuture.makeUpHandle(res, e);
         });
         Long result = future.get(3, TimeUnit.SECONDS);
@@ -111,7 +113,7 @@ public class SetmealController {
     @ApiOperation(value = "根据id查询")
     @GetMapping("/{id}")
     public Result getSetmealById(@ApiParam(name = "id", required = true) @PathVariable("id") Long id) throws ExecutionException, InterruptedException, TimeoutException {
-        CompletableFuture<SetmealDTO> future = CompletableFuture.supplyAsync(() -> service.getSetmealById(id)).handle((res, e) -> {
+        CompletableFuture<SetmealDTO> future = CompletableFuture.supplyAsync(() -> service.getSetmealById(id),threadPoolTaskExecutor).handle((res, e) -> {
             return (SetmealDTO) makeUpFuture.makeUpHandle(res, e);
         });
         SetmealDTO setmealDTO = future.get(6, TimeUnit.SECONDS);

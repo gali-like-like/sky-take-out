@@ -8,10 +8,8 @@ import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.dto.EmployeePageQueryDTO;
 import com.sky.entity.Employee;
-import com.sky.exception.AccountLockedException;
 import com.sky.exception.AccountNotFoundException;
 import com.sky.exception.FieldNotNullException;
-import com.sky.exception.PasswordErrorException;
 import com.sky.properties.JwtProperties;
 import com.sky.result.Result;
 import com.sky.service.EmployeeService;
@@ -20,25 +18,26 @@ import com.sky.vo.EmployeeLoginVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.aspectj.bridge.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.validation.BindException;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import javax.annotation.Resource;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * 员工管理
@@ -53,7 +52,8 @@ public class EmployeeController {
     private EmployeeService employeeService;
     @Autowired
     private JwtProperties jwtProperties;
-
+    @Resource(name="taskThreadPool")
+    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
     private Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
     /**
@@ -69,7 +69,7 @@ public class EmployeeController {
             required = true) @Validated @RequestBody EmployeeLoginDTO employeeLoginDTO) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<HashMap<String,Object>> future = CompletableFuture.supplyAsync(()->{
              return employeeService.login(employeeLoginDTO);
-        }).handle((res,e)->{
+        }).handle((res, e)->{
             if(Objects.isNull(e)) {
                 return res;
             }
@@ -106,7 +106,7 @@ public class EmployeeController {
     public Result editPassword(@ApiParam(name = "包含了员工id,员工的新密码,员工的旧密码", required = true) @Validated(EmployPasswordDTO.inter1.class) @RequestBody EmployPasswordDTO passwordDTO) throws InterruptedException, ExecutionException, TimeoutException {
         CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(() -> {
             return employeeService.editPassword(passwordDTO);
-        }).handle((res, e) -> {
+        },threadPoolTaskExecutor).handle((res, e) -> {
             if (Objects.isNull(e)) {
                 return res;
             }
@@ -123,11 +123,11 @@ public class EmployeeController {
 
     @ApiOperation(value = "修改状态", notes = "员工修改状态")
     @PostMapping("/status/{status}")
-    public Result changeStatus(@ApiParam(name = "status", required = true) @Validated @Size(min=0,max=1,message = "状态只能为1或者0") @PathVariable Integer status,
-                               @ApiParam(name = "id", required = true) @NotNull(message = "员工编号不能为空") @RequestParam Long id) throws InterruptedException, ExecutionException, TimeoutException {
+    public Result changeStatus(@PathVariable @Min(value = 0, message = "状态值不能小于0") @Max(value = 1, message = "状态值不能大于1") Integer status,
+                                @RequestParam @NotNull(message = "员工编号不能为空")  Long id) throws InterruptedException, ExecutionException, TimeoutException {
         CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(() -> {
             return employeeService.changeStatus(status, id);
-        }).handle((res, e) -> {
+        },threadPoolTaskExecutor).handle((res, e) -> {
             if (Objects.isNull(e))
                 return res;
             logger.info("发生异常:\n{}", e.getLocalizedMessage());
@@ -146,7 +146,7 @@ public class EmployeeController {
     public Result pageDataByPageNum(@ApiParam(required = true) @RequestParam EmployeePageQueryDTO queryDTO) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<PageInfo<Employee>> future = CompletableFuture.supplyAsync(() -> {
             return employeeService.pageDataByPageSize(queryDTO);
-        }).handle((res, e) -> {
+        },threadPoolTaskExecutor).handle((res, e) -> {
             if (Objects.isNull(e)) {
                 return res;
             }
@@ -165,7 +165,7 @@ public class EmployeeController {
     public Result employee(@ApiParam(required = true) @Validated(EmployeeDTO.GroupAdd.class) @RequestBody EmployeeDTO employeeDTO) throws InterruptedException, ExecutionException, TimeoutException {
         CompletableFuture<String> future = CompletableFuture.runAsync(() -> {
             employeeService.addEmployee(employeeDTO);
-        }).handle((res, e) -> {
+        },threadPoolTaskExecutor).handle((res, e) -> {
             if (Objects.isNull(e)) {
                 return MessageConstant.EMPLOYEE_ADD_SUCCESS;
             }
@@ -191,7 +191,7 @@ public class EmployeeController {
                                       @PathVariable(required = false) Long id) throws ExecutionException, InterruptedException, TimeoutException, BindException,FieldNotNullException {
         CompletableFuture<HashMap<String,Object>> future = CompletableFuture.supplyAsync(() ->
                 employeeService.getEmployeeById(id)
-        ).handle((res, e) -> {
+        ,threadPoolTaskExecutor).handle((res, e) -> {
             if (Objects.isNull(e))   {
                 return res;
             }
@@ -214,7 +214,7 @@ public class EmployeeController {
     public Result editEmployee(@ApiParam(required = true) @Validated(EmployeeDTO.GroupUpdate.class) @RequestBody EmployeeDTO employeeDTO) throws InterruptedException, ExecutionException, TimeoutException {
         CompletableFuture<String> future = CompletableFuture.supplyAsync(() ->
                 employeeService.updateEmployee(employeeDTO)
-        ).handle((res, e) -> {
+        ,threadPoolTaskExecutor).handle((res, e) -> {
             if (Objects.isNull(e))
                 return res;
             logger.info("发生异常:\n{}", e.getLocalizedMessage());

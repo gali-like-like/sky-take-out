@@ -15,8 +15,10 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
@@ -29,13 +31,16 @@ import java.util.concurrent.TimeoutException;
  */
 @Api(tags = "订单管理接口")
 @RestController
-@RequestMapping("orders")
+@RequestMapping("admin/orders")
 @RequiredArgsConstructor
 public class OrdersController {
     @Autowired
     private final OrdersService orderService;
     @Autowired
     private MakeUpFuture makeUpFuture;
+    @Resource(name = "taskThreadPool")
+    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
+
 
     /**
      * 完成订单
@@ -48,7 +53,7 @@ public class OrdersController {
     public Result<?> complete(@PathVariable("id") Long id) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(() -> {
             return orderService.completeOrder(id);
-        }).handle((res, e) -> {
+        },threadPoolTaskExecutor).handle((res, e) -> {
             return (Boolean) makeUpFuture.makeUpHandle(res, e);
         });
         return makeUpFuture.makeUpBoolFuture(
@@ -69,7 +74,7 @@ public class OrdersController {
     public Result delivery(@ApiParam(name = "id", required = true) @PathVariable("id") Long id) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<Boolean> future = CompletableFuture
                 .supplyAsync(
-                        () -> orderService.delivery(id))
+                        () -> orderService.delivery(id),threadPoolTaskExecutor)
                 .handle((res, e) -> (Boolean) makeUpFuture.makeUpHandle(res, e));
         return makeUpFuture.makeUpBoolFuture(
                 future,
@@ -90,7 +95,7 @@ public class OrdersController {
     public Result<?> cancel(@ApiParam(required = true) @RequestBody OrdersCancelDTO ordersCancelDTO) throws Exception {
         CompletableFuture<Boolean> future = CompletableFuture
                 .supplyAsync(
-                        () -> orderService.cancel(ordersCancelDTO))
+                        () -> orderService.cancel(ordersCancelDTO),threadPoolTaskExecutor)
                 .handle((res, e) -> (Boolean) makeUpFuture.makeUpHandle(res, e));
         return makeUpFuture.makeUpBoolFuture(
                 future,
@@ -112,7 +117,7 @@ public class OrdersController {
     public Result rejection(@ApiParam(required = true) @RequestBody OrdersRejectionDTO ordersRejectionDTO) throws Exception {
         CompletableFuture<Boolean> future = CompletableFuture
                 .supplyAsync(
-                        () -> orderService.rejection(ordersRejectionDTO))
+                        () -> orderService.rejection(ordersRejectionDTO),threadPoolTaskExecutor)
                 .handle((res, e) -> (Boolean) makeUpFuture.makeUpHandle(res, e));
         return makeUpFuture.makeUpBoolFuture(
                 future,
@@ -133,7 +138,7 @@ public class OrdersController {
     public Result confirm(@ApiParam(name = "id", required = true) @RequestParam(name="id",defaultValue = "1") Long id) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<Boolean> future = CompletableFuture
                 .supplyAsync(
-                        () -> orderService.confirm(id))
+                        () -> orderService.confirm(id),threadPoolTaskExecutor)
                 .handle((res, e) -> (Boolean) makeUpFuture.makeUpHandle(res, e));
         return makeUpFuture.makeUpBoolFuture(
                 future,

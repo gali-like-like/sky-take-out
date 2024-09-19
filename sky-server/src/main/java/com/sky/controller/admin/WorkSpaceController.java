@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 工作台
  */
 @RestController
-@RequestMapping("/workspace")
+@RequestMapping("admin/workspace")
 @Slf4j
 @Api(tags = "工作台相关接口")
 public class WorkSpaceController {

@@ -1,6 +1,6 @@
 package com.sky.command;
 
-import com.sky.orther.GlobalMapSingleton;
+import com.sky.other.GlobalMapSingleton;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
