@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.validation.BindException;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
@@ -93,14 +94,14 @@ public class SkyApplicationTest {
 
     @Test
     @DisplayName(value = "根据id查询用户成功")
-    public void testQueryEmployeeSuccess() throws ExecutionException, InterruptedException, TimeoutException {
+    public void testQueryEmployeeSuccess() throws ExecutionException, InterruptedException, TimeoutException, BindException {
         Result result = employeeController.getEmployeeById(1L);
         assertEquals(1, result.getCode());
     }
 
     @Test
     @DisplayName(value = "根据id查询用户失败")
-    public void testQueryEmployeeFail() throws ExecutionException, InterruptedException, TimeoutException {
+    public void testQueryEmployeeFail() throws ExecutionException, InterruptedException, TimeoutException, BindException {
         Result result = employeeController.getEmployeeById(2L);
         assertEquals(0, result.getCode());
     }

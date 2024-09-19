@@ -30,7 +30,10 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 import java.util.Map;
@@ -100,7 +103,7 @@ public class EmployeeController {
 
     @ApiOperation(value = "修改密码", notes = "员工用id来修改密码")
     @PutMapping("/editPassword")
-    public Result editPassword(@ApiParam(name = "包含了员工id,员工的新密码,员工的旧密码", required = true) @RequestBody EmployPasswordDTO passwordDTO) throws InterruptedException, ExecutionException, TimeoutException {
+    public Result editPassword(@ApiParam(name = "包含了员工id,员工的新密码,员工的旧密码", required = true) @Validated(EmployPasswordDTO.inter1.class) @RequestBody EmployPasswordDTO passwordDTO) throws InterruptedException, ExecutionException, TimeoutException {
         CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(() -> {
             return employeeService.editPassword(passwordDTO);
         }).handle((res, e) -> {
@@ -120,8 +123,8 @@ public class EmployeeController {
 
     @ApiOperation(value = "修改状态", notes = "员工修改状态")
     @PostMapping("/status/{status}")
-    public Result changeStatus(@ApiParam(name = "status", required = true) @PathVariable Integer status,
-                               @ApiParam(name = "id", required = true) @RequestParam Long id) throws InterruptedException, ExecutionException, TimeoutException {
+    public Result changeStatus(@ApiParam(name = "status", required = true) @Validated @Size(min=0,max=1,message = "状态只能为1或者0") @PathVariable Integer status,
+                               @ApiParam(name = "id", required = true) @NotNull(message = "员工编号不能为空") @RequestParam Long id) throws InterruptedException, ExecutionException, TimeoutException {
         CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(() -> {
             return employeeService.changeStatus(status, id);
         }).handle((res, e) -> {
@@ -159,7 +162,7 @@ public class EmployeeController {
 
     @ApiOperation(value = "新增员工", notes = "根据用户信息添加员工")
     @PostMapping("")
-    public Result employee(@ApiParam(required = true) @Validated @RequestBody EmployeeDTO employeeDTO) throws InterruptedException, ExecutionException, TimeoutException {
+    public Result employee(@ApiParam(required = true) @Validated(EmployeeDTO.GroupAdd.class) @RequestBody EmployeeDTO employeeDTO) throws InterruptedException, ExecutionException, TimeoutException {
         CompletableFuture<String> future = CompletableFuture.runAsync(() -> {
             employeeService.addEmployee(employeeDTO);
         }).handle((res, e) -> {
@@ -208,7 +211,7 @@ public class EmployeeController {
 
     @PutMapping("")
     @ApiOperation(value = "编辑员工信息")
-    public Result editEmployee(@ApiParam(required = true) @Validated @RequestBody EmployeeDTO employeeDTO) throws InterruptedException, ExecutionException, TimeoutException {
+    public Result editEmployee(@ApiParam(required = true) @Validated(EmployeeDTO.GroupUpdate.class) @RequestBody EmployeeDTO employeeDTO) throws InterruptedException, ExecutionException, TimeoutException {
         CompletableFuture<String> future = CompletableFuture.supplyAsync(() ->
                 employeeService.updateEmployee(employeeDTO)
         ).handle((res, e) -> {
