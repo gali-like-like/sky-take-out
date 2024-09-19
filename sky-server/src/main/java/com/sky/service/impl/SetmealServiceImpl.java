@@ -61,8 +61,8 @@ public class SetmealServiceImpl implements SetmealService {
     //分页查询
     @Override
     public PageInfo<Setmeal> pageSetmeal(SetmealPageQueryDTO queryDTO) {
-        List<Setmeal> setmeals = setmealMapper.pageSetmeal(queryDTO);
         PageHelper.startPage(queryDTO.getPage(), queryDTO.getPageSize());
+        List<Setmeal> setmeals = setmealMapper.pageSetmeal(queryDTO);
         PageInfo<Setmeal> pageInfo = new PageInfo<>(setmeals);
         return pageInfo;
     }

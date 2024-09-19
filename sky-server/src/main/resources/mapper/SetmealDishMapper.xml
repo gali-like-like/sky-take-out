@@ -9,9 +9,6 @@
   <update id="updateSetmealDish">
     update setmeal_dish
     <set>
-      <if test="status != null">
-        status = #{status},
-      </if>
       price = #{price},copies = #{copies},name = #{name}
     </set>
     <where>

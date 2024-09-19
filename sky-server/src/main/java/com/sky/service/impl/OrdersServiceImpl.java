@@ -165,7 +165,8 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     //凌晨一点是否有运送中的订单，如果有将其订单状态改成完成
-    @Scheduled(cron = "0 1 * * * ?")
+    //cron表达式秒,分钟,小时,日,月,周 *表示任意,?不指定
+    @Scheduled(cron = "0 0 1 * * ?")
     public void pollingComplete() {
         List<OrdersConfirmDTO> ordersConfirmDTOS = ordersMapper.getTranprotOrders();
         if (!ordersConfirmDTOS.isEmpty()) {

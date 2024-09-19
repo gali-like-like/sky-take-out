@@ -36,4 +36,25 @@ public class MessageConstant {
     public static final String SETMEAL_CHANG_STATUS_SUCCESS = "套餐切换状态成功";
     public static final String SETMEAL_QUERY_SUCCESS = "套餐查询成功";
     public static final String SETMEAL_NOT_FOUND = "套餐不存在";
+    public static final String CATEGORY_NOT_FOUND = "分类不存在";
+    public static final String EMPLOYEE_ADD_SUCCESS = "添加员工成功";
+    public static final String EMPLOYEE_UPDATE_SUCCESS = "修改员工信息成功";
+    public static final String EMPLOYEE_DELETE_SUCCESS = "删除员工信息成功";
+    public static final String EMPLOYEE_QUERY_SUCCESS = "查询员工信息成功";
+    public static final String SYSTEM_ERROR = "系统错误";//上面错误无法描述就用系统错误代替
+
+    public static final String EMPLOYEE_ID_NOT_NULL = "员工编号不能为空";
+    public static final String EMPLOYEE_NAME_NOT_NULL = "员工姓名不能为空";
+    public static final String EMPLOYEE_USERNAME_NOT_NULL = "员工账号不能为空";
+    public static final String EMPLOYEE_IDNUMBER_NOT_NULL = "员工身份证不能为空";
+    public static final String EMPLOYEE_SEX_NOT_NULL = "员工性别不能为空";
+    public static final String EMPLOYEE_PHONE_NOT_NULL = "员工手机号不能为空";
+    public static final String EMPLOYEE_STATUS_NOT_NULL = "员工状态不能为空";
+    public static final String EMPLOYEE_STATUS_VALUE_ERROR = "员工状态只有启用和禁用";
+    public static final String EMPLOYEE_USERNAME_DUPLICATION = "该账号被其他人使用了,你无法修改为此账号";
+    public static final String PAGE_NOT_NULL = "页码不能为空";
+    public static final String PAGE_SIZE_NOT_NULL = "分页大小不能为空";
+    public static final String PASSWORD_NOT_NULL = "密码不能为空";
+    public static final String TIME_OUT_ERROR = "处理超时,请重试";
+    public static final String LOGIN_SUCCESS = "登录成功";
 }

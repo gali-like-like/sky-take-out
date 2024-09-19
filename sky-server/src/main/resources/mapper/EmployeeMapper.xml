@@ -21,13 +21,12 @@
     <include refid="query_employee" />
     <where>
       <if test="name != null">
-        name LIKE CONCAT("%",#{name},"%");
+        name LIKE CONCAT("%",#{name},"%")
       </if>
     </where>
   </select>
   <insert id="addEmployee">
-    INSERT INTO employee (id, NAME, id_number, sex, username, phone, PASSWORD, create_user, update_user)
-    VALUES (NULL, #{name}, #{idNumber}, #{sex}, #{username}, #{phone}, MD5("123456"), 1, 1);
+    INSERT INTO employee (id, NAME, id_number, sex, username, phone, PASSWORD, create_user, update_user) VALUES (NULL, #{name}, #{idNumber}, #{sex}, #{username}, #{phone}, MD5("123456"), 1, 1);
   </insert>
   <select id="getEmployeeById" resultType="com.sky.entity.Employee">
     <include refid="query_employee" />

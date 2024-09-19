@@ -15,3 +15,7 @@ sky:
     maxPoolSize: 4
     queueCapacity: 6
     keepAliveSeconds: 5
+spring:
+  devtools:
+    restart:
+      enabled: false

@@ -60,7 +60,7 @@ public interface OrdersMapper {
      * @return
      */
     @Select("select count(id) from orders " +
-            "where create_time >= #{beginTime} and create_time <= #{endTime} " +
+            "where  order_time>= #{beginTime} and order_time <= #{endTime} " +
             "and (status = #{status} or #{status} is null)")
     Integer getOrderCount(LocalDateTime beginTime, LocalDateTime endTime, Integer status);
 

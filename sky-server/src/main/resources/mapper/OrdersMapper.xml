@@ -65,11 +65,11 @@
     select od.name name,sum(od.number) number from order_detail od ,orders o
     where od.order_id = o.id
     and o.status = 5
-    <if test="begin != null">
-      and order_time &gt;= #{begin}
+    <if test="beginTime != null">
+      and order_time &gt;= #{beginTime}
     </if>
-    <if test="end != null">
-      and order_time &lt;= #{end}
+    <if test="endTime != null">
+      and order_time &lt;= #{endTime}
     </if>
     group by name
     order by number desc

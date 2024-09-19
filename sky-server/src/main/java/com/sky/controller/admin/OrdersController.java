@@ -130,7 +130,7 @@ public class OrdersController {
      */
     @PutMapping("/confirm")
     @ApiOperation("接单")
-    public Result confirm(@ApiParam(name = "id", required = true) @RequestBody Long id) throws ExecutionException, InterruptedException, TimeoutException {
+    public Result confirm(@ApiParam(name = "id", required = true) @RequestParam(name="id",defaultValue = "1") Long id) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<Boolean> future = CompletableFuture
                 .supplyAsync(
                         () -> orderService.confirm(id))

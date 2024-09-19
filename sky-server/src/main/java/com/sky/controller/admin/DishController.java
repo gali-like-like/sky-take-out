@@ -23,7 +23,7 @@ import java.util.List;
  * @since 2024-09-15 11:42:03
  */
 @RestController
-@RequestMapping("dish")
+@RequestMapping("/admin/dish")
 @Api(tags = "菜品相关接口")
 @RequiredArgsConstructor
 public class DishController {
@@ -110,7 +110,8 @@ public class DishController {
      */
     @GetMapping("list")
     @ApiOperation(value = "通过分类id查询菜品", notes = "通过分类id查询菜品")
-    public Result<List<DishVO>> queryByCategoryId(@RequestParam("id") Long categoryId) {
+    public Result<List<DishVO>> queryByCategoryId(@RequestParam Long categoryId) {
+//        Long longId = Long.decode(categoryId);
         List<DishVO> dishVOS = dishService.queryByCategoryId(categoryId);
         return Result.success(dishVOS);
     }

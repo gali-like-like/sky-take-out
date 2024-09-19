@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: prod
+    active: dev
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
@@ -13,6 +13,10 @@ spring:
       url: jdbc:mysql://${sky.datasource.host}:${sky.datasource.port}/${sky.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
       username: ${sky.datasource.username}
       password: ${sky.datasource.password}
+  mvc:
+      hiddenmethod:
+            filter:
+              enabled: true
 server:
   port: 8080
   shutdown: graceful
@@ -32,6 +36,7 @@ logging:
         mapper: debug
         service: info
         controller: info
+        handler: trace
 
   config: classpath:logback.xml
   logging:

@@ -41,7 +41,7 @@ public class SetmealController {
     private MakeUpFuture makeUpFuture;
 
     @ApiOperation(value = "修改套餐")
-    @PutMapping("/")
+    @PutMapping("")
     public Result updateSetmeal(@ApiParam(required = true) @RequestBody SetmealDTO setmealDTO) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(() -> {
             return service.updateSetmeal(setmealDTO);
@@ -85,7 +85,7 @@ public class SetmealController {
     }
 
     @ApiOperation(value = "批量删除套餐")
-    @DeleteMapping("/")
+    @DeleteMapping("")
     public Result deleteSetmals(@ApiParam(name = "ids", required = true) @RequestParam List<Long> ids) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(() -> service.deleteSetmals(ids)).handle((res, e) -> {
             return (Boolean) makeUpFuture.makeUpHandle(res, e);
@@ -99,7 +99,7 @@ public class SetmealController {
     }
 
     @ApiOperation(value = "添加套餐")
-    @PostMapping("/")
+    @PostMapping("")
     public Result addSetmeal(@ApiParam(required = true) @RequestBody SetmealDTO setmealDTO) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<Long> future = CompletableFuture.supplyAsync(() -> service.addSetmeal(setmealDTO)).handle((res, e) -> {
             return (Long) makeUpFuture.makeUpHandle(res, e);

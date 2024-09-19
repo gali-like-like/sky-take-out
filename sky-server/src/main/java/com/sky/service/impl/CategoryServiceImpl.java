@@ -70,21 +70,21 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Boolean deleteCategoryById(Long id) {
         if (id < 0) {
-            throw new AccountNotFoundException();
+            return false;
         }
         Category category = categoryMapper.queryCategoryById(id);
         if (Objects.nonNull(category)) {
             categoryMapper.deleteCategoryById(id);
             return true;
         }
-        throw new AccountNotFoundException();
+        return false;
     }
 
     //查询分类数据
     @Override
     public PageInfo<Category> queryPageCategory(CategoryPageQueryDTO queryDTO) {
-        List<Category> categoryList = categoryMapper.queryPageCategory(queryDTO);
         PageHelper.startPage(queryDTO.getPage(), queryDTO.getPageSize());
+        List<Category> categoryList = categoryMapper.queryPageCategory(queryDTO);
         PageInfo<Category> pageInfo = new PageInfo<>(categoryList);
         return pageInfo;
     }

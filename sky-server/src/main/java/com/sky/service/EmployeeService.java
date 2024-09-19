@@ -6,6 +6,13 @@ import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.dto.EmployeePageQueryDTO;
 import com.sky.entity.Employee;
+import com.sky.exception.AccountLockedException;
+import com.sky.exception.AccountNotFoundException;
+import com.sky.exception.PasswordEditFailedException;
+
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public interface EmployeeService {
 
@@ -15,7 +22,7 @@ public interface EmployeeService {
      * @param employeeLoginDTO
      * @return
      */
-    Employee login(EmployeeLoginDTO employeeLoginDTO);
+    HashMap<String,Object> login(EmployeeLoginDTO employeeLoginDTO) throws AccountNotFoundException, AccountLockedException, PasswordEditFailedException;
 
     Boolean editPassword(EmployPasswordDTO employPasswordDTO);
 
@@ -27,8 +34,8 @@ public interface EmployeeService {
     public void addEmployee(EmployeeDTO employeeDTO);
 
     //根据id查询员工
-    public Employee getEmployeeById(Long id);
+    public HashMap<String,Object> getEmployeeById(Long id);
 
     //编辑员工信息
-    public Boolean updateEmployee(EmployeeDTO employee);
+    public String updateEmployee(EmployeeDTO employee);
 }

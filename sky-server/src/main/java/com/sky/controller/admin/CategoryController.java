@@ -78,7 +78,7 @@ public class CategoryController {
 
     @ApiOperation(value = "分页查询", notes = "通过类型或者名字，分页，返回分页数据")
     @GetMapping("/page")
-    public Result queryPageCategory(@RequestParam CategoryPageQueryDTO pageQueryDTO) throws ExecutionException, InterruptedException, TimeoutException {
+    public Result queryPageCategory(CategoryPageQueryDTO pageQueryDTO) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<PageInfo<Category>> future = CompletableFuture.supplyAsync(() -> {
             return categoryService.queryPageCategory(pageQueryDTO);
         }).handle((res, e) -> {
@@ -118,11 +118,11 @@ public class CategoryController {
     private Result makeUpBoolFuture(CompletableFuture<Boolean> future) throws ExecutionException, InterruptedException, TimeoutException {
         Boolean res = future.get(3, TimeUnit.SECONDS);
         if (Objects.isNull(res))
-            return Result.error(MessageConstant.UNKNOWN_ERROR);
+            return Result.error(MessageConstant.CATEGORY_NOT_FOUND);
         else if (res)
             return Result.success();
         else
-            return Result.error(MessageConstant.ACCOUNT_NOT_FOUND);
+            return Result.error(MessageConstant.CATEGORY_NOT_FOUND);
     }
 
     //异步处理异常

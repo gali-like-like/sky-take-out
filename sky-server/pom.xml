@@ -115,6 +115,11 @@
       <groupId>org.apache.poi</groupId>
       <artifactId>poi-ooxml</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+    </dependency>
     <!-- 热部署 -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
