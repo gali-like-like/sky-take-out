@@ -140,6 +140,13 @@ public class EmployeeController {
             return Result.error(MessageConstant.ACCOUNT_NOT_FOUND);
     }
 
+    @ApiOperation(value = "修改状态", notes = "员工修改状态")
+    @PostMapping("/status/")
+    public Result changeStatusNull(@NotNull(message = "员工编号不能为空") @RequestParam Long id) {
+        return Result.error("状态不能为空");
+    }
+
+
     @ApiOperation(value = "分页查询", notes = "根据当前查询当前包含的数据")
     @GetMapping("/page")
     //全部字段都不为空
