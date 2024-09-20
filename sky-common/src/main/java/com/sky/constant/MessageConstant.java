@@ -57,4 +57,14 @@ public class MessageConstant {
     public static final String PASSWORD_NOT_NULL = "密码不能为空";
     public static final String TIME_OUT_ERROR = "处理超时,请重试";
     public static final String LOGIN_SUCCESS = "登录成功";
+    public static final String REMOVE_GODDS_SUCCESS = "清空购物车中的这个商品数量";
+    public static final String USER_NOT_FOUND = "用户不存在";
+    public static final String USER_QUERY_ALL_DISHES_IN_SHOPPING_CART = "查看自己的购物车里的所有菜品";
+    public static final String USER_QUERY_ALL_SETMEAL_IN_SHOPPING_CART = "查看自己的购车里的是所有套餐";
+    public static final String USER_QUERY_ALL_GOODS_IN_SHOPPING_CART = "查看自己购车里所有的商品";
+    public static final String CLEAN_SHOPPING_CART = "清空个人购物车";
+    public static final String ADD_GOODS_IN_SHOPPING_CART = "添加商品到个人购物车";
+    public static final String UPDATE_GOODS_COUNT = "修改同个商品数量";
+    public static final String DISH_STATUS_DISABLE_NOT_ADD = "菜品没上架,不能添加到购物车!";
+    public static final String SETMEAL_STATUS_DISABLE_NOT_ADD = "套餐没上架,不能添加到购物车!";
 }

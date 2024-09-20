@@ -31,4 +31,7 @@ public interface SetmealService {
 
     //根据id查询套餐
     public SetmealDTO getSetmealById(Long id);
+
+    //根据id查询套餐状态
+    public Integer getStatusById(Long id);
 }

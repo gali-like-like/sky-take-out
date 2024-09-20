@@ -14,36 +14,88 @@
     <result property="amount" column="amount" jdbcType="VARCHAR" />
     <result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
   </resultMap>
-  
-  <!--查询单个-->
-  <select id="queryById" resultMap="ShoppingCartMap">
-  
-  </select>
-  
-  <!--条件筛选总记录数-->
-  <select id="count" resultType="java.lang.Long">
-  
-  </select>
-  
-  <!--查询指定行数据-->
-  <select id="queryAllByLimit" resultMap="ShoppingCartMap">
-  
-  </select>
-  
-  <!--新增数据-->
-  <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-  
-  </insert>
-  
-  <!--通过主键修改数据-->
-  <update id="update">
-  
-  </update>
-  
-  <!--通过主键删除-->
-  <delete id="deleteById">
-  
-  </delete>
 
+<!--  删除购物车中的商品-->
+    <delete id="removeGoods">
+        delete from shopping_cart
+        <where>
+            goods_id = #{goodsId} and goods_type = #{goodsType} and user_id = #{userId}
+        </where>
+    </delete>
+<!--    减少购物车中的同个商品数量-->
+    <update id="updateGoodsCount">
+        update shopping_cart
+        <set>
+            <if test="number != null">
+                number = #{number}
+            </if>
+        </set>
+        <where>
+            <if  test="userId != null">
+                userId = #{userId}
+            </if>
+            <if test="dishId != null">
+                and dish_id = #{dishId}
+            </if>
+            <if test="setmealId != null">
+                and setmeal_id = #{setmealId}
+            </if>
+        </where>
+    </update>
+
+<!--某人添加商品进入购物车-->
+    <insert id="addGoodsInShoppingCart">
+        INSERT INTO shopping_cart (user_id,dish_id,setmeal_id,number)
+        VALUES (1,<if test="dishId != null">
+        #{dishId}
+   </if>,<if test = "setmealId != null">#{setmealId}</if>,#{number})
+        ON DUPLICATE KEY UPDATE NUMBER = NUMBER + #{number};
+    </insert>
+<!--    查看购物车里的所有菜品-->
+    <select id="catDishsInShoppingCart" resultType="com.sky.dto.ShoppingCartDishDTO">
+        SELECT sc.dish_id,
+               d.name,
+               d.image,
+               df.name,
+               d.price,
+               sc.create_time,
+               NUMBER 数量 FROM shopping_cart AS sc
+        LEFT JOIN dish AS d ON sc.dish_id = d.id
+        LEFT JOIN dish_flavor AS df ON sc.dish_id = df.dish_id
+        WHERE sc.dish_id != null and sc.user_id = #{userId};
+    </select>
+<!-- 查看购车里的所有套餐-->
+    <select id="catSetmealsInShoppingCart" resultType="com.sky.dto.ShoppingCartSetmealDTO">
+        SELECT
+               sc.setmeal_id 套餐id,
+               s.name 套餐名字,
+               s.image 套餐图片,
+               s.price 套餐价格,
+               sc.create_time 创建时间,
+               NUMBER 数量 FROM shopping_cart AS sc
+        LEFT JOIN setmeal AS s ON sc.setmeal_id = s.id
+        LEFT JOIN setmeal_dish AS sd ON sc.setmeal_id = sd.setmeal_id
+        WHERE sc.setmeal_id != null and sc.user_id = #{userId};
+    </select>
+<!--    根据套餐id查询包含在套餐下的所有菜品信息(菜品名字,菜品价格,菜品图片,菜品数量,菜品口味)-->
+    <select id="getDishBySetmealId" resultType="com.sky.dto.ShoppingCartDishDTO">
+        SELECT dish_id,NAME,price,copies,df.name,d.create_time FROM setmeal_dish AS sd
+        LEFT JOIN dish AS d ON sd.dish_id = d.id
+        LEFT JOIN dish_flavor AS df ON sd.dish_id = df.dish_id
+        <where>
+            <if test="setmealId != null">
+                sd.setmeal_id = #{setmealId}
+            </if>
+        </where>
+    </select>
+<!--    清空购物车-->
+    <delete id="cleanShoppingCart">
+        delete from shopping_cart
+        <where>
+            <if test="userId != null">
+                user_id = #{userId}
+            </if>
+        </where>
+    </delete>
 </mapper>
 

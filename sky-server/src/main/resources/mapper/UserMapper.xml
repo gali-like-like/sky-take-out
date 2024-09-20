@@ -14,8 +14,13 @@
   </resultMap>
   
   <!--查询单个-->
-  <select id="queryById" resultMap="UserMap">
-  
+  <select id="getUserById" resultType="com.sky.entity.User">
+        select id,name,openid,avatar,phone,sex,id_number,create_time from user
+        <where>
+            <if test="id != null" >
+                id = #{id}
+            </if>
+        </where>
   </select>
   
   <!--条件筛选总记录数-->

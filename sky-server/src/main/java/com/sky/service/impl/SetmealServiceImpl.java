@@ -131,4 +131,8 @@ public class SetmealServiceImpl implements SetmealService {
         }
         return 1;
     }
+
+    public Integer getStatusById(Long id) {
+        return setmealMapper.getStatusById(id);
+    };
 }

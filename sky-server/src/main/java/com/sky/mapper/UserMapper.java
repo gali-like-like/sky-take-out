@@ -25,51 +25,7 @@ public interface UserMapper {
      * @param id 主键
      * @return 实例对象
      */
-    User queryById(Long id);
+    User getUserById(Long id);
 
-    /**
-     * 总记录数
-     *
-     * @param user 筛选条件
-     * @return Long
-     */
-    Long count(User user);
-
-    /**
-     * 查询指定行数据
-     *
-     * @param user     查询条件
-     * @param pageable 分页对象
-     * @return 对象列表
-     */
-    List<User> queryAllByLimit(User user, @Param("pageable") Pageable pageable);
-
-    /**
-     * 新增数据
-     *
-     * @param user 实例对象
-     * @return 影响行数
-     */
-    int insert(User user);
-
-    /**
-     * 修改数据
-     *
-     * @param user 实例对象
-     * @return 影响行数
-     */
-    int update(User user);
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param id 主键
-     * @return 影响行数
-     */
-    int deleteById(Long id);
-
-    @Select("select count(id) from user " +
-            "where create_time >= #{beginTime} and create_time <= #{endTime}")
-    Integer getUserCount(LocalDateTime beginTime, LocalDateTime endTime);
 }
 

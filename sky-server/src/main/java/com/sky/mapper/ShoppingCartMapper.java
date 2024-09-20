@@ -1,8 +1,11 @@
 package com.sky.mapper;
 
+import com.sky.dto.DishDTO;
+import com.sky.dto.ShoppingCartDTO;
+import com.sky.dto.ShoppingCartDishDTO;
+import com.sky.dto.ShoppingCartSetmealDTO;
 import com.sky.entity.ShoppingCart;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.*;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -17,54 +20,20 @@ import java.util.List;
 @Mapper
 public interface ShoppingCartMapper {
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param id 主键
-     * @return 实例对象
-     */
-    ShoppingCart queryById(Long id);
-
-    /**
-     * 总记录数
-     *
-     * @param shoppingCart 筛选条件
-     * @return Long
-     */
-    Long count(ShoppingCart shoppingCart);
-
-    /**
-     * 查询指定行数据
-     *
-     * @param shoppingCart 查询条件
-     * @param pageable     分页对象
-     * @return 对象列表
-     */
-    List<ShoppingCart> queryAllByLimit(ShoppingCart shoppingCart, @Param("pageable") Pageable pageable);
-
-    /**
-     * 新增数据
-     *
-     * @param shoppingCart 实例对象
-     * @return 影响行数
-     */
-    int insert(ShoppingCart shoppingCart);
-
-    /**
-     * 修改数据
-     *
-     * @param shoppingCart 实例对象
-     * @return 影响行数
-     */
-    int update(ShoppingCart shoppingCart);
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param id 主键
-     * @return 影响行数
-     */
-    int deleteById(Long id);
+   //删除购物车中一个商品
+   public void removeGoods(ShoppingCartDTO shoppingCartDTO);
+   //修改购物车中同个商品数量
+   public void updateGoodsCount(ShoppingCartDTO shoppingCartDTO);
+   //查看购物车中的菜品
+   public List<ShoppingCartDishDTO> catDishsInShoppingCart();
+   //查看购物车中的套餐
+   public List<ShoppingCartSetmealDTO> catSetmealsInShoppingCart();
+   //添加商品到购物车
+   public Integer addGoodsInShoppingCart();
+   //根据套餐id查看所有套餐内的菜品
+   public List<ShoppingCartDishDTO> getDishBySetmealId(Long setmealId);
+   //清空购物车
+   public void cleanShoppingCart(Long userId);
 
 }
 
