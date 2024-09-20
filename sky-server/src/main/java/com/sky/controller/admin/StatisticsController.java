@@ -2,7 +2,7 @@ package com.sky.controller.admin;
 
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.util.ListUtils;
-import com.sky.orther.DemoData;
+import com.sky.other.DemoData;
 import com.sky.result.Result;
 import com.sky.service.ReportService;
 import com.sky.vo.OrderReportVO;
@@ -30,7 +30,7 @@ import java.util.List;
  * @since 2024-9-16 09:41:53
  */
 @RestController
-@RequestMapping("/report")
+@RequestMapping("admin//report")
 @RequiredArgsConstructor
 @Api(tags = "数据统计相关接口")
 public class StatisticsController {

@@ -4,12 +4,16 @@ import com.sky.constant.MessageConstant;
 import com.sky.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.internal.engine.path.PathImpl;
+import org.junit.jupiter.api.Order;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MissingPathVariableException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -25,18 +29,6 @@ import static com.sky.enums.ErrorCode.INTERNAL_SERVER_ERROR;
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
-
-    /**
-     * 捕获业务异常
-     *
-     * @param ex
-     * @return
-     */
-//    @ExceptionHandler(Exception.class)
-//    public Result exceptionHandler(Exception ex) {
-//        log.error("异常信息：{}", ex.getMessage());
-//        return Result.error(ex.getMessage());
-//    }
 
     /**
      * SpringMVC参数绑定，Validator校验不正确
@@ -89,5 +81,33 @@ public class GlobalExceptionHandler {
 //        logger.error(msg.toString(),ex);
         // 注意：Response类必须有get和set方法，不然会报错
         return Result.error(msg.toString());
+    }
+
+    // 捕获路径参数缺失的异常
+    @ExceptionHandler(MissingPathVariableException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)  // 返回 400 错误
+    public Result<?> handleMissingPathVariable(MissingPathVariableException ex) {
+        return Result.error(ex.getVariableName());
+    }
+
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public Result<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex) {
+        // 构建自定义的错误信息
+        ex.printStackTrace();
+        return Result.error(HttpStatus.METHOD_NOT_ALLOWED.value(), ex.getMessage());
+    }
+
+
+    /**
+     * 捕获业务异常
+     *
+     * @param ex
+     * @return
+     */
+    @ExceptionHandler(Exception.class)
+    @Order(999)
+    public Result exceptionHandler(Exception ex) {
+        log.error("异常信息：{}", ex.getMessage());
+        return Result.error(ex.getMessage());
     }
 }

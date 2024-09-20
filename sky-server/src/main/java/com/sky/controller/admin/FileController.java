@@ -19,7 +19,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/file")
+@RequestMapping("admin/file")
 @Api(tags = "文件上传与下载")
 public class FileController {
     @Resource

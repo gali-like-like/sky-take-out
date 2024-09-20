@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -36,13 +37,14 @@ import java.util.concurrent.TimeoutException;
 public class CategoryController {
     @Resource
     private CategoryService categoryService;
-
+    @Resource(name = "taskThreadPool")
+    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
     @GetMapping("/list")
     @ApiOperation(value = "根据分类查询")
     public Result getCategoryByType(@ApiParam(name = "type", required = true) @RequestParam Long type) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<List<Category>> future = CompletableFuture.supplyAsync(() -> {
             return categoryService.queryByType(type);
-        }).handle((res, e) -> {
+        },threadPoolTaskExecutor).handle((res, e) -> {
             return (List<Category>) makeUpHandle(res, e);
         });
         List<Category> categories = future.get(3, TimeUnit.SECONDS);
@@ -56,7 +58,7 @@ public class CategoryController {
     public Result addCategory(@ApiParam(required = true) @RequestBody CategoryDTO category) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
             return categoryService.addCategory(category);
-        }).handle((res, e) -> {
+        },threadPoolTaskExecutor).handle((res, e) -> {
             return (Integer) makeUpHandle(res, e);
         });
         Integer id = future.get(3, TimeUnit.SECONDS);
@@ -70,7 +72,7 @@ public class CategoryController {
     public Result updateCategory(@ApiParam(required = true) @RequestBody CategoryDTO categoryDTO) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(() -> {
             return categoryService.updateCategory(categoryDTO);
-        }).handle((res, e) -> {
+        },threadPoolTaskExecutor).handle((res, e) -> {
             return (Boolean) makeUpHandle(res, e);
         });
         return makeUpBoolFuture(future);
@@ -81,7 +83,7 @@ public class CategoryController {
     public Result queryPageCategory(CategoryPageQueryDTO pageQueryDTO) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<PageInfo<Category>> future = CompletableFuture.supplyAsync(() -> {
             return categoryService.queryPageCategory(pageQueryDTO);
-        }).handle((res, e) -> {
+        },threadPoolTaskExecutor).handle((res, e) -> {
             return (PageInfo<Category>) makeUpHandle(res, e);
         });
         PageInfo<Category> categoryPageInfo = future.get(3, TimeUnit.SECONDS);
@@ -96,7 +98,7 @@ public class CategoryController {
     public Result deleteCategoryById(@ApiParam(required = true, name = "id") @RequestParam Long id) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(() -> {
             return categoryService.deleteCategoryById(id);
-        }).handle((res, e) -> {
+        },threadPoolTaskExecutor).handle((res, e) -> {
             return (Boolean) makeUpHandle(res, e);
         });
         return makeUpBoolFuture(future);
@@ -108,7 +110,7 @@ public class CategoryController {
                                @ApiParam(name = "status", required = true) @PathVariable Integer status) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(() -> {
             return categoryService.changeStatus(id, status);
-        }).handle((res, e) -> {
+        },threadPoolTaskExecutor).handle((res, e) -> {
             return (Boolean) makeUpHandle(res, e);
         });
         return makeUpBoolFuture(future);

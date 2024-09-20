@@ -16,7 +16,7 @@ import javax.annotation.Resource;
  * @since 2024-09-15 11:42:03
  */
 @RestController
-@RequestMapping("addressBook")
+@RequestMapping("admin/addressBook")
 public class AddressBookController {
     /**
      * 服务对象

@@ -1,4 +1,4 @@
-package com.sky.orther;
+package com.sky.other;
 
 import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
