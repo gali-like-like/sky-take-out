@@ -62,4 +62,6 @@ public interface DishService {
     int updateStatus(Long id, Integer status);
 
     List<DishVO> queryByCategoryId(Long longId);
+
+    Integer getStatusById(Long id);
 }

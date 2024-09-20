@@ -75,5 +75,9 @@ public interface DishMapper {
 
     @Select("SELECT COUNT(id) FROM dish WHERE status = #{status}")
     Integer getDishCount(Integer status);
+
+    //根据id查询菜品状态
+    @Select("select status from dish where id = #{id}")
+    Integer getStatusById(Long id);
 }
 

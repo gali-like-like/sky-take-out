@@ -1,0 +1,822 @@
+2024-09-16 22:44:52.460 [main] INFO  com.sky.SetmealTest - Starting SetmealTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 14328 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-16 22:44:52.463 [main] INFO  com.sky.SetmealTest - The following 1 profile is active: "dev"
+2024-09-16 22:44:52.468 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.4.Final
+2024-09-16 22:44:55.175 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-16 22:44:55.480 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-16 22:44:58.641 [main] INFO  com.sky.SetmealTest - Started SetmealTest in 6.586 seconds (JVM running for 8.595)
+2024-09-16 22:44:59.785 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 22:44:59.830 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: null, /a.png(String), 套餐1(String), 1.00(BigDecimal), null
+2024-09-16 22:45:00.010 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 22:45:00.010 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: null
+2024-09-16 22:45:00.083 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 22:45:00.098 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 22:45:00.098 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 10000000(Long)
+2024-09-16 22:45:00.148 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 22:45:00.169 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE name like concat("%",?,"%") and category_id = ? and status = ?
+2024-09-16 22:45:00.170 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==> Parameters: 套餐1(String), 1(Long), 1(Integer)
+2024-09-16 22:45:00.226 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - <==      Total: 14
+2024-09-16 22:45:00.233 [main] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 22:45:00.242 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 22:45:00.248 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 22:45:00.248 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 111111(Long)
+2024-09-16 22:45:00.298 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 22:45:00.298 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 22:45:00.304 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmals where id in ( ? , ? , ? )
+2024-09-16 22:45:00.305 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 1(Long), 2(Long), 3(Long)
+2024-09-16 22:45:00.514 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 22:45:00.515 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 1(Long)
+2024-09-16 22:45:00.564 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 22:45:00.713 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 22:45:00.750 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-16 22:45:00.761 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-16 22:48:00.261 [main] INFO  com.sky.SetmealTest - Starting SetmealTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 10684 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-16 22:48:00.265 [main] INFO  com.sky.SetmealTest - The following 1 profile is active: "dev"
+2024-09-16 22:48:00.271 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.4.Final
+2024-09-16 22:48:02.081 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-16 22:48:02.283 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-16 22:48:05.244 [main] INFO  com.sky.SetmealTest - Started SetmealTest in 5.352 seconds (JVM running for 6.633)
+2024-09-16 22:48:06.288 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 22:48:06.330 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐1(String), 1.00(BigDecimal), null
+2024-09-16 22:48:06.509 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 22:48:06.509 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: null
+2024-09-16 22:48:06.585 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 22:48:06.601 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 22:48:06.601 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 10000000(Long)
+2024-09-16 22:48:06.652 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 22:48:06.676 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE name like concat("%",?,"%") and category_id = ? and status = ?
+2024-09-16 22:48:06.677 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==> Parameters: 套餐1(String), 1(Long), 1(Integer)
+2024-09-16 22:48:06.736 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - <==      Total: 14
+2024-09-16 22:48:06.744 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 22:48:06.753 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 22:48:06.760 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 22:48:06.761 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 111111(Long)
+2024-09-16 22:48:06.812 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 22:48:06.812 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 22:48:06.820 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in ( ? , ? , ? )
+2024-09-16 22:48:06.820 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 1(Long), 2(Long), 3(Long)
+2024-09-16 22:48:06.921 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - <==    Updates: 0
+2024-09-16 22:48:07.036 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 22:48:07.036 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 22:48:07.085 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 22:48:07.086 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 22:48:07.087 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 22:48:07.334 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+org.springframework.dao.DuplicateKeyException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\SetmealMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: update setmeal          SET category_id = ?,image = ?,name = ?,price = ?             WHERE id = ?
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+; Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+2024-09-16 22:48:07.364 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-16 22:48:07.372 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-16 22:58:33.548 [main] INFO  com.sky.SetmealTest - Starting SetmealTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 30156 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-16 22:58:33.552 [main] INFO  com.sky.SetmealTest - The following 1 profile is active: "dev"
+2024-09-16 22:58:33.558 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.4.Final
+2024-09-16 22:58:35.365 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-16 22:58:35.561 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-16 22:58:38.470 [main] INFO  com.sky.SetmealTest - Started SetmealTest in 5.287 seconds (JVM running for 6.508)
+2024-09-16 22:58:39.601 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 22:58:39.644 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐1(String), 1.00(BigDecimal), null
+2024-09-16 22:58:39.855 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 22:58:39.856 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 10000000(Long)
+2024-09-16 22:58:39.935 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 22:58:39.963 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE category_id = ? and status = ?
+2024-09-16 22:58:39.964 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==> Parameters: 2(Long), 0(Integer)
+2024-09-16 22:58:40.090 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - <==      Total: 171
+2024-09-16 22:58:40.100 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 22:58:40.111 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 22:58:40.120 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 22:58:40.120 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 111111(Long)
+2024-09-16 22:58:40.169 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 22:58:40.169 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 22:58:40.176 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in ( ? , ? , ? )
+2024-09-16 22:58:40.176 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 1(Long), 2(Long), 3(Long)
+2024-09-16 22:58:40.274 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - <==    Updates: 0
+2024-09-16 22:58:40.279 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in
+2024-09-16 22:58:40.279 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 
+2024-09-16 22:58:40.487 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 22:58:40.487 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 22:58:40.537 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 22:58:40.539 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 22:58:40.539 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 22:58:40.783 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+org.springframework.dao.DuplicateKeyException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\SetmealMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: update setmeal          SET category_id = ?,image = ?,name = ?,price = ?             WHERE id = ?
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+; Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+2024-09-16 22:58:40.885 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 22:58:40.885 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 31(Long)
+2024-09-16 22:58:40.933 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 22:58:41.075 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 22:58:41.174 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 22:58:41.174 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 22:58:41.222 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 22:58:41.223 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 22:58:41.223 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 22:58:41.462 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+org.springframework.dao.DuplicateKeyException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\SetmealMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: update setmeal          SET category_id = ?,image = ?,name = ?,price = ?             WHERE id = ?
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+; Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+2024-09-16 22:58:41.493 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-16 22:58:41.502 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-16 23:01:10.637 [main] INFO  com.sky.SetmealTest - Starting SetmealTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 26904 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-16 23:01:10.640 [main] INFO  com.sky.SetmealTest - The following 1 profile is active: "dev"
+2024-09-16 23:01:10.644 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.4.Final
+2024-09-16 23:01:12.471 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-16 23:01:12.667 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-16 23:01:15.590 [main] INFO  com.sky.SetmealTest - Started SetmealTest in 5.297 seconds (JVM running for 6.532)
+2024-09-16 23:01:16.646 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 23:01:16.676 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐1(String), 1.00(BigDecimal), null
+2024-09-16 23:01:16.887 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:01:16.888 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 10000000(Long)
+2024-09-16 23:01:16.968 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:01:16.999 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE category_id = ? and status = ?
+2024-09-16 23:01:17.000 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==> Parameters: 2(Long), 0(Integer)
+2024-09-16 23:01:17.122 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - <==      Total: 171
+2024-09-16 23:01:17.129 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:01:17.139 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:01:17.145 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:01:17.146 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 111111(Long)
+2024-09-16 23:01:17.194 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:01:17.194 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:01:17.201 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in ( ? , ? , ? )
+2024-09-16 23:01:17.202 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 1(Long), 2(Long), 3(Long)
+2024-09-16 23:01:17.297 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - <==    Updates: 0
+2024-09-16 23:01:17.302 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in
+2024-09-16 23:01:17.303 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 
+2024-09-16 23:01:17.507 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:01:17.508 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:01:17.557 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:01:17.559 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:01:17.559 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:01:17.799 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+org.springframework.dao.DuplicateKeyException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\SetmealMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: update setmeal          SET category_id = ?,image = ?,name = ?,price = ?             WHERE id = ?
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+; Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+2024-09-16 23:01:17.898 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:01:17.899 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 31(Long)
+2024-09-16 23:01:17.945 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:01:18.086 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:01:18.183 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:01:18.183 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:01:18.231 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:01:18.232 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:01:18.232 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:01:18.468 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+org.springframework.dao.DuplicateKeyException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\SetmealMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: update setmeal          SET category_id = ?,image = ?,name = ?,price = ?             WHERE id = ?
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+; Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+2024-09-16 23:01:18.494 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-16 23:01:18.504 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-16 23:03:59.307 [main] INFO  com.sky.SetmealTest - Starting SetmealTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 30248 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-16 23:03:59.310 [main] INFO  com.sky.SetmealTest - The following 1 profile is active: "dev"
+2024-09-16 23:03:59.318 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.4.Final
+2024-09-16 23:04:01.177 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-16 23:04:01.381 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-16 23:04:04.340 [main] INFO  com.sky.SetmealTest - Started SetmealTest in 5.367 seconds (JVM running for 6.467)
+2024-09-16 23:04:05.410 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 23:04:05.446 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐1(String), 1.00(BigDecimal), null
+2024-09-16 23:04:05.649 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:04:05.649 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 10000000(Long)
+2024-09-16 23:04:05.726 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:04:05.753 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE category_id = ? and status = ?
+2024-09-16 23:04:05.754 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==> Parameters: 2(Long), 0(Integer)
+2024-09-16 23:04:05.877 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - <==      Total: 171
+2024-09-16 23:04:05.886 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:04:05.895 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:04:05.902 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:04:05.903 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 111111(Long)
+2024-09-16 23:04:05.952 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:04:05.953 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:04:05.961 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in ( ? , ? , ? )
+2024-09-16 23:04:05.961 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 1(Long), 2(Long), 3(Long)
+2024-09-16 23:04:06.059 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - <==    Updates: 0
+2024-09-16 23:04:06.065 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in
+2024-09-16 23:04:06.065 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 
+2024-09-16 23:04:06.277 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:04:06.278 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:04:06.328 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:04:06.329 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:04:06.329 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:04:06.573 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+org.springframework.dao.DuplicateKeyException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\SetmealMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: update setmeal          SET category_id = ?,image = ?,name = ?,price = ?             WHERE id = ?
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+; Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+2024-09-16 23:04:06.673 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:04:06.673 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 31(Long)
+2024-09-16 23:04:06.721 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:04:06.864 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:04:06.962 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:04:06.962 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:04:07.010 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:04:07.011 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:04:07.011 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:04:07.250 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+org.springframework.dao.DuplicateKeyException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\SetmealMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: update setmeal          SET category_id = ?,image = ?,name = ?,price = ?             WHERE id = ?
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+; Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '套餐2' for key 'setmeal.idx_setmeal_name'
+2024-09-16 23:04:07.278 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-16 23:04:07.286 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-16 23:16:02.619 [main] INFO  com.sky.SetmealTest - Starting SetmealTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 12056 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-16 23:16:02.622 [main] INFO  com.sky.SetmealTest - The following 1 profile is active: "dev"
+2024-09-16 23:16:02.627 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.4.Final
+2024-09-16 23:16:04.412 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-16 23:16:04.614 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-16 23:16:07.562 [main] INFO  com.sky.SetmealTest - Started SetmealTest in 5.316 seconds (JVM running for 6.42)
+2024-09-16 23:16:08.620 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 23:16:08.656 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐1(String), 1.00(BigDecimal), null
+2024-09-16 23:16:08.846 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:16:08.847 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:16:08.929 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:16:08.942 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:16:08.943 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 10000000(Long)
+2024-09-16 23:16:08.992 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:16:09.018 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE category_id = ? and status = ?
+2024-09-16 23:16:09.019 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==> Parameters: 2(Long), 0(Integer)
+2024-09-16 23:16:09.142 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - <==      Total: 171
+2024-09-16 23:16:09.150 [main] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:16:09.159 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:16:09.166 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:16:09.166 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 111111(Long)
+2024-09-16 23:16:09.215 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:16:09.215 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:16:09.222 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in ( ? , ? , ? )
+2024-09-16 23:16:09.223 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 1(Long), 2(Long), 3(Long)
+2024-09-16 23:16:09.319 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - <==    Updates: 0
+2024-09-16 23:16:09.325 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in
+2024-09-16 23:16:09.326 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 
+2024-09-16 23:16:09.537 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:16:09.537 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:16:09.586 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:16:09.587 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:16:09.588 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:16:09.936 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:16:09.937 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 31(Long)
+2024-09-16 23:16:09.986 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:16:10.129 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:16:10.229 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:16:10.229 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:16:10.277 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:16:10.278 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:16:10.278 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:16:10.547 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-16 23:16:10.555 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-16 23:19:02.596 [main] INFO  com.sky.SetmealTest - Starting SetmealTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 29604 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-16 23:19:02.600 [main] INFO  com.sky.SetmealTest - The following 1 profile is active: "dev"
+2024-09-16 23:19:02.605 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.4.Final
+2024-09-16 23:19:04.417 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-16 23:19:04.626 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-16 23:19:07.584 [main] INFO  com.sky.SetmealTest - Started SetmealTest in 5.34 seconds (JVM running for 6.45)
+2024-09-16 23:19:08.608 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 23:19:08.647 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐1(String), 1.00(BigDecimal), null
+2024-09-16 23:19:08.851 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:19:08.851 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:19:08.928 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:19:08.942 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:19:08.942 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 10000000(Long)
+2024-09-16 23:19:08.991 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:19:09.018 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE category_id = ? and status = ?
+2024-09-16 23:19:09.018 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==> Parameters: 2(Long), 0(Integer)
+2024-09-16 23:19:09.134 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - <==      Total: 171
+2024-09-16 23:19:09.141 [main] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:19:09.151 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:19:09.157 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:19:09.157 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 111111(Long)
+2024-09-16 23:19:09.205 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:19:09.205 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:19:09.212 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in ( ? , ? , ? )
+2024-09-16 23:19:09.213 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 1(Long), 2(Long), 3(Long)
+2024-09-16 23:19:09.309 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - <==    Updates: 0
+2024-09-16 23:19:09.313 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in
+2024-09-16 23:19:09.314 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 
+2024-09-16 23:19:09.517 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:19:09.518 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:19:09.566 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:19:09.567 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:19:09.567 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:19:09.901 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:19:09.901 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 31(Long)
+2024-09-16 23:19:09.948 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:19:10.087 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:19:10.183 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:19:10.183 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:19:10.230 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:19:10.231 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:19:10.231 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:19:10.494 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-16 23:19:10.500 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-16 23:20:06.389 [main] INFO  com.sky.SetmealTest - Starting SetmealTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 30680 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-16 23:20:06.392 [main] INFO  com.sky.SetmealTest - The following 1 profile is active: "dev"
+2024-09-16 23:20:06.398 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.4.Final
+2024-09-16 23:20:08.219 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-16 23:20:08.427 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-16 23:20:11.316 [main] INFO  com.sky.SetmealTest - Started SetmealTest in 5.298 seconds (JVM running for 6.391)
+2024-09-16 23:20:12.455 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 23:20:12.501 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐1(String), 1.00(BigDecimal), null
+2024-09-16 23:20:12.703 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:20:12.703 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:20:12.786 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:20:12.792 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:20:12.793 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 10000000(Long)
+2024-09-16 23:20:12.847 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:20:12.878 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE category_id = ? and status = ?
+2024-09-16 23:20:12.879 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==> Parameters: 2(Long), 0(Integer)
+2024-09-16 23:20:13.011 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - <==      Total: 171
+2024-09-16 23:20:13.020 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:20:13.031 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:20:13.037 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:20:13.038 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 111111(Long)
+2024-09-16 23:20:13.093 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:20:13.093 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:20:13.100 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in ( ? , ? , ? )
+2024-09-16 23:20:13.101 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 1(Long), 2(Long), 3(Long)
+2024-09-16 23:20:13.210 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - <==    Updates: 0
+2024-09-16 23:20:13.217 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in
+2024-09-16 23:20:13.217 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 
+2024-09-16 23:20:13.450 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:20:13.450 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:20:13.506 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:20:13.507 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:20:13.507 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:20:13.889 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:20:13.889 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 31(Long)
+2024-09-16 23:20:13.944 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:20:14.107 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:20:14.219 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:20:14.219 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:20:14.273 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:20:14.274 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:20:14.274 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:20:14.563 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-16 23:20:14.569 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-16 23:21:22.452 [main] INFO  com.sky.SetmealTest - Starting SetmealTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 16248 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-16 23:21:22.455 [main] INFO  com.sky.SetmealTest - The following 1 profile is active: "dev"
+2024-09-16 23:21:22.473 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.4.Final
+2024-09-16 23:21:24.240 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-16 23:21:24.458 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-16 23:21:27.366 [main] INFO  com.sky.SetmealTest - Started SetmealTest in 5.284 seconds (JVM running for 6.36)
+2024-09-16 23:21:28.435 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 23:21:28.471 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐1(String), 1.00(BigDecimal), null
+2024-09-16 23:21:28.651 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:21:28.652 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:21:28.726 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:21:28.731 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:21:28.732 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 10000000(Long)
+2024-09-16 23:21:28.781 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:21:28.805 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE category_id = ? and status = ?
+2024-09-16 23:21:28.805 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==> Parameters: 2(Long), 0(Integer)
+2024-09-16 23:21:28.921 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - <==      Total: 171
+2024-09-16 23:21:28.928 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:21:28.935 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:21:28.940 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:21:28.941 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 111111(Long)
+2024-09-16 23:21:28.989 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:21:28.989 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:21:28.995 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in ( ? , ? , ? )
+2024-09-16 23:21:28.996 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 1(Long), 2(Long), 3(Long)
+2024-09-16 23:21:29.092 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - <==    Updates: 0
+2024-09-16 23:21:29.099 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in
+2024-09-16 23:21:29.099 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 
+2024-09-16 23:21:29.305 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:21:29.305 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:21:29.354 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:21:29.355 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:21:29.355 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:21:29.690 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:21:29.691 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 31(Long)
+2024-09-16 23:21:29.738 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:21:29.879 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:21:29.974 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:21:29.975 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:21:30.021 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:21:30.022 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:21:30.022 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:21:30.285 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-16 23:21:30.291 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-16 23:22:37.866 [main] INFO  com.sky.SetmealTest - Starting SetmealTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 30088 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-16 23:22:37.868 [main] INFO  com.sky.SetmealTest - The following 1 profile is active: "dev"
+2024-09-16 23:22:37.879 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.4.Final
+2024-09-16 23:22:39.631 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-16 23:22:39.840 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-16 23:22:42.690 [main] INFO  com.sky.SetmealTest - Started SetmealTest in 5.183 seconds (JVM running for 6.304)
+2024-09-16 23:22:43.740 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 23:22:43.774 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐1(String), 1.00(BigDecimal), null
+2024-09-16 23:22:43.926 [main] INFO  com.sky.service.impl.SetmealServiceImpl - 发生sql异常
+2024-09-16 23:22:43.962 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:22:43.963 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:22:44.040 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:22:44.046 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:22:44.046 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 10000000(Long)
+2024-09-16 23:22:44.093 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:22:44.121 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE category_id = ? and status = ?
+2024-09-16 23:22:44.122 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==> Parameters: 2(Long), 0(Integer)
+2024-09-16 23:22:44.234 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - <==      Total: 171
+2024-09-16 23:22:44.252 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:22:44.261 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:22:44.268 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:22:44.268 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 111111(Long)
+2024-09-16 23:22:44.315 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:22:44.315 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:22:44.323 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in ( ? , ? , ? )
+2024-09-16 23:22:44.324 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 1(Long), 2(Long), 3(Long)
+2024-09-16 23:22:44.415 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - <==    Updates: 0
+2024-09-16 23:22:44.420 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in
+2024-09-16 23:22:44.421 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 
+2024-09-16 23:22:44.622 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:22:44.623 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:22:44.669 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:22:44.670 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:22:44.671 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:22:44.996 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:22:44.996 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 31(Long)
+2024-09-16 23:22:45.041 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:22:45.175 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:22:45.266 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:22:45.267 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:22:45.312 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:22:45.312 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:22:45.313 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:22:45.561 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-16 23:22:45.568 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-16 23:24:00.615 [main] INFO  com.sky.SetmealTest - Starting SetmealTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 28976 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-16 23:24:00.618 [main] INFO  com.sky.SetmealTest - The following 1 profile is active: "dev"
+2024-09-16 23:24:00.626 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.4.Final
+2024-09-16 23:24:02.587 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-16 23:24:02.803 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-16 23:24:05.758 [main] INFO  com.sky.SetmealTest - Started SetmealTest in 5.524 seconds (JVM running for 6.653)
+2024-09-16 23:24:06.779 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 23:24:06.829 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐1(String), 1.00(BigDecimal), null
+2024-09-16 23:24:06.981 [main] INFO  com.sky.service.impl.SetmealServiceImpl - 发生sql异常
+2024-09-16 23:24:07.013 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:24:07.014 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:24:07.087 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:24:07.093 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:24:07.094 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 10000000(Long)
+2024-09-16 23:24:07.143 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:24:07.164 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE category_id = ? and status = ?
+2024-09-16 23:24:07.165 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==> Parameters: 2(Long), 0(Integer)
+2024-09-16 23:24:07.281 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - <==      Total: 171
+2024-09-16 23:24:07.289 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:24:07.297 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:24:07.307 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:24:07.307 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 111111(Long)
+2024-09-16 23:24:07.355 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:24:07.355 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:24:07.361 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in ( ? , ? , ? )
+2024-09-16 23:24:07.362 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 1(Long), 2(Long), 3(Long)
+2024-09-16 23:24:07.456 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - <==    Updates: 0
+2024-09-16 23:24:07.462 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in
+2024-09-16 23:24:07.462 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 
+2024-09-16 23:24:07.670 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:24:07.670 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:24:07.718 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:24:07.720 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:24:07.720 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:24:08.059 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:24:08.059 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 31(Long)
+2024-09-16 23:24:08.106 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:24:08.246 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:24:08.344 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:24:08.344 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:24:08.391 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:24:08.392 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:24:08.392 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:24:08.655 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-16 23:24:08.660 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-16 23:26:25.879 [main] INFO  com.sky.SetmealTest - Starting SetmealTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 26732 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-16 23:26:25.882 [main] INFO  com.sky.SetmealTest - The following 1 profile is active: "dev"
+2024-09-16 23:26:25.886 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.4.Final
+2024-09-16 23:26:27.658 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-16 23:26:27.875 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-16 23:26:30.713 [main] INFO  com.sky.SetmealTest - Started SetmealTest in 5.181 seconds (JVM running for 6.304)
+2024-09-16 23:26:31.862 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 23:26:31.907 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐1(String), 1.00(BigDecimal), null
+2024-09-16 23:26:32.084 [main] INFO  com.sky.service.impl.SetmealServiceImpl - 发生sql异常
+2024-09-16 23:26:32.111 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:26:32.111 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:26:32.198 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:26:32.204 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:26:32.205 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 10000000(Long)
+2024-09-16 23:26:32.265 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:26:32.289 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE category_id = ? and status = ?
+2024-09-16 23:26:32.289 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==> Parameters: 2(Long), 0(Integer)
+2024-09-16 23:26:32.428 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - <==      Total: 171
+2024-09-16 23:26:32.435 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:26:32.447 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:26:32.453 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:26:32.453 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 111111(Long)
+2024-09-16 23:26:32.512 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:26:32.513 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:26:32.519 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in ( ? , ? , ? )
+2024-09-16 23:26:32.520 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 1(Long), 2(Long), 3(Long)
+2024-09-16 23:26:32.636 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - <==    Updates: 0
+2024-09-16 23:26:32.641 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in
+2024-09-16 23:26:32.641 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 
+2024-09-16 23:26:32.889 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:26:32.889 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:26:32.947 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:26:32.948 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:26:32.949 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:26:33.359 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:26:33.359 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 31(Long)
+2024-09-16 23:26:33.417 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:26:33.589 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:26:33.707 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:26:33.708 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:26:33.766 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:26:33.767 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:26:33.767 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:26:34.081 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-16 23:26:34.088 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-16 23:30:13.828 [main] INFO  com.sky.SetmealTest - Starting SetmealTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 18864 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-16 23:30:13.832 [main] INFO  com.sky.SetmealTest - The following 1 profile is active: "dev"
+2024-09-16 23:30:13.837 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.4.Final
+2024-09-16 23:30:15.652 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-16 23:30:15.865 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-16 23:30:18.781 [main] INFO  com.sky.SetmealTest - Started SetmealTest in 5.332 seconds (JVM running for 6.426)
+2024-09-16 23:30:19.870 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 23:30:19.907 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 3(Long), /4871.png(String), 套餐10000(String), 0.56(BigDecimal), null
+2024-09-16 23:30:20.016 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - <==    Updates: 1
+2024-09-16 23:30:20.037 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 23:30:20.038 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐1(String), 1.00(BigDecimal), null
+2024-09-16 23:30:20.196 [main] INFO  com.sky.service.impl.SetmealServiceImpl - 发生sql异常
+2024-09-16 23:30:20.212 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:30:20.213 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:30:20.292 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:30:20.299 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:30:20.299 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 10000000(Long)
+2024-09-16 23:30:20.351 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:30:20.377 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE category_id = ? and status = ?
+2024-09-16 23:30:20.378 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==> Parameters: 2(Long), 0(Integer)
+2024-09-16 23:30:20.500 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - <==      Total: 171
+2024-09-16 23:30:20.507 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:30:20.515 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:30:20.521 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:30:20.521 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 111111(Long)
+2024-09-16 23:30:20.572 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:30:20.573 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:30:20.579 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in ( ? , ? , ? )
+2024-09-16 23:30:20.579 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 1(Long), 2(Long), 3(Long)
+2024-09-16 23:30:20.679 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - <==    Updates: 0
+2024-09-16 23:30:20.684 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in
+2024-09-16 23:30:20.684 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 
+2024-09-16 23:30:20.899 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:30:20.899 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:30:20.950 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:30:20.951 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:30:20.952 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:30:21.310 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:30:21.311 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 31(Long)
+2024-09-16 23:30:21.360 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:30:21.509 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:30:21.612 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:30:21.612 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:30:21.662 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:30:21.662 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:30:21.663 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:30:21.943 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-16 23:30:21.954 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-16 23:36:24.879 [main] INFO  com.sky.SetmealTest - Starting SetmealTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 29576 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-16 23:36:24.881 [main] INFO  com.sky.SetmealTest - The following 1 profile is active: "dev"
+2024-09-16 23:36:24.892 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.4.Final
+2024-09-16 23:36:26.814 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-16 23:36:27.037 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-16 23:36:30.814 [main] INFO  com.sky.SetmealTest - Started SetmealTest in 6.318 seconds (JVM running for 7.414)
+2024-09-16 23:36:32.488 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 23:36:32.524 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 3(Long), /4871.png(String), 套餐10000(String), 0.56(BigDecimal), null
+2024-09-16 23:36:32.677 [main] INFO  com.sky.service.impl.SetmealServiceImpl - 发生sql异常
+2024-09-16 23:36:32.696 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 23:36:32.697 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐1(String), 1.00(BigDecimal), null
+2024-09-16 23:36:32.800 [main] INFO  com.sky.service.impl.SetmealServiceImpl - 发生sql异常
+2024-09-16 23:36:32.809 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:36:32.810 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:36:32.883 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:36:32.891 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:36:32.892 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 10000000(Long)
+2024-09-16 23:36:32.942 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:36:32.972 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE category_id = ? and status = ?
+2024-09-16 23:36:32.973 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==> Parameters: 2(Long), 0(Integer)
+2024-09-16 23:36:33.092 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - <==      Total: 171
+2024-09-16 23:36:33.099 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:36:33.111 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:36:33.119 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:36:33.120 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 111111(Long)
+2024-09-16 23:36:33.170 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:36:33.171 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:36:33.178 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in ( ? , ? , ? )
+2024-09-16 23:36:33.178 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 1(Long), 2(Long), 3(Long)
+2024-09-16 23:36:33.276 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - <==    Updates: 0
+2024-09-16 23:36:33.280 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in
+2024-09-16 23:36:33.281 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 
+2024-09-16 23:36:33.495 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:36:33.496 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:36:33.547 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:36:33.548 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:36:33.548 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:36:33.903 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:36:33.903 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 31(Long)
+2024-09-16 23:36:33.952 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:36:34.099 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:36:34.201 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:36:34.202 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:36:34.251 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:36:34.252 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:36:34.252 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:36:34.528 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-16 23:36:34.534 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-16 23:39:19.102 [main] INFO  com.sky.SetmealTest - Starting SetmealTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 30448 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-16 23:39:19.105 [main] INFO  com.sky.SetmealTest - The following 1 profile is active: "dev"
+2024-09-16 23:39:19.108 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.4.Final
+2024-09-16 23:39:20.894 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-16 23:39:21.090 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-16 23:39:23.870 [main] INFO  com.sky.SetmealTest - Started SetmealTest in 5.134 seconds (JVM running for 6.233)
+2024-09-16 23:39:24.932 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 23:39:24.985 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 3(Long), /4871.png(String), 套餐10000(String), 0.56(BigDecimal), null
+2024-09-16 23:39:25.144 [main] INFO  com.sky.service.impl.SetmealServiceImpl - 发生sql异常
+2024-09-16 23:39:25.168 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 23:39:25.169 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐1(String), 1.00(BigDecimal), null
+2024-09-16 23:39:25.272 [main] INFO  com.sky.service.impl.SetmealServiceImpl - 发生sql异常
+2024-09-16 23:39:25.290 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:39:25.291 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:39:25.371 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:39:25.377 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:39:25.377 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 10000000(Long)
+2024-09-16 23:39:25.428 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:39:25.457 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE category_id = ? and status = ?
+2024-09-16 23:39:25.457 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==> Parameters: 2(Long), 0(Integer)
+2024-09-16 23:39:25.578 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - <==      Total: 171
+2024-09-16 23:39:25.585 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:39:25.596 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:39:25.602 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:39:25.603 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 111111(Long)
+2024-09-16 23:39:25.653 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:39:25.653 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:39:25.660 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in ( ? , ? , ? )
+2024-09-16 23:39:25.660 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 1(Long), 2(Long), 3(Long)
+2024-09-16 23:39:25.758 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - <==    Updates: 0
+2024-09-16 23:39:25.762 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in
+2024-09-16 23:39:25.763 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 
+2024-09-16 23:39:25.971 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:39:25.972 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:39:26.021 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:39:26.022 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:39:26.023 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:39:26.369 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:39:26.369 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 31(Long)
+2024-09-16 23:39:26.417 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:39:26.562 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:39:26.661 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:39:26.661 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:39:26.710 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:39:26.710 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:39:26.711 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:39:26.981 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-16 23:39:26.987 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-16 23:47:39.853 [main] INFO  com.sky.SetmealTest - Starting SetmealTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 18864 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-16 23:47:39.856 [main] INFO  com.sky.SetmealTest - The following 1 profile is active: "dev"
+2024-09-16 23:47:39.858 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.4.Final
+2024-09-16 23:47:41.654 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-16 23:47:41.850 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-16 23:47:44.760 [main] INFO  com.sky.SetmealTest - Started SetmealTest in 5.269 seconds (JVM running for 6.514)
+2024-09-16 23:47:45.892 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 23:47:45.932 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 3(Long), /4871.png(String), 套餐200120(String), 0.56(BigDecimal), null
+2024-09-16 23:47:46.045 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - <==    Updates: 1
+2024-09-16 23:47:46.070 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==>  Preparing: insert into setmeal (category_id,image,name,price,status,create_time,update_time,create_user,update_user) values (?,?,?,?,?,now(),now(),1,1)
+2024-09-16 23:47:46.071 [main] DEBUG com.sky.mapper.SetmealMapper.addSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐1(String), 1.00(BigDecimal), null
+2024-09-16 23:47:46.235 [main] INFO  com.sky.service.impl.SetmealServiceImpl - 发生sql异常
+2024-09-16 23:47:46.247 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:47:46.248 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:47:46.332 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:47:46.338 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:47:46.339 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 10000000(Long)
+2024-09-16 23:47:46.391 [main] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:47:46.413 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE category_id = ? and status = ?
+2024-09-16 23:47:46.413 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - ==> Parameters: 2(Long), 0(Integer)
+2024-09-16 23:47:46.535 [main] DEBUG com.sky.mapper.SetmealMapper.pageSetmeal - <==      Total: 171
+2024-09-16 23:47:46.543 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:47:46.544 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:47:46.596 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:47:46.597 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmealStatus - ==>  Preparing: update setmeal set status = ? where id = ?
+2024-09-16 23:47:46.597 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmealStatus - ==> Parameters: 1(Integer), 100(Long)
+2024-09-16 23:47:46.699 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmealStatus - <==    Updates: 1
+2024-09-16 23:47:46.705 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:47:46.705 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:47:46.758 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:47:46.758 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmealStatus - ==>  Preparing: update setmeal set status = ? where id = ?
+2024-09-16 23:47:46.758 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmealStatus - ==> Parameters: 1(Integer), 100(Long)
+2024-09-16 23:47:46.860 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmealStatus - <==    Updates: 1
+2024-09-16 23:47:46.865 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:47:46.866 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 111111(Long)
+2024-09-16 23:47:46.917 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:47:46.918 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:47:46.927 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==>  Preparing: delete from setmeal where id in ( ? , ? , ? )
+2024-09-16 23:47:46.927 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - ==> Parameters: 1(Long), 2(Long), 3(Long)
+2024-09-16 23:47:47.029 [main] DEBUG com.sky.mapper.SetmealMapper.deleteSetmals - <==    Updates: 0
+2024-09-16 23:47:47.149 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:47:47.149 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:47:47.201 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:47:47.202 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:47:47.203 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:47:47.566 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:47:47.566 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 31(Long)
+2024-09-16 23:47:47.618 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 0
+2024-09-16 23:47:47.768 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.SetmealController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-16 23:47:47.874 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==>  Preparing: select id,name,category_id,price,image, description,status,create_time, update_time,create_user,update_user from setmeal WHERE id = ?
+2024-09-16 23:47:47.874 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - ==> Parameters: 100(Long)
+2024-09-16 23:47:47.925 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.getSetmealById - <==      Total: 1
+2024-09-16 23:47:47.926 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==>  Preparing: update setmeal SET category_id = ?,image = ?,name = ?,price = ? WHERE id = ?
+2024-09-16 23:47:47.927 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.SetmealMapper.updateSetmeal - ==> Parameters: 1(Long), /a.png(String), 套餐2(String), 0.30(BigDecimal), 100(Long)
+2024-09-16 23:47:48.209 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-16 23:47:48.218 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

@@ -1,0 +1,24 @@
+sky:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: 123.56.162.2
+    port: 3306
+    database: sky_take_out
+    username: gali
+    password: 20001126X
+  jwt:
+    isHidden: true
+  thread:
+    corePoolSize: 2
+    maxPoolSize: 4
+    queueCapacity: 6
+    keepAliveSeconds: 5
+
+server:
+  port: 8080
+storage:
+  qiniu:
+    accessKey: ObGKPQLd7sHR-5lb_eFYsZvWGKuS4fPc1IQ8lNRY
+    secretKey: iK5YjzhjqQJ5N9dVj4cXcU8XX6SlVFzf-fbuabxG
+    bucket: jony-common
+    domain: https://assets.leapsss.tech

@@ -1,0 +1,21 @@
+sky:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: gallilikelike.cn
+    port: 3306
+    database: sky_take_out
+    username: gali
+    password: 20001126X
+  # 是否屏蔽jwt令牌
+  jwt:
+    isHidden: true
+  # 线程池配置
+  thread:
+    corePoolSize: 2
+    maxPoolSize: 4
+    queueCapacity: 6
+    keepAliveSeconds: 5
+spring:
+  devtools:
+    restart:
+      enabled: false

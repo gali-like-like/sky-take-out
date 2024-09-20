@@ -1,0 +1,986 @@
+2024-09-15 13:39:34.473 [main] INFO  com.sky.SkyApplicationTest - Starting SkyApplicationTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 8592 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 13:39:34.476 [main] INFO  com.sky.SkyApplicationTest - The following 1 profile is active: "dev"
+2024-09-15 13:39:36.133 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 13:39:36.317 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 13:39:38.926 [main] INFO  com.sky.SkyApplicationTest - Started SkyApplicationTest in 4.798 seconds (JVM running for 6.062)
+2024-09-15 13:39:40.281 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 13:39:40.318 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Integer)
+2024-09-15 13:39:40.379 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 13:39:40.383 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - ==>  Preparing: update employee set password = md5(?) where id = ?
+2024-09-15 13:39:40.384 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - ==> Parameters: 123456(String), 1(Integer)
+2024-09-15 13:39:40.459 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - <==    Updates: 1
+2024-09-15 13:39:40.535 [main] INFO  com.sky.SkyApplication - 修改密码成功：com.sky.result.Result@332610ad
+2024-09-15 13:39:40.587 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 13:39:40.587 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Integer)
+2024-09-15 13:39:40.625 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 13:39:40.700 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.EmployeeController - 发生异常,具体信息:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 13:39:40.700 [main] INFO  com.sky.SkyApplication - 修改密码成功：com.sky.result.Result@5134a7d6
+2024-09-15 13:39:40.741 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 13:39:40.742 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Integer)
+2024-09-15 13:39:40.779 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 13:39:40.853 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.EmployeeController - 发生异常,具体信息:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 13:39:40.853 [main] INFO  com.sky.SkyApplication - 修改管理员状态成功：com.sky.result.Result@690c3b1f
+2024-09-15 13:39:40.894 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 13:39:40.895 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Integer)
+2024-09-15 13:39:40.932 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 13:39:40.933 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - ==>  Preparing: update employee set status = ? where id = ?
+2024-09-15 13:39:40.933 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - ==> Parameters: 1(Integer), 1(Integer)
+2024-09-15 13:39:41.006 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - <==    Updates: 1
+2024-09-15 13:39:41.080 [main] INFO  com.sky.SkyApplication - 修改管理员状态成功：com.sky.result.Result@1d722bff
+2024-09-15 13:39:41.100 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee WHERE name LIKE CONCAT("%",?,"%");
+2024-09-15 13:39:41.100 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - ==> Parameters: 管理(String)
+2024-09-15 13:39:41.139 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - <==      Total: 1
+2024-09-15 13:39:41.141 [main] INFO  com.sky.SkyApplication - 结果:
+com.sky.result.Result@2c485b3a
+2024-09-15 13:39:41.162 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 13:39:41.168 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 15:45:54.324 [main] INFO  com.sky.SkyApplicationTest - Starting SkyApplicationTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 20692 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 15:45:54.326 [main] INFO  com.sky.SkyApplicationTest - The following 1 profile is active: "dev"
+2024-09-15 15:45:56.100 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 15:45:56.287 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 15:45:59.075 [main] INFO  com.sky.SkyApplicationTest - Started SkyApplicationTest in 5.077 seconds (JVM running for 6.389)
+2024-09-15 15:46:00.607 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:46:00.639 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 15:46:00.721 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 15:46:00.724 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - ==>  Preparing: update employee set password = md5(?) where id = ?
+2024-09-15 15:46:00.725 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - ==> Parameters: 123456(String), 1(Long)
+2024-09-15 15:46:00.816 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - <==    Updates: 1
+2024-09-15 15:46:00.905 [main] INFO  com.sky.SkyApplication - 修改密码成功：com.sky.result.Result@13e5c53c
+2024-09-15 15:46:00.925 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee where id = ?
+2024-09-15 15:46:00.926 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==> Parameters: 2(Long)
+2024-09-15 15:46:00.972 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - <==      Total: 0
+2024-09-15 15:46:00.973 [main] INFO  com.sky.SkyApplication - result:
+账号不存在
+2024-09-15 15:46:01.022 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:46:01.023 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 15:46:01.068 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 15:46:01.155 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.EmployeeController - 发生异常,具体信息:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 15:46:01.156 [main] INFO  com.sky.SkyApplication - 修改密码成功：com.sky.result.Result@5e1e19af
+2024-09-15 15:46:01.205 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:46:01.205 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 15:46:01.248 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 15:46:01.334 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.EmployeeController - 发生异常,具体信息:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 15:46:01.335 [main] INFO  com.sky.SkyApplication - 修改管理员状态成功：com.sky.result.Result@4088c5e6
+2024-09-15 15:46:01.384 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:46:01.385 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 15:46:01.428 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 15:46:01.443 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.updateEmployee - ==>  Preparing: update employ WHERE id = ?
+2024-09-15 15:46:01.443 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.updateEmployee - ==> Parameters: 1(Long)
+2024-09-15 15:46:01.656 [main] INFO  com.sky.SkyApplication - result:
+未知错误
+2024-09-15 15:46:01.704 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:46:01.704 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 15:46:01.748 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 15:46:01.833 [main] INFO  com.sky.SkyApplication - result:
+0
+2024-09-15 15:46:01.881 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:46:01.881 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 15:46:01.925 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 15:46:01.925 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - ==>  Preparing: update employee set status = ? where id = ?
+2024-09-15 15:46:01.925 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - ==> Parameters: 1(Integer), 1(Long)
+2024-09-15 15:46:02.009 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - <==    Updates: 1
+2024-09-15 15:46:02.095 [main] INFO  com.sky.SkyApplication - 修改管理员状态成功：com.sky.result.Result@71f042b1
+2024-09-15 15:46:02.100 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.addEmployee - ==>  Preparing: INSERT INTO employee (id,NAME,id_number,sex,username,phone,PASSWORD,create_user,update_user) VALUES (NULL,?,?,?,?,?,MD5("123456"),1,1);
+2024-09-15 15:46:02.101 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.addEmployee - ==> Parameters: null, 7777777777(String), 女(String), null, 7894555(String)
+2024-09-15 15:46:02.186 [main] INFO  com.sky.SkyApplication - result:
+未知错误
+2024-09-15 15:46:02.192 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee WHERE name LIKE CONCAT("%",?,"%");
+2024-09-15 15:46:02.192 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - ==> Parameters: 管理(String)
+2024-09-15 15:46:02.237 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - <==      Total: 1
+2024-09-15 15:46:02.239 [main] INFO  com.sky.SkyApplication - 结果:
+com.sky.result.Result@81a56b2
+2024-09-15 15:46:02.243 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee where id = ?
+2024-09-15 15:46:02.244 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==> Parameters: 1(Long)
+2024-09-15 15:46:02.288 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - <==      Total: 1
+2024-09-15 15:46:02.288 [main] INFO  com.sky.SkyApplication - result:
+null
+2024-09-15 15:46:02.310 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 15:46:02.317 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 15:47:39.985 [main] INFO  com.sky.SkyApplicationTest - Starting SkyApplicationTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 3052 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 15:47:39.987 [main] INFO  com.sky.SkyApplicationTest - The following 1 profile is active: "dev"
+2024-09-15 15:47:41.660 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 15:47:41.855 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 15:47:44.548 [main] INFO  com.sky.SkyApplicationTest - Started SkyApplicationTest in 4.894 seconds (JVM running for 6.12)
+2024-09-15 15:47:45.655 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:47:45.692 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 15:47:45.760 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 15:47:45.763 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - ==>  Preparing: update employee set password = md5(?) where id = ?
+2024-09-15 15:47:45.765 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - ==> Parameters: 123456(String), 1(Long)
+2024-09-15 15:47:45.850 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - <==    Updates: 1
+2024-09-15 15:47:45.936 [main] INFO  com.sky.SkyApplication - 修改密码成功：1
+2024-09-15 15:47:45.954 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee where id = ?
+2024-09-15 15:47:45.955 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==> Parameters: 2(Long)
+2024-09-15 15:47:45.998 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - <==      Total: 0
+2024-09-15 15:47:45.998 [main] INFO  com.sky.SkyApplication - result:
+0
+2024-09-15 15:47:46.050 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:47:46.050 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 15:47:46.093 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 15:47:46.179 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.EmployeeController - 发生异常,具体信息:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 15:47:46.179 [main] INFO  com.sky.SkyApplication - 修改密码成功：0
+2024-09-15 15:47:46.227 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:47:46.228 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 15:47:46.270 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 15:47:46.353 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.EmployeeController - 发生异常,具体信息:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 15:47:46.353 [main] INFO  com.sky.SkyApplication - 修改管理员状态成功：0
+2024-09-15 15:47:46.399 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:47:46.399 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 15:47:46.440 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 15:47:46.456 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.updateEmployee - ==>  Preparing: update employ WHERE id = ?
+2024-09-15 15:47:46.457 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.updateEmployee - ==> Parameters: 1(Long)
+2024-09-15 15:47:46.668 [main] INFO  com.sky.SkyApplication - result:
+未知错误
+2024-09-15 15:47:46.712 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:47:46.713 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 15:47:46.755 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 15:47:46.836 [main] INFO  com.sky.SkyApplication - result:
+0
+2024-09-15 15:47:46.881 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:47:46.881 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 15:47:46.921 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 15:47:46.922 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - ==>  Preparing: update employee set status = ? where id = ?
+2024-09-15 15:47:46.922 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - ==> Parameters: 1(Integer), 1(Long)
+2024-09-15 15:47:47.004 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - <==    Updates: 1
+2024-09-15 15:47:47.085 [main] INFO  com.sky.SkyApplication - 修改管理员状态成功：1
+2024-09-15 15:47:47.090 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.addEmployee - ==>  Preparing: INSERT INTO employee (id,NAME,id_number,sex,username,phone,PASSWORD,create_user,update_user) VALUES (NULL,?,?,?,?,?,MD5("123456"),1,1);
+2024-09-15 15:47:47.090 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.addEmployee - ==> Parameters: null, 7777777777(String), 女(String), null, 7894555(String)
+2024-09-15 15:47:47.171 [main] INFO  com.sky.SkyApplication - result:
+0
+2024-09-15 15:47:47.178 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee WHERE name LIKE CONCAT("%",?,"%");
+2024-09-15 15:47:47.178 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - ==> Parameters: 管理(String)
+2024-09-15 15:47:47.220 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - <==      Total: 1
+2024-09-15 15:47:47.222 [main] INFO  com.sky.SkyApplication - 结果:
+1
+2024-09-15 15:47:47.227 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee where id = ?
+2024-09-15 15:47:47.227 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==> Parameters: 1(Long)
+2024-09-15 15:47:47.268 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - <==      Total: 1
+2024-09-15 15:47:47.268 [main] INFO  com.sky.SkyApplication - result:
+1
+2024-09-15 15:47:47.295 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 15:47:47.303 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 15:51:17.588 [main] INFO  com.sky.SkyApplicationTest - Starting SkyApplicationTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 20136 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 15:51:17.591 [main] INFO  com.sky.SkyApplicationTest - The following 1 profile is active: "dev"
+2024-09-15 15:51:19.332 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 15:51:19.543 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 15:51:22.592 [main] INFO  com.sky.SkyApplicationTest - Started SkyApplicationTest in 5.331 seconds (JVM running for 6.621)
+2024-09-15 15:51:23.805 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:51:23.835 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 15:51:23.908 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 15:51:23.911 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - ==>  Preparing: update employee set password = md5(?) where id = ?
+2024-09-15 15:51:23.912 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - ==> Parameters: 123456(String), 1(Long)
+2024-09-15 15:51:24.001 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - <==    Updates: 1
+2024-09-15 15:51:24.090 [main] INFO  com.sky.SkyApplication - 修改密码成功：1
+2024-09-15 15:51:24.106 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee where id = ?
+2024-09-15 15:51:24.106 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==> Parameters: 2(Long)
+2024-09-15 15:51:24.151 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - <==      Total: 0
+2024-09-15 15:51:24.151 [main] INFO  com.sky.SkyApplication - result:
+0
+2024-09-15 15:51:24.201 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:51:24.201 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 15:51:24.245 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 15:51:24.331 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 15:51:24.332 [main] INFO  com.sky.SkyApplication - 修改密码成功：0
+2024-09-15 15:51:24.380 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:51:24.381 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 15:51:24.425 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 15:51:24.511 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 15:51:24.511 [main] INFO  com.sky.SkyApplication - 修改管理员状态成功：0
+2024-09-15 15:51:24.560 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:51:24.561 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 15:51:24.603 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 15:51:24.619 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.updateEmployee - ==>  Preparing: update employ WHERE id = ?
+2024-09-15 15:51:24.619 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.updateEmployee - ==> Parameters: 1(Long)
+2024-09-15 15:51:24.832 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id = 1' at line 3
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\EmployeeMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: update employ                     WHERE id = ?
+### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id = 1' at line 3
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id = 1' at line 3
+2024-09-15 15:51:24.833 [main] INFO  com.sky.SkyApplication - result:
+0
+2024-09-15 15:51:24.881 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:51:24.881 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 15:51:24.925 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 15:51:25.013 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 15:51:25.013 [main] INFO  com.sky.SkyApplication - result:
+0
+2024-09-15 15:51:25.060 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:51:25.060 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 15:51:25.104 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 15:51:25.104 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - ==>  Preparing: update employee set status = ? where id = ?
+2024-09-15 15:51:25.104 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - ==> Parameters: 1(Integer), 1(Long)
+2024-09-15 15:51:25.190 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - <==    Updates: 1
+2024-09-15 15:51:25.274 [main] INFO  com.sky.SkyApplication - 修改管理员状态成功：1
+2024-09-15 15:51:25.284 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.addEmployee - ==>  Preparing: INSERT INTO employee (id,NAME,id_number,sex,username,phone,PASSWORD,create_user,update_user) VALUES (NULL,?,?,?,?,?,MD5("123456"),1,1);
+2024-09-15 15:51:25.285 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.addEmployee - ==> Parameters: null, 7777777777(String), 女(String), null, 7894555(String)
+2024-09-15 15:51:25.371 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'name' cannot be null
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\EmployeeMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: INSERT INTO employee (id,NAME,id_number,sex,username,phone,PASSWORD,create_user,update_user) VALUES (NULL,?,?,?,?,?,MD5("123456"),1,1);
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'name' cannot be null
+; Column 'name' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column 'name' cannot be null
+2024-09-15 15:51:25.371 [main] INFO  com.sky.SkyApplication - result:
+0
+2024-09-15 15:51:25.378 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee WHERE name LIKE CONCAT("%",?,"%");
+2024-09-15 15:51:25.378 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - ==> Parameters: 管理(String)
+2024-09-15 15:51:25.422 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - <==      Total: 1
+2024-09-15 15:51:25.424 [main] INFO  com.sky.SkyApplication - 结果:
+1
+2024-09-15 15:51:25.430 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee where id = ?
+2024-09-15 15:51:25.431 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==> Parameters: 1(Long)
+2024-09-15 15:51:25.474 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - <==      Total: 1
+2024-09-15 15:51:25.474 [main] INFO  com.sky.SkyApplication - result:
+1
+2024-09-15 15:51:25.498 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 15:51:25.504 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 15:55:14.613 [main] INFO  com.sky.SkyApplicationTest - Starting SkyApplicationTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 11712 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 15:55:14.616 [main] INFO  com.sky.SkyApplicationTest - The following 1 profile is active: "dev"
+2024-09-15 15:55:16.192 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 15:55:16.374 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 15:55:18.902 [main] INFO  com.sky.SkyApplicationTest - Started SkyApplicationTest in 4.608 seconds (JVM running for 5.758)
+2024-09-15 15:55:20.000 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:55:20.033 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 15:55:20.103 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 15:55:20.105 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - ==>  Preparing: update employee set password = md5(?) where id = ?
+2024-09-15 15:55:20.106 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - ==> Parameters: 123456(String), 1(Long)
+2024-09-15 15:55:20.192 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - <==    Updates: 1
+2024-09-15 15:55:20.300 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee where id = ?
+2024-09-15 15:55:20.301 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==> Parameters: 2(Long)
+2024-09-15 15:55:20.344 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - <==      Total: 0
+2024-09-15 15:55:20.393 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:55:20.393 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 15:55:20.435 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 15:55:20.520 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 15:55:20.567 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:55:20.568 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 15:55:20.609 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 15:55:20.694 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 15:55:20.741 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:55:20.741 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 15:55:20.783 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 15:55:20.799 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.updateEmployee - ==>  Preparing: update employ WHERE id = ?
+2024-09-15 15:55:20.799 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.updateEmployee - ==> Parameters: 1(Long)
+2024-09-15 15:55:21.005 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id = 1' at line 3
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\EmployeeMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: update employ                     WHERE id = ?
+### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id = 1' at line 3
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id = 1' at line 3
+2024-09-15 15:55:21.054 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:55:21.054 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 15:55:21.096 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 15:55:21.178 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 15:55:21.223 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 15:55:21.223 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 15:55:21.264 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 15:55:21.265 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - ==>  Preparing: update employee set status = ? where id = ?
+2024-09-15 15:55:21.265 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - ==> Parameters: 1(Integer), 1(Long)
+2024-09-15 15:55:21.347 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - <==    Updates: 1
+2024-09-15 15:55:21.434 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.addEmployee - ==>  Preparing: INSERT INTO employee (id,NAME,id_number,sex,username,phone,PASSWORD,create_user,update_user) VALUES (NULL,?,?,?,?,?,MD5("123456"),1,1);
+2024-09-15 15:55:21.435 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.addEmployee - ==> Parameters: null, 7777777777(String), 女(String), null, 7894555(String)
+2024-09-15 15:55:21.517 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'name' cannot be null
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\EmployeeMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: INSERT INTO employee (id,NAME,id_number,sex,username,phone,PASSWORD,create_user,update_user) VALUES (NULL,?,?,?,?,?,MD5("123456"),1,1);
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'name' cannot be null
+; Column 'name' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column 'name' cannot be null
+2024-09-15 15:55:21.525 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee WHERE name LIKE CONCAT("%",?,"%");
+2024-09-15 15:55:21.525 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - ==> Parameters: 管理(String)
+2024-09-15 15:55:21.566 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - <==      Total: 1
+2024-09-15 15:55:21.572 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee where id = ?
+2024-09-15 15:55:21.573 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==> Parameters: 1(Long)
+2024-09-15 15:55:21.615 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - <==      Total: 1
+2024-09-15 15:55:21.636 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 15:55:21.644 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 16:00:22.413 [main] INFO  com.sky.SkyApplicationTest - Starting SkyApplicationTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 9724 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 16:00:22.416 [main] INFO  com.sky.SkyApplicationTest - The following 1 profile is active: "dev"
+2024-09-15 16:00:24.040 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 16:00:24.240 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 16:00:26.902 [main] INFO  com.sky.SkyApplicationTest - Started SkyApplicationTest in 4.844 seconds (JVM running for 5.946)
+2024-09-15 16:00:27.942 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:00:27.975 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 16:00:28.042 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 16:00:28.044 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - ==>  Preparing: update employee set password = md5(?) where id = ?
+2024-09-15 16:00:28.046 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - ==> Parameters: 123456(String), 1(Long)
+2024-09-15 16:00:28.131 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - <==    Updates: 1
+2024-09-15 16:00:28.237 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee where id = ?
+2024-09-15 16:00:28.237 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==> Parameters: 2(Long)
+2024-09-15 16:00:28.280 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - <==      Total: 0
+2024-09-15 16:00:28.328 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:00:28.328 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 16:00:28.370 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 16:00:28.455 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 16:00:28.503 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:00:28.503 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 16:00:28.544 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 16:00:28.628 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 16:00:28.676 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:00:28.676 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 16:00:28.718 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 16:00:28.734 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.updateEmployee - ==>  Preparing: update employ SET name = ? WHERE id = ?
+2024-09-15 16:00:28.734 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.updateEmployee - ==> Parameters: 管理大佬(String), 1(Long)
+2024-09-15 16:00:28.937 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: Table 'sky_take_out.employ' doesn't exist
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\EmployeeMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: update employ          SET name = ?           WHERE id = ?
+### Cause: java.sql.SQLSyntaxErrorException: Table 'sky_take_out.employ' doesn't exist
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Table 'sky_take_out.employ' doesn't exist
+2024-09-15 16:00:28.988 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:00:28.989 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 16:00:29.029 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 16:00:29.110 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 16:00:29.155 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:00:29.155 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 16:00:29.196 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 16:00:29.197 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - ==>  Preparing: update employee set status = ? where id = ?
+2024-09-15 16:00:29.197 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - ==> Parameters: 1(Integer), 1(Long)
+2024-09-15 16:00:29.276 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - <==    Updates: 1
+2024-09-15 16:00:29.363 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.addEmployee - ==>  Preparing: INSERT INTO employee (id,NAME,id_number,sex,username,phone,PASSWORD,create_user,update_user) VALUES (NULL,?,?,?,?,?,MD5("123456"),1,1);
+2024-09-15 16:00:29.363 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.addEmployee - ==> Parameters: 貂蝉(String), 7777777777(String), 女(String), diaocan(String), 7894555(String)
+2024-09-15 16:00:29.448 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.addEmployee - <==    Updates: 1
+2024-09-15 16:00:29.454 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee WHERE name LIKE CONCAT("%",?,"%");
+2024-09-15 16:00:29.455 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - ==> Parameters: 管理(String)
+2024-09-15 16:00:29.497 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - <==      Total: 1
+2024-09-15 16:00:29.503 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee where id = ?
+2024-09-15 16:00:29.503 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==> Parameters: 1(Long)
+2024-09-15 16:00:29.544 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - <==      Total: 1
+2024-09-15 16:00:29.570 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 16:00:29.576 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 16:05:00.708 [main] INFO  com.sky.SkyApplicationTest - Starting SkyApplicationTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 25544 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 16:05:00.710 [main] INFO  com.sky.SkyApplicationTest - The following 1 profile is active: "dev"
+2024-09-15 16:05:02.325 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 16:05:02.506 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 16:05:05.217 [main] INFO  com.sky.SkyApplicationTest - Started SkyApplicationTest in 4.855 seconds (JVM running for 5.96)
+2024-09-15 16:05:06.285 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:05:06.319 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 16:05:06.388 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 16:05:06.390 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - ==>  Preparing: update employee set password = md5(?) where id = ?
+2024-09-15 16:05:06.391 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - ==> Parameters: 123456(String), 1(Long)
+2024-09-15 16:05:06.477 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - <==    Updates: 1
+2024-09-15 16:05:06.584 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee where id = ?
+2024-09-15 16:05:06.584 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==> Parameters: 2(Long)
+2024-09-15 16:05:06.628 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - <==      Total: 0
+2024-09-15 16:05:06.677 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:05:06.677 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 16:05:06.719 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 16:05:06.803 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 16:05:06.851 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:05:06.851 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 16:05:06.893 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 16:05:06.975 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 16:05:07.021 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:05:07.022 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 16:05:07.063 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 16:05:07.077 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.updateEmployee - ==>  Preparing: update employee SET name = ? WHERE id = ?
+2024-09-15 16:05:07.078 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.updateEmployee - ==> Parameters: 管理大佬(String), 1(Long)
+2024-09-15 16:05:07.161 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.updateEmployee - <==    Updates: 1
+2024-09-15 16:05:07.294 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:05:07.294 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 16:05:07.336 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 16:05:07.418 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 16:05:07.465 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:05:07.465 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 16:05:07.507 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 16:05:07.507 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - ==>  Preparing: update employee set status = ? where id = ?
+2024-09-15 16:05:07.508 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - ==> Parameters: 1(Integer), 1(Long)
+2024-09-15 16:05:07.590 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - <==    Updates: 1
+2024-09-15 16:05:07.676 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.addEmployee - ==>  Preparing: INSERT INTO employee (id,NAME,id_number,sex,username,phone,PASSWORD,create_user,update_user) VALUES (NULL,?,?,?,?,?,MD5("123456"),1,1);
+2024-09-15 16:05:07.677 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.addEmployee - ==> Parameters: 貂蝉(String), 7777777777(String), 女(String), diaocan(String), 7894555(String)
+2024-09-15 16:05:07.800 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+org.springframework.dao.DuplicateKeyException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'diaocan' for key 'employee.idx_username'
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\EmployeeMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: INSERT INTO employee (id,NAME,id_number,sex,username,phone,PASSWORD,create_user,update_user) VALUES (NULL,?,?,?,?,?,MD5("123456"),1,1);
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'diaocan' for key 'employee.idx_username'
+; Duplicate entry 'diaocan' for key 'employee.idx_username'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'diaocan' for key 'employee.idx_username'
+2024-09-15 16:05:07.813 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee WHERE name LIKE CONCAT("%",?,"%");
+2024-09-15 16:05:07.813 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - ==> Parameters: 管理(String)
+2024-09-15 16:05:07.857 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - <==      Total: 1
+2024-09-15 16:05:07.862 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee where id = ?
+2024-09-15 16:05:07.862 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==> Parameters: 1(Long)
+2024-09-15 16:05:07.904 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - <==      Total: 1
+2024-09-15 16:05:07.927 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 16:05:07.935 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 16:05:44.486 [main] INFO  com.sky.SkyApplicationTest - Starting SkyApplicationTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 10588 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 16:05:44.490 [main] INFO  com.sky.SkyApplicationTest - The following 1 profile is active: "dev"
+2024-09-15 16:05:46.133 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 16:05:46.325 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 16:05:48.989 [main] INFO  com.sky.SkyApplicationTest - Started SkyApplicationTest in 4.833 seconds (JVM running for 5.886)
+2024-09-15 16:05:50.052 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:05:50.088 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 16:05:50.158 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 16:05:50.160 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - ==>  Preparing: update employee set password = md5(?) where id = ?
+2024-09-15 16:05:50.161 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - ==> Parameters: 123456(String), 1(Long)
+2024-09-15 16:05:50.250 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.editPassword - <==    Updates: 1
+2024-09-15 16:05:50.358 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee where id = ?
+2024-09-15 16:05:50.358 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==> Parameters: 2(Long)
+2024-09-15 16:05:50.405 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - <==      Total: 0
+2024-09-15 16:05:50.456 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:05:50.456 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 16:05:50.500 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 16:05:50.588 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 16:05:50.637 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:05:50.638 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 16:05:50.681 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 16:05:50.768 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 16:05:50.817 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:05:50.818 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 16:05:50.861 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 16:05:50.875 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.updateEmployee - ==>  Preparing: update employee SET name = ? WHERE id = ?
+2024-09-15 16:05:50.875 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.updateEmployee - ==> Parameters: 管理大佬(String), 1(Long)
+2024-09-15 16:05:50.962 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.updateEmployee - <==    Updates: 1
+2024-09-15 16:05:51.095 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:05:51.095 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 2(Long)
+2024-09-15 16:05:51.139 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 0
+2024-09-15 16:05:51.225 [ForkJoinPool.commonPool-worker-1] INFO  com.sky.controller.admin.EmployeeController - 发生异常:
+com.sky.exception.AccountNotFoundException: 账号不存在
+2024-09-15 16:05:51.272 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==>  Preparing: select id from employee where id = ?
+2024-09-15 16:05:51.272 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - ==> Parameters: 1(Long)
+2024-09-15 16:05:51.316 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.existsId - <==      Total: 1
+2024-09-15 16:05:51.316 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - ==>  Preparing: update employee set status = ? where id = ?
+2024-09-15 16:05:51.317 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - ==> Parameters: 1(Integer), 1(Long)
+2024-09-15 16:05:51.401 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.changeStatus - <==    Updates: 1
+2024-09-15 16:05:51.492 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.addEmployee - ==>  Preparing: INSERT INTO employee (id,NAME,id_number,sex,username,phone,PASSWORD,create_user,update_user) VALUES (NULL,?,?,?,?,?,MD5("123456"),1,1);
+2024-09-15 16:05:51.492 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.addEmployee - ==> Parameters: 貂蝉(String), 7777777777(String), 女(String), daqiao(String), 7894555(String)
+2024-09-15 16:05:51.581 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.addEmployee - <==    Updates: 1
+2024-09-15 16:05:51.586 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee WHERE name LIKE CONCAT("%",?,"%");
+2024-09-15 16:05:51.586 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - ==> Parameters: 管理(String)
+2024-09-15 16:05:51.631 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getAllEmployee - <==      Total: 1
+2024-09-15 16:05:51.636 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==>  Preparing: select id,name,username,password,phone,sex,id_number,status,create_time,update_time,create_user,update_user from employee where id = ?
+2024-09-15 16:05:51.637 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - ==> Parameters: 1(Long)
+2024-09-15 16:05:51.679 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.EmployeeMapper.getEmployeeById - <==      Total: 1
+2024-09-15 16:05:51.706 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 16:05:51.715 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 18:42:12.174 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 4448 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 18:42:12.179 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "test"
+2024-09-15 18:42:14.984 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 18:42:15.384 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 18:42:19.115 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 7.426 seconds (JVM running for 9.947)
+2024-09-15 18:42:20.098 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryByType - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE type = ?
+2024-09-15 18:42:20.135 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryByType - ==> Parameters: 1(Long)
+2024-09-15 18:42:20.214 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.executor.ExecutorException: A query was run and no Result Maps were found for the Mapped Statement 'com.sky.mapper.CategoryMapper.queryByType'.  It's likely that neither a Result Type nor a Result Map was specified.
+2024-09-15 18:42:20.218 [main] INFO  com.sky.CategoryTest - result:
+com.sky.result.Result@77511e9c
+2024-09-15 18:42:20.293 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 18:42:20.308 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 20:53:47.167 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 25992 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 20:53:47.169 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "test"
+2024-09-15 20:53:48.745 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 20:53:48.926 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 20:53:51.572 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 4.739 seconds (JVM running for 6.069)
+2024-09-15 20:53:52.227 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryByType - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE type = ?
+2024-09-15 20:53:52.255 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryByType - ==> Parameters: 1(Long)
+2024-09-15 20:53:52.295 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryByType - <==      Total: 8
+2024-09-15 20:53:52.298 [main] INFO  com.sky.CategoryTest - result:
+com.sky.result.Result@57f6fc09
+2024-09-15 20:53:52.340 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 20:53:52.346 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 20:57:45.553 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 876 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 20:57:45.556 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "test"
+2024-09-15 20:57:47.256 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 20:57:47.438 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 20:57:50.127 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 4.895 seconds (JVM running for 6.057)
+2024-09-15 20:57:50.803 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE type = ?
+2024-09-15 20:57:50.827 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==> Parameters: 1(Integer)
+2024-09-15 20:57:50.859 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.executor.ExecutorException: A query was run and no Result Maps were found for the Mapped Statement 'com.sky.mapper.CategoryMapper.queryPageCategory'.  It's likely that neither a Result Type nor a Result Map was specified.
+2024-09-15 20:57:50.902 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 20:57:50.909 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 21:00:21.779 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 25364 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 21:00:21.782 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "test"
+2024-09-15 21:00:23.447 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 21:00:23.641 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 21:00:26.343 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 4.894 seconds (JVM running for 6.08)
+2024-09-15 21:00:27.032 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE type = ?
+2024-09-15 21:00:27.063 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==> Parameters: 1(Integer)
+2024-09-15 21:00:27.094 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - <==      Total: 8
+2024-09-15 21:00:27.138 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 21:00:27.145 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 21:05:18.383 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 11240 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 21:05:18.385 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "test"
+2024-09-15 21:05:20.104 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 21:05:20.301 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 21:05:23.153 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 5.173 seconds (JVM running for 6.419)
+2024-09-15 21:05:23.850 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE name like concat("%",?,"%") and
+2024-09-15 21:05:23.882 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==> Parameters: 牛蛙(String)
+2024-09-15 21:05:23.950 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\CategoryMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category                WHERE name like concat("%",?,"%") and
+### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+2024-09-15 21:05:23.988 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 21:05:23.994 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 21:09:41.216 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 9912 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 21:09:41.218 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "test"
+2024-09-15 21:09:42.888 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 21:09:43.071 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 21:09:45.795 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 4.911 seconds (JVM running for 6.116)
+2024-09-15 21:09:46.495 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE name like concat("%",?,"%")
+2024-09-15 21:09:46.523 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==> Parameters: 牛蛙(String)
+2024-09-15 21:09:46.548 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - <==      Total: 1
+2024-09-15 21:09:46.593 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 21:09:46.600 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 21:15:41.390 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 9284 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 21:15:41.392 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "test"
+2024-09-15 21:15:43.093 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 21:15:43.279 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 21:15:46.079 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 5.01 seconds (JVM running for 6.265)
+2024-09-15 21:15:46.837 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE name like concat("%",?,"%") and type = ?
+2024-09-15 21:15:46.866 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==> Parameters: 牛蛙(String), 1(Integer)
+2024-09-15 21:15:46.893 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - <==      Total: 1
+2024-09-15 21:15:46.935 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 21:15:46.941 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 21:24:49.956 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 21176 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 21:24:49.958 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "test"
+2024-09-15 21:24:51.767 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 21:24:51.957 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 21:24:54.674 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 5.042 seconds (JVM running for 6.285)
+2024-09-15 21:24:55.338 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 21:24:55.366 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 1(Long)
+2024-09-15 21:24:55.395 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 21:24:55.403 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+com.sky.exception.AccountNotFoundException
+2024-09-15 21:24:55.451 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 21:24:55.458 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 21:26:26.362 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 19940 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 21:26:26.365 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "test"
+2024-09-15 21:26:28.028 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 21:26:28.245 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 21:26:30.998 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 4.955 seconds (JVM running for 6.147)
+2024-09-15 21:26:31.683 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 21:26:31.711 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 21:26:31.738 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 21:26:31.760 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==>  Preparing: update category SET type = ?, type = ?, name = ? WHERE id = ?
+2024-09-15 21:26:31.761 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==> Parameters: 2(Integer), 100(Integer), 香干炒肉(String), 11(Long)
+2024-09-15 21:26:31.767 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - <==    Updates: 1
+2024-09-15 21:26:31.815 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 21:26:31.823 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 21:29:30.145 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 23584 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 21:29:30.148 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "test"
+2024-09-15 21:29:31.800 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 21:29:31.996 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 21:29:35.066 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 5.3 seconds (JVM running for 6.497)
+2024-09-15 21:29:35.734 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 21:29:35.762 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 21:29:35.812 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 21:29:35.838 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==>  Preparing: update category SET type = ?, type = ?, name = ?, update_time = now(), update_user = 1 WHERE id = ?
+2024-09-15 21:29:35.838 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==> Parameters: 2(Integer), 100(Integer), 香干炒肉(String), 11(Long)
+2024-09-15 21:29:35.851 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - <==    Updates: 1
+2024-09-15 21:29:35.899 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 21:29:35.906 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 21:31:47.256 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 1900 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 21:31:47.258 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "dev"
+2024-09-15 21:31:49.024 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 21:31:49.202 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 21:31:51.916 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 5.02 seconds (JVM running for 6.153)
+2024-09-15 21:31:52.958 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 21:31:52.987 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 21:31:53.059 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 21:31:53.084 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==>  Preparing: update category SET type = ?, type = ?, name = ?, update_time = now(), update_user = 1 WHERE id = ?
+2024-09-15 21:31:53.085 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==> Parameters: 2(Integer), 100(Integer), 香干炒肉(String), 11(Long)
+2024-09-15 21:31:53.167 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - <==    Updates: 1
+2024-09-15 21:31:53.292 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 21:31:53.301 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 21:37:19.651 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 13476 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 21:37:19.653 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "dev"
+2024-09-15 21:37:21.280 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 21:37:21.496 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 21:37:24.209 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 4.883 seconds (JVM running for 6.197)
+2024-09-15 21:37:25.251 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 21:37:25.282 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 101(Long)
+2024-09-15 21:37:25.350 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 21:37:25.440 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+com.sky.exception.AccountNotFoundException
+2024-09-15 21:37:25.488 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 21:37:25.498 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 21:38:23.285 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 13088 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 21:38:23.287 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "dev"
+2024-09-15 21:38:24.865 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 21:38:25.045 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 21:38:27.595 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 4.632 seconds (JVM running for 5.875)
+2024-09-15 21:38:28.615 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 21:38:28.650 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 21:38:28.719 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 21:38:28.743 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==>  Preparing: update category SET type = ?, sort = ?, name = ?, update_time = now(), update_user = 1 WHERE id = ?
+2024-09-15 21:38:28.743 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==> Parameters: 2(Integer), 100(Integer), 传统美食(String), 11(Long)
+2024-09-15 21:38:28.825 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - <==    Updates: 1
+2024-09-15 21:38:28.962 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 21:38:28.971 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 21:41:03.182 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 13060 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 21:41:03.185 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "dev"
+2024-09-15 21:41:04.899 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 21:41:05.101 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 21:41:07.708 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 4.85 seconds (JVM running for 6.074)
+2024-09-15 21:41:08.779 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 21:41:08.812 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 21:41:08.888 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 21:41:08.912 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==>  Preparing: update category SET type = ?, sort = ?, name = ?, update_time = now(), update_user = 1 WHERE id = ?
+2024-09-15 21:41:08.913 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==> Parameters: 2(Integer), 100(Integer), 传统美食(String), 11(Long)
+2024-09-15 21:41:09.004 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - <==    Updates: 1
+2024-09-15 21:41:09.145 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 21:41:09.155 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 21:42:36.055 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 22564 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 21:42:36.057 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "dev"
+2024-09-15 21:42:37.807 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 21:42:38.024 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 21:42:40.764 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 5.034 seconds (JVM running for 6.224)
+2024-09-15 21:42:41.816 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 21:42:41.845 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 21:42:41.917 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 21:42:41.937 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==>  Preparing: update category SET type = ?, sort = ?, name = ?, update_time = now(), update_user = 1 WHERE id = ?
+2024-09-15 21:42:41.938 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==> Parameters: 2(Integer), 100(Integer), 传统主食(String), 11(Long)
+2024-09-15 21:42:42.153 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+org.springframework.dao.DuplicateKeyException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '传统主食' for key 'category.idx_category_name'
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\CategoryMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: update category          SET type = ?,                                           sort = ?,                                           name = ?,                          update_time = now(),             update_user = 1           WHERE id = ?
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '传统主食' for key 'category.idx_category_name'
+; Duplicate entry '传统主食' for key 'category.idx_category_name'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '传统主食' for key 'category.idx_category_name'
+2024-09-15 21:42:42.193 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 21:42:42.202 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 21:45:04.713 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 11352 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 21:45:04.715 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "dev"
+2024-09-15 21:45:06.414 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 21:45:06.608 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 21:45:09.327 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 4.944 seconds (JVM running for 6.197)
+2024-09-15 21:45:10.335 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 21:45:10.365 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 21:45:10.434 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 21:45:10.436 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.sky.mapper.CategoryMapper.changeStatus
+2024-09-15 21:45:10.491 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 21:45:10.501 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 21:47:25.743 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 20148 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 21:47:25.744 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "dev"
+2024-09-15 21:47:27.418 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 21:47:27.606 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 21:47:30.226 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 4.82 seconds (JVM running for 6.059)
+2024-09-15 21:47:31.229 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 21:47:31.257 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 21:47:31.330 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 21:47:31.333 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - ==>  Preparing: update category set status = ? WHERE id = ?
+2024-09-15 21:47:31.334 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - ==> Parameters: 0(Integer), 11(Long)
+2024-09-15 21:47:31.434 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - <==    Updates: 1
+2024-09-15 21:47:31.479 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 21:47:31.485 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 21:48:45.586 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 7048 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 21:48:45.591 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "dev"
+2024-09-15 21:48:47.335 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 21:48:47.528 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 21:48:50.452 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 5.192 seconds (JVM running for 6.347)
+2024-09-15 21:48:51.439 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 21:48:51.467 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 21:48:51.537 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 21:48:51.540 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - ==>  Preparing: update category set status = ?,update_time = now(),update_usesr=1 WHERE id = ?
+2024-09-15 21:48:51.540 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - ==> Parameters: 0(Integer), 11(Long)
+2024-09-15 21:48:51.663 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'update_usesr' in 'field list'
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\CategoryMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: update category set status = ?,update_time = now(),update_usesr=1          WHERE id = ?
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'update_usesr' in 'field list'
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'update_usesr' in 'field list'
+2024-09-15 21:48:51.710 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 21:48:51.718 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 21:49:11.865 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 1992 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 21:49:11.868 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "dev"
+2024-09-15 21:49:13.556 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 21:49:13.733 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 21:49:16.279 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 4.755 seconds (JVM running for 5.902)
+2024-09-15 21:49:17.266 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 21:49:17.298 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 21:49:17.376 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 21:49:17.379 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - ==>  Preparing: update category set status = ?,update_time = now(),update_user=1 WHERE id = ?
+2024-09-15 21:49:17.379 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - ==> Parameters: 0(Integer), 11(Long)
+2024-09-15 21:49:17.468 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - <==    Updates: 1
+2024-09-15 21:49:17.514 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 21:49:17.522 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 22:03:13.109 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 24960 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 22:03:13.112 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "dev"
+2024-09-15 22:03:15.900 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 22:03:16.097 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 22:03:18.977 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 6.258 seconds (JVM running for 7.618)
+2024-09-15 22:03:21.047 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:03:21.082 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 22:03:21.151 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 22:03:21.173 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==>  Preparing: update category SET type = ?, sort = ?, name = ?, update_time = now(), update_user = 1 WHERE id = ?
+2024-09-15 22:03:21.174 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==> Parameters: 2(Integer), 100(Integer), 酒水饮料(String), 11(Long)
+2024-09-15 22:03:21.260 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - <==    Updates: 1
+2024-09-15 22:03:21.380 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.addCategory - ==>  Preparing: insert into category (id,name,type,sort,create_user,update_user) values (Null,?,?,?,?,?)
+2024-09-15 22:03:21.384 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'create_user' in 'class com.sky.dto.CategoryDTO'
+2024-09-15 22:03:21.439 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:03:21.439 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 22:03:21.483 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 22:03:21.483 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==>  Preparing: update category SET type = ?, sort = ?, name = ?, update_time = now(), update_user = 1 WHERE id = ?
+2024-09-15 22:03:21.484 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==> Parameters: 2(Integer), 100(Integer), 香干炒肉(String), 11(Long)
+2024-09-15 22:03:21.569 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - <==    Updates: 1
+2024-09-15 22:03:21.660 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:03:21.660 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 22:03:21.702 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 22:03:21.703 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - ==>  Preparing: update category set status = ?, update_time = now(),update_user=1 WHERE id = ?
+2024-09-15 22:03:21.703 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - ==> Parameters: 1(Integer), 11(Long)
+2024-09-15 22:03:21.790 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - <==    Updates: 1
+2024-09-15 22:03:21.794 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE name like concat("%",?,"%")
+2024-09-15 22:03:21.794 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==> Parameters: 牛蛙(String)
+2024-09-15 22:03:21.836 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - <==      Total: 1
+2024-09-15 22:03:21.843 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE name like concat("%",?,"%") and type = ?
+2024-09-15 22:03:21.843 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==> Parameters: 牛蛙(String), 1(Integer)
+2024-09-15 22:03:21.885 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - <==      Total: 1
+2024-09-15 22:03:21.890 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.addCategory - ==>  Preparing: insert into category (id,name,type,sort,create_user,update_user) values (Null,?,?,?,?,?)
+2024-09-15 22:03:21.891 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'create_user' in 'class com.sky.dto.CategoryDTO'
+2024-09-15 22:03:21.897 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:03:21.897 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 22:03:21.940 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 22:03:21.941 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - ==>  Preparing: update category set status = ?, update_time = now(),update_user=1 WHERE id = ?
+2024-09-15 22:03:21.941 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - ==> Parameters: 0(Integer), 11(Long)
+2024-09-15 22:03:22.028 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - <==    Updates: 1
+2024-09-15 22:03:22.032 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE type = ?
+2024-09-15 22:03:22.033 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==> Parameters: 1(Integer)
+2024-09-15 22:03:22.075 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - <==      Total: 7
+2024-09-15 22:03:22.080 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryByType - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE type = ?
+2024-09-15 22:03:22.080 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryByType - ==> Parameters: 1(Long)
+2024-09-15 22:03:22.125 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryByType - <==      Total: 7
+2024-09-15 22:03:22.125 [main] INFO  com.sky.CategoryTest - result:
+com.sky.result.Result@81a56b2
+2024-09-15 22:03:22.129 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:03:22.130 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 1220(Long)
+2024-09-15 22:03:22.172 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 22:03:22.218 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:03:22.218 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 22:03:22.259 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 22:03:22.260 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==>  Preparing: update category SET type = ?, sort = ?, name = ?, update_time = now(), update_user = 1 WHERE id = ?
+2024-09-15 22:03:22.260 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==> Parameters: 2(Integer), 100(Integer), 传统主食(String), 11(Long)
+2024-09-15 22:03:22.465 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+org.springframework.dao.DuplicateKeyException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '传统主食' for key 'category.idx_category_name'
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\CategoryMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: update category          SET type = ?,                                           sort = ?,                                           name = ?,                          update_time = now(),             update_user = 1           WHERE id = ?
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '传统主食' for key 'category.idx_category_name'
+; Duplicate entry '传统主食' for key 'category.idx_category_name'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '传统主食' for key 'category.idx_category_name'
+2024-09-15 22:03:22.469 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:03:22.469 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 1220(Long)
+2024-09-15 22:03:22.510 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 22:03:22.558 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:03:22.558 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 22:03:22.599 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 22:03:22.600 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.deleteCategoryById - ==>  Preparing: delete from category where id = ?
+2024-09-15 22:03:22.600 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.deleteCategoryById - ==> Parameters: 11(Long)
+2024-09-15 22:03:22.681 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.deleteCategoryById - <==    Updates: 1
+2024-09-15 22:03:22.810 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:03:22.810 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11110(Long)
+2024-09-15 22:03:22.851 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 22:03:22.934 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+com.sky.exception.AccountNotFoundException
+2024-09-15 22:03:22.964 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 22:03:22.972 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 22:08:10.903 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 20476 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 22:08:10.906 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "dev"
+2024-09-15 22:08:12.520 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 22:08:12.709 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 22:08:15.317 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 4.755 seconds (JVM running for 5.927)
+2024-09-15 22:08:16.330 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:08:16.363 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 111111(Long)
+2024-09-15 22:08:16.436 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 22:08:16.523 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+com.sky.exception.AccountNotFoundException
+2024-09-15 22:08:16.546 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.addCategory - ==>  Preparing: insert into category (id,name,type,sort,create_user,update_user) values (Null,?,?,?,1,1)
+2024-09-15 22:08:16.547 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.addCategory - ==> Parameters: 传统主食(String), 2(Integer), 30(Integer)
+2024-09-15 22:08:16.674 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+org.springframework.dao.DuplicateKeyException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '传统主食' for key 'category.idx_category_name'
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\CategoryMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: insert into category (id,name,type,sort,create_user,update_user) values (Null,?,?,?,1,1)
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '传统主食' for key 'category.idx_category_name'
+; Duplicate entry '传统主食' for key 'category.idx_category_name'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '传统主食' for key 'category.idx_category_name'
+2024-09-15 22:08:16.726 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:08:16.726 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 22:08:16.767 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 22:08:16.848 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+com.sky.exception.AccountNotFoundException
+2024-09-15 22:08:16.854 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:08:16.855 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 22:08:16.897 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 22:08:16.916 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE name like concat("%",?,"%")
+2024-09-15 22:08:16.917 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==> Parameters: 牛蛙(String)
+2024-09-15 22:08:16.961 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - <==      Total: 1
+2024-09-15 22:08:16.967 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE name like concat("%",?,"%") and type = ?
+2024-09-15 22:08:16.967 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==> Parameters: 牛蛙(String), 1(Integer)
+2024-09-15 22:08:17.009 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - <==      Total: 1
+2024-09-15 22:08:17.014 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.addCategory - ==>  Preparing: insert into category (id,name,type,sort,create_user,update_user) values (Null,?,?,?,1,1)
+2024-09-15 22:08:17.015 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.addCategory - ==> Parameters: 啤酒(String), 2(Integer), 30(Integer)
+2024-09-15 22:08:17.099 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.addCategory - <==    Updates: 1
+2024-09-15 22:08:17.106 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:08:17.106 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 22:08:17.148 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 22:08:17.153 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE type = ?
+2024-09-15 22:08:17.153 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==> Parameters: 1(Integer)
+2024-09-15 22:08:17.197 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - <==      Total: 7
+2024-09-15 22:08:17.201 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryByType - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE type = ?
+2024-09-15 22:08:17.202 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryByType - ==> Parameters: 1(Long)
+2024-09-15 22:08:17.244 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryByType - <==      Total: 7
+2024-09-15 22:08:17.245 [main] INFO  com.sky.CategoryTest - result:
+com.sky.result.Result@488c6c98
+2024-09-15 22:08:17.248 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:08:17.248 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 1220(Long)
+2024-09-15 22:08:17.289 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 22:08:17.333 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:08:17.333 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 22:08:17.374 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 22:08:17.453 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+com.sky.exception.AccountNotFoundException
+2024-09-15 22:08:17.458 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:08:17.458 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 1220(Long)
+2024-09-15 22:08:17.497 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 22:08:17.542 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:08:17.542 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11(Long)
+2024-09-15 22:08:17.581 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 22:08:17.659 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+com.sky.exception.AccountNotFoundException
+2024-09-15 22:08:17.703 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:08:17.703 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11110(Long)
+2024-09-15 22:08:17.742 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 22:08:17.819 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+com.sky.exception.AccountNotFoundException
+2024-09-15 22:08:17.845 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 22:08:17.857 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-09-15 22:11:02.504 [main] INFO  com.sky.CategoryTest - Starting CategoryTest using Java 17.0.11 on DESKTOP-7T4Q9F1 with PID 18376 (started by Lenovo in E:\Java\Project\sky-take-out\sky-server)
+2024-09-15 22:11:02.507 [main] INFO  com.sky.CategoryTest - The following 1 profile is active: "dev"
+2024-09-15 22:11:04.067 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-09-15 22:11:04.254 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-09-15 22:11:06.780 [main] INFO  com.sky.CategoryTest - Started CategoryTest in 4.594 seconds (JVM running for 5.802)
+2024-09-15 22:11:07.813 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:11:07.842 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 111111(Long)
+2024-09-15 22:11:07.914 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 22:11:08.003 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+com.sky.exception.AccountNotFoundException
+2024-09-15 22:11:08.028 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.addCategory - ==>  Preparing: insert into category (id,name,type,sort,create_user,update_user) values (Null,?,?,?,1,1)
+2024-09-15 22:11:08.029 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.addCategory - ==> Parameters: 传统主食(String), 2(Integer), 30(Integer)
+2024-09-15 22:11:08.163 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+org.springframework.dao.DuplicateKeyException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '传统主食' for key 'category.idx_category_name'
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\CategoryMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: insert into category (id,name,type,sort,create_user,update_user) values (Null,?,?,?,1,1)
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '传统主食' for key 'category.idx_category_name'
+; Duplicate entry '传统主食' for key 'category.idx_category_name'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '传统主食' for key 'category.idx_category_name'
+2024-09-15 22:11:08.212 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:11:08.212 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 12(Long)
+2024-09-15 22:11:08.258 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 22:11:08.273 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==>  Preparing: update category SET type = ?, sort = ?, name = ?, update_time = now(), update_user = 1 WHERE id = ?
+2024-09-15 22:11:08.274 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==> Parameters: 2(Integer), 100(Integer), 香干炒肉(String), 12(Long)
+2024-09-15 22:11:08.359 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - <==    Updates: 1
+2024-09-15 22:11:08.451 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:11:08.451 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 15(Long)
+2024-09-15 22:11:08.494 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 22:11:08.494 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - ==>  Preparing: update category set status = ?, update_time = now(),update_user=1 WHERE id = ?
+2024-09-15 22:11:08.494 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - ==> Parameters: 1(Integer), 15(Long)
+2024-09-15 22:11:08.584 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - <==    Updates: 1
+2024-09-15 22:11:08.589 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE name like concat("%",?,"%")
+2024-09-15 22:11:08.590 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==> Parameters: 牛蛙(String)
+2024-09-15 22:11:08.634 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - <==      Total: 1
+2024-09-15 22:11:08.640 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE name like concat("%",?,"%") and type = ?
+2024-09-15 22:11:08.640 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==> Parameters: 牛蛙(String), 1(Integer)
+2024-09-15 22:11:08.682 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - <==      Total: 1
+2024-09-15 22:11:08.687 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.addCategory - ==>  Preparing: insert into category (id,name,type,sort,create_user,update_user) values (Null,?,?,?,1,1)
+2024-09-15 22:11:08.688 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.addCategory - ==> Parameters: 啤酒(String), 2(Integer), 30(Integer)
+2024-09-15 22:11:08.773 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+org.springframework.dao.DuplicateKeyException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '啤酒' for key 'category.idx_category_name'
+### The error may exist in file [E:\Java\Project\sky-take-out\sky-server\target\classes\mapper\CategoryMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: insert into category (id,name,type,sort,create_user,update_user) values (Null,?,?,?,1,1)
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '啤酒' for key 'category.idx_category_name'
+; Duplicate entry '啤酒' for key 'category.idx_category_name'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '啤酒' for key 'category.idx_category_name'
+2024-09-15 22:11:08.783 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:11:08.783 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 15(Long)
+2024-09-15 22:11:08.825 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 22:11:08.826 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - ==>  Preparing: update category set status = ?, update_time = now(),update_user=1 WHERE id = ?
+2024-09-15 22:11:08.826 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - ==> Parameters: 0(Integer), 15(Long)
+2024-09-15 22:11:08.913 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.changeStatus - <==    Updates: 1
+2024-09-15 22:11:08.917 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE type = ?
+2024-09-15 22:11:08.918 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - ==> Parameters: 1(Integer)
+2024-09-15 22:11:08.960 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryPageCategory - <==      Total: 6
+2024-09-15 22:11:08.966 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryByType - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE type = ?
+2024-09-15 22:11:08.967 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryByType - ==> Parameters: 1(Long)
+2024-09-15 22:11:09.013 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryByType - <==      Total: 6
+2024-09-15 22:11:09.014 [main] INFO  com.sky.CategoryTest - result:
+com.sky.result.Result@6d6ddeb5
+2024-09-15 22:11:09.018 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:11:09.018 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 1220(Long)
+2024-09-15 22:11:09.058 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 22:11:09.103 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:11:09.103 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 15(Long)
+2024-09-15 22:11:09.146 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 22:11:09.146 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==>  Preparing: update category SET type = ?, sort = ?, name = ?, update_time = now(), update_user = 1 WHERE id = ?
+2024-09-15 22:11:09.147 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - ==> Parameters: 2(Integer), 100(Integer), 传统主食(String), 15(Long)
+2024-09-15 22:11:09.227 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.updateCategory - <==    Updates: 1
+2024-09-15 22:11:09.314 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:11:09.315 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 1220(Long)
+2024-09-15 22:11:09.355 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 22:11:09.401 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:11:09.402 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 12(Long)
+2024-09-15 22:11:09.443 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 1
+2024-09-15 22:11:09.444 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.deleteCategoryById - ==>  Preparing: delete from category where id = ?
+2024-09-15 22:11:09.444 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.deleteCategoryById - ==> Parameters: 12(Long)
+2024-09-15 22:11:09.524 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.deleteCategoryById - <==    Updates: 1
+2024-09-15 22:11:09.655 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==>  Preparing: select id,name,type,sort,status,create_time,update_time,create_user,update_user from category WHERE id = ?
+2024-09-15 22:11:09.655 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - ==> Parameters: 11110(Long)
+2024-09-15 22:11:09.696 [ForkJoinPool.commonPool-worker-1] DEBUG com.sky.mapper.CategoryMapper.queryCategoryById - <==      Total: 0
+2024-09-15 22:11:09.777 [ForkJoinPool.commonPool-worker-1] ERROR com.sky.controller.admin.CategoryController - 发生异常:
+com.sky.exception.AccountNotFoundException
+2024-09-15 22:11:09.804 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-09-15 22:11:09.811 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

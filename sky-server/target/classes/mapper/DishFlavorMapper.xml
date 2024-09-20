@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.DishFlavorMapper">
+  
+  <resultMap type="com.sky.entity.DishFlavor" id="DishFlavorMap">
+    <result property="id" column="id" jdbcType="INTEGER" />
+    <result property="dishId" column="dish_id" jdbcType="INTEGER" />
+    <result property="name" column="name" jdbcType="VARCHAR" />
+    <result property="value" column="value" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <!--查询单个-->
+  <select id="queryById" resultMap="DishFlavorMap">
+  
+  </select>
+  
+  <!--条件筛选总记录数-->
+  <select id="count" resultType="java.lang.Long">
+  
+  </select>
+  
+  <!--查询指定行数据-->
+  <select id="queryAllByLimit" resultMap="DishFlavorMap">
+  
+  </select>
+  <select id="queryByDishId" resultType="com.sky.entity.DishFlavor">
+    SELECT *
+    FROM dish_flavor
+    WHERE dish_id = #{dishId}
+  </select>
+  
+  <!--新增数据-->
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+  
+  </insert>
+  
+  <!--通过主键修改数据-->
+  <update id="update" parameterType="com.sky.entity.DishFlavor">
+    UPDATE dish_flavor
+    <set>
+      <!-- 动态更新 name 字段 -->
+      <if test="name != null">
+        name = #{name},
+      </if>
+      
+      <!-- 动态更新 value 字段 -->
+      <if test="value != null">
+        value = #{value},
+      </if>
+      
+      <!-- 动态更新 dishId 字段 -->
+      <if test="dishId != null">
+        dish_id = #{dishId},
+      </if>
+    </set>
+    WHERE id = #{id}
+  </update>
+  
+  <!--通过主键删除-->
+  <delete id="deleteById">
+  
+  </delete>
+
+</mapper>
+
