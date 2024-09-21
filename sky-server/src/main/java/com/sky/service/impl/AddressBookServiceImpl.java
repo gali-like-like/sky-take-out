@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 地址簿(AddressBook)表服务实现类
@@ -52,9 +53,8 @@ public class AddressBookServiceImpl implements AddressBookService {
      * @return 实例对象
      */
     @Override
-    public AddressBook insert(AddressBook addressBook) {
-        addressBookMapper.insert(addressBook);
-        return addressBook;
+    public int insert(AddressBook addressBook) {
+        return addressBookMapper.insert(addressBook);
     }
 
     /**
@@ -64,9 +64,8 @@ public class AddressBookServiceImpl implements AddressBookService {
      * @return 实例对象
      */
     @Override
-    public AddressBook update(AddressBook addressBook) {
-        addressBookMapper.update(addressBook);
-        return queryById(addressBook.getId());
+    public int update(AddressBook addressBook) {
+        return addressBookMapper.update(addressBook);
     }
 
     /**
@@ -78,5 +77,30 @@ public class AddressBookServiceImpl implements AddressBookService {
     @Override
     public boolean deleteById(Long id) {
         return addressBookMapper.deleteById(id) > 0;
+    }
+
+    @Override
+    public List<AddressBook> queryAll() {
+        return addressBookMapper.queryAll();
+    }
+
+    /**
+     * 查询默认地址
+     *
+     * @return 默认地址
+     */
+    @Override
+    public AddressBook queryDefaultAddress(Long userId) {
+        return addressBookMapper.queryDefaultAddress(userId);
+    }
+
+    /**
+     * 设置默认地址
+     *
+     * @return 是否成功
+     */
+    @Override
+    public boolean setDefaultAddress( Long addressId) {
+        return addressBookMapper.setDefaultAddress(addressId) > 0;
     }
 }

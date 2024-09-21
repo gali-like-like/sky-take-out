@@ -3,6 +3,8 @@ package com.sky.mapper;
 import com.sky.entity.AddressBook;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -66,5 +68,12 @@ public interface AddressBookMapper {
      */
     int deleteById(Long id);
 
+    List<AddressBook> queryAll();
+
+    @Select("select * from address_book where is_default = 1 and user_id = #{userId}")
+    AddressBook queryDefaultAddress(Long userId);
+
+    @Update("update address_book set is_default = 1 where id = #{addressId}")
+    int setDefaultAddress(Long userId);
 }
 
