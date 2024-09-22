@@ -27,5 +27,6 @@ public interface UserMapper {
      */
     User getUserById(Long id);
 
+    Integer getUserCount(LocalDateTime begin, LocalDateTime end);
 }
 

@@ -32,8 +32,11 @@
   <select id="queryAllByLimit" resultMap="UserMap">
   
   </select>
-  
-  <!--新增数据-->
+    <select id="getUserCount" resultType="java.lang.Integer">
+        select count(user_id) from users where create_time between #{beginTime} and #{endTime}
+    </select>
+
+    <!--新增数据-->
   <insert id="insert" keyProperty="id" useGeneratedKeys="true">
   
   </insert>

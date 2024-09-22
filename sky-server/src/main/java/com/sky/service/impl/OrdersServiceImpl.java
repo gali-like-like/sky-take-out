@@ -40,8 +40,6 @@ public class OrdersServiceImpl implements OrdersService {
 
     private final OrderDetailMapper orderDetailMapper;
     private final OrdersMapper ordersMapper;
-    private final MapInitializer mapInitializer;
-    private final OrdersController ordersController;
     private final WebSocketService webSocketService;
     //订单搜索条件
     @Override

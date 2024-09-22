@@ -1,10 +1,12 @@
 package com.sky.server;
 
 import com.alibaba.fastjson.JSON;
+import com.sky.config.WebSocketConfig;
 import com.sky.controller.user.UserController;
 import com.sky.dto.WebSocketMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -13,6 +15,7 @@ import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.PathParam;
+import javax.websocket.server.ServerEndpoint;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Enumeration;
@@ -20,9 +23,11 @@ import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static io.lettuce.core.pubsub.PubSubOutput.Type.message;
-
+//只有webSocket类时加载WebSocketService
 @Component
 @Slf4j
+@ConditionalOnClass(WebSocketConfig.class)
+@ServerEndpoint("/ws/{sid}")
 public class WebSocketService {
 
     private static ConcurrentHashMap<String,Session> userSessions = new ConcurrentHashMap<>();
@@ -33,12 +38,12 @@ public class WebSocketService {
     }
 
     @OnOpen
-    private void onOpen(Session session, @PathVariable(name="sid") String sid) {
+    public void onOpen(Session session, @PathParam("sid") String sid) {
         userSessions.put(sid,session);
     }
 
     @OnMessage
-    private void onMessage(String message, @PathParam("id") String sid) {
+    public void onMessage(String message, @PathParam("id") String sid) {
         WebSocketMessage webSocketMessage = (WebSocketMessage) JSON.parse(message);
         Long id = webSocketMessage.getId();
         Boolean type = webSocketMessage.getType();
@@ -48,7 +53,7 @@ public class WebSocketService {
     }
 
     @OnClose
-    private void onClose(@PathParam("id") String id) {
+    public void onClose(@PathParam("id") String id) {
         userSessions.remove(id);
         log.info("{}关闭了webSocket连接",id);
     }

@@ -170,7 +170,7 @@
   </select>
 <!--  查询历史订单详情-->
   <select id="getOrderByUserIdAndStatus" resultType="com.sky.entity.Orders">
-    select select id,number,status,user_id,
+     select id,number,status,user_id,
       address_book_id,order_time,
       checkout_time,pay_method,
       pay_status,amount,remark,
