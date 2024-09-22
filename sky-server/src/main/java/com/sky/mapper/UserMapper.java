@@ -38,8 +38,8 @@ public interface UserMapper {
     /**
      * 查询指定行数据
      *
-     * @param user 查询条件
-     * @param pageable         分页对象
+     * @param user     查询条件
+     * @param pageable 分页对象
      * @return 对象列表
      */
     List<User> queryAllByLimit(User user, @Param("pageable") Pageable pageable);

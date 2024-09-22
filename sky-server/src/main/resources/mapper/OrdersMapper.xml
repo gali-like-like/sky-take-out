@@ -1,79 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sky.mapper.OrdersMapper">
-
-    <resultMap type="com.sky.entity.Orders" id="OrdersMap">
-        <result property="id" column="id" jdbcType="INTEGER"/>
-        <result property="number" column="number" jdbcType="VARCHAR"/>
-        <result property="status" column="status" jdbcType="INTEGER"/>
-        <result property="userId" column="user_id" jdbcType="INTEGER"/>
-        <result property="addressBookId" column="address_book_id" jdbcType="INTEGER"/>
-        <result property="orderTime" column="order_time" jdbcType="TIMESTAMP"/>
-        <result property="checkoutTime" column="checkout_time" jdbcType="TIMESTAMP"/>
-        <result property="payMethod" column="pay_method" jdbcType="INTEGER"/>
-        <result property="payStatus" column="pay_status" jdbcType="INTEGER"/>
-        <result property="amount" column="amount" jdbcType="VARCHAR"/>
-        <result property="remark" column="remark" jdbcType="VARCHAR"/>
-        <result property="phone" column="phone" jdbcType="VARCHAR"/>
-        <result property="address" column="address" jdbcType="VARCHAR"/>
-        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
-        <result property="consignee" column="consignee" jdbcType="VARCHAR"/>
-        <result property="cancelReason" column="cancel_reason" jdbcType="VARCHAR"/>
-        <result property="rejectionReason" column="rejection_reason" jdbcType="VARCHAR"/>
-        <result property="cancelTime" column="cancel_time" jdbcType="TIMESTAMP"/>
-        <result property="estimatedDeliveryTime" column="estimated_delivery_time" jdbcType="TIMESTAMP"/>
-        <result property="deliveryStatus" column="delivery_status" jdbcType="INTEGER"/>
-        <result property="deliveryTime" column="delivery_time" jdbcType="TIMESTAMP"/>
-        <result property="packAmount" column="pack_amount" jdbcType="INTEGER"/>
-        <result property="tablewareNumber" column="tableware_number" jdbcType="INTEGER"/>
-        <result property="tablewareStatus" column="tableware_status" jdbcType="INTEGER"/>
-    </resultMap>
-    
-    
-    <select id="pageQuery" resultType="Orders">
-        select * from orders
-        <where>
-            <if test="number != null and number!=''">
-                and number like concat('%',#{number},'%')
-            </if>
-            <if test="phone != null and phone!=''">
-                and phone like concat('%',#{phone},'%')
-            </if>
-            <if test="userId != null">
-                and user_id = #{userId}
-            </if>
-            <if test="status != null">
-                and status = #{status}
-            </if>
-            <if test="beginTime != null">
-                and order_time &gt;= #{beginTime}
-            </if>
-            <if test="endTime != null">
-                and order_time &lt;= #{endTime}
-            </if>
-        </where>
-        order by order_time desc
-    </select>
-    
-    <select id="getById" resultType="com.sky.entity.Orders">
-        select * from orders where id = #{id}
-    </select>
-    
-    <select id="getSalesTop10" resultType="com.sky.dto.GoodsSalesDTO">
-        select od.name name,sum(od.number) number from order_detail od ,orders o
-        where od.order_id = o.id
-        and o.status = 5
-        <if test="begin != null">
-            and order_time &gt;= #{begin}
-        </if>
-        <if test="end != null">
-            and order_time &lt;= #{end}
-        </if>
-        group by name
-        order by number desc
-        limit 0, 10
-    </select>
-
-
+  
+  <resultMap type="com.sky.entity.Orders" id="OrdersMap">
+    <result property="id" column="id" jdbcType="INTEGER" />
+    <result property="number" column="number" jdbcType="VARCHAR" />
+    <result property="status" column="status" jdbcType="INTEGER" />
+    <result property="userId" column="user_id" jdbcType="INTEGER" />
+    <result property="addressBookId" column="address_book_id" jdbcType="INTEGER" />
+    <result property="orderTime" column="order_time" jdbcType="TIMESTAMP" />
+    <result property="checkoutTime" column="checkout_time" jdbcType="TIMESTAMP" />
+    <result property="payMethod" column="pay_method" jdbcType="INTEGER" />
+    <result property="payStatus" column="pay_status" jdbcType="INTEGER" />
+    <result property="amount" column="amount" jdbcType="VARCHAR" />
+    <result property="remark" column="remark" jdbcType="VARCHAR" />
+    <result property="phone" column="phone" jdbcType="VARCHAR" />
+    <result property="address" column="address" jdbcType="VARCHAR" />
+    <result property="userName" column="user_name" jdbcType="VARCHAR" />
+    <result property="consignee" column="consignee" jdbcType="VARCHAR" />
+    <result property="cancelReason" column="cancel_reason" jdbcType="VARCHAR" />
+    <result property="rejectionReason" column="rejection_reason" jdbcType="VARCHAR" />
+    <result property="cancelTime" column="cancel_time" jdbcType="TIMESTAMP" />
+    <result property="estimatedDeliveryTime" column="estimated_delivery_time" jdbcType="TIMESTAMP" />
+    <result property="deliveryStatus" column="delivery_status" jdbcType="INTEGER" />
+    <result property="deliveryTime" column="delivery_time" jdbcType="TIMESTAMP" />
+    <result property="packAmount" column="pack_amount" jdbcType="INTEGER" />
+    <result property="tablewareNumber" column="tableware_number" jdbcType="INTEGER" />
+    <result property="tablewareStatus" column="tableware_status" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <!--    分页查询-->
+  <select id="pageQuery" resultType="com.sky.entity.Orders">
+    select * from orders
+    <where>
+      <if test="number != null and number!=''">
+        and number like concat('%',#{number},'%')
+      </if>
+      <if test="phone != null and phone!=''">
+        and phone like concat('%',#{phone},'%')
+      </if>
+      <if test="userId != null">
+        and user_id = #{userId}
+      </if>
+      <if test="status != null">
+        and status = #{status}
+      </if>
+      <if test="beginTime != null">
+        and order_time &gt;= #{beginTime}
+      </if>
+      <if test="endTime != null">
+        and order_time &lt;= #{endTime}
+      </if>
+    </where>
+    order by order_time desc
+  </select>
+  <!--    根据id查询订单-->
+  <select id="getById" resultType="com.sky.entity.Orders">
+    select *
+    from orders
+    where id = #{id}
+  </select>
+  <!--查询热门菜品-->
+  <select id="getSalesTop10" resultType="com.sky.dto.GoodsSalesDTO">
+    select od.name name,sum(od.number) number from order_detail od ,orders o
+    where od.order_id = o.id
+    and o.status = 5
+    <if test="beginTime != null">
+      and order_time &gt;= #{beginTime}
+    </if>
+    <if test="endTime != null">
+      and order_time &lt;= #{endTime}
+    </if>
+    group by name
+    order by number desc
+    limit 0, 10
+  </select>
+  <!-- 完成订单-->
+  <update id="completeOrder">
+    update orders
+    <set>
+      status = 5
+    </set>
+    <where>
+      id = #{id}
+    </where>
+  </update>
+  <!--    取消订单-->
+  <update id="cancel">
+    update orders
+    <set>
+      cancel_reason = #{cancelReason}
+    </set>
+    <where>
+      id = #{id}
+    </where>
+  </update>
+  <!--    根据id查询状态-->
+  <select id="getStatusById" resultType="java.lang.Integer">
+    select status
+    from orders
+    where id = #{id}
+  </select>
+  
+  <!--    查询超时订单-->
+  <select id="getTimeOutOrders" resultType="com.sky.dto.OrdersConfirmDTO">
+    select id, status
+    from orders
+    where TIMESTAMPDIFF(minute, now(), order_time) > 15;
+  </select>
+  <!--    查询运送中的订单-->
+  <select id="getTranprotOrders" resultType="com.sky.dto.OrdersConfirmDTO">
+    select id, status
+    from orders
+    where status = 4;
+  </select>
+  <!--    拒绝订单-->
+  <update id="reject">
+    update orders
+    <set>
+      rejection_reason = #{rejectionReason}
+    </set>
+    <where>
+      id = #{id}
+    </where>
+  </update>
+  <!--    派送订单-->
+  <update id="delivery">
+    update orders
+    <set>
+      status = 4,delivery_status = 1
+    </set>
+    <where>
+      id = #{id}
+    </where>
+  </update>
+  <!--    接单-->
+  <update id="confirm">
+    update orders
+    <set>
+      status = 3
+    </set>
+    <where>
+      id = #{id}
+    </where>
+  </update>
 </mapper>
 

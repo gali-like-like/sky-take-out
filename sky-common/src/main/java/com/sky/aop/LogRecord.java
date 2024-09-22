@@ -12,9 +12,7 @@ import org.slf4j.LoggerFactory;
 @Aspect
 public class LogRecord {
 
-    private Logger logger = LoggerFactory.getLogger(LogRecord.class);
-
-    ;
+    private final Logger logger = LoggerFactory.getLogger(LogRecord.class);
 
     @Pointcut("execution(* com.sky.controller.admin.*.*(..))")
     public void recordController() {

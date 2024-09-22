@@ -61,25 +61,25 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor {
             return true;
         }
         // 如果isHidden属性值true就屏蔽,直接返回true
-		if(!jwtProperties.getIsHidden()) {
-			//1、从请求头中获取令牌
-			String token = request.getHeader(jwtProperties.getAdminTokenName());
-			//2、校验令牌
-			try {
+        if (!jwtProperties.getIsHidden()) {
+            //1、从请求头中获取令牌
+            String token = request.getHeader(jwtProperties.getAdminTokenName());
+            //2、校验令牌
+            try {
 //            log.info("jwt校验:{}", token);
-				Claims claims = JwtUtil.parseJWT(jwtProperties.getAdminSecretKey(), token);
-				Long empId = Long.valueOf(claims.get(JwtClaimsConstant.EMP_ID).toString());
+                Claims claims = JwtUtil.parseJWT(jwtProperties.getAdminSecretKey(), token);
+                Long empId = Long.valueOf(claims.get(JwtClaimsConstant.EMP_ID).toString());
 //            log.info("当前员工id：", empId);
-				//3、通过，放行
-				logger.info("{} {} {} 通过成功",clientAddress,reqMethod,reqUrI);
-				return true;
-			} catch (Exception ex) {
-				//4、不通过，响应401状态码
-				response.setStatus(401);
-				logger.info("{} {} {} 通过失败",clientAddress,reqMethod,reqUrI);
-				return false;
-			}
-		}
-		return true;
-	}
+                //3、通过，放行
+                logger.info("{} {} {} 通过成功", clientAddress, reqMethod, reqUrI);
+                return true;
+            } catch (Exception ex) {
+                //4、不通过，响应401状态码
+                response.setStatus(401);
+                logger.info("{} {} {} 通过失败", clientAddress, reqMethod, reqUrI);
+                return false;
+            }
+        }
+        return true;
+    }
 }

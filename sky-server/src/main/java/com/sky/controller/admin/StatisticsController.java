@@ -2,7 +2,7 @@ package com.sky.controller.admin;
 
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.util.ListUtils;
-import com.sky.orther.DemoData;
+import com.sky.other.DemoData;
 import com.sky.result.Result;
 import com.sky.service.ReportService;
 import com.sky.vo.OrderReportVO;
@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
@@ -29,7 +30,7 @@ import java.util.List;
  * @since 2024-9-16 09:41:53
  */
 @RestController
-@RequestMapping("/report")
+@RequestMapping("admin//report")
 @RequiredArgsConstructor
 @Api(tags = "数据统计相关接口")
 public class StatisticsController {
@@ -81,8 +82,8 @@ public class StatisticsController {
     @ApiOperation("销量排名统计")
     @GetMapping("top10")
     public Result<SalesTop10ReportVO> top10(
-            @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
-            @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end) {
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end) {
         SalesTop10ReportVO salesTop10 = reportService.getSalesTop10(begin, end);
         return Result.success(salesTop10);
     }

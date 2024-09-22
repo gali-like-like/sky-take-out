@@ -14,5 +14,5 @@ public interface OrderConvert {
     OrderConvert INSTANCE = Mappers.getMapper(OrderConvert.class);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    OrderVO orderToOrderVo(Orders order,@MappingTarget OrderVO orderVO);
+    OrderVO orderToOrderVo(Orders order, @MappingTarget OrderVO orderVO);
 }

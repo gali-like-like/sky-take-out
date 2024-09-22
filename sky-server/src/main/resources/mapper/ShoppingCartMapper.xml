@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sky.mapper.ShoppingCartMapper">
-
-    <resultMap type="com.sky.entity.ShoppingCart" id="ShoppingCartMap">
-        <result property="id" column="id" jdbcType="INTEGER"/>
-        <result property="name" column="name" jdbcType="VARCHAR"/>
-        <result property="image" column="image" jdbcType="VARCHAR"/>
-        <result property="userId" column="user_id" jdbcType="INTEGER"/>
-        <result property="dishId" column="dish_id" jdbcType="INTEGER"/>
-        <result property="setmealId" column="setmeal_id" jdbcType="INTEGER"/>
-        <result property="dishFlavor" column="dish_flavor" jdbcType="VARCHAR"/>
-        <result property="number" column="number" jdbcType="INTEGER"/>
-        <result property="amount" column="amount" jdbcType="VARCHAR"/>
-        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
-    </resultMap>
-
-    <!--查询单个-->
-    <select id="queryById" resultMap="ShoppingCartMap">
-    
-    </select>
-    
-    <!--条件筛选总记录数-->
-    <select id="count" resultType="java.lang.Long">
-    
-    </select>
-
-    <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="ShoppingCartMap">
-    
-    </select>
-
-    <!--新增数据-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-    
-    </insert>
-
-    <!--通过主键修改数据-->
-    <update id="update">
-    
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-    
-    </delete>
+  
+  <resultMap type="com.sky.entity.ShoppingCart" id="ShoppingCartMap">
+    <result property="id" column="id" jdbcType="INTEGER" />
+    <result property="name" column="name" jdbcType="VARCHAR" />
+    <result property="image" column="image" jdbcType="VARCHAR" />
+    <result property="userId" column="user_id" jdbcType="INTEGER" />
+    <result property="dishId" column="dish_id" jdbcType="INTEGER" />
+    <result property="setmealId" column="setmeal_id" jdbcType="INTEGER" />
+    <result property="dishFlavor" column="dish_flavor" jdbcType="VARCHAR" />
+    <result property="number" column="number" jdbcType="INTEGER" />
+    <result property="amount" column="amount" jdbcType="VARCHAR" />
+    <result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <!--查询单个-->
+  <select id="queryById" resultMap="ShoppingCartMap">
+  
+  </select>
+  
+  <!--条件筛选总记录数-->
+  <select id="count" resultType="java.lang.Long">
+  
+  </select>
+  
+  <!--查询指定行数据-->
+  <select id="queryAllByLimit" resultMap="ShoppingCartMap">
+  
+  </select>
+  
+  <!--新增数据-->
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+  
+  </insert>
+  
+  <!--通过主键修改数据-->
+  <update id="update">
+  
+  </update>
+  
+  <!--通过主键删除-->
+  <delete id="deleteById">
+  
+  </delete>
 
 </mapper>
 

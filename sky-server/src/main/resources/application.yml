@@ -13,6 +13,10 @@ spring:
       url: jdbc:mysql://${sky.datasource.host}:${sky.datasource.port}/${sky.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
       username: ${sky.datasource.username}
       password: ${sky.datasource.password}
+  mvc:
+      hiddenmethod:
+            filter:
+              enabled: true
 server:
   port: 8080
   shutdown: graceful
@@ -32,6 +36,7 @@ logging:
         mapper: debug
         service: info
         controller: info
+        handler: trace
 
   config: classpath:logback.xml
   logging:
@@ -51,3 +56,8 @@ sky:
     admin-token-name: token
     # 是否屏蔽jwt
     isHidden: ${sky.jwt.isHidden}
+  threadpool:
+    corePoolSize: ${sky.thread.corePoolSize}
+    maxPoolSize: ${sky.thread.maxPoolSize}
+    queueCapacity: ${sky.thread.queueCapacity}
+    keepAliveSeconds: ${sky.thread.keepAliveSeconds}

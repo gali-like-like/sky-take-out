@@ -23,7 +23,7 @@ import java.util.List;
  * @since 2024-09-15 11:42:03
  */
 @RestController
-@RequestMapping("dish")
+@RequestMapping("/admin/dish")
 @Api(tags = "菜品相关接口")
 @RequiredArgsConstructor
 public class DishController {
@@ -34,7 +34,7 @@ public class DishController {
     /**
      * 分页查询
      *
-     * @param dishPageQueryDTO  筛选条件
+     * @param dishPageQueryDTO 筛选条件
      * @return 查询结果
      */
     @PostMapping("page")
@@ -110,7 +110,8 @@ public class DishController {
      */
     @GetMapping("list")
     @ApiOperation(value = "通过分类id查询菜品", notes = "通过分类id查询菜品")
-    public Result<List<DishVO>> queryByCategoryId(@RequestParam("id") Long categoryId) {
+    public Result<List<DishVO>> queryByCategoryId(@RequestParam Long categoryId) {
+//        Long longId = Long.decode(categoryId);
         List<DishVO> dishVOS = dishService.queryByCategoryId(categoryId);
         return Result.success(dishVOS);
     }
@@ -118,7 +119,7 @@ public class DishController {
     /**
      * 启/停售
      *
-     * @param id 主键
+     * @param id     主键
      * @param status 状态
      * @return 编辑结果
      */

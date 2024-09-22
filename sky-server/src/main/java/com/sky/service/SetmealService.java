@@ -1,13 +1,11 @@
 package com.sky.service;
 
 import com.github.pagehelper.PageInfo;
-import com.sky.controller.admin.SetmealController;
 import com.sky.dto.SetmealDTO;
 import com.sky.dto.SetmealPageQueryDTO;
+import com.sky.entity.Dish;
 import com.sky.entity.Setmeal;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import com.sky.vo.DishVO;
 
 import java.util.List;
 
@@ -20,14 +18,25 @@ import java.util.List;
 public interface SetmealService {
     //更新套餐
     public Boolean updateSetmeal(SetmealDTO setmeal);
+
     //分页查询
     public PageInfo<Setmeal> pageSetmeal(SetmealPageQueryDTO queryDTO);
+
     //更改套餐状态
     public Boolean updateSetmealStatus(Integer status, Long id);
+
     //批量删除套餐
     public Boolean deleteSetmals(List<Long> ids);
+
     //新增套餐
     public Long addSetmeal(SetmealDTO setmealDTO);
+
     //根据id查询套餐
-    public Setmeal getSetmealById(Long id);
+    public SetmealDTO getSetmealById(Long id);
+
+    //根据分类id查询套餐
+    List<Setmeal> getSetmealByCategoryId(Long categoryId);
+
+    // 根据套餐id查询菜品
+    List<DishVO> getMealListBySetmealId(Long setmealId);
 }

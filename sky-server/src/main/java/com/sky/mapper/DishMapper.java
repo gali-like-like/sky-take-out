@@ -37,8 +37,8 @@ public interface DishMapper {
     /**
      * 查询指定行数据
      *
-     * @param dish 查询条件
-     * @param pageable         分页对象
+     * @param dish     查询条件
+     * @param pageable 分页对象
      * @return 对象列表
      */
     List<Dish> queryAllByLimit(Dish dish, @Param("pageable") Pageable pageable);
@@ -67,7 +67,7 @@ public interface DishMapper {
      */
     int deleteById(Long id);
 
-    List<Dish> getAllDish(@Param("categoryId") Integer categoryId,@Param("name") String name, @Param("status") Integer status);
+    List<Dish> getAllDish(@Param("categoryId") Integer categoryId, @Param("name") String name, @Param("status") Integer status);
 
     List<Dish> queryByCategoryId(Long categoryId);
 

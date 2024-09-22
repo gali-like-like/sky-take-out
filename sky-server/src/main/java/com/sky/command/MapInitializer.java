@@ -1,6 +1,6 @@
 package com.sky.command;
 
-import com.sky.orther.GlobalMapSingleton;
+import com.sky.other.GlobalMapSingleton;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,7 @@ public class MapInitializer implements CommandLineRunner {
     public void run(String... args) throws Exception {
         // 初始化 HashMap 数据
         GlobalMapSingleton globalMapSingleton = GlobalMapSingleton.getInstance();
-        globalMapSingleton.putData(KEY,1);
+        globalMapSingleton.putData(KEY, 1);
 
         System.out.println("店铺状态初始化: " + globalMapSingleton.getData(KEY));
     }

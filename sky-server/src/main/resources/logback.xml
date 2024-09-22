@@ -28,72 +28,72 @@
       <MaxFileSize>10MB</MaxFileSize>
     </triggeringPolicy>
   </appender>
-  <!-- 访问日志 -->
-  <appender name="ACCESS" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <!--日志文件输出的文件名-->
-      <FileNamePattern>${LOG_HOME}/access/access_%d{yyyy-MM-dd}.log</FileNamePattern>
-      <!--日志文件保留天数-->
-      <MaxHistory>30</MaxHistory>
-    </rollingPolicy>
-    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-      <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
-      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n</pattern>
-    </encoder>
-    <!--日志文件最大的大小-->
-    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-      <MaxFileSize>10MB</MaxFileSize>
-    </triggeringPolicy>
-  </appender>
-  
-  <!-- 配置访问日志 -->
-  <logger name="com.sky.interceptor.JwtTokenAdminInterceptor" level="TRACE" additivity="false">
-    <appender-ref ref="ACCESS" />
-  </logger>
-  
-  <!-- 接口性能日志输出到文件 -->
-  <appender name="PERF" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <!--日志文件输出的文件名-->
-      <FileNamePattern>${LOG_HOME}/perf/Controller_%d{yyyy-MM-dd}.log</FileNamePattern>
-      <!--日志文件保留天数-->
-      <MaxHistory>30</MaxHistory>
-    </rollingPolicy>
-    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-      <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
-      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}:%msg%n</pattern>
-    </encoder>
-    <!--日志文件最大的大小-->
-    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-      <MaxFileSize>10MB</MaxFileSize>
-    </triggeringPolicy>
-  </appender>
-  <!-- 配置aop记录信息 -->
-  <logger name="com.sky.aop" level="TRACE" additivity="false">
-    <appender-ref ref="PERF" />
-  </logger>
-  
-  <!-- 用于记录异常 -->
-  <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <!--日志文件输出的文件名-->
-      <FileNamePattern>${LOG_HOME}/error/error_%d{yyyy-MM-dd}.log</FileNamePattern>
-      <!--日志文件保留天数-->
-      <MaxHistory>30</MaxHistory>
-    </rollingPolicy>
-    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-      <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
-      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}:%msg%n</pattern>
-    </encoder>
-    <!--日志文件最大的大小-->
-    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-      <MaxFileSize>10MB</MaxFileSize>
-    </triggeringPolicy>
-  </appender>
-  
-  <logger name="com.sky.handler" level="TRACE" additivity="false">
-    <appender-ref ref="ERROR" />
-  </logger>
+<!--  &lt;!&ndash; 访问日志 &ndash;&gt;-->
+<!--  <appender name="ACCESS" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--      &lt;!&ndash;日志文件输出的文件名&ndash;&gt;-->
+<!--      <FileNamePattern>${LOG_HOME}/access/access_%d{yyyy-MM-dd}.log</FileNamePattern>-->
+<!--      &lt;!&ndash;日志文件保留天数&ndash;&gt;-->
+<!--      <MaxHistory>30</MaxHistory>-->
+<!--    </rollingPolicy>-->
+<!--    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">-->
+<!--      &lt;!&ndash;格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符&ndash;&gt;-->
+<!--      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n</pattern>-->
+<!--    </encoder>-->
+<!--    &lt;!&ndash;日志文件最大的大小&ndash;&gt;-->
+<!--    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">-->
+<!--      <MaxFileSize>10MB</MaxFileSize>-->
+<!--    </triggeringPolicy>-->
+<!--  </appender>-->
+<!--  -->
+<!--  &lt;!&ndash; 配置访问日志 &ndash;&gt;-->
+<!--  <logger name="com.sky.interceptor.JwtTokenAdminInterceptor" level="TRACE" additivity="false">-->
+<!--    <appender-ref ref="ACCESS" />-->
+<!--  </logger>-->
+<!--  -->
+<!--  &lt;!&ndash; 接口性能日志输出到文件 &ndash;&gt;-->
+<!--  <appender name="PERF" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--      &lt;!&ndash;日志文件输出的文件名&ndash;&gt;-->
+<!--      <FileNamePattern>${LOG_HOME}/perf/Controller_%d{yyyy-MM-dd}.log</FileNamePattern>-->
+<!--      &lt;!&ndash;日志文件保留天数&ndash;&gt;-->
+<!--      <MaxHistory>30</MaxHistory>-->
+<!--    </rollingPolicy>-->
+<!--    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">-->
+<!--      &lt;!&ndash;格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符&ndash;&gt;-->
+<!--      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}:%msg%n</pattern>-->
+<!--    </encoder>-->
+<!--    &lt;!&ndash;日志文件最大的大小&ndash;&gt;-->
+<!--    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">-->
+<!--      <MaxFileSize>10MB</MaxFileSize>-->
+<!--    </triggeringPolicy>-->
+<!--  </appender>-->
+<!--  &lt;!&ndash; 配置aop记录信息 &ndash;&gt;-->
+<!--  <logger name="com.sky.aop" level="TRACE" additivity="false">-->
+<!--    <appender-ref ref="PERF" />-->
+<!--  </logger>-->
+<!--  -->
+<!--  &lt;!&ndash; 用于记录异常 &ndash;&gt;-->
+<!--  <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--      &lt;!&ndash;日志文件输出的文件名&ndash;&gt;-->
+<!--      <FileNamePattern>${LOG_HOME}/error/error_%d{yyyy-MM-dd}.log</FileNamePattern>-->
+<!--      &lt;!&ndash;日志文件保留天数&ndash;&gt;-->
+<!--      <MaxHistory>30</MaxHistory>-->
+<!--    </rollingPolicy>-->
+<!--    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">-->
+<!--      &lt;!&ndash;格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符&ndash;&gt;-->
+<!--      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}:%msg%n</pattern>-->
+<!--    </encoder>-->
+<!--    &lt;!&ndash;日志文件最大的大小&ndash;&gt;-->
+<!--    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">-->
+<!--      <MaxFileSize>10MB</MaxFileSize>-->
+<!--    </triggeringPolicy>-->
+<!--  </appender>-->
+<!--  -->
+<!--  <logger name="com.sky.handler" level="TRACE" additivity="false">-->
+<!--    <appender-ref ref="ERROR" />-->
+<!--  </logger>-->
   
   <logger name="org.springframework" level="WARN" />
   <logger name="com.sky.controller" level="TRACE" />

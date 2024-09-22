@@ -50,7 +50,7 @@ public class WorkspaceServiceImpl implements WorkspaceService {
         // 有效订单数
         Integer orderCount = ordersMapper.getOrderCount(begin, end, Orders.COMPLETED);
         // 有效订单数为0直接返回
-        if (orderCount == 0){
+        if (orderCount == 0) {
             return BusinessDataVO.builder()
                     .newUsers(userCount)
                     .validOrderCount(orderCount)

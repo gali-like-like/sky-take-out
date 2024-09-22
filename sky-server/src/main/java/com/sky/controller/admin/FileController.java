@@ -19,7 +19,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/file")
+@RequestMapping("admin/file")
 @Api(tags = "文件上传与下载")
 public class FileController {
     @Resource
@@ -62,7 +62,7 @@ public class FileController {
     @GetMapping("/single/download")
     @ApiOperation(value = "单文件下载")
     public Result<?> upload(@RequestParam("fileName") String fileName,
-                                  HttpServletResponse response) throws Exception {
+                            HttpServletResponse response) throws Exception {
         return null;
     }
 }

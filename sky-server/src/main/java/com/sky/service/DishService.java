@@ -58,7 +58,8 @@ public interface DishService {
 
     Boolean deleteByIds(String ids);
 
-    List<DishVO> queryByCategoryId(Long categoryId);
 
     int updateStatus(Long id, Integer status);
+
+    List<DishVO> queryByCategoryId(Long longId);
 }

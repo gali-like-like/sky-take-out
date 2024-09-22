@@ -1,8 +1,8 @@
 package com.sky.service;
 
 import com.sky.entity.SetmealDish;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
+import java.util.List;
 
 /**
  * 套餐菜品关系(SetmealDish)表服务接口
@@ -11,46 +11,15 @@ import org.springframework.data.domain.PageRequest;
  * @since 2024-09-15 11:42:02
  */
 public interface SetmealDishService {
+    //修改菜品套餐关系
+    public void updateSetmealDish(SetmealDish setmealDish);
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param id 主键
-     * @return 实例对象
-     */
-    SetmealDish queryById(Long id);
+    //根据套餐id删除对应数据
+    public void deleteSetmealDishById(Long setmealId);
 
-    /**
-     * 分页查询
-     *
-     * @param setmealDish 筛选条件
-     * @param pageRequest 分页对象
-     * @return 查询结果
-     */
-    Page<SetmealDish> queryByPage(SetmealDish setmealDish, PageRequest pageRequest);
+    //新增套餐菜品关系
+    public Integer insertSetmealDish(SetmealDish setmealDish);
 
-    /**
-     * 新增数据
-     *
-     * @param setmealDish 实例对象
-     * @return 实例对象
-     */
-    SetmealDish insert(SetmealDish setmealDish);
-
-    /**
-     * 修改数据
-     *
-     * @param setmealDish 实例对象
-     * @return 实例对象
-     */
-    SetmealDish update(SetmealDish setmealDish);
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param id 主键
-     * @return 是否成功
-     */
-    boolean deleteById(Long id);
-
+    //根据套餐id查询菜品
+    public List<SetmealDish> selectSetmealDishById(Long setmealId);
 }

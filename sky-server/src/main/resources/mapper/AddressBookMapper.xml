@@ -1,53 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sky.mapper.AddressBookMapper">
-
-    <resultMap type="com.sky.entity.AddressBook" id="AddressBookMap">
-        <result property="id" column="id" jdbcType="INTEGER"/>
-        <result property="userId" column="user_id" jdbcType="INTEGER"/>
-        <result property="consignee" column="consignee" jdbcType="VARCHAR"/>
-        <result property="sex" column="sex" jdbcType="VARCHAR"/>
-        <result property="phone" column="phone" jdbcType="VARCHAR"/>
-        <result property="provinceCode" column="province_code" jdbcType="VARCHAR"/>
-        <result property="provinceName" column="province_name" jdbcType="VARCHAR"/>
-        <result property="cityCode" column="city_code" jdbcType="VARCHAR"/>
-        <result property="cityName" column="city_name" jdbcType="VARCHAR"/>
-        <result property="districtCode" column="district_code" jdbcType="VARCHAR"/>
-        <result property="districtName" column="district_name" jdbcType="VARCHAR"/>
-        <result property="detail" column="detail" jdbcType="VARCHAR"/>
-        <result property="label" column="label" jdbcType="VARCHAR"/>
-        <result property="isDefault" column="is_default" jdbcType="INTEGER"/>
-    </resultMap>
-
-    <!--查询单个-->
-    <select id="queryById" resultMap="AddressBookMap">
-    
-    </select>
-    
-    <!--条件筛选总记录数-->
-    <select id="count" resultType="java.lang.Long">
-    
-    </select>
-
-    <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="AddressBookMap">
-    
-    </select>
-
-    <!--新增数据-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-    
-    </insert>
-
-    <!--通过主键修改数据-->
-    <update id="update">
-    
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-    
-    </delete>
+  
+  <resultMap type="com.sky.entity.AddressBook" id="AddressBookMap">
+    <result property="id" column="id" jdbcType="INTEGER" />
+    <result property="userId" column="user_id" jdbcType="INTEGER" />
+    <result property="consignee" column="consignee" jdbcType="VARCHAR" />
+    <result property="sex" column="sex" jdbcType="VARCHAR" />
+    <result property="phone" column="phone" jdbcType="VARCHAR" />
+    <result property="provinceCode" column="province_code" jdbcType="VARCHAR" />
+    <result property="provinceName" column="province_name" jdbcType="VARCHAR" />
+    <result property="cityCode" column="city_code" jdbcType="VARCHAR" />
+    <result property="cityName" column="city_name" jdbcType="VARCHAR" />
+    <result property="districtCode" column="district_code" jdbcType="VARCHAR" />
+    <result property="districtName" column="district_name" jdbcType="VARCHAR" />
+    <result property="detail" column="detail" jdbcType="VARCHAR" />
+    <result property="label" column="label" jdbcType="VARCHAR" />
+    <result property="isDefault" column="is_default" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <!--查询单个-->
+  <select id="queryById" resultMap="AddressBookMap">
+    select * from address_book where id = #{id}
+  </select>
+  
+  <!--条件筛选总记录数-->
+  <select id="count" resultType="java.lang.Long">
+  
+  </select>
+  
+  <!--查询指定行数据-->
+  <select id="queryAllByLimit" resultMap="AddressBookMap">
+  
+  </select>
+  <select id="queryAll" resultType="com.sky.entity.AddressBook">
+    select * from address_book where user_id = #{userId}
+  </select>
+  
+  <!--新增数据-->
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+    insert into address_book (user_id, consignee, sex, phone, province_code, province_name, city_code, city_name, district_code, district_name, detail, label, is_default)
+    values (#{userId}, #{consignee}, #{sex}, #{phone}, #{provinceCode}, #{provinceName}, #{cityCode}, #{cityName}, #{districtCode}, #{districtName}, #{detail}, #{label}, #{isDefault})
+  </insert>
+  
+  <!--通过主键修改数据-->
+  <update id="update">
+    update address_book set user_id = #{userId}, consignee = #{consignee}, sex = #{sex}, phone = #{phone}, province_code = #{provinceCode}, province_name = #{provinceName}, city_code = #{cityCode}, city_name = #{cityName}, district_code = #{districtCode}, district_name = #{districtName}, detail = #{detail}, label = #{label}, is_default = #{isDefault} where id = #{id}
+  </update>
+  
+  <!--通过主键删除-->
+  <delete id="deleteById">
+    delete from address_book where id = #{id}
+  </delete>
 
 </mapper>
 

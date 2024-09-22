@@ -38,8 +38,11 @@ public class ReportServiceImpl implements ReportService {
         LocalDateTime beginTime = LocalDateTime.of(begin, LocalTime.MIN);
         LocalDateTime endTime = LocalDateTime.of(end, LocalTime.MAX);
         List<GoodsSalesDTO> goodsSalesDTOList = orderMapper.getSalesTop10(beginTime, endTime);
-        String nameList = StringUtils.join(goodsSalesDTOList.stream().map(GoodsSalesDTO::getName).collect(Collectors.toList()),",");
-        String numberList = StringUtils.join(goodsSalesDTOList.stream().map(GoodsSalesDTO::getNumber).collect(Collectors.toList()),",");
+        String nameList = StringUtils.join(goodsSalesDTOList.stream()
+                .map(GoodsSalesDTO::getName)
+                .collect(Collectors.toList()),
+            ",");
+        String numberList = StringUtils.join(goodsSalesDTOList.stream().map(GoodsSalesDTO::getNumber).collect(Collectors.toList()), ",");
         return SalesTop10ReportVO.builder()
                 .nameList(nameList)
                 .numberList(numberList)
@@ -51,7 +54,7 @@ public class ReportServiceImpl implements ReportService {
         List<LocalDate> dateList = new ArrayList<>();
         dateList.add(begin);
 
-        while (!begin.equals(end)){
+        while (!begin.equals(end)) {
             begin = begin.plusDays(1);
             dateList.add(begin);
         }
@@ -78,7 +81,7 @@ public class ReportServiceImpl implements ReportService {
         Integer validOrderCount = validOrderCountList.stream().reduce(Integer::sum).get();
         //订单完成率
         Double orderCompletionRate = 0.0;
-        if(totalOrderCount != 0){
+        if (totalOrderCount != 0) {
             orderCompletionRate = validOrderCount.doubleValue() / totalOrderCount;
         }
         return OrderReportVO.builder()
@@ -93,13 +96,14 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public UserReportVO getUserStatistics(LocalDate begin, LocalDate end) {
-        List<LocalDate> dateList = new ArrayList<>();
-        dateList.add(begin);
-
-        while (!begin.equals(end)){
-            begin = begin.plusDays(1);
-            dateList.add(begin);
+        // 优化时间范围，避免查询过多数据导致查询超时
+        if(begin.isBefore(LocalDate.of(2021, 1, 1))){
+            begin = LocalDate.of(2000, 1, 1);
         }
+        if(end.isAfter(LocalDate.now())){
+            end = LocalDate.now();
+        }
+        List<LocalDate> dateList = begin.datesUntil(end.plusDays(1)).collect(Collectors.toList());
         //新增用户数
         List<Integer> newUserList = new ArrayList<>();
         //总用户数
@@ -118,9 +122,9 @@ public class ReportServiceImpl implements ReportService {
         }
 
         return UserReportVO.builder()
-                .dateList(StringUtils.join(dateList,","))
-                .newUserList(StringUtils.join(newUserList,","))
-                .totalUserList(StringUtils.join(totalUserList,","))
+                .dateList(StringUtils.join(dateList, ","))
+                .newUserList(StringUtils.join(newUserList, ","))
+                .totalUserList(StringUtils.join(totalUserList, ","))
                 .build();
     }
 
@@ -129,7 +133,7 @@ public class ReportServiceImpl implements ReportService {
         List<LocalDate> dateList = new ArrayList<>();
         dateList.add(beginTime);
 
-        while (!beginTime.equals(endTime)){
+        while (!beginTime.equals(endTime)) {
             beginTime = beginTime.plusDays(1);
             dateList.add(beginTime);
         }
@@ -143,8 +147,8 @@ public class ReportServiceImpl implements ReportService {
             turnoverList.add(turnover);
         }
         return TurnoverReportVO.builder()
-                .dateList(StringUtils.join(dateList,","))
-                .turnoverList(StringUtils.join(turnoverList,","))
+                .dateList(StringUtils.join(dateList, ","))
+                .turnoverList(StringUtils.join(turnoverList, ","))
                 .build();
 
     }
