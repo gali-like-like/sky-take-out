@@ -1,8 +1,10 @@
 package com.sky.mapper;
 
 import com.sky.dto.*;
+import com.sky.entity.OrderDetail;
 import com.sky.entity.Orders;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 import java.time.LocalDateTime;
@@ -99,5 +101,26 @@ public interface OrdersMapper {
 
     //接单
     public void confirm(Long orderId);
+
+    //查询用户最近完成的一单信息
+    public Orders getLastCompleteOrderById(Long userId);
+
+    //历史订单查询
+    public List<Orders> getOrderByUserIdAndStatus(OrdersHistoryPageQueryDTO ordersHistoryPageQueryDTO);
+
+    //添加订单信息
+    @Options(useGeneratedKeys = true,keyColumn = "id")
+    public Long addOrder(OrdersDTO ordersDTO);
+
+    //订单支付
+    public void orderPay(OrdersPaymentDTO ordersPaymentDTO);
+
+    //根据id查询用户id
+    @Select("select user_id from orders where id = #{id}")
+    public Long getUserIdById(Long id);
+
+    //根据id查询订单号
+    @Select("select number from orders where id = #{id}")
+    public String getNumberById(Long id);
 }
 

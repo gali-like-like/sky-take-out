@@ -13,14 +13,30 @@
     <result property="number" column="number" jdbcType="INTEGER" />
     <result property="amount" column="amount" jdbcType="VARCHAR" />
   </resultMap>
-  
-  <!--查询单个-->
-  <select id="getByOrderId" resultType="com.sky.entity.OrderDetail">
-    select *
-    from order_detail
-    where order_id = #{orderId}
+
+  <!--  根据订单编号查询订单详情-->
+  <select id="getOrderDetailByOrderId" resultType="com.sky.entity.OrderDetail">
+    select id,name,image,order_id,
+    dish_id,setmeal_id,
+    dish_flavor,number,
+    amount from order_detail
+    <where>
+      <if test="orderId != null">
+        order_id = #{orderId}
+      </if>
+    </where>
   </select>
-  
+
+  <!--  添加订单详情信息-->
+  <insert id="addOrderDetail">
+    insert into order_detail values (
+    null,#{name},#{image},#{orderId},
+    #{orderId},#{dishId},#{setmealId},
+    #{dishFlavor},#{number},#{amount}
+    )
+  </insert>
+
+
   <!--条件筛选总记录数-->
   <select id="count" resultType="java.lang.Long">
   

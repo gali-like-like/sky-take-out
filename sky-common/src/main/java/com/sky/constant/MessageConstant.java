@@ -67,4 +67,8 @@ public class MessageConstant {
     public static final String UPDATE_GOODS_COUNT = "修改同个商品数量";
     public static final String DISH_STATUS_DISABLE_NOT_ADD = "菜品没上架,不能添加到购物车!";
     public static final String SETMEAL_STATUS_DISABLE_NOT_ADD = "套餐没上架,不能添加到购物车!";
+
+    public static final String USER_DOWN_MESSAGE = "用户下单了";
+    public static final String USER_SAY_MESSAGE = "用户催促了";
+    public static final String ONE_MORE_ORDER_SUCCESS = "下单成功";
 }

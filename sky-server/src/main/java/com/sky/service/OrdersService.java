@@ -1,13 +1,14 @@
 package com.sky.service;
 
-import com.sky.dto.OrdersCancelDTO;
-import com.sky.dto.OrdersConfirmDTO;
-import com.sky.dto.OrdersPageQueryDTO;
-import com.sky.dto.OrdersRejectionDTO;
+import com.github.pagehelper.PageInfo;
+import com.sky.dto.*;
+import com.sky.entity.OrderDetail;
+import com.sky.entity.Orders;
 import com.sky.result.PageResult;
 import com.sky.vo.OrderStatisticsVO;
 import com.sky.vo.OrderVO;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -46,4 +47,22 @@ public interface OrdersService {
 
     //接单
     public Boolean confirm(Long orderId);
+
+    //再来一单
+    public void addOrder(Long id);
+
+    //查询用户最近完成的一单信息
+    public Orders getLastCompleteOrderById(Long userId);
+
+    //历史订单查询
+    public PageInfo<Orders> getOrderByUserIdAndStatus(OrdersHistoryPageQueryDTO ordersHistoryPageQueryDTO);
+
+    //下单
+    public HashMap<String,String> placeOrder(OrdersDTO ordersDTO);
+
+    //订单支付
+    public void orderPay(OrdersPaymentDTO ordersPaymentDTO);
+
+    //催单
+    public void reminders(Long id);
 }

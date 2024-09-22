@@ -16,11 +16,17 @@ import java.util.List;
 public interface OrderDetailMapper {
 
     /**
-     * 通过ID查询单条数据
+     * 通过订单id查询单条数据
      *
      * @param id 主键
      * @return 实例对象
      */
-    List<OrderDetail> getByOrderId(Long id);
+    List<OrderDetail> getOrderDetailByOrderId(Long id);
+    /**
+     * 添加订单详情
+     *
+     * */
+    void addOrderDetail(OrderDetail orderDetail);
+
 }
 
