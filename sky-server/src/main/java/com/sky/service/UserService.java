@@ -1,8 +1,11 @@
 package com.sky.service;
 
+import com.sky.dto.UserLoginDTO;
 import com.sky.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+
+import java.util.HashMap;
 
 /**
  * 用户信息(User)表服务接口
@@ -19,4 +22,6 @@ public interface UserService {
      * @return 实例对象
      */
     User getUserById(Long id);
+
+    HashMap<String,Object> wxLogin(String code);
 }

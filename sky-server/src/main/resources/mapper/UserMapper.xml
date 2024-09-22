@@ -12,17 +12,28 @@
     <result property="avatar" column="avatar" jdbcType="VARCHAR" />
     <result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
   </resultMap>
-  
+  <sql id="query_user">
+      select id,name,openid,avatar,phone,sex,id_number,create_time from user
+  </sql>
   <!--查询单个-->
   <select id="getUserById" resultType="com.sky.entity.User">
-        select id,name,openid,avatar,phone,sex,id_number,create_time from user
+        <include refid="query_user" />
         <where>
             <if test="id != null" >
                 id = #{id}
             </if>
         </where>
   </select>
-  
+<!--  根据openid查询用户-->
+    <select id="getUserByOpenId" resultType="com.sky.entity.User">
+        <include refid="query_user" />
+        <where>
+            <if test="openId != null">
+                openid = #{openId}
+            </if>
+        </where>
+    </select>
+
   <!--条件筛选总记录数-->
   <select id="count" resultType="java.lang.Long">
   
@@ -38,7 +49,8 @@
 
     <!--新增数据-->
   <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-  
+        insert into user (openid,create_time) values (
+        #{openid},#{createTime})
   </insert>
   
   <!--通过主键修改数据-->

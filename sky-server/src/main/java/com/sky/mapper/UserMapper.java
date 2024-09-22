@@ -28,5 +28,9 @@ public interface UserMapper {
     User getUserById(Long id);
 
     Integer getUserCount(LocalDateTime begin, LocalDateTime end);
+
+    User getUserByOpenId(String openId);
+
+    Long insert(User user);
 }
 

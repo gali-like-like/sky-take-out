@@ -1,9 +1,10 @@
 package com.sky.properties;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-//@ConfigurationProperties(prefix = "sky.wechat")//添加配置文件属性
+@ConfigurationProperties(prefix = "sky.wechat")//添加配置文件属性
 public class WeChatProperties {
 
     private String appid; //小程序的appid

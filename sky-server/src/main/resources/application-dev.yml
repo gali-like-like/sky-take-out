@@ -7,6 +7,9 @@ sky:
     database: sky_take_out
     username: gali
     password: 20001126X
+  wechat:
+    appid: xxx
+    secert: xxx
   # 是否屏蔽jwt令牌
   jwt:
     isHidden: true
