@@ -1,6 +1,8 @@
 package com.sky.result;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.sky.enums.ErrorCode;
 import lombok.Data;
 import lombok.Getter;
@@ -14,6 +16,7 @@ import java.io.Serializable;
  */
 @Data
 @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Result<T> implements Serializable {
 
     private Integer code; //编码：1成功，0和其它数字为失败

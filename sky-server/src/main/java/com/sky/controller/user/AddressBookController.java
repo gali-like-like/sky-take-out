@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -37,8 +38,8 @@ public class AddressBookController {
      */
     @ApiOperation(value = "查询当前登录用户的所有地址信息")
     @GetMapping("list")
-    public Result<?> queryByPage() {
-        List<AddressBook> addressBooks = addressBookService.queryAll();
+    public Result<?> queryByPage(@RequestParam Long userId) {
+        List<AddressBook> addressBooks = addressBookService.queryAll(userId);
         return Result.success(addressBooks);
     }
 
@@ -63,7 +64,7 @@ public class AddressBookController {
      */
     @ApiOperation(value = "新增地址")
     @PostMapping
-    public Result<?> add(AddressBook addressBook) {
+    public Result<?> add(@RequestBody AddressBook addressBook) {
         int insert = addressBookService.insert(addressBook);
         String message = insert > 0 ? "新增成功" : "新增失败";
         return Result.success(message);
@@ -77,7 +78,7 @@ public class AddressBookController {
      */
     @ApiOperation(value = "编辑地址")
     @PutMapping
-    public Result<?> edit(AddressBook addressBook) {
+    public Result<?> edit(@RequestBody @Valid AddressBook addressBook) {
         int update = addressBookService.update(addressBook);
         String message = update > 0 ? "编辑成功" : "编辑失败";
         return Result.success(message);
@@ -91,7 +92,7 @@ public class AddressBookController {
      */
     @ApiOperation(value = "删除地址")
     @DeleteMapping
-    public Result<Boolean> deleteById(Long id) {
+    public Result<Boolean> deleteById(@RequestParam("id") Long id) {
         boolean b = addressBookService.deleteById(id);
         return Result.success(b);
     }
@@ -115,8 +116,8 @@ public class AddressBookController {
      */
     @ApiOperation(value = "设置默认地址")
     @PutMapping("default")
-    public Result<Boolean> setDefaultAddress(@RequestParam("addressId") Long addressId) {
-        boolean b = addressBookService.setDefaultAddress(addressId);
+    public Result<Boolean> setDefaultAddress(@RequestParam("addressId") Long addressId, @RequestParam("userId") Long userId) {
+        boolean b = addressBookService.setDefaultAddress(addressId,userId);
         return Result.success(b);
     }
 

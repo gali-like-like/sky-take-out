@@ -68,12 +68,15 @@ public interface AddressBookMapper {
      */
     int deleteById(Long id);
 
-    List<AddressBook> queryAll();
+    List<AddressBook> queryAll(Long userId);
 
     @Select("select * from address_book where is_default = 1 and user_id = #{userId}")
     AddressBook queryDefaultAddress(Long userId);
 
     @Update("update address_book set is_default = 1 where id = #{addressId}")
     int setDefaultAddress(Long userId);
+
+    @Update("update address_book set is_default = 0 where id = #{addressId}")
+    void cancelDefaultAddress(Long addressId);
 }
 

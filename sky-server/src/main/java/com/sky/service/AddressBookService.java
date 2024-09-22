@@ -60,9 +60,9 @@ public interface AddressBookService {
      *
      * @return 所有数据
      */
-    List<AddressBook> queryAll();
+    List<AddressBook> queryAll(Long userId);
 
     AddressBook queryDefaultAddress(Long userId);
 
-    boolean setDefaultAddress(Long addressId);
+    boolean setDefaultAddress(Long addressId,Long userId);
 }

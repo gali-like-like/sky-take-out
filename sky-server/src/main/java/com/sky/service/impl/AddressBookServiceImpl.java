@@ -1,5 +1,6 @@
 package com.sky.service.impl;
 
+import com.sky.convert.AddressBookConvert;
 import com.sky.entity.AddressBook;
 import com.sky.mapper.AddressBookMapper;
 import com.sky.service.AddressBookService;
@@ -7,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -65,7 +67,14 @@ public class AddressBookServiceImpl implements AddressBookService {
      */
     @Override
     public int update(AddressBook addressBook) {
-        return addressBookMapper.update(addressBook);
+        // 先查一遍，判断是否存在
+        AddressBook entity = addressBookMapper.queryById(addressBook.getId());
+        if (entity == null) {
+            return 0;
+        }
+        // 复制属性
+        AddressBookConvert.INSTANCE.copyProperties(addressBook, entity);
+        return addressBookMapper.update(entity);
     }
 
     /**
@@ -80,8 +89,8 @@ public class AddressBookServiceImpl implements AddressBookService {
     }
 
     @Override
-    public List<AddressBook> queryAll() {
-        return addressBookMapper.queryAll();
+    public List<AddressBook> queryAll(Long userId) {
+        return addressBookMapper.queryAll(userId);
     }
 
     /**
@@ -100,7 +109,14 @@ public class AddressBookServiceImpl implements AddressBookService {
      * @return 是否成功
      */
     @Override
-    public boolean setDefaultAddress( Long addressId) {
+    @Transactional
+    public boolean setDefaultAddress( Long addressId, Long userId) {
+        // 先查默认地址
+        AddressBook defaultAddress = addressBookMapper.queryDefaultAddress(userId);
+        if (defaultAddress != null ) {
+            addressBookMapper.cancelDefaultAddress(defaultAddress.getId());
+        }
+        // 设置默认地址
         return addressBookMapper.setDefaultAddress(addressId) > 0;
     }
 }

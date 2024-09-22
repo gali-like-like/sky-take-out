@@ -34,7 +34,7 @@
   
   </select>
   <select id="queryAll" resultType="com.sky.entity.AddressBook">
-    select * from address_book
+    select * from address_book where user_id = #{userId}
   </select>
   
   <!--新增数据-->
