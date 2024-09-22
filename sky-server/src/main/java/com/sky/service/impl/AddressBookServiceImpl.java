@@ -1,5 +1,6 @@
 package com.sky.service.impl;
 
+import com.sky.convert.AddressBookConvert;
 import com.sky.entity.AddressBook;
 import com.sky.mapper.AddressBookMapper;
 import com.sky.service.AddressBookService;
@@ -7,8 +8,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 地址簿(AddressBook)表服务实现类
@@ -52,9 +55,8 @@ public class AddressBookServiceImpl implements AddressBookService {
      * @return 实例对象
      */
     @Override
-    public AddressBook insert(AddressBook addressBook) {
-        addressBookMapper.insert(addressBook);
-        return addressBook;
+    public int insert(AddressBook addressBook) {
+        return addressBookMapper.insert(addressBook);
     }
 
     /**
@@ -64,9 +66,15 @@ public class AddressBookServiceImpl implements AddressBookService {
      * @return 实例对象
      */
     @Override
-    public AddressBook update(AddressBook addressBook) {
-        addressBookMapper.update(addressBook);
-        return queryById(addressBook.getId());
+    public int update(AddressBook addressBook) {
+        // 先查一遍，判断是否存在
+        AddressBook entity = addressBookMapper.queryById(addressBook.getId());
+        if (entity == null) {
+            return 0;
+        }
+        // 复制属性
+        AddressBookConvert.INSTANCE.copyProperties(addressBook, entity);
+        return addressBookMapper.update(entity);
     }
 
     /**
@@ -78,5 +86,37 @@ public class AddressBookServiceImpl implements AddressBookService {
     @Override
     public boolean deleteById(Long id) {
         return addressBookMapper.deleteById(id) > 0;
+    }
+
+    @Override
+    public List<AddressBook> queryAll(Long userId) {
+        return addressBookMapper.queryAll(userId);
+    }
+
+    /**
+     * 查询默认地址
+     *
+     * @return 默认地址
+     */
+    @Override
+    public AddressBook queryDefaultAddress(Long userId) {
+        return addressBookMapper.queryDefaultAddress(userId);
+    }
+
+    /**
+     * 设置默认地址
+     *
+     * @return 是否成功
+     */
+    @Override
+    @Transactional
+    public boolean setDefaultAddress( Long addressId, Long userId) {
+        // 先查默认地址
+        AddressBook defaultAddress = addressBookMapper.queryDefaultAddress(userId);
+        if (defaultAddress != null ) {
+            addressBookMapper.cancelDefaultAddress(defaultAddress.getId());
+        }
+        // 设置默认地址
+        return addressBookMapper.setDefaultAddress(addressId) > 0;
     }
 }

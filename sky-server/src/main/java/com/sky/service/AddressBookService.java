@@ -4,6 +4,8 @@ import com.sky.entity.AddressBook;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
+import java.util.List;
+
 /**
  * 地址簿(AddressBook)表服务接口
  *
@@ -35,7 +37,7 @@ public interface AddressBookService {
      * @param addressBook 实例对象
      * @return 实例对象
      */
-    AddressBook insert(AddressBook addressBook);
+    int insert(AddressBook addressBook);
 
     /**
      * 修改数据
@@ -43,7 +45,7 @@ public interface AddressBookService {
      * @param addressBook 实例对象
      * @return 实例对象
      */
-    AddressBook update(AddressBook addressBook);
+    int update(AddressBook addressBook);
 
     /**
      * 通过主键删除数据
@@ -53,4 +55,14 @@ public interface AddressBookService {
      */
     boolean deleteById(Long id);
 
+    /**
+     * 查询所有数据
+     *
+     * @return 所有数据
+     */
+    List<AddressBook> queryAll(Long userId);
+
+    AddressBook queryDefaultAddress(Long userId);
+
+    boolean setDefaultAddress(Long addressId,Long userId);
 }

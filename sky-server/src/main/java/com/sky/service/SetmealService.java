@@ -3,7 +3,9 @@ package com.sky.service;
 import com.github.pagehelper.PageInfo;
 import com.sky.dto.SetmealDTO;
 import com.sky.dto.SetmealPageQueryDTO;
+import com.sky.entity.Dish;
 import com.sky.entity.Setmeal;
+import com.sky.vo.DishVO;
 
 import java.util.List;
 
@@ -31,6 +33,12 @@ public interface SetmealService {
 
     //根据id查询套餐
     public SetmealDTO getSetmealById(Long id);
+
+    //根据分类id查询套餐
+    List<Setmeal> getSetmealByCategoryId(Long categoryId);
+
+    // 根据套餐id查询菜品
+    List<DishVO> getMealListBySetmealId(Long setmealId);
 
     //根据id查询套餐状态
     public Integer getStatusById(Long id);

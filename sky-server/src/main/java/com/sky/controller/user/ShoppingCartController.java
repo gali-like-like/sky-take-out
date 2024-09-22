@@ -22,7 +22,7 @@ public class ShoppingCartController {
     @Autowired
     private ShoppingCartService cartService;
 
-    @ApiOperation(value = "根据商品id和套餐id删除某人购物车中的商品")
+    @ApiOperation(value = "根据git 商品id和套餐id删除某人购物车中的商品")
     @DeleteMapping("/sub")
     public Result removeGoods(@ApiParam(required = true) @RequestBody ShoppingCartDTO shoppingCartDTO) {
         String result = cartService.removeGoods(shoppingCartDTO);

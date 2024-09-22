@@ -38,7 +38,10 @@ public class ReportServiceImpl implements ReportService {
         LocalDateTime beginTime = LocalDateTime.of(begin, LocalTime.MIN);
         LocalDateTime endTime = LocalDateTime.of(end, LocalTime.MAX);
         List<GoodsSalesDTO> goodsSalesDTOList = orderMapper.getSalesTop10(beginTime, endTime);
-        String nameList = StringUtils.join(goodsSalesDTOList.stream().map(GoodsSalesDTO::getName).collect(Collectors.toList()), ",");
+        String nameList = StringUtils.join(goodsSalesDTOList.stream()
+                .map(GoodsSalesDTO::getName)
+                .collect(Collectors.toList()),
+            ",");
         String numberList = StringUtils.join(goodsSalesDTOList.stream().map(GoodsSalesDTO::getNumber).collect(Collectors.toList()), ",");
         return SalesTop10ReportVO.builder()
                 .nameList(nameList)
@@ -93,13 +96,14 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public UserReportVO getUserStatistics(LocalDate begin, LocalDate end) {
-        List<LocalDate> dateList = new ArrayList<>();
-        dateList.add(begin);
-
-        while (!begin.equals(end)) {
-            begin = begin.plusDays(1);
-            dateList.add(begin);
+        // 优化时间范围，避免查询过多数据导致查询超时
+        if(begin.isBefore(LocalDate.of(2021, 1, 1))){
+            begin = LocalDate.of(2000, 1, 1);
         }
+        if(end.isAfter(LocalDate.now())){
+            end = LocalDate.now();
+        }
+        List<LocalDate> dateList = begin.datesUntil(end.plusDays(1)).collect(Collectors.toList());
         //新增用户数
         List<Integer> newUserList = new ArrayList<>();
         //总用户数

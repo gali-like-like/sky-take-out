@@ -39,6 +39,8 @@ public interface SetmealMapper {
     //查看状态下的数量
     @Select("SELECT COUNT(id) FROM setmeal WHERE status = #{status}")
     Integer getSetmealCount(Integer status);
+
+    List<Setmeal> getSetmealByCategoryId(Long categoryId);
     //根据id查看套餐状态
     @Select("select status from setmeaml where id = #{id}")
     Integer getStatusById(Long id);

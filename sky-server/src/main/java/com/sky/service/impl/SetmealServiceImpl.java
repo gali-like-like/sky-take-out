@@ -6,12 +6,14 @@ import com.sky.constant.MessageConstant;
 import com.sky.convert.SetmealToSetmealDTO;
 import com.sky.dto.SetmealDTO;
 import com.sky.dto.SetmealPageQueryDTO;
+import com.sky.entity.Dish;
 import com.sky.entity.Setmeal;
 import com.sky.entity.SetmealDish;
 import com.sky.exception.AccountNotFoundException;
 import com.sky.mapper.SetmealMapper;
 import com.sky.service.SetmealDishService;
 import com.sky.service.SetmealService;
+import com.sky.vo.DishVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -37,6 +40,8 @@ public class SetmealServiceImpl implements SetmealService {
     private SetmealMapper setmealMapper;
     @Autowired
     private SetmealDishService setmealDishService;
+    @Resource
+    private DishServiceImpl dishService;
 
     //修改套餐
     @Override
@@ -118,6 +123,26 @@ public class SetmealServiceImpl implements SetmealService {
         Setmeal setmeal = setmealMapper.getSetmealById(id);
         SetmealDTO setmealDTO = SetmealToSetmealDTO.conversionDTO(setmeal, setmealDishes);
         return setmealDTO;
+    }
+
+    // 根据分类id查询套餐
+    @Override
+    public List<Setmeal> getSetmealByCategoryId(Long categoryId) {
+        return setmealMapper.getSetmealByCategoryId(categoryId);
+    }
+
+    // 根据套餐id查询菜品
+    @Override
+    public List<DishVO> getMealListBySetmealId(Long setmealId) {
+        // 根据套餐id查询套餐菜品关联表
+        List<SetmealDish> setmealDishes = setmealDishService.selectSetmealDishById(setmealId);
+        // 根据套餐菜品关联表查询菜品
+        List<DishVO> dishList = new ArrayList<>();
+        setmealDishes.forEach(setmealDish -> {
+            DishVO dishVO = dishService.queryById(setmealDish.getDishId());
+            dishList.add(dishVO);
+        });
+        return dishList;
     }
 
     //判断id是否存在
